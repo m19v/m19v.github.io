@@ -147,11 +147,11 @@ const config = {
               },
               {
                 label: 'Projects',
-                to: '/projects',
+                to: '#',
               },
               {
                 label: 'About',
-                to: '/about',
+                to: '#',
               },
               {
                 label: 'Resume',
