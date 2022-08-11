@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: '{ m19v }',
-  tagline: '{ m19v } are cool',
+  tagline: 'A page of a Linux enthusiast, DevOps Engineer and Back-End Developer',
   url: 'https://m19v.github.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -25,7 +25,24 @@ const config = {
   // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'tg'],
+    path: 'i18n',
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+        htmlLang: 'en-US',
+        calendar: 'gregory',
+        path: 'en',
+      },
+      tg: {
+        label: 'Тоҷикӣ',
+        direction: 'ltr',
+        htmlLang: 'tj-TJ',
+        calendar: 'gregory',
+        path: 'tg',
+      },
+    },
   },
 
   presets: [
@@ -46,6 +63,7 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          blogTitle: 'Blog title',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -58,48 +76,57 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'My Site',
+        title: '',
+        hideOnScroll: true,
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          src: 'img/header-m19v-logo-dark.svg ',
+          srcDark: 'img/header-m19v-logo-light.svg ',
+          // className: "header-m19v-logo",
         },
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'contents',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Docs',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
+            href: 'https://github.com/m19v',
+            position: 'right',
+            className: "header-github-link",
+            "aria-label": "GitHub repository",
+          },
+          {
+            href: 'https://youtube.com',
+            position: 'right',
+            className: "header-youtube-link",
+            "aria-label": "GitHub repository",
+          },
+          {
+            type: 'localeDropdown',
             position: 'right',
           },
         ],
       },
       footer: {
-        style: 'dark',
+        style: 'light',
         links: [
           {
-            title: 'Docs',
+            title: 'Connect',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'GitHub',
+                href: 'https://github.com/facebook/docusaurus',
               },
               {
                 label: 'Discord',
                 href: 'https://discordapp.com/invite/docusaurus',
+              },
+              {
+                label: 'Stack Overflow',
+                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
               },
               {
                 label: 'Twitter',
@@ -108,24 +135,41 @@ const config = {
             ],
           },
           {
-            title: 'More',
+            title: 'Discover',
             items: [
               {
                 label: 'Blog',
                 to: '/blog',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'Documentation',
+                to: '/docs',
+              },
+              {
+                label: 'Projects',
+                to: '/projects',
+              },
+              {
+                label: 'About',
+                to: '/about',
+              },
+              {
+                label: 'Resume',
+                to: '#',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} - m19v. All rights reserved.`,
       },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+      },
+      docs: {
+        sidebar: {
+          hideable: true,
+        },
       },
     }),
 };

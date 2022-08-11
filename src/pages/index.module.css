@@ -10,9 +10,18 @@
   overflow: hidden;
 }
 
+.customPTag {
+  margin: 0;
+  padding: 0 10rem;
+}
+
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;
+  }
+  .customPTag {
+    margin: 0;
+    padding: 0 2rem;
   }
 }
 

@@ -1,38 +1,47 @@
-import React from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import React from "react";
+import clsx from "clsx";
+import Link from "@docusaurus/Link";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Layout from "@theme/Layout";
+import HomepageFeatures from "@site/src/components/HomepageFeatures";
 
-import styles from './index.module.css';
+import Translate, { translate } from "@docusaurus/Translate";
 
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+import styles from "./index.module.css";
+
+function HomePageHeader() {
+  const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <header className={styles.heroBanner}>
       <div className="container">
+        <p className={styles.customPTag}>
+          <Translate
+            id="homepage.welcome.to"
+            description="Welcome to message"
+          >
+            Welcome to in Translate Tag
+          </Translate>
+        </p>
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
-        </div>
+        <p className={styles.customPTag}>
+          Here I aim to accumulate the articles and tutorials on Linux, DevOps
+          and Software Development. For researchers, machine learning engineers
+          and those looking to become a software developer.
+        </p>
       </div>
     </header>
   );
 }
 
 export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
-      <HomepageHeader />
+      description="Description will go into a meta tag in <head />"
+    >
+      <HomePageHeader />
       <main>
         <HomepageFeatures />
       </main>

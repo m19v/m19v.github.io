@@ -28,3 +28,91 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* Header GitHub Logo */
+.header-github-link:hover {
+  opacity: 0.6;
+}
+
+.header-github-link:before {
+  background: url(/static/img/github-svgrepo-com-dark.svg) no-repeat;
+  content: "";
+  display: flex;
+  height: 32px;
+  width: 32px;
+}
+
+[data-theme='dark'] .header-github-link:hover {
+  opacity: 0.6;
+}
+
+[data-theme='dark'] .header-github-link:before {
+  background: url(/static/img/github-svgrepo-com-light.svg) no-repeat;
+  content: "";
+  display: flex;
+  height: 32px;
+  width: 32px;
+}
+
+/* Header Youtube Logo */
+.header-youtube-link:hover {
+  opacity: 0.6;
+}
+
+.header-youtube-link:before {
+  background: url(/static/img/youtube-svgrepo-com-dark.svg) no-repeat;
+  content: "";
+  display: flex;
+  height: 32px;
+  width: 32px;
+}
+
+[data-theme='dark'] .header-youtube-link:hover {
+  opacity: 0.6;
+}
+
+[data-theme='dark'] .header-youtube-link:before {
+  background: url(/static/img/youtube-svgrepo-com-light.svg) no-repeat;
+  content: "";
+  display: flex;
+  height: 32px;
+  width: 32px;
+}
+
+/* Header m19v Logo */
+.header-m19v-logo:hover {
+  opacity: 0.6;
+}
+
+.header-m19v-logo:before {
+  background-image: url("/static/img/header-m19v-logo-dark.svg");
+}
+
+[data-theme='dark'] .header-m19v-logo:hover {
+  opacity: 0.6;
+}
+
+[data-theme='dark'] .header-m19v-logo:before {
+  background: url(/static/img/header-m19v-logo-light.svg) no-repeat;
+}
+
+/* contentTableContainer */
+
+.contentTableContainer table {
+  display: table;
+  text-align: left;
+  width: 100%;
+  margin: 0;
+}
+
+.contentTableContainer th:first-child {
+  width: 5%;
+}
+
+.contentTableContainer td:first-child {
+  text-align: right;
+}
+
+.contentTableContainer th:last-child {
+  width: 25%;
+}

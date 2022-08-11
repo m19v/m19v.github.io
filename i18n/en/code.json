@@ -1,0 +1,9 @@
+{
+  "Welcome to my website": {
+    "message": "Welcome to my website"
+  },
+  "homepage.welcome.to": {
+    "message": "Welcome to",
+    "description": "Welcome to message"
+  }
+}
