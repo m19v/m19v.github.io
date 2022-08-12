@@ -43,16 +43,18 @@ function ViewCount() {
 
   var currentPathName
   if (isBrowser) {
-    currentPathName = window.location.pathname;
+    currentPathName = window.location.pathname.split( '/' );
   }
+  console.log(currentPathName)
+  console.log()
 
   useEffect(() => {
-    countapi.visits().then((result) => {
-      setViewCount(result.value);
-    });
-    // countapi.get("m19v.github.io", "blog").then((result) => {
+    // countapi.visits().then((result) => {
     //   setViewCount(result.value);
     // });
+    countapi.get("m19v.github.io", currentPathName[1]).then((result) => {
+      setViewCount(result.value);
+    });
   }, []);
   console.log("Viewed: ", viewCount);
   return <>{viewCount + " views"}</>;
