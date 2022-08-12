@@ -4,6 +4,7 @@ title: Long Blog Post
 authors: endi
 tags: [hello, docusaurus]
 comments: true # for Gisqus
+countApiKey: 2d2da866-2638-489e-a4e6-50c55e35791a
 ---
 
 This is the summary of a very long blog post,

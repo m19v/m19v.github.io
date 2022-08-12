@@ -39,24 +39,16 @@ function Date({ date, formattedDate }) {
 }
 function ViewCount() {
   const [viewCount, setViewCount] = useState(0);
-  const isBrowser = useIsBrowser();
 
-  var currentPathName
-  if (isBrowser) {
-    currentPathName = window.location.pathname.split( '/' );
-  }
-  console.log(currentPathName)
-  console.log()
+  const { metadata } = useBlogPost()
+  const { frontMatter, slug, title } = metadata
+  const { countApiKey } = frontMatter
 
   useEffect(() => {
-    // countapi.visits().then((result) => {
-    //   setViewCount(result.value);
-    // });
-    countapi.get("m19v.github.io", currentPathName[1]).then((result) => {
+    countapi.hit(countApiKey).then((result) => {
       setViewCount(result.value);
     });
   }, []);
-  console.log("Viewed: ", viewCount);
   return <>{viewCount + " views"}</>;
 }
 
