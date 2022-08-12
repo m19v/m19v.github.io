@@ -19,6 +19,7 @@ const config = {
   organizationName: 'm19v', // Usually your GitHub org/user name.
   projectName: 'm19v.github.io', // Usually your repo name.
   deploymentBranch: "gh-pages",
+  trailingSlash: false,
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want

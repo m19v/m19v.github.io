@@ -45,9 +45,11 @@ function ViewCount() {
   const { countApiKey } = frontMatter
 
   useEffect(() => {
-    countapi.hit(countApiKey).then((result) => {
-      setViewCount(result.value);
-    });
+    if (countApiKey !== undefined && countApiKey !== null) {
+      countapi.hit(countApiKey).then((result) => {
+        setViewCount(result.value);
+      });
+    }
   }, []);
   return <>{viewCount + " views"}</>;
 }
