@@ -1,7 +1,7 @@
 ---
 slug: welcome
 title: Welcome
-authors: [slorber, yangshun]
+authors: [m19v]
 tags: [facebook, hello, docusaurus]
 comments: true # for Gisqus
 ---

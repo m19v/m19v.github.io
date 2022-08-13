@@ -12,7 +12,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/header-m19v-logo-dark.svg',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -81,9 +81,8 @@ const config = {
         hideOnScroll: true,
         logo: {
           alt: 'My Site Logo',
-          src: 'img/header-m19v-logo-dark.svg ',
-          srcDark: 'img/header-m19v-logo-light.svg ',
-          // className: "header-m19v-logo",
+          src: 'img/header-m19v-logo-dark.svg',
+          srcDark: 'img/header-m19v-logo-light.svg',
         },
         items: [
           {
