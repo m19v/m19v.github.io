@@ -51,6 +51,9 @@ function ViewCount() {
       });
     }
   }, []);
+  return () => {
+    setViewCount({}); // Set the state to an empty when the component unmounts
+  };
   return <>{viewCount + " views"}</>;
 }
 

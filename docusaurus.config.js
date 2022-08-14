@@ -92,6 +92,7 @@ const config = {
             label: 'Docs',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
+          { to: "/about", label: "About", position: "left" },
           {
             href: 'https://github.com/m19v',
             position: 'right',
@@ -151,7 +152,7 @@ const config = {
               },
               {
                 label: 'About',
-                to: '#',
+                to: '/about',
               },
               {
                 label: 'Resume',
