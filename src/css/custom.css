@@ -36,10 +36,11 @@
 
 .header-github-link:before {
   background: url(/static/img/github-svgrepo-com-dark.svg) no-repeat;
+  background-size: 24px;
   content: "";
   display: flex;
-  height: 32px;
-  width: 32px;
+  height: 24px;
+  width: 24px;
 }
 
 [data-theme='dark'] .header-github-link:hover {
@@ -48,10 +49,11 @@
 
 [data-theme='dark'] .header-github-link:before {
   background: url(/static/img/github-svgrepo-com-light.svg) no-repeat;
+  background-size: 24px;
   content: "";
   display: flex;
-  height: 32px;
-  width: 32px;
+  height: 24px;
+  width: 24px;
 }
 
 /* Header Youtube Logo */
@@ -61,10 +63,11 @@
 
 .header-youtube-link:before {
   background: url(/static/img/youtube-svgrepo-com-dark.svg) no-repeat;
+  background-size: 24px;
   content: "";
   display: flex;
-  height: 32px;
-  width: 32px;
+  height: 24px;
+  width: 24px;
 }
 
 [data-theme='dark'] .header-youtube-link:hover {
@@ -73,10 +76,11 @@
 
 [data-theme='dark'] .header-youtube-link:before {
   background: url(/static/img/youtube-svgrepo-com-light.svg) no-repeat;
+  background-size: 24px;
   content: "";
   display: flex;
-  height: 32px;
-  width: 32px;
+  height: 24px;
+  width: 24px;
 }
 
 /* Header m19v Logo */
