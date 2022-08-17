@@ -1,9 +1,9 @@
 ---
-title: Atomic Habits
+title: Java
 ---
 
 Published on Month Day, Year  
-Updated on on Month Day, Year
+Updated on Month Day, Year
 
 ## Content
 

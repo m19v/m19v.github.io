@@ -1,5 +1,5 @@
 ---
-title: Atomic Habits
+title: 'Ikigai: The Japanese Secret to a Long and Happy Life'
 ---
 
 Published on Month Day, Year  
