@@ -3,7 +3,7 @@ slug: welcome
 title: Welcome
 authors: [m19v]
 tags: [facebook, hello, docusaurus]
-comments: true # for Gisqus
+enableComments: true # for Gisqus
 ---
 
 [Docusaurus blogging features](https://docusaurus.io/docs/blog) are powered by the [blog plugin](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog).

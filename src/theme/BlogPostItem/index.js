@@ -9,18 +9,18 @@ export default function BlogPostItemWrapper(props) {
   const isBrowser = useIsBrowser();
 
   const { frontMatter, slug, title } = metadata
-  const { comments } = frontMatter
+  const { enableComments } = frontMatter
 
   // Workaround from https://docusaurus.io/docs/advanced/ssg for the Error 'ReferenceError: window is not defined' during the build
-  var currentUriIsNotBlog = false
+  var isCurrentUrlBlog = false
   if (isBrowser) {
-    currentUriIsNotBlog = window.location.pathname != '/blog'
+    isCurrentUrlBlog = window.location.pathname === "/blog"
   }
 
   return (
     <>
       <BlogPostItem {...props} />
-      {(comments && currentUriIsNotBlog) && (
+      {(enableComments && !isCurrentUrlBlog) && (
         <GiscusComponent />
       )}
     </>

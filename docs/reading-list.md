@@ -1,6 +1,5 @@
 ---
 title: Reading List
-sidebar_position: 2
 ---
 
 Published on Month Day, Year  

@@ -3,7 +3,7 @@ slug: first-blog-post
 title: First Blog Post
 authors: m19v
 tags: [hola, docusaurus]
-comments: true # for Gisqus
+enableComments: true # for Gisqus
 countApiKey: d6943a35-55d6-495e-8f03-92600d04b1f1
 ---
 
