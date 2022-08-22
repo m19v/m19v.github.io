@@ -26,7 +26,7 @@ function HomePageHeader() {
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <p className={styles.customPTag}>
           Here I aim to accumulate the articles and tutorials on Linux, DevOps
-          and Software Development. For researchers, machine learning engineers
+          and Software Development. For researchers, software developers
           and those looking to become a software developer.
         </p>
       </div>

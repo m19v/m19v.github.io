@@ -25,14 +25,17 @@ function About() {
           <div className={styles.aboutText}>
             <h2>Hello,</h2>
             <p>
-              I am <a>m19v</a>, a DevOps Engineer and Back-End Software Developer.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              I am <a>m19v</a>, a DevOps Engineer and Backend Software Developer.<br />
+              I strongly care about documenting, collecting/accumulating and sharing knowledge and valuable information.
+              I use this space as a reference in my daily work and would be happy if it also help those who are looking to become a software developer. <br />
+              I am flexible, organized and analytical person, a logical problem solver with high attention to details.
+              Fan of Football, Mysteries TV series and Persian literature. I am a family person and father of two lovely girls.<br />
+
+              I prefer architecture and server-side business logic over designing FE and visual elements of a UI.<br />
+
+              Feel free to contact me via email: mnineteenv@gmail.com <br />
+
+              Thanks for visiting my space.
             </p>
           </div>
         </div>
