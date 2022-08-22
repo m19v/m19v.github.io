@@ -84,20 +84,16 @@
 }
 
 /* Header m19v Logo */
+.header-m19v-logo {
+  padding: 2px;
+}
+
 .header-m19v-logo:hover {
   opacity: 0.6;
 }
 
-.header-m19v-logo:before {
-  background-image: url("/static/img/header-m19v-logo-dark.svg");
-}
-
 [data-theme='dark'] .header-m19v-logo:hover {
   opacity: 0.6;
-}
-
-[data-theme='dark'] .header-m19v-logo:before {
-  background: url(/static/img/header-m19v-logo-light.svg) no-repeat;
 }
 
 /* contentTableContainer */

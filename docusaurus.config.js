@@ -99,8 +99,9 @@ const config = {
         hideOnScroll: true,
         logo: {
           alt: 'My Site Logo',
-          src: 'img/header-m19v-logo-dark.svg',
-          srcDark: 'img/header-m19v-logo-light.svg',
+          src: 'img/{m19v}_black_without_bg.png',
+          srcDark: 'img/{m19v}_white_without_bg.png',
+          className: 'header-m19v-logo'
         },
         items: [
           {
