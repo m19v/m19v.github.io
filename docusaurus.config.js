@@ -110,7 +110,7 @@ const config = {
             position: 'left',
             label: 'Docs',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          { to: '/blog', label: 'Blog', position: 'left' },
           { to: "/about", label: "About", position: "left" },
           {
             href: 'https://github.com/m19v',
@@ -141,14 +141,6 @@ const config = {
                 href: 'https://github.com/m19v',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/m19v',
-              },
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/users/12501050/m19v',
-              },
-              {
                 label: 'Twitter',
                 href: 'https://twitter.com/m19v',
               },
@@ -166,16 +158,29 @@ const config = {
                 to: '/docs',
               },
               {
-                label: 'Projects',
-                to: '#',
-              },
-              {
                 label: 'About',
                 to: '/about',
               },
               {
                 label: 'Resume',
                 to: '#',
+              },
+            ],
+          },          
+          {
+            title: 'Community',
+            items: [
+              {
+                label: 'Discord',
+                href: 'https://discordapp.com/invite/m19v',
+              },
+              {
+                label: 'Stack Overflow',
+                href: 'https://stackoverflow.com/users/12501050/m19v',
+              },
+              {
+                label: 'BuyMeACoffee',
+                to: 'https://www.buymeacoffee.com/m19v',
               },
             ],
           },
