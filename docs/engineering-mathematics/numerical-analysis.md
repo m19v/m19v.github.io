@@ -2,8 +2,8 @@
 title: Numerical analysis
 ---
 
-Published on Month Day, Year  
-Updated on Month Day, Year
+Published on March 4, 2022  
+Updated on August 19, 2022
 
 ## Math equations
 Please read [KaTeX](https://katex.org/) documentation for more details.

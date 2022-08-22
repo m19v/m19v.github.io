@@ -2,9 +2,26 @@
 title: Bash
 ---
 
-Published on Month Day, Year  
-Updated on on Month Day, Year
+Published on December 1, 2021  
+Updated on August 16, 2022
 
-## Example_Header
+## Introduction
 
-Culpa reprehenderit id laboris laboris esse. Deserunt est nulla dolore irure occaecat Lorem anim. Lorem ullamco cupidatat pariatur sit sit elit pariatur tempor laboris ad est.Consectetur veniam minim velit dolor. Laborum aute esse ipsum aute minim ea anim. Irure dolor sint exercitation sunt pariatur reprehenderit officia sit consectetur nisi culpa. Minim incididunt in ullamco cupidatat fugiat consectetur deserunt labore tempor. Cupidatat nulla deserunt dolore minim dolore id cupidatat eu Lorem. Ex qui est aliquip ea. Veniam enim incididunt cillum amet sunt pariatur commodo non.
+This is a quick reference to getting started with Bash scripting.
+
+## Parameter expansions
+### Basics
+
+```bash {3-4,7} showLineNumbers title="This is tittle!"
+name="John"
+echo ${name}
+echo ${name/J/j}    #=> "john" (substitution)
+echo ${name:0:2}    #=> "Jo" (slicing)
+echo ${name::2}     #=> "Jo" (slicing)
+echo ${name::-1}    #=> "Joh" (slicing)
+echo ${name:(-1)}   #=> "n" (slicing from right)
+echo ${name:(-2):1} #=> "h" (slicing from right)
+echo ${food:-Cake}  #=> $food or "Cake"
+length=2
+echo ${name:0:length}  #=> "Jo"
+```
