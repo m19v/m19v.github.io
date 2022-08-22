@@ -1,21 +1,41 @@
 ---
 title: Reading List
+sidebar_position: 3
 ---
 
-Published on Month Day, Year  
-Updated on on Month Day, Year
+Published on April 19, 2020
+Updated on August 17, 2022
 
-## Reading List
+This is a collection articles, books and videos I have read or watched and recommend to others.
 
-Here, you will find my thoughts on articles, books, videos and other forms of media. I also maintain a [Reading List](#) of articles, books, videos, and more which I think are meaningful and insightful.
+## 2022
+### Articles 2022
+- [Culpa reprehenderit id laboris](#) laboris esse. Deserunt est nulla dolore irure occaecat Lorem anim. Lorem ullamco cupidatat pariatur sit sit elit pariatur tempor laboris ad est.Consectetur veniam minim velit dolor. Laborum aute esse ipsum aute minim ea anim. Irure dolor sint exercitation sunt
+### Conferences 2022
+- [Culpa reprehenderit id laboris](#) laboris esse. Deserunt est nulla dolore irure occaecat Lorem anim. Lorem ullamco cupidatat pariatur sit sit elit pariatur tempor laboris ad est.Consectetur veniam minim velit dolor. Laborum aute esse ipsum aute minim ea anim. Irure dolor sint exercitation sunt
+### Books 2022
+- [Culpa reprehenderit id laboris](#) laboris esse. Deserunt est nulla dolore irure occaecat Lorem anim. Lorem ullamco cupidatat pariatur sit sit elit pariatur tempor laboris ad est.Consectetur veniam minim velit dolor. Laborum aute esse ipsum aute minim ea anim. Irure dolor sint exercitation sunt
 
-### Book Summaries
+## 2021
+### Articles 2021
+- [Culpa reprehenderit id laboris](#) laboris esse. Deserunt est nulla dolore irure occaecat Lorem anim. Lorem ullamco cupidatat pariatur sit sit elit pariatur tempor laboris ad est.Consectetur veniam minim velit dolor. Laborum aute esse ipsum aute minim ea anim. Irure dolor sint exercitation sunt
+### Conferences 2021
+- [Culpa reprehenderit id laboris](#) laboris esse. Deserunt est nulla dolore irure occaecat Lorem anim. Lorem ullamco cupidatat pariatur sit sit elit pariatur tempor laboris ad est.Consectetur veniam minim velit dolor. Laborum aute esse ipsum aute minim ea anim. Irure dolor sint exercitation sunt
+### Books 2021
+- [Culpa reprehenderit id laboris](#) laboris esse. Deserunt est nulla dolore irure occaecat Lorem anim. Lorem ullamco cupidatat pariatur sit sit elit pariatur tempor laboris ad est.Consectetur veniam minim velit dolor. Laborum aute esse ipsum aute minim ea anim. Irure dolor sint exercitation sunt
 
-<div class="contentTableContainer">
+## 2020
+### Articles 2020
+- [Culpa reprehenderit id laboris](#) laboris esse. Deserunt est nulla dolore irure occaecat Lorem anim. Lorem ullamco cupidatat pariatur sit sit elit pariatur tempor laboris ad est.Consectetur veniam minim velit dolor. Laborum aute esse ipsum aute minim ea anim. Irure dolor sint exercitation sunt
+### Conferences 2020
+- [Culpa reprehenderit id laboris](#) laboris esse. Deserunt est nulla dolore irure occaecat Lorem anim. Lorem ullamco cupidatat pariatur sit sit elit pariatur tempor laboris ad est.Consectetur veniam minim velit dolor. Laborum aute esse ipsum aute minim ea anim. Irure dolor sint exercitation sunt
+### Books 2020
+- [Culpa reprehenderit id laboris](#) laboris esse. Deserunt est nulla dolore irure occaecat Lorem anim. Lorem ullamco cupidatat pariatur sit sit elit pariatur tempor laboris ad est.Consectetur veniam minim velit dolor. Laborum aute esse ipsum aute minim ea anim. Irure dolor sint exercitation sunt
 
-|     | Title                                                 | Date Last Updated |
-| --- | ----------------------------------------------------- | ----------------- |
-| 1   | [Book One](#)                                         | Month Day, Year   |
-| 2   | [Book Two](#)                                         | Month Day, Year   |
-
-</div>
+## 2019
+### Articles 2019
+- [Culpa reprehenderit id laboris](#) laboris esse. Deserunt est nulla dolore irure occaecat Lorem anim. Lorem ullamco cupidatat pariatur sit sit elit pariatur tempor laboris ad est.Consectetur veniam minim velit dolor. Laborum aute esse ipsum aute minim ea anim. Irure dolor sint exercitation sunt
+### Conferences 2019
+- [Culpa reprehenderit id laboris](#) laboris esse. Deserunt est nulla dolore irure occaecat Lorem anim. Lorem ullamco cupidatat pariatur sit sit elit pariatur tempor laboris ad est.Consectetur veniam minim velit dolor. Laborum aute esse ipsum aute minim ea anim. Irure dolor sint exercitation sunt
+### Books 2019
+- [Culpa reprehenderit id laboris](#) laboris esse. Deserunt est nulla dolore irure occaecat Lorem anim. Lorem ullamco cupidatat pariatur sit sit elit pariatur tempor laboris ad est.Consectetur veniam minim velit dolor. Laborum aute esse ipsum aute minim ea anim. Irure dolor sint exercitation sunt
