@@ -106,7 +106,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'contents',
+            docId: 'content', // must be the same as the name of file
             position: 'left',
             label: 'Docs',
           },
