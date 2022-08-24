@@ -21,7 +21,7 @@ Updated on August 24, 2022
 - Awesome
 - Reading List
 - Tools
-- [Book Summaries](docs/category/book-summeries)
+- [Book Summaries](docs/category/book-summaries)
     - Atomic Habits
     - Clean Code
     - 'Ikigai: The Japanese Secret to a Long and Happy Life'
