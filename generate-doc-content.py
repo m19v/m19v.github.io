@@ -12,32 +12,6 @@ sidebar_position: 1
 Published on January 05, 2022  
 Updated on {0}
 
----
-
-- Awesome
-- Book Summaries
-- Cheat-Sheet
-  - Automation
-  - CICD
-  - Cloud
-  - Container
-  - DevOps Linux
-  - Network
-  - Scripting
-  - Security
-  - Windows
-- Engineering Mathematics
-  - Numerical analysis
-- Internet of Things
-  - Home Automation
-  - Raspberry Pi
-- Tools
-- Tutorials
-  - Bash
-  - Java
-  - Python
-
----
 <!---
 <div class="contentTableContainer">
 
@@ -63,6 +37,22 @@ def path_to_dict(path):
     return d
 
 
+def get_label_of_dir(path):
+    f = Path(f'{path}/_category_.json')
+    if os.path.isfile(f):
+        with open(f, encoding="utf8") as file:
+            d = json.load(file)
+            return d['label']
+
+
+def get_label_of_md(basedir, filename):
+    f = Path(f'{basedir}/{filename}')
+    with open(f, "r", encoding="utf8") as file:
+        for ln in file:
+            if ln.startswith("title:"):
+                return ln[6:]
+
+
 def path_to_tree(path):
     """Generates content.md
     Parameters
@@ -73,14 +63,16 @@ def path_to_tree(path):
     with open(Path(f'{path}/content.md'), 'w', encoding='utf-8') as f:
         f.write(CONTENT_HEADER)
         for root, dirs, files in os.walk(path):
-            level = root.replace(path, '').count(os.sep)
+            # cut path from root and count folder level by os.separator. Omit root folder (i.e. '-1')
+            level = root.replace(str(path), '').count(os.sep) - 1
             indent = ' ' * 4 * level
-            # print('{}- {}/'.format(indent, os.path.basename(root)), file=f)
-            f.write('{}- {}\n'.format(indent, os.path.basename(root)))
+            label_of_dir = get_label_of_dir(root)
+            if label_of_dir is not None:
+                f.write('{}- [{}]({})\n'.format(indent, label_of_dir, 'docs/category/' + os.path.basename(root)))
             subindent = ' ' * 4 * (level + 1)
             for file in files:
-                # print('{}- {}'.format(subindent, file), file=f)
-                f.write('{}- {}\n'.format(subindent, file))
+                if file.endswith("md") and file != "content.md":
+                    f.write('{}- {}\n'.format(subindent, get_label_of_md(root, file).strip()))
 
 
 if __name__ == '__main__':
