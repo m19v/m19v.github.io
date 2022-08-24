@@ -13,7 +13,7 @@ const config = {
   tagline: 'A space of a Linux enthusiast, DevOps Engineer and Backend Software Developer',
   url: 'https://m19v.github.io',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/header-m19v-logo-dark.svg',
 
@@ -48,6 +48,18 @@ const config = {
       },
     },
   },
+
+  themes: [
+    // Other themes.
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        // `hashed` is recommended as long-term-cache of index file is possible.
+        hashed: true,
+        language: ["en"],
+      },
+    ],
+  ],
 
   presets: [
     [

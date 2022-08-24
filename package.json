@@ -12,11 +12,12 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "generate-doc-content":"python generate-doc-content.py"
+    "generate-doc-content": "python generate-doc-content.py"
   },
   "dependencies": {
     "@docusaurus/core": "2.0.1",
     "@docusaurus/preset-classic": "2.0.1",
+    "@easyops-cn/docusaurus-search-local": "^0.31.0",
     "@giscus/react": "^2.2.0",
     "@mdx-js/react": "^1.6.22",
     "clsx": "^1.2.1",
