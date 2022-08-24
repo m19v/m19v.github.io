@@ -180,7 +180,7 @@ const config = {
               },
               {
                 label: 'BuyMeACoffee',
-                to: 'https://www.buymeacoffee.com/m19v',
+                href: 'https://www.buymeacoffee.com/m19v',
               },
             ],
           },
@@ -199,7 +199,7 @@ const config = {
       announcementBar: {
         id: 'announcementBarContent',
         content:
-          'This Space is Under Construction!',
+          'This space is under construction!',
         backgroundColor: '#fafbfc',
         textColor: '#091E42',
         isCloseable: true,
