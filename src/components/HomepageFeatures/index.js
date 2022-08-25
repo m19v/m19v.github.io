@@ -7,7 +7,7 @@ const FeatureList = [
     title: "Guides and Manuals",
     link: "/docs/category/tutorials",
     image:
-      "https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1925&q=80",
+      "https://images.unsplash.com/photo-1467810160588-c86c0deb5d16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     description: (
       <>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum,
@@ -19,7 +19,7 @@ const FeatureList = [
     title: "Reference",
     link: "/docs/category/cheat-sheet",
     image:
-      "https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1925&q=80",
+      "https://images.unsplash.com/photo-1472712739516-7ad2b786e1f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
     description: (
       <>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum,
@@ -31,7 +31,7 @@ const FeatureList = [
     title: "Articles",
     link: "/blog",
     image:
-      "https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1925&q=80",
+      "https://images.unsplash.com/photo-1507275016429-544fc0875edd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
     description: (
       <>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum,
