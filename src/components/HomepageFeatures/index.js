@@ -1,50 +1,80 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 
 const FeatureList = [
   {
-    title: "Programming",
-    Svg: require("@site/static/img/Hand-coding.svg").default,
+    title: "Guides and Manuals",
+    link: "/docs/category/tutorials",
+    image:
+      "https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1925&q=80",
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum,
+        sem id aliquam iaculis.
       </>
     ),
   },
   {
-    title: "Coding Workshop",
-    Svg: require("@site/static/img/Coding-workshop.svg").default,
+    title: "Reference",
+    link: "/docs/category/cheat-sheet",
+    image:
+      "https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1925&q=80",
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum,
+        sem id aliquam iaculis.
       </>
     ),
   },
   {
-    title: "Software Development",
-    Svg: require("@site/static/img/Software-Developer.svg").default,
+    title: "Articles",
+    link: "/blog",
+    image:
+      "https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1925&q=80",
     description: (
       <>
-        Дар ин саҳифа то кунун матне вуҷуд надорад. Шумо метавонед дар дигар
-        саҳифаҳо унвони ин саҳифаро ҷустуҷӯ кунед, гузоришҳои алоқамандро
-        ҷустуҷӯ намоед, ё ин саҳифаро <code>docs</code> вироиш кунед.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum,
+        sem id aliquam iaculis.
       </>
     ),
   },
 ];
 
-function Feature({ Svg, title, description }) {
+function Feature({ title, link, image, description }) {
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  };
+
   return (
-    <div className={clsx("col col--4")}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
-        <p>{description}</p>
+    <div className="col col--4">
+      <div class="card-container">
+        <a
+          class={isHovering ? "card shadow--md" : "card shadow--lw"}
+          onMouseOver={handleMouseOver}
+          onMouseOut={handleMouseOut}
+          href={link}
+          style={{ color: "var(--ifm-heading-color)", textDecoration: "none" }}
+        >
+          <div class="card__image" href={link}>
+            <img src={image} alt="Image alt text" />
+          </div>
+          <div class="card__body">
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </div>
+          {/* <div class="card__footer">
+            <a class="button button--secondary button--block" href={link}>
+              Visit
+            </a>
+          </div> */}
+        </a>
       </div>
     </div>
   );

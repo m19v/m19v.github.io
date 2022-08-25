@@ -116,3 +116,9 @@
 .contentTableContainer th:last-child {
   width: 25%;
 }
+
+@media screen and (max-width: 996px) {
+  .col{
+    padding-bottom: var(--ifm-spacing-vertical);
+  }
+}
