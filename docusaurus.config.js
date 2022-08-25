@@ -208,10 +208,15 @@ const config = {
           hideable: true,
         },
       },
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
+      },
       announcementBar: {
         id: 'announcementBarContent',
-        content:
-          'This space is under construction!',
+        // content: `If you like this space, give it a ⭐️ on <a target="_blank" rel="noopener noreferrer" href="https://github.com/m19v">GitHub</a>`,
+        content: 'This space is under construction!',
         backgroundColor: '#fafbfc',
         textColor: '#091E42',
         isCloseable: true,
