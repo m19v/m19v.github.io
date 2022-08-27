@@ -1,0 +1,10 @@
+.musingsContainer{
+  /* text-align: center; */
+  color:var(--ifm-heading-color);
+  font-style: italic;
+  padding: 4rem 0;
+}
+
+.musingsDate{
+  color: var(--ifm-color-emphasis-400);
+}
