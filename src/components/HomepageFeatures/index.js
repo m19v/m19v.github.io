@@ -54,13 +54,17 @@ function Feature({ title, link, image, description }) {
 
   return (
     <div className="col col--4">
-      <div class="card-container">
+      <div className={styles.cardContainer}>
         <a
-          class={isHovering ? "card shadow--md" : "card shadow--lw"}
+          // class={isHovering ? "card shadow--md" : "card shadow--lt"}
+          class={isHovering ? "card shadow--tl" : "card shadow--md"}
           onMouseOver={handleMouseOver}
           onMouseOut={handleMouseOut}
           href={link}
-          style={{ color: "var(--ifm-heading-color)", textDecoration: "none" }}
+          style={{ 
+            color: "var(--ifm-heading-color)", 
+            textDecoration: "none"
+          }}
         >
           <div class="card__image" href={link}>
             <img src={image} alt="Image alt text" />
@@ -82,7 +86,7 @@ function Feature({ title, link, image, description }) {
 
 export default function HomepageFeatures() {
   return (
-    <section className={styles.features}>
+    <section className={styles.featuresSection}>
       <div className="container">
         <div className="row">
           {FeatureList.map((props, idx) => (

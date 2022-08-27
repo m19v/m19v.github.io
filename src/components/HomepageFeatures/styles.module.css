@@ -1,4 +1,4 @@
-.features {
+.featuresSection {
   display: flex;
   align-items: center;
   padding-bottom: 6rem;
@@ -9,4 +9,9 @@
   .features {
     padding-bottom: 4rem;
   }
+}
+
+.cardContainer:hover {
+  transform: scale(100.5%,100.5%);
+  /* transform: translateY(-.5%); */
 }
