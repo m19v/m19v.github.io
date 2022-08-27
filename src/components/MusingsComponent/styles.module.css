@@ -1,10 +1,14 @@
 .musingsContainer{
-  /* text-align: center; */
-  color:var(--ifm-heading-color);
+  /* text-align: center;
+  color:var(--ifm-heading-color);   */
   font-style: italic;
   padding: 4rem 0;
 }
 
-.musingsDate{
-  color: var(--ifm-color-emphasis-400);
+.musingsAuthor{
+  color: var(--ifm-color-emphasis-600);
+}
+
+[data-theme='dark'] .musingsAuthor{
+  color: var(--ifm-color-emphasis-300);
 }
