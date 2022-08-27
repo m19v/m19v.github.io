@@ -1,7 +1,10 @@
 import React from "react";
 import styles from "./styles.module.css";
 
-const MusingList = [
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+const MusingListEnglish = [
   {
     text: "Half knowledge is worse than ignorance.",
     author: "Thomas B. Macaulay",
@@ -20,6 +23,41 @@ const MusingList = [
   // },
 ];
 
+const MusingListTajik = [
+  {
+    text: "Дар касб ва кори нек ҷиддӣ бош!",
+    author: "Луқмони Ҳаким",
+  },
+  {
+    text: "То реша дар об аст, умеди самаре ҳаст!",
+    author: "Гуфтори ҳалқ",
+  },
+  {
+    text: "Бо падару модарат беҳтарин рафторро ихтиёр кун.",
+    author: "Луқмони Ҳаким",
+  },
+  {
+    text: "Фарди кунҷков дар нимароҳаи хирадмандӣ аст.",
+    author: "",
+  },
+  {
+    text: "Он касе, ки аз ранҷи зиндагӣ битарсад, аз тарс дар ранҷ хоҳад буд.",
+    author: "",
+  },
+  {
+    text: "Дуруғгӯ ба фиреби дигарон шурӯъ мекунад ва ба фиреби худаш поён меёбад.",
+    author: "",
+  },
+  {
+    text: "Ҷавоби аблаҳ хомўшист.",
+    author: "Гуфтори ҳалқ",
+  },
+  // {
+  //   text: "",
+  //   author: "",
+  // },
+];
+
 function Musing({ text, author }) {
   return (
     <div className={styles.musingsContainer}>
@@ -31,12 +69,29 @@ function Musing({ text, author }) {
 
 export default function MusingsComponent() {
   return (
-    <section className={styles.featuresSection}>
-      <div className="container">
-        {MusingList.map((props, idx) => (
-          <Musing key={idx} {...props} />
-        ))}
-      </div>
+    <section>
+      <Tabs
+        defaultValue="english"
+        values={[
+          { label: "English", value: "english" },
+          { label: "Тоҷикӣ", value: "tajik" },
+        ]}
+      >
+        <TabItem value="english">
+          <div className="container">
+            {MusingListEnglish.map((props, idx) => (
+              <Musing key={idx} {...props} />
+            ))}
+          </div>
+        </TabItem>
+        <TabItem value="tajik">
+          <div className="container">
+            {MusingListTajik.map((props, idx) => (
+              <Musing key={idx} {...props} />
+            ))}
+          </div>
+        </TabItem>
+      </Tabs>
     </section>
   );
 }
