@@ -1,41 +1,38 @@
 import React, { useState } from "react";
-import clsx from "clsx";
 import styles from "./styles.module.css";
+
+import GuidesAndManualsImageUrl from "@site/static/img/guides-and-manuals.png";
+import ReferencesImageUrl from "@site/static/img/references.png";
+import ArticlesImageUrl from "@site/static/img/articles.png";
 
 const FeatureList = [
   {
     title: "Guides and Manuals",
     link: "/docs/category/guides-and-manuals",
-    image:
-      "https://images.unsplash.com/photo-1467810160588-c86c0deb5d16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    image: GuidesAndManualsImageUrl,
     description: (
       <>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum,
-        sem id aliquam iaculis.
+        Browse through the guides and manuals of programming languages and use DevSecOps tools.
       </>
     ),
   },
   {
-    title: "Reference",
+    title: "References",
     link: "/docs/category/references",
-    image:
-      "https://images.unsplash.com/photo-1472712739516-7ad2b786e1f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
+    image: ReferencesImageUrl,
     description: (
       <>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum,
-        sem id aliquam iaculis.
+      Check out the CLI and API reference documentation of programming languages and DevSecOps tools.
       </>
     ),
   },
   {
     title: "Articles",
     link: "/blog",
-    image:
-      "https://images.unsplash.com/photo-1507275016429-544fc0875edd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
+    image: ArticlesImageUrl,
     description: (
       <>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum,
-        sem id aliquam iaculis.
+        Read and Follow recent blog posts and articles on Software Development and DevSecOps topics.
       </>
     ),
   },
@@ -61,9 +58,9 @@ function Feature({ title, link, image, description }) {
           onMouseOver={handleMouseOver}
           onMouseOut={handleMouseOut}
           href={link}
-          style={{ 
-            color: "var(--ifm-heading-color)", 
-            textDecoration: "none"
+          style={{
+            color: "var(--ifm-heading-color)",
+            textDecoration: "none",
           }}
         >
           <div class="card__image" href={link}>

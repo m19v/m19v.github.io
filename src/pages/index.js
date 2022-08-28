@@ -25,9 +25,8 @@ function HomePageHeader() {
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <p className={styles.customPTag}>
-          Here I aim to accumulate the articles and tutorials on Linux, DevOps
-          and Software Development. For researchers, software developers
-          and those looking to become a software developer.
+          Here I aim to accumulate manuals, guides, references and articles on Linux, DevSecOps
+          and Software Development for my daily use and for anyone who wants to become a software developer.
         </p>
       </div>
     </header>

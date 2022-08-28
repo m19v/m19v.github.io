@@ -10,12 +10,12 @@ const katex = require('rehype-katex');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: '{ m19v }',
-  tagline: 'A space of a Linux enthusiast, DevOps Engineer and Backend Software Developer',
+  tagline: 'A space of a Linux enthusiast, DevSecOps Engineer and Backend Software Developer',
   url: 'https://m19v.github.io',
   baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/header-m19v-logo-dark.svg',
+  favicon: 'img/m19v.ico',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.

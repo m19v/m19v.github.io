@@ -3,6 +3,8 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 
+import AvatarImageUrl from "@site/static/img/m19v-avatar-placeholder.png";
+
 import styles from "./styles.module.css";
 
 function About() {
@@ -17,26 +19,31 @@ function About() {
       <main id="main">
         <div className={styles.about}>
           <div>
-            <img
-              className={styles.aboutProfilePic}
-              src={useBaseUrl("img/header-m19v-logo-dark.svg")}
-            />
+            <img className={styles.aboutProfilePic} src={AvatarImageUrl} />
           </div>
           <div className={styles.aboutText}>
             <h2>Hello,</h2>
             <p>
-              I am <a>m19v</a>, a DevOps Engineer and Backend Software Developer.<br />
-              I strongly care about documenting, collecting/accumulating and sharing knowledge and valuable information.
-              I use this space as a reference in my daily work and would be happy if it also help those who are looking to become a software developer. <br />
-              I am flexible, organized and analytical person, a logical problem solver with high attention to details.
-              Fan of Football, Mysteries TV series and Persian literature. I am a family person and father of two lovely girls.<br />
-
-              I prefer architecture and server-side business logic over designing FE and visual elements of a UI.<br />
-
-              Feel free to contact me via email: mnineteenv@gmail.com <br />
-
-              Thanks for visiting my space.
+              I am <a>m19v</a>, a DevSecOps Engineer and Backend Software
+              Developer.
             </p>
+            <p>
+              I strongly care about documenting and sharing knowledge and
+              valuable information. I use this space as a reference in my daily
+              work and would be happy if it could help those who want to become
+              software developers as well. <br />
+            </p>
+            <p>
+              I am organized and analytical person, a problem solver with high
+              attention to details. Besides, I am fan of Football, Mysteries TV
+              series and Persian literature. I am a family person and father of
+              two lovely girls.
+              <br />
+            </p>
+            <p>
+              Feel free to contact me via email: <a>mnineteenv@gmail.com</a>
+            </p>
+            <p>Thanks for stopping by.</p>
           </div>
         </div>
       </main>
