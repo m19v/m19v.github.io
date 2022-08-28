@@ -28,17 +28,16 @@ function About() {
               Developer.
             </p>
             <p>
-              I strongly care about documenting and sharing knowledge and
-              valuable information. I use this space as a reference in my daily
-              work and would be happy if it could help those who want to become
-              software developers as well. <br />
+              I am organized and analytical person, a problem solver with high
+              attention to details. A fan of Football, Mysteries TV Series and
+              Persian Literature. I am a family person and father of two lovely
+              girls.
             </p>
             <p>
-              I am organized and analytical person, a problem solver with high
-              attention to details. Besides, I am fan of Football, Mysteries TV
-              series and Persian literature. I am a family person and father of
-              two lovely girls.
-              <br />
+              I strongly care about documenting and sharing knowledge. I use
+              this space as a reference in my daily work and would be happy if
+              it could help those who want to become software developers as
+              well.
             </p>
             <p>
               Feel free to contact me via email: <a>mnineteenv@gmail.com</a>
