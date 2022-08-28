@@ -17,6 +17,10 @@ const MusingListEnglish = [
     text: "You can tell how smart people are by the things they laugh at.",
     author: "Tina Fey",
   },
+  {
+    text: "Yesterday is history, tomorrow is a mystery, and today is a gift… that's why they call it the present.",
+    author: "Eleanor Roosevelt",
+  },
   // {
   //   text: "",
   //   author: "",
