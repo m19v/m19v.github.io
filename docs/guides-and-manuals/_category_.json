@@ -1,5 +1,6 @@
 {
-  "label": "Tutorials",
+  "label": "Guides and Manuals",
+  "position": 5,
   "link": {
     "type": "generated-index"
   }
