@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 
-import GuidesAndManualsImageUrl from "@site/static/img/guides-and-manuals.png";
+import TutorialsImageUrl from "@site/static/img/tutorials.png";
 import ReferencesImageUrl from "@site/static/img/references.png";
 import ArticlesImageUrl from "@site/static/img/articles.png";
 
 const FeatureList = [
   {
-    title: "Guides and Manuals",
-    link: "/docs/category/guides-and-manuals",
-    image: GuidesAndManualsImageUrl,
+    title: "Tutorials",
+    link: "/docs/category/tutorials",
+    image: TutorialsImageUrl,
     description: (
       <>
-        Browse through the guides and manuals of programming languages and DevSecOps tools.
+        Browse through the tutorials on programming languages and DevSecOps tools.
       </>
     ),
   },
