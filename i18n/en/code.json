@@ -5,5 +5,21 @@
   "homepage.welcome.to": {
     "message": "Welcome to",
     "description": "Welcome to message"
+  },
+  "homepage.hero.subtitle":{
+    "message":"A space of a Linux enthusiast, DevSecOps Engineer and Backend Software Developer"
+  },
+  "homepage.hero.subsubtitle":{
+    "message":"Here I aim to accumulate manuals, guides, references and articles on Linux, DevSecOps and Software Development for my daily use and for anyone who wants to become a software developer."
+  },
+  "about.aboutMeTittle": {
+    "message": "About",
+    "description": "About me message"
+  },
+  "about.aboutMeHello": {
+    "message": "Hello,"
+  },
+  "about.aboutMeFirstP": {
+    "message": ""
   }
 }

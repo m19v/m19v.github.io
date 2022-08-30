@@ -6,6 +6,8 @@ import AvatarImageUrl from "@site/static/img/m19v-avatar-placeholder.png";
 
 import styles from "./styles.module.css";
 
+import Translate, { translate } from "@docusaurus/Translate";
+
 function About() {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
@@ -13,7 +15,12 @@ function About() {
   return (
     <Layout title="About" description={siteConfig.tagline}>
       <header className={styles.aboutHeader}>
-        <h2 className="underlineColorSuccess">About me</h2>
+        <h2 className="underlineColorSuccess">
+          <Translate
+            id="about.aboutMeTittle"
+            description="About me message"
+          ></Translate>
+        </h2>
       </header>
       <main id="main">
         <div className={styles.about}>
@@ -21,7 +28,9 @@ function About() {
             <img className={styles.aboutProfilePic} src={AvatarImageUrl} />
           </div>
           <div className={styles.aboutText}>
-            <h2>Hello,</h2>
+            <h2>
+              <Translate id="about.aboutMeHello"></Translate>
+            </h2>
             <p>
               I am <a>m19v</a>, a DevSecOps Engineer and Backend Software
               Developer.

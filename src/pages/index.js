@@ -1,6 +1,4 @@
 import React from "react";
-import clsx from "clsx";
-import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
@@ -14,19 +12,10 @@ function HomePageHeader() {
   return (
     <header className={styles.heroBanner}>
       <div className="container">
-        <p className={styles.customPTag}>
-          <Translate
-            id="homepage.welcome.to"
-            description="Welcome to message"
-          >
-            Welcome to in Translate Tag
-          </Translate>
-        </p>
+        <p className={styles.heroSubSubtitle}><Translate id="homepage.welcome.to"/></p>
         <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <p className={styles.customPTag}>
-          Here I aim to accumulate manuals, guides, references and articles on Linux, DevSecOps
-          and Software Development for my daily use and for anyone who wants to become a software developer.
+        <p className="hero__subtitle"><Translate id="homepage.hero.subtitle"/></p>
+        <p className={styles.heroSubSubtitle}><Translate id="homepage.hero.subsubtitle"/>
         </p>
       </div>
     </header>

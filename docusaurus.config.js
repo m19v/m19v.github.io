@@ -10,7 +10,6 @@ const katex = require('rehype-katex');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: '{ m19v }',
-  tagline: 'A space of a Linux enthusiast, DevSecOps Engineer and Backend Software Developer',
   url: 'https://m19v.github.io',
   baseUrl: '/',
   onBrokenLinks: 'warn',

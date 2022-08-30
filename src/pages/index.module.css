@@ -10,7 +10,7 @@
   overflow: hidden;
 }
 
-.customPTag {
+.heroSubSubtitle {
   margin: 0;
   padding: 0 10rem;
 }
@@ -19,7 +19,7 @@
   .heroBanner {
     padding: 2rem;
   }
-  .customPTag {
+  .heroSubSubtitle {
     margin: 0;
     padding: 0 2rem;
   }

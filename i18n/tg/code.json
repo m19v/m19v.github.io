@@ -5,5 +5,21 @@
   "homepage.welcome.to": {
     "message": "Хуш омадед ба",
     "description": "Welcome to message"
+  },
+  "homepage.hero.subtitle":{
+    "message":"фазои як мухлиси Linux, DevSecOps Engineer ва Backend Software Developer"
+  },
+  "homepage.hero.subsubtitle":{
+    "message":"Дар ин ҷо ман мақсад дорам, ки дастурҳо, роҳнамоҳо, истинодҳо ва мақолаҳоро дар бораи Linux, DevSecOps ва Software Development барои истифодаи ҳаррӯзаи худ ва барои ҳар касе, ки мехоҳад Software Developer шавад, ҷамъ кунам."
+  },
+  "about.aboutMeTittle": {
+    "message": "Дар бораи муаллиф",
+    "description": "About me message"
+  },
+  "about.aboutMeHello": {
+    "message": "Салом,"
+  },
+  "about.aboutMeFirstP": {
+    "message": ""
   }
 }
