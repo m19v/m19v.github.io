@@ -12,7 +12,7 @@ const FeatureList = [
     image: GuidesAndManualsImageUrl,
     description: (
       <>
-        Browse through the guides and manuals of programming languages and use DevSecOps tools.
+        Browse through the guides and manuals of programming languages and DevSecOps tools.
       </>
     ),
   },
