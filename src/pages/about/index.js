@@ -16,10 +16,7 @@ function About() {
     <Layout title="About" description={siteConfig.tagline}>
       <header className={styles.aboutHeader}>
         <h2 className="underlineColorSuccess">
-          <Translate
-            id="about.aboutMeTittle"
-            description="About me message"
-          ></Translate>
+          <Translate id="about.aboutMeTittle"/>
         </h2>
       </header>
       <main id="main">
@@ -29,7 +26,7 @@ function About() {
           </div>
           <div className={styles.aboutText}>
             <h2>
-              <Translate id="about.aboutMeHello"></Translate>
+              <Translate id="about.aboutMeHello"/>
             </h2>
             <p>
               I am <a>m19v</a>, a DevSecOps Engineer and Backend Software

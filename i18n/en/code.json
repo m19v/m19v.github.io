@@ -12,6 +12,24 @@
   "homepage.hero.subsubtitle":{
     "message":"Here I aim to accumulate manuals, guides, references and articles on Linux, DevSecOps and Software Development for my daily use and for anyone who wants to become a software developer."
   },
+  "home.feature.card.tutorials.title": {
+    "message": "Tutorials"
+  },
+  "home.feature.card.tutorials.description": {
+    "message": "Browse through the tutorials on programming languages and DevSecOps tools."
+  },
+  "home.feature.card.references.title": {
+    "message": "References"
+  },
+  "home.feature.card.references.description": {
+    "message": "Check out the CLI and API reference documentation of programming languages and DevSecOps tools."
+  },
+  "home.feature.card.blog.title": {
+    "message": "Articles"
+  },
+  "home.feature.card.blog.description": {
+    "message": "Read and Follow recent blog posts and articles on Software Development and DevSecOps topics."
+  },
   "about.aboutMeTittle": {
     "message": "About",
     "description": "About me message"

@@ -12,6 +12,24 @@
   "homepage.hero.subsubtitle":{
     "message":"Дар ин ҷо ман мақсад дорам дастурҳо, роҳнамоҳо, истинодҳо ва мақолаҳоро дар бораи Linux, DevSecOps ва Software Development барои истифодаи ҳаррӯзаи худ ва барои ҳар касе, ки мехоҳад Software Developer шавад, ҷамъ кунам."
   },
+  "home.feature.card.tutorials.title": {
+    "message": "Дастурҳо"
+  },
+  "home.feature.card.tutorials.description": {
+    "message": "Дастурҳоро оид ба забонҳои барномасозӣ ва абзорҳои DevSecOps паймоиш кунед."
+  },
+  "home.feature.card.references.title": {
+    "message": "Истинодҳо"
+  },
+  "home.feature.card.references.description": {
+    "message": "Истинодҳои CLI ва API-и забонҳои барномасозӣ ва абзорҳои DevSecOps-ро истифода баред."
+  },
+  "home.feature.card.blog.title": {
+    "message": "Мақолаҳо"
+  },
+  "home.feature.card.blog.description": {
+    "message": "Мақолаҳои охиринро дар мавзӯъҳои Software Development ва DevSecOps пайгирӣ кунед."
+  },
   "about.aboutMeTittle": {
     "message": "Дар бораи муаллиф",
     "description": "About me message"

@@ -5,36 +5,26 @@ import TutorialsImageUrl from "@site/static/img/tutorials.png";
 import ReferencesImageUrl from "@site/static/img/references.png";
 import ArticlesImageUrl from "@site/static/img/articles.png";
 
+import Translate, { translate } from "@docusaurus/Translate";
+
 const FeatureList = [
   {
-    title: "Tutorials",
+    title: "home.feature.card.tutorials.title",
     link: "/docs/category/tutorials",
     image: TutorialsImageUrl,
-    description: (
-      <>
-        Browse through the tutorials on programming languages and DevSecOps tools.
-      </>
-    ),
+    description: "home.feature.card.tutorials.description",
   },
   {
-    title: "References",
+    title: "home.feature.card.references.title",
     link: "/docs/category/references",
     image: ReferencesImageUrl,
-    description: (
-      <>
-      Check out the CLI and API reference documentation of programming languages and DevSecOps tools.
-      </>
-    ),
+    description: "home.feature.card.references.description",
   },
   {
-    title: "Articles",
+    title: "home.feature.card.blog.title",
     link: "/blog",
     image: ArticlesImageUrl,
-    description: (
-      <>
-        Read and Follow recent blog posts and articles on Software Development and DevSecOps topics.
-      </>
-    ),
+    description: "home.feature.card.blog.description",
   },
 ];
 
@@ -53,8 +43,8 @@ function Feature({ title, link, image, description }) {
     <div className="col col--4">
       <div className={styles.cardContainer}>
         <a
-          // class={isHovering ? "card shadow--md" : "card shadow--lt"}
-          class={isHovering ? "card shadow--tl" : "card shadow--md"}
+          // className={isHovering ? "card shadow--md" : "card shadow--lt"}
+          className={isHovering ? "card shadow--tl" : "card shadow--md"}
           onMouseOver={handleMouseOver}
           onMouseOut={handleMouseOut}
           href={link}
@@ -63,15 +53,15 @@ function Feature({ title, link, image, description }) {
             textDecoration: "none",
           }}
         >
-          <div class="card__image" href={link}>
+          <div className="card__image" href={link}>
             <img src={image} alt="Image alt text" />
           </div>
-          <div class="card__body">
-            <h3>{title}</h3>
-            <p>{description}</p>
+          <div className="card__body">
+            <h3><Translate id={title}/></h3>
+            <p><Translate id={description}/></p>
           </div>
-          {/* <div class="card__footer">
-            <a class="button button--secondary button--block" href={link}>
+          {/* <div className="card__footer">
+            <a className="button button--secondary button--block" href={link}>
               Visit
             </a>
           </div> */}
