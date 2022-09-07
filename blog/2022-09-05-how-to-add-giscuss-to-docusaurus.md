@@ -1,6 +1,6 @@
 ---
 slug: how-to-add-giscus-to-docusaurus
-title: How to add Giscus commenting system to Docusaurus
+title: How to add giscus comments to docusaurus
 authors: m19v
 tags: [docusaurus, giscus, commenting-system]
 enableComments: true # for Gisqus
