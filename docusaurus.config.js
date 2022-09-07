@@ -220,6 +220,7 @@ const config = {
         textColor: '#091E42',
         isCloseable: true,
       },
+      metadata: [{name: 'google-site-verification', content: '-5zh_8T7Z6ZPupTzJH9LcYznhfRid8I7y2TRsaHcrsE'}],
     }),
 };
 
