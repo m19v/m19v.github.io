@@ -5,7 +5,7 @@ sidebar_position: 1
 ---
 
 Published on January 05, 2022  
-Updated on August 28, 2022
+Updated on September 07, 2022
 
 <!---
 <div class="contentTableContainer">
@@ -25,17 +25,7 @@ Updated on August 28, 2022
 - [Book Summaries](docs/category/book-summaries)
     - [Atomic Habits](docs/book-summaries/atomic-habits)
     - [Clean Code](docs/book-summaries/clean-code)
-    - ['Ikigai: The Japanese Secret to a Long and Happy Life'](docs/book-summaries/ikigai)
-- [Tutorials](docs/category/tutorials)
-    - [Engineering Mathematics](docs/category/engineering-mathematics)
-        - [Numerical analysis](docs/tutorials/engineering-mathematics/numerical-analysis)
-    - [Internet of Things](docs/category/iot)
-        - [Home Automation](docs/tutorials/iot/home-automation)
-        - [Raspberry Pi](docs/tutorials/iot/raspberry-pi)
-    - [Programming Languages](docs/category/programming-languages)
-        - [Bash](docs/tutorials/programming-languages/bash)
-        - [Java](docs/tutorials/programming-languages/java)
-        - [Python](docs/tutorials/programming-languages/python)
+    - [Effective Java](docs/book-summaries/effective-java)
 - [References](docs/category/references)
     - [Cheat-Sheet](docs/category/cheat-sheet)
         - [Automation](docs/category/automation)
@@ -71,7 +61,16 @@ Updated on August 28, 2022
             - [Wmic](docs/references/cheat-sheet/windows/wmic)
             - [WSL](docs/references/cheat-sheet/windows/wsl)
     - [Computer Science Glossary](docs/category/computer-science-glossary)
-        - [Glossary of computer science](docs/references/computer-science-glossary/computer-science-glossary-en)
         - [Истилоҳоти улуми роёна](docs/references/computer-science-glossary/computer-science-glossary-tj)
     - [Design Patterns](docs/category/design-patterns)
         - [Design Patterns](docs/references/design-patterns/design-patterns)
+- [Tutorials](docs/category/tutorials)
+    - [Engineering Mathematics](docs/category/engineering-mathematics)
+        - [Numerical analysis](docs/tutorials/engineering-mathematics/numerical-analysis)
+    - [Internet of Things](docs/category/iot)
+        - [Home Automation](docs/tutorials/iot/home-automation)
+        - [Raspberry Pi](docs/tutorials/iot/raspberry-pi)
+    - [Programming Languages](docs/category/programming-languages)
+        - [Bash](docs/tutorials/programming-languages/bash)
+        - [Java](docs/tutorials/programming-languages/java)
+        - [Python](docs/tutorials/programming-languages/python)

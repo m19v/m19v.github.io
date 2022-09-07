@@ -130,7 +130,7 @@ const config = {
             "aria-label": "GitHub repository",
           },
           {
-            href: 'https://youtube.com',
+            href: 'https://www.youtube.com/channel/UCQNWMiFiK4I0ZK9K_s3mRvw',
             position: 'right',
             className: "header-youtube-link",
             "aria-label": "GitHub repository",

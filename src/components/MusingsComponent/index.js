@@ -7,7 +7,7 @@ import TabItem from "@theme/TabItem";
 const MusingListEnglish = [
   {
     text: "The best people are those most beneficial to [other] people.",
-    author: "Prophet Muhammad (saw)",
+    author: "Prophet Muhammad (s.a.w)",
   },
   {
     text: "Half knowledge is worse than ignorance.",
@@ -37,7 +37,7 @@ const MusingListTajik = [
     author: "Луқмони Ҳаким",
   },
   {
-    text: "То реша дар об аст, умеди` самаре ҳаст!",
+    text: "То реша дар об аст, умеди самаре ҳаст!",
     author: "Гуфтори ҳалқ",
   },
   {

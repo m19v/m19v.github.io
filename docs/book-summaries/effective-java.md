@@ -1,5 +1,5 @@
 ---
-title: Clean Code
+title: Effective Java
 ---
 
 Published on Month Day, Year  
