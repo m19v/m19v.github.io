@@ -5,8 +5,7 @@ import { useColorMode } from '@docusaurus/theme-common';
 import styles from './styles.module.css';
 
 export default function GiscusComponent() {
-  const isDarkColorMode = useColorMode().colorMode === "dark";
-  const currentColorMode = isDarkColorMode ? "dark" : "light";
+  const { colorMode } = useColorMode();
 
   return (
     <Giscus    
@@ -20,7 +19,7 @@ export default function GiscusComponent() {
       reactionsEnabled="1"
       emitMetadata="1"
       inputPosition="top"
-      theme={currentColorMode}
+      theme={colorMode}
       lang="en"
       loading="lazy"
       crossorigin="anonymous"

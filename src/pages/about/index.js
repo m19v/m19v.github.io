@@ -45,7 +45,7 @@ function About() {
               well.
             </p>
             <p>
-              Feel free to contact me via email: <a>mnineteenv@gmail.com</a>
+              Feel free to contact me via email: <a href="mailto:mnineteenv@gmail.com">mnineteenv@gmail.com</a>
             </p>
             <p>Thanks for stopping by.</p>
           </div>
