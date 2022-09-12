@@ -18,6 +18,8 @@ This is a collection of articles, books and conferences related to DevSecOps, So
 ### Articles 2021
 - [10 best practices to build a Java container with Docker.](https://snyk.io/blog/best-practices-to-build-java-containers-with-docker/)
 - [Java Blogs and Podcasts Developers Should Bookmark.](https://dzone.com/articles/java-blogs-and-podcasts-developers-should-bookmark)
+### Conferences 2021
+- [Git for Professionals.](https://youtu.be/Uszj_k0DGsg)
 ### Books 2021
 - [Clean Code: A Handbook of Agile Software Craftsmanship by Robert Cecil Martin.](https://g.co/kgs/AZV43i) This book is a must read for any developer, software engineer, project manager, team lead, or systems analyst with an interest in producing better code. It describes the principles, patterns, and practices of writing clean code with several case studies and exercises in cleaning up code, i.e. transforming a code base that has some problems into one that is sound and efficient.
 
@@ -30,6 +32,8 @@ This is a collection of articles, books and conferences related to DevSecOps, So
 - [Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones.](https://jamesclear.com/atomic-habits) Atomic Habits is the most comprehensive and practical guide on how to create good habits, break bad ones, and get 1 percent better every day. 
 
 ## 2019
+### Articles 2019
+- [DevOps Tutorial — Why & What is DevOps?](https://medium.com/edureka/devops-tutorial-89363dac9d3f)
 ### Conferences 2019
 - [SSL/TLS for Mortals by Maarten Mulders.](https://www.youtube.com/watch?v=yJrJEvvW_HA)
 ### Books 2019
