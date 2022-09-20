@@ -48,6 +48,15 @@ function About() {
               Feel free to contact me via email: <a href="mailto:mnineteenv@gmail.com">mnineteenv@gmail.com</a>
             </p>
             <p>Thanks for stopping by.</p>
+            {/* <a href="https://stackoverflow.com/users/12501050/m19v">
+              <img
+                src="https://stackexchange.com/users/flair/17263784.png"
+                width="208"
+                height="58"
+                alt="profile for m19v on Stack Exchange, a network of free, community-driven Q&amp;A sites"
+                title="profile for m19v on Stack Exchange, a network of free, community-driven Q&amp;A sites"
+              />
+            </a> */}
           </div>
         </div>
       </main>
