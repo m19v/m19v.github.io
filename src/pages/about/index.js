@@ -35,7 +35,7 @@ function About() {
             <p>
               I am organized and analytical person, a problem solver with high
               attention to details. A fan of Football, Mysteries TV Series and
-              Persian Literature. I am a family person and father of two lovely
+              Tajik/Persian Literature. I am a family person and father of two lovely
               girls.
             </p>
             <p>
