@@ -9,6 +9,8 @@ Updated on September 10, 2022
 This is a collection of articles, books and conferences related to DevSecOps, Software Engineering and Electrical Engineering which I have read or watched so far and recommend to others.
 
 ## 2022
+### Articles 2022
+-[38 Actions and Insights to Become a Better Software Architect.](https://medium.com/hackernoon/38-actions-and-insights-to-become-a-better-software-architect-f135e2de9a1b)
 ### Conferences 2022
 - [The Future of Java by Mark Little.](https://www.youtube.com/watch?v=5n9PqIUObLA)
 ### Books 2022
