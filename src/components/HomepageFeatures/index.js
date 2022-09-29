@@ -10,7 +10,7 @@ import Translate, { translate } from "@docusaurus/Translate";
 const FeatureList = [
   {
     title: "home.feature.card.tutorials.title",
-    link: "/docs/category/tutorials",
+    link: "/tutorials",
     image: TutorialsImageUrl,
     description: "home.feature.card.tutorials.description",
   },

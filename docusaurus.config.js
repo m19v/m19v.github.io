@@ -60,6 +60,24 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      "@docusaurus/plugin-content-docs",
+      /** @type {import('@docusaurus/plugin-content-docs').Options} */
+      {
+        id: "tutorials",
+        path: "tutorials",
+        routeBasePath: "tutorials",
+        editUrl: "https://github.com/m19v/m19v.github.io/blob/main/",
+        sidebarPath: require.resolve("./sidebarsTutorials.js"),
+        remarkPlugins: [math],
+        rehypePlugins: [katex],
+        // showLastUpdateAuthor: true,
+        // showLastUpdateTime: true,
+      },
+    ],
+  ],
+
   presets: [
     [
       'classic',
@@ -107,7 +125,6 @@ const config = {
       crossorigin: 'anonymous',
     },
   ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -127,6 +144,7 @@ const config = {
             position: 'left',
             label: 'Docs',
           },
+          { to: '/tutorials', label: 'Tutorials', position: 'left' },
           { to: '/blog', label: 'Blog', position: 'left' },
           { to: "/about", label: "About", position: "left" },
           {
@@ -161,6 +179,10 @@ const config = {
                 label: 'Twitter',
                 href: 'https://twitter.com/m19v',
               },
+              {
+                label: 'YouTube',
+                href: 'https://www.youtube.com/channel/UCQNWMiFiK4I0ZK9K_s3mRvw',
+              },
             ],
           },
           {
@@ -173,6 +195,10 @@ const config = {
               {
                 label: 'Documentation',
                 to: '/docs',
+              },
+              {
+                label: 'Tutorials',
+                to: '/tutorials',
               },
               {
                 label: 'About',
