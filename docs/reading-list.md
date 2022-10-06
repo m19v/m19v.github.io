@@ -6,7 +6,7 @@ sidebar_position: 3
 Published on April 19, 2020  
 Updated on October 06, 2022
 
-This is a collection of articles, books and conferences related to DevSecOps, Software Engineering and Electrical Engineering which I have read or watched so far and recommend to others.
+This is a collection of articles, books, conferences and podcasts related to DevSecOps, Software Engineering and Electrical Engineering which I have read, listened or watched so far and recommend to others.
 
 ## 2022
 ### Articles 2022
