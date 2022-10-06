@@ -13,6 +13,8 @@ This is a collection of articles, books and conferences related to DevSecOps, So
 - [38 Actions and Insights to Become a Better Software Architect.](https://medium.com/hackernoon/38-actions-and-insights-to-become-a-better-software-architect-f135e2de9a1b)
 ### Conferences 2022
 - [The Future of Java by Mark Little.](https://www.youtube.com/watch?v=5n9PqIUObLA)
+### Poncasts 2022
+- [Java 19 is Here!](https://inside.java/2022/09/20/podcast-026/)
 ### Books 2022
 - [Basiswissen für Softwarearchitekten/Basics of software architecture.](https://www.thalia.de/shop/home/artikeldetails/A1058079863) "Basiswissen für Softwarearchitekten" vermittelt das notwendige Wissen und Fähigkeiten, um eine dem Problem angemessene Softwarearchitektur für Systeme zu entwerfen. Es behandelt die wichtigen Begriffe und Konzepte der Softwarearchitektur sowie deren Bezug zu anderen Disziplinen. Darauf aufbauend werden die grundlegenden Techniken und Methoden für den Entwurf, die Dokumentation und die Qualitätssicherung von Softwarearchitekturen beschrieben.
 
