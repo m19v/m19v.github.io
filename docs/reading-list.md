@@ -16,6 +16,7 @@ This is a collection of articles, books, conferences and podcasts related to Dev
 - [Basiswissen für Softwarearchitekten/Basic knowledge for software architects.](https://www.thalia.de/shop/home/artikeldetails/A1058079863) "Basiswissen für Softwarearchitekten" vermittelt das notwendige Wissen und Fähigkeiten, um eine dem Problem angemessene Softwarearchitektur für Systeme zu entwerfen. Es behandelt die wichtigen Begriffe und Konzepte der Softwarearchitektur sowie deren Bezug zu anderen Disziplinen. Darauf aufbauend werden die grundlegenden Techniken und Methoden für den Entwurf, die Dokumentation und die Qualitätssicherung von Softwarearchitekturen beschrieben.
 ### Conferences 2022
 - [The Future of Java by Mark Little.](https://www.youtube.com/watch?v=5n9PqIUObLA)
+- [Devoxx Belgium 2022.](https://youtube.com/playlist?list=PLRsbF2sD7JVolUH45EkGXsT-3spU7cqnS)
 ### Podcasts 2022
 - [Java 19 is Here!](https://inside.java/2022/09/20/podcast-026/)
 
