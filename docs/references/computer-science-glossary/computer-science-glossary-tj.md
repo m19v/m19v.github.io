@@ -1,4 +1,3 @@
-
 ---
 title: Истилоҳоти улуми роёна  
 keywords: [Истилоҳот, улуми роёна, glossary, computer science]  
