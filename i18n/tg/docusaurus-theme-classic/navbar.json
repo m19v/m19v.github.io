@@ -7,6 +7,10 @@
       "message": "Ҳуҷҷатҳо",
       "description": "Navbar item with label Docs"
     },
+    "item.label.Tutorials": {
+      "message": "Дастурҳо",
+      "description": "Navbar item with label Tutorials"
+    },
     "item.label.Blog": {
       "message": "Блог",
       "description": "Navbar item with label Blog"
