@@ -3,7 +3,7 @@ title: Истилоҳоти улуми роёна
 keywords: [Истилоҳот, улуми роёна, glossary, computer science]  
 ---
 Санаи нашр: 09.09.2021  
-Санаи таҳрир: 16.10.2022
+Санаи таҳрир: 19.10.2022
 
 ## Introduction  
 
@@ -83,6 +83,31 @@ Cаҳифаи ҷорӣ пайваста таҳрир, танзим ва нав �
 - **Command Live Interface (CLI)**: Интерфейси сатри фармон фармонҳоро ба барномаи компютерӣ дар шакли матн коркард мекунад. Барномае, ки интерфейсро идора мекунад, тарҷумони сатри фармон ё протсессори сатри фармон номида мешавад.
 - **Central Processing Unit (CPU)**: Воҳиди марказии коркард
 - **Character**: Аломатҳо
+---
+- **cache**: The storage of certain elements to help with faster load times from repeat website visitors. Stores data that needs to be readily accessed by programs and applications.
+- **callback**: a function that is passed as an argument to another and is expected to execute at a given time.
+- **CDN (Content Delivery Network)**: A content delivery network (CDN) is a geographically distributed network of servers whose goal is to provide high availability and performance of the service served, to users.
+- **class**: a defined structure to create an object in an object-oriented programming language.
+- **CLI (Command Line Interface)**: the terminal version of an application.
+- **client**: a piece of computer hardware or software that accesses a service made available by a server.
+- **closure**: a persistent scope which holds on to local variables even after the code execution has moved out of that block.
+- **Cloud computing**: Cloud computing is the on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user. The term is generally used to describe data centers available to many users over the Internet.
+- **CMS (Content Management System)**: The program that you use to create and maintain your website’s content.
+- **cohesion**: a measure of how well the lines of source code within a module work together.
+- **comments**: In computer programming, a comment is a programmer-readable explanation or annotation in the source code of a computer program. They are added with the purpose of making the source code easier for humans to understand, and are generally ignored by compilers and interpreters.
+- **commit (VCS)**: an operation which groups a set of changes behind a name and a number, making these changes part of the head revision of the repository. _See [VCS](#V)_
+- **compiler**: a program that translates computer code written in one programming language into another language.
+- **components**: independent and reusable bits of code that work in isolation and return HTML via a render function. _see [web components](#W)_
+- **constant**: A constant is a value that will never change during the running time of the program.
+- **container**: a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another.
+- **control flow**: the order in which individual statements, instructions, or function calls of an imperative program are executed.
+- **cookies**: This is the data sent by an Internet server to a browser. Each time the browser accesses the same server, it sends the data back as a means of tracking how (and how often) it accesses the server.
+- **coupling**: the degree of interdependence between software modules.
+- **CRM (Customer Relationship Management)**: In website development, this refers to the software and applications used to gather, analyze, and maintain information on customers, donors, and prospects.
+- **CSS (Cascading Style Sheets)**: CSS is the code that tells the browser how to display the content of a web page for the end user by formatting fonts, colors, backgrounds, and other visual elements.
+- **CSV**: plain-text files used to better organize large amounts of data via comma-separated values.
+- **cyber security**: Cyber security is the practice of defending computers, servers, mobile devices, electronic systems, networks, and data from malicious attacks. It's also known as information technology security or electronic information security.
+- **CI/CD**: CI and CD stand for continuous integration and continuous delivery/continuous deployment. CI/CD bridges the gaps between development and operation activities and teams by enforcing automation in building, testing and deployment of applications.
 ## D
 - **Debugging**: Раванди муайян ва бартараф кардани хатогиҳо аз сахтафзор ё нармафзори компютер.
 ## E
