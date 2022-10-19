@@ -84,7 +84,7 @@ Cаҳифаи ҷорӣ пайваста таҳрир, танзим ва нав �
 - **Central Processing Unit (CPU)**: Воҳиди марказии коркард
 - **Character**: Аломатҳо
 ---
-- **cache**: The storage of certain elements to help with faster load times from repeat website visitors. Stores data that needs to be readily accessed by programs and applications.
+- **cache**: Нигоҳдории унсурҳои муайян барои кӯмак бо вақти тезтари боркунӣ аз боздидкунандагони такрории вебсайт. Захира кардани маълумотҳо барои дастрасии он тавассути барномаҳо ва замимаҳо, ки такроран дархост мешаванд.
 - **callback**: a function that is passed as an argument to another and is expected to execute at a given time.
 - **CDN (Content Delivery Network)**: A content delivery network (CDN) is a geographically distributed network of servers whose goal is to provide high availability and performance of the service served, to users.
 - **class**: a defined structure to create an object in an object-oriented programming language.
