@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 
-import TutorialsImageUrl from "@site/static/img/tutorials.png";
-import ReferencesImageUrl from "@site/static/img/references.png";
-import ArticlesImageUrl from "@site/static/img/articles.png";
+import TutorialsImageUrl from "@site/static/icons/tutorials.png";
+import ReferencesImageUrl from "@site/static/icons/references.png";
+import ArticlesImageUrl from "@site/static/icons/articles.png";
 
 import Translate, { translate } from "@docusaurus/Translate";
 
@@ -53,11 +53,12 @@ function Feature({ title, link, image, description }) {
             textDecoration: "none",
           }}
         >
-          <div className="card__image" href={link}>
+          {/* <div className="card__image" href={link}>
             <img src={image} alt="Image alt text" />
-          </div>
+          </div> */}
           <div className="card__body">
-            <h3><Translate id={title}/></h3>
+            <img className={styles.cardIcon} src={image} alt="Image alt text" />
+            <h2><Translate id={title}/></h2>
             <p><Translate id={description}/></p>
           </div>
           {/* <div className="card__footer">
