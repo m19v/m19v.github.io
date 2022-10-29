@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 import Translate, { translate } from "@docusaurus/Translate";
 
@@ -29,7 +29,7 @@ const FeatureList = [
 function Feature({ title, link, image, description }) {
   const [isHovering, setIsHovering] = useState(false);
   const { colorMode } = useColorMode();
-  const {siteConfig, siteMetadata} = useDocusaurusContext();
+  const i18nLink = useBaseUrl(link)
 
   const handleMouseOver = () => {
     setIsHovering(true);
@@ -47,7 +47,7 @@ function Feature({ title, link, image, description }) {
           className={isHovering ? "card shadow--tl" : "card shadow--md"}
           onMouseOver={handleMouseOver}
           onMouseOut={handleMouseOut}
-          href={siteConfig.baseUrl+link}
+          href={i18nLink}
           style={{
             color: "var(--ifm-heading-color)",
             textDecoration: "none",
