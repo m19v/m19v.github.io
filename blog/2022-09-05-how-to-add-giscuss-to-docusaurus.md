@@ -1,6 +1,6 @@
 ---
 slug: how-to-add-giscus-to-docusaurus
-title: How to add Giscus comments to docusaurus
+title: How to add Giscus comments to Docusaurus
 authors: m19v
 tags: [docusaurus, giscus, commenting-system, how-to]
 enableComments: true # for Gisqus
@@ -157,7 +157,7 @@ export default function BlogPostItemWrapper(props) {
   const { frontMatter, slug, title } = metadata
   const { enableComments } = frontMatter
 
-  // Workaround from https://docusaurus.io/docs/advanced/ssg for the Error 'ReferenceError: window is not defined' during the build
+  // Prevent error during build (see https://docusaurus.io/docs/advanced/ssg for the Error 'ReferenceError: window is not defined')
   var isCurrentUrlBlog = false
   if (isBrowser) {
     isCurrentUrlBlog = window.location.pathname === "/blog"
