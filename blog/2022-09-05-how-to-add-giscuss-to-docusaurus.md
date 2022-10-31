@@ -185,6 +185,8 @@ enableComments: true # for Gisqus
 ---
 ```
 
+I have enabled the comment function in the current post, which can be used as a demo. Feel free to hit the "Like" button if you found this post helpful, or post your question in the comment if you have one. 
+
 ## References
 
 [giscus.app](https://giscus.app/)  
