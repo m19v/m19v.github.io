@@ -25,6 +25,10 @@ const MusingListEnglish = [
     text: "Yesterday is history, tomorrow is a mystery, and today is a gift… that's why they call it the present.",
     author: "Eleanor Roosevelt",
   },
+  {
+    text: "The most important decision we make is whether we believe we line in a friendly or hostile universe.",
+    author: "Albert Einstein",
+  },
   // {
   //   text: "",
   //   author: "",
