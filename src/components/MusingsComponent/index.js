@@ -26,7 +26,7 @@ const MusingListEnglish = [
     author: "Eleanor Roosevelt",
   },
   {
-    text: "The most important decision we make is whether we believe we line in a friendly or hostile universe.",
+    text: "The most important decision we make is whether we believe we live in a friendly or hostile universe.",
     author: "Albert Einstein",
   },
   // {
