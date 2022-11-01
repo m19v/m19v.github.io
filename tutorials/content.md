@@ -18,7 +18,7 @@ Updated on November 01, 2022
 </div>
 -->
 
-- [Content](tutorials/comtent)
+- [Content](tutorials/content)
 - [Engineering Mathematics](tutorials/category/engineering-mathematics)
     - [Numerical analysis](tutorials/engineering-mathematics/numerical-analysis)
 - [Internet of Things](tutorials/category/iot)
