@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import CodeBlock from "@theme/CodeBlock";
 
-export default function FetchDataComponent() {
+export default function FetchDataComponent({ url, language, title }) {
   const [data, setData] = useState("");
 
   useEffect(() => {
-    const url =
-      "https://raw.githubusercontent.com/m19v/awesome-cheatsheets/master/languages/bash.sh";
-
     const fetchData = async () => {
       try {
         const response = await fetch(url);
@@ -22,11 +19,7 @@ export default function FetchDataComponent() {
 
   return (
     <div>
-      <CodeBlock
-        language="bash"
-        title="Source: LeCoupa/awesome-cheatsheets"
-        showLineNumbers
-      >
+      <CodeBlock language={language} title={title} showLineNumbers>
         {data}
       </CodeBlock>
     </div>
