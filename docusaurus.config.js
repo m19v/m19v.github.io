@@ -154,7 +154,8 @@ const config = {
             "aria-label": "GitHub repository",
           },
           {
-            href: 'https://www.youtube.com/channel/UCQNWMiFiK4I0ZK9K_s3mRvw',
+//             href: 'https://www.youtube.com/channel/UCQNWMiFiK4I0ZK9K_s3mRvw',
+            href: 'https://youtube.com/@m19v',
             position: 'right',
             className: "header-youtube-link",
             "aria-label": "GitHub repository",
@@ -181,7 +182,8 @@ const config = {
               },
               {
                 label: 'YouTube',
-                href: 'https://www.youtube.com/channel/UCQNWMiFiK4I0ZK9K_s3mRvw',
+//                 href: 'https://www.youtube.com/channel/UCQNWMiFiK4I0ZK9K_s3mRvw',
+                href: 'https://youtube.com/@m19v',
               },
             ],
           },
