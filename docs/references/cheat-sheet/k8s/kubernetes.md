@@ -1,5 +1,5 @@
 ---
-title: Kubernetes
+title: kubectl
 ---
 
 ## Kubernetes
