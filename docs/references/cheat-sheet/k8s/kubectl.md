@@ -2,6 +2,6 @@
 title: kubectl
 ---
 
-## Kubernetes
+## Kubectl
 
 
