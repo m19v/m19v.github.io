@@ -1,5 +1,5 @@
 ---
-title: kubectl
+title: Kubectl
 ---
 
 ## Kubectl
