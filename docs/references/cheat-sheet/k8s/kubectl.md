@@ -2,7 +2,7 @@
 title: Kubectl
 ---
 
-## Kubectl context and configuration
+## Kubectl configuration
 
 ```shell
 # CONFIG VIEW
@@ -33,6 +33,20 @@ kubectl config unset users.foo                                      # delete use
 
 ### Creating resources
 
+```shell
+kubectl apply -f ./my-manifest.yaml                                 # create resource(s)
+kubectl apply -f ./my1.yaml -f ./my2.yaml                           # create from multiple files
+kubectl apply -f ./dir                                              # create resource(s) in all manifest files in dir
+kubectl apply -f https://git.io/vPieo                               # create resource(s) from url
+
+kubectl create deployment nginx --image=nginx                       # start a single instance of nginx
+
+kubectl create job hello --image=busybox:1.28 -- echo "Hello World" # create a Job which prints "Hello World"
+
+kubectl create cronjob hello --image=busybox:1.28 \
+--schedule="*/1 * * * *" -- echo "Hello World"                      # create a CronJob that prints "Hello World" every minute
+```
+
 ### Viewing and finding resources
 
 ### Updating resources 
@@ -60,3 +74,8 @@ kubectl config unset users.foo                                      # delete use
 #### Formatting output
 
 #### Kubectl output verbosity and debugging
+
+## Etc.
+```shell
+kubectl explain pods                                                # get the documentation for pod manifests
+```
