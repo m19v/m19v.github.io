@@ -308,11 +308,11 @@ kubectl api-resources --api-group=extensions # All resources in the "extensions"
 
 # Output format	                                  Description
 
--o=custom-columns=<spec>	                        Print a table using a comma separated list of custom columns
--o=custom-columns-file=<filename>               	Print a table using the custom columns template in the <filename> file
+-o=custom-columns=<spec>                          Print a table using a comma separated list of custom columns
+-o=custom-columns-file=<filename>                 Print a table using the custom columns template in the <filename> file
 -o=json	                                          Output a JSON formatted API object
 -o=jsonpath=<template>	                          Print the fields defined in a jsonpath expression
--o=jsonpath-file=<filename>                     	Print the fields defined by the jsonpath expression in the <filename> file
+-o=jsonpath-file=<filename>                       Print the fields defined by the jsonpath expression in the <filename> file
 -o=name	                                          Print only the resource name and nothing else
 -o=wide	                                          Output in the plain-text format with any additional information, and for pods, the node name is included
 -o=yaml	                                          Output a YAML formatted API object
@@ -337,17 +337,17 @@ kubectl get pods -A -o=custom-columns='DATA:metadata.*'
 ```shell
 # Kubectl verbosity is controlled with the -v or --v flags followed by an integer representing the log level. General Kubernetes logging conventions and the associated log levels are described here.
 
-# Verbosity	            Description
---v=0	                  Generally useful for this to always be visible to a cluster operator.
---v=1	                  A reasonable default log level if you don't want verbosity.
---v=2	                  Useful steady state information about the service and important log messages that may correlate to significant changes in the system. This is the recommended default log level for most systems.
---v=3	                  Extended information about changes.
---v=4	                  Debug level verbosity.
---v=5	                  Trace level verbosity.
---v=6	                  Display requested resources.
---v=7	                  Display HTTP request headers.
---v=8	                  Display HTTP request contents.
---v=9	                  Display HTTP request contents without truncation of contents.
+# Verbosity	              Description
+--v=0                     Generally useful for this to always be visible to a cluster operator.
+--v=1                     A reasonable default log level if you don't want verbosity.
+--v=2                     Useful steady state information about the service and important log messages that may correlate to significant changes in the system. This is the recommended default log level for most systems.
+--v=3                     Extended information about changes.
+--v=4                     Debug level verbosity.
+--v=5                     Trace level verbosity.
+--v=6                     Display requested resources.
+--v=7                     Display HTTP request headers.
+--v=8                     Display HTTP request contents.
+--v=9                     Display HTTP request contents without truncation of contents.
 ```
 
 ## Etc.
@@ -357,4 +357,4 @@ kubectl explain pods                                        # get the documentat
 
 ## Resources
 
-1. [Kubectl Cheat Sheet.](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+[1. Kubectl Cheat Sheet.](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
