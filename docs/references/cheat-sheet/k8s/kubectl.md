@@ -58,10 +58,10 @@ kubectl get services --sort-by=.metadata.name                       # List Servi
 
 
 # GET POD/S
+kubectl get pod my-pod -o yaml                                      # Get a pod's YAML
 kubectl get pods                                                    # List all pods in the namespace
 kubectl get pods --all-namespaces                                   # List all pods in all namespaces
 kubectl get pods -o wide                                            # List all pods in the current namespace, with more details
-kubectl get pod my-pod -o yaml                                      # Get a pod's YAML
 kubectl get pods --show-labels                                              # Show labels for all pods (or any other Kubernetes object that supports labelling)
 kubectl get pods --sort-by='.status.containerStatuses[0].restartCount'      # List pods Sorted by Restart Count
 
@@ -130,31 +130,231 @@ for pod in $(kubectl get po --output=jsonpath={.items..metadata.name}); do echo 
 
 ### Updating resources 
 
+```shell
+kubectl set image deployment/frontend www=image:v2               # Rolling update "www" containers of "frontend" deployment, updating the image
+kubectl rollout history deployment/frontend                      # Check the history of deployments including the revision
+kubectl rollout undo deployment/frontend                         # Rollback to the previous deployment
+kubectl rollout undo deployment/frontend --to-revision=2         # Rollback to a specific revision
+kubectl rollout status -w deployment/frontend                    # Watch rolling update status of "frontend" deployment until completion
+kubectl rollout restart deployment/frontend                      # Rolling restart of the "frontend" deployment
+
+
+cat pod.json | kubectl replace -f -                              # Replace a pod based on the JSON passed into stdin
+
+kubectl replace --force -f ./pod.json                            # Force replace, delete and then re-create the resource. Will cause a service outage.
+
+kubectl expose rc nginx --port=80 --target-port=8000             # Create a service for a replicated nginx, which serves on port 80 and connects to the containers on port 8000
+
+kubectl get pod mypod -o yaml \
+| sed 's/\(image: myimage\):.*$/\1:v4/' | kubectl replace -f -   # Update a single-container pod's image version (tag) to v4
+
+kubectl label pods my-pod new-label=awesome                      # Add a Label
+kubectl label pods my-pod new-label-                             # Remove a label
+kubectl annotate pods my-pod icon-url=http://goo.gl/XXBTWq       # Add an annotation
+kubectl autoscale deployment foo --min=2 --max=10                # Auto scale a deployment "foo"
+```
+
 ### Patching resources
+
+```shell
+# Partially update a node
+kubectl patch node k8s-node-1 -p '{"spec":{"unschedulable":true}}'
+
+# Update a container's image; spec.containers[*].name is required because it's a merge key
+kubectl patch pod valid-pod -p '{"spec":{"containers":[{"name":"kubernetes-serve-hostname","image":"new image"}]}}'
+
+# Update a container's image using a json patch with positional arrays
+kubectl patch pod valid-pod --type='json' -p='[{"op": "replace", "path": "/spec/containers/0/image", "value":"new image"}]'
+
+# Disable a deployment livenessProbe using a json patch with positional arrays
+kubectl patch deployment valid-deployment  --type json   -p='[{"op": "remove", "path": "/spec/template/spec/containers/0/livenessProbe"}]'
+
+# Add a new element to a positional array
+kubectl patch sa default --type='json' -p='[{"op": "add", "path": "/secrets/1", "value": {"name": "whatever" } }]'
+
+# Update a deployment's replica count by patching its scale subresource
+kubectl patch deployment nginx-deployment --subresource='scale' --type='merge' -p '{"spec":{"replicas":2}}'
+```
 
 ### Editing resources
 
+```shell
+kubectl edit svc/docker-registry                                  # Edit the service named docker-registry
+KUBE_EDITOR="nano" kubectl edit svc/docker-registry               # Use an alternative editor
+```
+
 ### Scaling resources
 
+```shell
+kubectl scale --replicas=3 rs/foo                                 # Scale a replicaset named 'foo' to 3
+kubectl scale --replicas=3 -f foo.yaml                            # Scale a resource specified in "foo.yaml" to 3
+kubectl scale --current-replicas=2 --replicas=3 deployment/mysql  # If the deployment named mysql's current size is 2, scale mysql to 3
+kubectl scale --replicas=5 rc/foo rc/bar rc/baz                   # Scale multiple replication controllers
+```
+
 ### Deleting resources
+```shell
+kubectl delete -f ./pod.json                                      # Delete a pod using the type and name specified in pod.json
+kubectl delete pod unwanted --now                                 # Delete a pod with no grace period
+kubectl delete pod,service baz foo                                # Delete pods and services with same names "baz" and "foo"
+kubectl delete pods,services -l name=myLabel                      # Delete pods and services with label name=myLabel
+kubectl -n my-ns delete pod,svc --all                             # Delete all pods and services in namespace my-ns,
+# Delete all pods matching the awk pattern1 or pattern2
+kubectl get pods  -n mynamespace --no-headers=true | awk '/pattern1|pattern2/{print $1}' | xargs  kubectl delete -n mynamespace pod
+```
 
 ## Interaction with resources
 
 ### Interacting with running Pods
+```shell
+# LOGS
+kubectl logs my-pod                                 # dump pod logs (stdout)
+kubectl logs -l name=myLabel                        # dump pod logs, with label name=myLabel (stdout)
+kubectl logs my-pod --previous                      # dump pod logs (stdout) for a previous instantiation of a container
+kubectl logs my-pod -c my-container                 # dump pod container logs (stdout, multi-container case)
+kubectl logs -l name=myLabel -c my-container        # dump pod logs, with label name=myLabel (stdout)
+kubectl logs my-pod -c my-container --previous      # dump pod container logs (stdout, multi-container case) for a previous instantiation of a container
+kubectl logs -f my-pod                              # stream pod logs (stdout)
+kubectl logs -f my-pod -c my-container              # stream pod container logs (stdout, multi-container case)
+kubectl logs -f -l name=myLabel --all-containers    # stream all pods logs with label name=myLabel (stdout)
+
+
+# RUN
+kubectl run -i --tty busybox --image=busybox:1.28 -- sh  # Run pod as interactive shell
+kubectl run nginx --image=nginx -n mynamespace      # Start a single instance of nginx pod in the namespace of mynamespace
+kubectl run nginx --image=nginx --dry-run=client -o yaml > pod.yaml
+                                                    # Generate spec for running pod nginx and write it into a file called pod.yaml
+
+# ATTACH
+kubectl attach my-pod -i                            # Attach to Running Container
+
+
+# PORT-FORWARD
+kubectl port-forward my-pod 5000:6000               # Listen on port 5000 on the local machine and forward to port 6000 on my-pod
+
+
+# EXEC
+kubectl exec my-pod -- ls /                         # Run command in existing pod (1 container case)
+kubectl exec --stdin --tty my-pod -- /bin/sh        # Interactive shell access to a running pod (1 container case)
+kubectl exec my-pod -c my-container -- ls /         # Run command in existing pod (multi-container case)
+
+
+# TOP
+kubectl top pod POD_NAME --containers               # Show metrics for a given pod and its containers
+kubectl top pod POD_NAME --sort-by=cpu              # Show metrics for a given pod and sort it by 'cpu' or 'memory'
+```
 
 ### Copying files and directories to and from containers 
 
+```shell
+kubectl cp /tmp/foo_dir my-pod:/tmp/bar_dir            # Copy /tmp/foo_dir local directory to /tmp/bar_dir in a remote pod in the current namespace
+kubectl cp /tmp/foo my-pod:/tmp/bar -c my-container    # Copy /tmp/foo local file to /tmp/bar in a remote pod in a specific container
+kubectl cp /tmp/foo my-namespace/my-pod:/tmp/bar       # Copy /tmp/foo local file to /tmp/bar in a remote pod in namespace my-namespace
+kubectl cp my-namespace/my-pod:/tmp/foo /tmp/bar       # Copy /tmp/foo from a remote pod to /tmp/bar locally
+
+tar cf - /tmp/foo | kubectl exec -i -n my-namespace my-pod -- tar xf - -C /tmp/bar           # Copy /tmp/foo local file to /tmp/bar in a remote pod in namespace my-namespace
+kubectl exec -n my-namespace my-pod -- tar cf - /tmp/foo | tar xf - -C /tmp/bar              # Copy /tmp/foo from a remote pod to /tmp/bar locally
+```
+
 ### Interacting with Deployments and Services
+
+```shell
+kubectl logs deploy/my-deployment                         # dump Pod logs for a Deployment (single-container case)
+kubectl logs deploy/my-deployment -c my-container         # dump Pod logs for a Deployment (multi-container case)
+
+kubectl port-forward svc/my-service 5000                  # listen on local port 5000 and forward to port 5000 on Service backend
+kubectl port-forward svc/my-service 5000:my-service-port  # listen on local port 5000 and forward to Service target port with name <my-service-port>
+
+kubectl port-forward deploy/my-deployment 5000:6000       # listen on local port 5000 and forward to port 6000 on a Pod created by <my-deployment>
+kubectl exec deploy/my-deployment -- ls                   # run command in first Pod and first container in Deployment (single- or multi-container cases)
+```
+
 
 ### Interacting with Nodes and cluster 
 
+```shell
+kubectl cordon my-node                                                # Mark my-node as unschedulable
+kubectl drain my-node                                                 # Drain my-node in preparation for maintenance
+kubectl uncordon my-node                                              # Mark my-node as schedulable
+kubectl top node my-node                                              # Show metrics for a given node
+kubectl cluster-info                                                  # Display addresses of the master and services
+kubectl cluster-info dump                                             # Dump current cluster state to stdout
+kubectl cluster-info dump --output-directory=/path/to/cluster-state   # Dump current cluster state to /path/to/cluster-state
+
+# View existing taints on which exist on current nodes.
+kubectl get nodes -o='custom-columns=NodeName:.metadata.name,TaintKey:.spec.taints[*].key,TaintValue:.spec.taints[*].value,TaintEffect:.spec.taints[*].effect'
+
+# If a taint with that key and effect already exists, its value is replaced as specified.
+kubectl taint nodes foo dedicated=special-user:NoSchedule
+```
+
 #### Resource types
+
+```shell
+kubectl api-resources
+
+kubectl api-resources --namespaced=true      # All namespaced resources
+kubectl api-resources --namespaced=false     # All non-namespaced resources
+kubectl api-resources -o name                # All resources with simple output (only the resource name)
+kubectl api-resources -o wide                # All resources with expanded (aka "wide") output
+kubectl api-resources --verbs=list,get       # All resources that support the "list" and "get" request verbs
+kubectl api-resources --api-group=extensions # All resources in the "extensions" API group
+```
 
 #### Formatting output
 
+```shell
+# To output details to your terminal window in a specific format, add the -o (or --output) flag to a supported kubectl command.
+
+# Output format	                                  Description
+
+-o=custom-columns=<spec>	                        Print a table using a comma separated list of custom columns
+-o=custom-columns-file=<filename>               	Print a table using the custom columns template in the <filename> file
+-o=json	                                          Output a JSON formatted API object
+-o=jsonpath=<template>	                          Print the fields defined in a jsonpath expression
+-o=jsonpath-file=<filename>                     	Print the fields defined by the jsonpath expression in the <filename> file
+-o=name	                                          Print only the resource name and nothing else
+-o=wide	                                          Output in the plain-text format with any additional information, and for pods, the node name is included
+-o=yaml	                                          Output a YAML formatted API object
+
+# EXAMPLES using -o=custom-columns:
+
+# All images running in a cluster
+kubectl get pods -A -o=custom-columns='DATA:spec.containers[*].image'
+
+# All images running in namespace: default, grouped by Pod
+kubectl get pods --namespace default --output=custom-columns="NAME:.metadata.name,IMAGE:.spec.containers[*].image"
+
+ # All images excluding "registry.k8s.io/coredns:1.6.2"
+kubectl get pods -A -o=custom-columns='DATA:spec.containers[?(@.image!="registry.k8s.io/coredns:1.6.2")].image'
+
+# All fields under metadata regardless of name
+kubectl get pods -A -o=custom-columns='DATA:metadata.*'
+```
+
 #### Kubectl output verbosity and debugging
+
+```shell
+# Kubectl verbosity is controlled with the -v or --v flags followed by an integer representing the log level. General Kubernetes logging conventions and the associated log levels are described here.
+
+# Verbosity	            Description
+--v=0	                  Generally useful for this to always be visible to a cluster operator.
+--v=1	                  A reasonable default log level if you don't want verbosity.
+--v=2	                  Useful steady state information about the service and important log messages that may correlate to significant changes in the system. This is the recommended default log level for most systems.
+--v=3	                  Extended information about changes.
+--v=4	                  Debug level verbosity.
+--v=5	                  Trace level verbosity.
+--v=6	                  Display requested resources.
+--v=7	                  Display HTTP request headers.
+--v=8	                  Display HTTP request contents.
+--v=9	                  Display HTTP request contents without truncation of contents.
+```
 
 ## Etc.
 ```shell
-kubectl explain pods                                                # get the documentation for pod manifests
+kubectl explain pods                                        # get the documentation for pod manifests
 ```
+
+## Resources
+
+1. [Kubectl Cheat Sheet.](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
