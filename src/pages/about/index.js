@@ -29,8 +29,7 @@ function About() {
               <Translate id="about.aboutMeHello"/>
             </h2>
             <p>
-              I am <a>m19v</a>, a DevSecOps Engineer and Backend Software
-              Developer.
+              I am <a>m19v</a>, a Software Developer with a focus on Backend Development and DevOps/Cloud.
             </p>
             <p>
               I am organized and analytical person, a problem solver with high
