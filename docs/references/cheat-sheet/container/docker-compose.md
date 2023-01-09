@@ -21,5 +21,5 @@ docker-compose -p <project-name> down             # Sets the project name of com
 ## Compose CLI environment variables
 
 ```shell
-COMPOSE_PROJECT_NAME                              # Sets the project name, can be set e.g. in .env file. This value is prepended along with the service name to the container’s name on startup.
+COMPOSE_PROJECT_NAME                              # Sets the project name, can be set e.g. in .env file. This value is prepended along with the resource (e.g. service, volume etc) name to the container’s name on startup.
 ```
