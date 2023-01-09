@@ -2,9 +2,6 @@
 title: SSH
 ---
 
-Published on Month Day, Year  
-Updated on on Month Day, Year
-
-## Example_Header
-
-Culpa reprehenderit id laboris laboris esse. Deserunt est nulla dolore irure occaecat Lorem anim. Lorem ullamco cupidatat pariatur sit sit elit pariatur tempor laboris ad est.Consectetur veniam minim velit dolor. Laborum aute esse ipsum aute minim ea anim. Irure dolor sint exercitation sunt pariatur reprehenderit officia sit consectetur nisi culpa. Minim incididunt in ullamco cupidatat fugiat consectetur deserunt labore tempor. Cupidatat nulla deserunt dolore minim dolore id cupidatat eu Lorem. Ex qui est aliquip ea. Veniam enim incididunt cillum amet sunt pariatur commodo non.
+Create a multiple ssh tunnel (e.g. https://www.tunnelsup.com/how-to-create-ssh-tunnels/):
+- Create via putty ssh connect and put the tunnel for the connection (e.g. settings-connection-add tunnel)
+- from the second host, if needed, run the command to create second tunnel ```ssh -L 21521:localhost:1521 userofgoalhost@goalhost.com```

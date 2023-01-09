@@ -2,9 +2,18 @@
 title: Python
 ---
 
-Published on Month Day, Year  
-Updated on on Month Day, Year
+## Math operations
 
-## Example_Header
+| Operators    |Operation              |Example      |
+|--------------|-----------------------|-------------|
+| **	       |Exponent	           |2 ** 3 = 8   |
+| %	           |Modulus/Remainder	   |22 % 8 = 6   |
+| //	       |Integer division	   |22 // 8 = 2  |
+| /	           |Division	           |22 / 8 = 2.75|
+| *	           |Multiplication	       |3 * 3 = 9    |
+| -	           |Subtraction	           |5 - 2 = 3    |
+| +	           |Addition	           |2 + 2 = 4    |
 
-Culpa reprehenderit id laboris laboris esse. Deserunt est nulla dolore irure occaecat Lorem anim. Lorem ullamco cupidatat pariatur sit sit elit pariatur tempor laboris ad est.Consectetur veniam minim velit dolor. Laborum aute esse ipsum aute minim ea anim. Irure dolor sint exercitation sunt pariatur reprehenderit officia sit consectetur nisi culpa. Minim incididunt in ullamco cupidatat fugiat consectetur deserunt labore tempor. Cupidatat nulla deserunt dolore minim dolore id cupidatat eu Lorem. Ex qui est aliquip ea. Veniam enim incididunt cillum amet sunt pariatur commodo non.
+## Resources
+
+[Python Cheatsheet](https://www.pythoncheatsheet.org/)

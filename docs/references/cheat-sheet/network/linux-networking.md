@@ -2,11 +2,6 @@
 title: Linux Networking
 ---
 
-Published on Month Day, Year  
-Updated on on Month Day, Year
-
-## Example_Header
-
 ## NetCat
 ```shell
 nc -llvp 1234                  # Listen on 0.0.0.0 of port 1234
