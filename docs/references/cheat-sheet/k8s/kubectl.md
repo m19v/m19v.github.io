@@ -236,6 +236,7 @@ kubectl port-forward my-pod 5000:6000               # Listen on port 5000 on the
 # EXEC
 kubectl exec my-pod -- ls /                         # Run command in existing pod (1 container case)
 kubectl exec --stdin --tty my-pod -- /bin/sh        # Interactive shell access to a running pod (1 container case)
+kubectl exec -ti <pod name> -- bash                 # Interactive bash access to a running pod (1 container case)
 kubectl exec my-pod -c my-container -- ls /         # Run command in existing pod (multi-container case)
 
 
