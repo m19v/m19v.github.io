@@ -2,9 +2,44 @@
 title: Jenkins
 ---
 
-Published on Month Day, Year  
-Updated on on Month Day, Year
+## Jenkinsfile (Declarative Pipeline) - Example Structure
 
-## Example_Header
+```shell
+pipeline {
+    agent any
 
-Culpa reprehenderit id laboris laboris esse. Deserunt est nulla dolore irure occaecat Lorem anim. Lorem ullamco cupidatat pariatur sit sit elit pariatur tempor laboris ad est.Consectetur veniam minim velit dolor. Laborum aute esse ipsum aute minim ea anim. Irure dolor sint exercitation sunt pariatur reprehenderit officia sit consectetur nisi culpa. Minim incididunt in ullamco cupidatat fugiat consectetur deserunt labore tempor. Cupidatat nulla deserunt dolore minim dolore id cupidatat eu Lorem. Ex qui est aliquip ea. Veniam enim incididunt cillum amet sunt pariatur commodo non.
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
+```
+
+## Quick Start Jenkinsfile Example for Java
+
+```shell
+# Requires the Docker Pipeline plugin
+pipeline {
+    agent { docker { image 'maven:3.8.7-eclipse-temurin-11' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'mvn --version'
+            }
+        }
+    }
+}
+```
