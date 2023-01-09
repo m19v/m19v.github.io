@@ -2,7 +2,7 @@
 title: Systemd
 ---
 
-## VIEWING systemd INFORMATION
+## Viewing systemd information
 
 ```shell
 systemctl list-dependencies                 # List a unit’s dependencies

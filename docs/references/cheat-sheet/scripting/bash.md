@@ -12,7 +12,7 @@ This is a quick reference to getting started with Bash scripting.
 ## Parameter expansions
 ### Basics
 
-```bash {3-4,7} showLineNumbers title="This is tittle!"
+```bash {3-4,7} showLineNumbers title="Basics"
 name="John"
 echo ${name}
 echo ${name/J/j}    #=> "john" (substitution)
