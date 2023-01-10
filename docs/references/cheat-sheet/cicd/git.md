@@ -15,4 +15,6 @@ git log --format="tformat:%>|(15)%C(auto)%h %Cgreen %<(20,trunc)%cn %C(auto) %<(
 
 git log --format="tformat:%>|(18)%C(auto)%h%<($(($(tput cols)-110)),trunc)%C(auto)%d %<($(($(tput cols)-100)),trunc)%s %Cgreen%<(15,trunc)%cn %C(blue)%<(16,trunc)%ad%Creset" --graph --all --date="format-local:%d.%m.%Y %H:%M"
 
+#
+git log --pretty='tformat:%C(bold cyan)%h %C(blue)%<(10,trunc)%aN %<(50,trunc)%C(white)%s %C(auto)%d %C(dim green)%ad' --graph --all --date="format-local:%d.%m.%Y %H:%M"
 ```
