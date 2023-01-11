@@ -6,7 +6,7 @@ sidebar_position: 2
 <br/>
 <div align="center">
     <p><a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"/></a></p>
-    <p>A list of awesome resources related to the DevSecOps, Software Development and Electrical Engineering curated by me</p>
+    <p>A list of awesome resources related to the DevSecOps, Software Development and Electrical Engineering which I have either experience, interested to learn or use as reference</p>
     <p>based on main <a href="https://awesome.re"><code>Awesome</code></a> list.</p>
 </div>
 
