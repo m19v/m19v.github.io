@@ -13,8 +13,8 @@ openssl ciphers -v 'ALL:!aNULL'             # List all ciphers except ones with 
 ```
 
 ## Tools
-[Testing TLS/SSL encryption](https://testssl.sh/)
-[TLS Ciphersuite Search](https://ciphersuite.info/)
+[Testing TLS/SSL encryption](https://testssl.sh/)  
+[TLS Ciphersuite Search](https://ciphersuite.info/)  
 
 ## Resources
 [OpenSSL Introduction.](https://www.keycdn.com/blog/openssl-tutorial)
