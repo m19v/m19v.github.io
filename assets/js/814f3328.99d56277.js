@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkm_19_v=self.webpackChunkm_19_v||[]).push([[2535],{5641:s=>{s.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"How to add Giscus comments to Docusaurus","permalink":"/blog/how-to-add-giscus-to-docusaurus"}]}')}}]);

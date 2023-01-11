@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkm_19_v=self.webpackChunkm_19_v||[]).push([[2387],{7114:s=>{s.exports=JSON.parse('{"label":"giscus","permalink":"/tg/blog/tags/giscus","allTagsPath":"/tg/blog/tags","count":1}')}}]);
