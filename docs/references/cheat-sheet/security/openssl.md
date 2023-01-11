@@ -12,5 +12,9 @@ openssl ciphers -v 'ALL:eNULL'              # Verbose listing of all OpenSSL cip
 openssl ciphers -v 'ALL:!aNULL'             # List all ciphers except ones with no encryption (eNULL) or no authentication (aNULL):
 ```
 
+## Tools
+[Testing TLS/SSL encryption](https://testssl.sh/)
+[TLS Ciphersuite Search](https://ciphersuite.info/)
+
 ## Resources
 [OpenSSL Introduction.](https://www.keycdn.com/blog/openssl-tutorial)
