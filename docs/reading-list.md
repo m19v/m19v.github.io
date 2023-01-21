@@ -3,10 +3,11 @@ title: Reading List
 sidebar_position: 3
 ---
 
-Published on April 19, 2020  
-Updated on October 06, 2022
-
 This is a collection of articles, books, conferences and podcasts related to DevSecOps, Software Engineering and Electrical Engineering which I have read, listened or watched so far and recommend to others.
+
+## 2023
+### Articles 2023
+- [Containers landscape: seen through OCI and CNCF standards lens.](https://adriancitu.com/2021/12/30/containers-landscape-seen-through-oci-and-cncf-standards-lens/)
 
 ## 2022
 ### Articles 2022
