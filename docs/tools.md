@@ -3,8 +3,6 @@ title: Tools
 sidebar_position: 8
 ---
 
-Published on August 16, 2022  
-
 This is a list of all tools and applications, that I’m personally using in my development environment.
 
 ## Windows

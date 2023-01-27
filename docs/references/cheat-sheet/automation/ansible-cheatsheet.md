@@ -2,9 +2,6 @@
 title: Ansible
 ---
 
-Published on August 05, 2022  
-Updated on September 05, 2022
-
 ## Ansible
 
 - Ansible is an open source engine that automates application deployment, orchestration, cloud provisioning etc. 

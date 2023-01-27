@@ -4,9 +4,6 @@ slug: "/"
 sidebar_position: 1
 ---
 
-Published on January 05, 2022  
-Updated on November 01, 2022
-
 <!---
 <div class="contentTableContainer">
 
