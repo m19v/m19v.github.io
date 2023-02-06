@@ -2,9 +2,18 @@
 title: Git
 ---
 
-## git log
+## git
 
 ```shell
+# Delete branches
+git push -d <remote_name> <branchname>             # In most cases <remote_name> is 'origin'
+git branch -d <branchname>
+
+
+# Amend most recent commit message
+git commit --amend                                 # This will open your editor
+git commit --amend -m "New commit message"
+
 # Git worktree
 git worktree list
 
