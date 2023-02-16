@@ -3,9 +3,25 @@
  * and scoped locally.
  */
 
+.minimaliStyle{
+  margin: 0;
+  padding: 0 25rem;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 10px 10px 10px 12px;
+  }
+  .minimaliStyle {
+    margin: 0;
+    padding: 0 2rem;
+  }
+}
+
+
 .heroBanner {
-  padding: 4rem 0;
-  text-align: center;
+  padding: 10rem 0;
+  text-align: left;
   position: relative;
   overflow: hidden;
 }
