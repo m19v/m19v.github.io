@@ -5,44 +5,14 @@
 
 .minimaliStyle{
   margin: 0;
-  padding: 0 25rem;
+  padding: 10rem 25rem;
+
+  font-size: larger;
 }
 
 @media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 10px 10px 10px 12px;
-  }
   .minimaliStyle {
     margin: 0;
-    padding: 0 2rem;
+    padding: 10rem 2rem;
   }
-}
-
-
-.heroBanner {
-  padding: 10rem 0;
-  text-align: left;
-  position: relative;
-  overflow: hidden;
-}
-
-.heroSubSubtitle {
-  margin: 0;
-  padding: 0 10rem;
-}
-
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
-  .heroSubSubtitle {
-    margin: 0;
-    padding: 0 2rem;
-  }
-}
-
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

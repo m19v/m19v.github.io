@@ -168,7 +168,7 @@ const config = {
       },
       footer: {
         style: 'light',
-        copyright: `© ${new Date().getFullYear()} - { m19v }`,
+        copyright: `<a href="#" style="text-decoration:none">© ${new Date().getFullYear()} - { m19v }</a>`,
       },
       prism: {
         theme: lightCodeTheme,
