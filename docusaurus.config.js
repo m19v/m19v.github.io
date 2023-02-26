@@ -48,35 +48,17 @@ const config = {
     },
   },
 
-  themes: [
-    // Other themes.
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        // `hashed` is recommended as long-term-cache of index file is possible.
-        hashed: true,
-        language: ["en"],
-      },
-    ],
-  ],
-
-  plugins: [
-    [
-      "@docusaurus/plugin-content-docs",
-      /** @type {import('@docusaurus/plugin-content-docs').Options} */
-      {
-        id: "tutorials",
-        path: "tutorials",
-        routeBasePath: "tutorials",
-        editUrl: "https://github.com/m19v/m19v.github.io/blob/main/",
-        sidebarPath: require.resolve("./sidebarsTutorials.js"),
-        remarkPlugins: [math],
-        rehypePlugins: [katex],
-        // showLastUpdateAuthor: true,
-        // showLastUpdateTime: true,
-      },
-    ],
-  ],
+  // themes: [
+  //   // Other themes.
+  //   [
+  //     require.resolve("@easyops-cn/docusaurus-search-local"),
+  //     {
+  //       // `hashed` is recommended as long-term-cache of index file is possible.
+  //       hashed: true,
+  //       language: ["en"],
+  //     },
+  //   ],
+  // ],
 
   presets: [
     [
@@ -91,6 +73,8 @@ const config = {
             'https://github.com/m19v/m19v.github.io/blob/main/',
           remarkPlugins: [math],
           rehypePlugins: [katex],
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
         },
         blog: {
           showReadingTime: true,
@@ -144,9 +128,7 @@ const config = {
             position: 'left',
             label: 'Docs',
           },
-          { to: '/tutorials', label: 'Tutorials', position: 'left' },
           { to: '/blog', label: 'Blog', position: 'left' },
-          { to: "/about", label: "About", position: "left" },
           {
             href: 'https://github.com/m19v',
             position: 'right',
@@ -168,69 +150,7 @@ const config = {
       },
       footer: {
         style: 'light',
-        links: [
-          {
-            title: 'Connect',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/m19v',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/m19v',
-              },
-              {
-                label: 'YouTube',
-//                 href: 'https://www.youtube.com/channel/UCQNWMiFiK4I0ZK9K_s3mRvw',
-                href: 'https://youtube.com/@m19v',
-              },
-            ],
-          },
-          {
-            title: 'Discover',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'Documentation',
-                to: '/docs',
-              },
-              {
-                label: 'Tutorials',
-                to: '/tutorials',
-              },
-              {
-                label: 'About',
-                to: '/about',
-              },
-              {
-                label: 'Resume',
-                to: '#',
-              },
-            ],
-          },          
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/m19v',
-              },
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/users/12501050/m19v',
-              },
-              {
-                label: 'BuyMeACoffee',
-                href: 'https://www.buymeacoffee.com/m19v',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} - m19v. All rights reserved.`,
+        copyright: `<a href="/" style="text-decoration:none">© ${new Date().getFullYear()} - { m19v }</a>`,
       },
       prism: {
         theme: lightCodeTheme,
