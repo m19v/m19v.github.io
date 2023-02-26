@@ -6,7 +6,6 @@ import Translate, { translate } from "@docusaurus/Translate";
 import styles from "./index.module.css";
 
 export default function Home() {
-
   return (
     <Layout title={`Home`}>
       <div className="container">
@@ -14,11 +13,15 @@ export default function Home() {
           <p>Hi, my name is</p>
           <h1>&#123; m19v &#125;</h1>
           <p>
-            I am a Software Developer and Cloud Engineer passionate about tech
-            and science.
+            I am a Software Developer passionate about tech
+            and programming.
           </p>
           <br />
-          <button class="button button--secondary" href="#">more...</button>
+          <p>
+            <a class="button button--secondary" href="/about">
+              more...
+            </a>
+          </p>
         </div>
       </div>
     </Layout>
