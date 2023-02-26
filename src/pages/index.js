@@ -1,5 +1,4 @@
 import React from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 
 import Translate, { translate } from "@docusaurus/Translate";
@@ -7,13 +6,19 @@ import Translate, { translate } from "@docusaurus/Translate";
 import styles from "./index.module.css";
 
 export default function Home() {
-  const { siteConfig } = useDocusaurusContext();
+
   return (
     <Layout title={`Home`}>
       <div className="container">
         <div className={styles.minimaliStyle}>
-          <p>Hi, I am <a>m19v</a>,</p>
-          <p>a software developer with a focus on Backend & DevOps</p>
+          <p>Hi, my name is</p>
+          <h1>&#123; m19v &#125;</h1>
+          <p>
+            I am a Software Developer and Cloud Engineer passionate about tech
+            and science.
+          </p>
+          <br />
+          <button class="button button--secondary" href="#">more...</button>
         </div>
       </div>
     </Layout>
