@@ -60,24 +60,6 @@ const config = {
   //   ],
   // ],
 
-  plugins: [
-    [
-      "@docusaurus/plugin-content-docs",
-      /** @type {import('@docusaurus/plugin-content-docs').Options} */
-      {
-        id: "tutorials",
-        path: "tutorials",
-        routeBasePath: "tutorials",
-        editUrl: "https://github.com/m19v/m19v.github.io/blob/main/",
-        sidebarPath: require.resolve("./sidebarsTutorials.js"),
-        remarkPlugins: [math],
-        rehypePlugins: [katex],
-        showLastUpdateAuthor: true,
-        showLastUpdateTime: true,
-      },
-    ],
-  ],
-
   presets: [
     [
       'classic',
@@ -91,6 +73,8 @@ const config = {
             'https://github.com/m19v/m19v.github.io/blob/main/',
           remarkPlugins: [math],
           rehypePlugins: [katex],
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
         },
         blog: {
           showReadingTime: true,
@@ -144,9 +128,7 @@ const config = {
             position: 'left',
             label: 'Docs',
           },
-          { to: '/tutorials', label: 'Tutorials', position: 'left' },
           { to: '/blog', label: 'Blog', position: 'left' },
-          { to: "/about", label: "About", position: "left" },
           {
             href: 'https://github.com/m19v',
             position: 'right',
@@ -168,7 +150,7 @@ const config = {
       },
       footer: {
         style: 'light',
-        copyright: `<a href="#" style="text-decoration:none">© ${new Date().getFullYear()} - { m19v }</a>`,
+        copyright: `<a href="/" style="text-decoration:none">© ${new Date().getFullYear()} - { m19v }</a>`,
       },
       prism: {
         theme: lightCodeTheme,
