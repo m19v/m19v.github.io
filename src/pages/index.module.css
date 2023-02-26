@@ -4,15 +4,39 @@
  */
 
 .minimaliStyle{
-  margin: 0;
-  padding: 10rem 25rem;
+  margin: auto;
+  width: 40%;
+  padding: 25% 0;
+}
 
-  font-size: larger;
+.minimaliStyle h1 {
+  font-size: 4.8rem;
+  line-height: 5.4rem;
+  font-weight: 600;
+}
+
+.minimaliStyle p {
+  font-size: 1.2rem;
+  margin: 0 4px;
+  max-width: 512px;
 }
 
 @media screen and (max-width: 996px) {
   .minimaliStyle {
-    margin: 0;
-    padding: 10rem 2rem;
+    margin: auto;
+    width: 80%;
+    padding: 40% 0;
+  }
+
+  .minimaliStyle h1 {
+    font-size: 2.2rem;
+    line-height: 5.4rem;
+    font-weight: 600;
+  }
+  
+  .minimaliStyle p {
+    font-size: 1rem;
+    margin: 0 4px;
+    max-width: 512px;
   }
 }
