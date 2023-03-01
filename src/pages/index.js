@@ -8,7 +8,6 @@ import styles from "./index.module.css";
 export default function Home() {
   return (
     <Layout title={`Home`}>
-      <div className="container">
         <div className={styles.minimaliStyle}>
           <p>Hi, my name is</p>
           <h1>&#123; m19v &#125;</h1>
@@ -23,7 +22,6 @@ export default function Home() {
             </a>
           </p>
         </div>
-      </div>
     </Layout>
   );
 }
