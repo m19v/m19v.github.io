@@ -150,7 +150,7 @@ const config = {
       },
       footer: {
         style: 'light',
-        copyright: `<a href="/" style="text-decoration:none">© ${new Date().getFullYear()} - { m19v }</a>`,
+        copyright: `© ${new Date().getFullYear()} - { m19v }`,
       },
       prism: {
         theme: lightCodeTheme,
