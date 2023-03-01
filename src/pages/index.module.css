@@ -5,8 +5,8 @@
 
 .minimaliStyle{
   margin: auto;
-  width: 40%;
-  padding: 20% 0;
+  width: 60vh;
+  padding: 20vh 0;
 }
 
 .minimaliStyle h1 {
@@ -24,12 +24,12 @@
 @media screen and (max-width: 996px) {
   .minimaliStyle {
     margin: auto;
-    width: 80%;
-    padding: 40% 0;
+    width: 40vh;
+    padding: 20vh 0;
   }
 
   .minimaliStyle h1 {
-    font-size: 2.2rem;
+    font-size: 2.8rem;
     line-height: 5.4rem;
     font-weight: 600;
   }
