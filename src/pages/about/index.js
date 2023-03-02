@@ -32,16 +32,10 @@ function About() {
               I am <a>m19v</a>, a Software Developer with a focus on Backend Development and DevOps/Cloud.
             </p>
             <p>
-              I am organized and analytical person, a problem solver with high
-              attention to details. A fan of Football, Mysteries TV Series and
-              Tajik/Persian Literature. I am a family person and father of two lovely
-              girls.
+              I am organized and analytical person, a problem solver with high attention to details. A fan of Football, Mysteries TV Series and Tajik/Persian Literature. I am a family person and father of two lovely girls.
             </p>
             <p>
-              I strongly care about documenting and sharing knowledge. I use
-              this space as a reference in my daily work and would be happy if
-              it could help those who want to become software developers as
-              well.
+              I strongly care about documenting and sharing knowledge. I use this website as a reference for my daily work and would be happy if it can help others.
             </p>
             <p>
               Feel free to contact me via email: <a href="mailto:mnineteenv@gmail.com">mnineteenv@gmail.com</a>
