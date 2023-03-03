@@ -82,7 +82,7 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/m19v/m19v.github.io/blob/main/',
-          blogTitle: 'Blog title',
+          blogTitle: 'Blog',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
