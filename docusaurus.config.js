@@ -166,14 +166,14 @@ const config = {
         disableSwitch: false,
         respectPrefersColorScheme: true,
       },
-      announcementBar: {
-        id: 'announcementBarContent',
-        // content: `If you like this space, give it a ⭐️ on <a target="_blank" rel="noopener noreferrer" href="https://github.com/m19v">GitHub</a>`,
-        content: 'This space is under construction!',
-        backgroundColor: '#fafbfc',
-        textColor: '#091E42',
-        isCloseable: true,
-      },
+      // announcementBar: {
+      //   id: 'announcementBarContent',
+      //   // content: `If you like this space, give it a ⭐️ on <a target="_blank" rel="noopener noreferrer" href="https://github.com/m19v">GitHub</a>`,
+      //   content: 'This space is under construction!',
+      //   backgroundColor: '#fafbfc',
+      //   textColor: '#091E42',
+      //   isCloseable: true,
+      // },
       metadata: [{name: 'google-site-verification', content: '-5zh_8T7Z6ZPupTzJH9LcYznhfRid8I7y2TRsaHcrsE'}],
     }),
 };

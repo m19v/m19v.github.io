@@ -2,8 +2,6 @@
 title: Истилоҳоти улуми роёна  
 keywords: [Истилоҳот, улуми роёна, glossary, computer science]  
 ---
-Санаи нашр: 09.09.2021  
-Санаи таҳрир: 19.10.2022
 
 ## Introduction  
 

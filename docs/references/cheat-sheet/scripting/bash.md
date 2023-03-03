@@ -2,9 +2,6 @@
 title: Bash
 ---
 
-Published on December 1, 2021  
-Updated on August 16, 2022
-
 ## Introduction
 
 This is a quick reference to getting started with Bash scripting.
