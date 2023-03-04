@@ -151,22 +151,16 @@ import GiscusComponent from '@site/src/components/GiscusComponent';
 import useIsBrowser from '@docusaurus/useIsBrowser';
 
 export default function BlogPostItemWrapper(props) {
-  const { metadata } = useBlogPost()
+  const { metadata, isBlogPostPage } = useBlogPost()
   const isBrowser = useIsBrowser();
 
   const { frontMatter, slug, title } = metadata
   const { enableComments } = frontMatter
 
-  // Prevent error during build (see https://docusaurus.io/docs/advanced/ssg for the Error 'ReferenceError: window is not defined')
-  var isCurrentUrlBlog = false
-  if (isBrowser) {
-    isCurrentUrlBlog = window.location.pathname === "/blog"
-  }
-
   return (
     <>
       <BlogPostItem {...props} />
-      {(enableComments && !isCurrentUrlBlog) && (
+      {(enableComments && isBlogPostPage) && (
         <GiscusComponent />
       )}
     </>
