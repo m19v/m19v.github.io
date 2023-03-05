@@ -29,6 +29,10 @@ const MusingListEnglish = [
     text: "The most important decision we make is whether we believe we live in a friendly or hostile universe.",
     author: "Albert Einstein",
   },
+  {
+    text: "Ignorance breeds confidence more often than knowledge",
+    author: "Charles Darwin",
+  },
   // {
   //   text: "",
   //   author: "",
@@ -37,20 +41,20 @@ const MusingListEnglish = [
 
 const MusingListTajik = [
   {
-    text: "Дар касб ва кори нек ҷиддӣ бош!",
-    author: "Луқмони Ҳаким",
+    text: "Фарди кунҷков дар нимароҳаи хирадмандӣ аст.",
+    author: "",
   },
   {
-    text: "То реша дар об аст, умеди самаре ҳаст!",
-    author: "Гуфтори ҳалқ",
+    text: "Дар касб ва кори нек ҷиддӣ бош!",
+    author: "Луқмони Ҳаким",
   },
   {
     text: "Бо падару модарат беҳтарин рафторро ихтиёр кун.",
     author: "Луқмони Ҳаким",
   },
   {
-    text: "Фарди кунҷков дар нимароҳаи хирадмандӣ аст.",
-    author: "",
+    text: "То реша дар об аст, умеди самаре ҳаст!",
+    author: "Гуфтори ҳалқ",
   },
   {
     text: "Он касе, ки аз ранҷи зиндагӣ битарсад, аз тарс дар ранҷ хоҳад буд.",
