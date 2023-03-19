@@ -14,6 +14,10 @@ const MusingListEnglish = [
     author: "Thomas B. Macaulay",
   },
   {
+    text: "If you can't explain it simply, you don't understand it well enough.",
+    author: "Albert Einstein",
+  },
+  {
     text: "You get in life what you have the courage to ask for.",
     author: "Nancy D. Solomon",
   },
