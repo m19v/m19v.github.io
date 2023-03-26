@@ -133,16 +133,16 @@ export default function GiscusComponent() {
 }
 ```
 
-## Create BlogPostItemWrapper wrapper
+## Create BlogPostItem component
 
-- Create BlogPostItemWrapper wrapper to wrap blog posts with Giscus commenting system as follows: 
+- Create BlogPostItem component to wrap blog posts with Giscus commenting system as follows: 
 ```bash
 npm run swizzle [theme name] [component name] -- --wrap
 
 # Example:
 npm run swizzle @docusaurus/theme-classic BlogPostItem -- --wrap
 ```
-This will create a BlogPostItemWrapper wrapper under ```src/theme```. Edit ```index.js``` as follows: 
+This will create a BlogPostItem component under ```src/theme```. Edit ```index.js``` as follows: 
 ```js
 import React from 'react';
 import { useBlogPost } from '@docusaurus/theme-common/internal'
@@ -168,7 +168,7 @@ export default function BlogPostItemWrapper(props) {
 }
 ```
 
-**Note** that the ```useBlogPost()``` Hook is used in BlogPostItemWrapper to make activation of comments per blog post configurable. The key value ```enableComments: true```  must be added to your blog post ```md``` file in order to activate commenting for it. E.g.:
+**Note** that the ```useBlogPost()``` Hook is used in BlogPostItem component to make activation of comments per blog post configurable. The key value ```enableComments: true```  must be added to your blog post ```md``` file in order to activate commenting for it. E.g.:
 
 ```bash
 ---
