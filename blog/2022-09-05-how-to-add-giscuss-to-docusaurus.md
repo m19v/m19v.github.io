@@ -140,7 +140,7 @@ export default function GiscusComponent() {
 npm run swizzle [theme name] [component name] -- --wrap
 
 # Example:
-npm run swizzle @docusaurus/theme-classic BlogPostItemWrapper -- --wrap
+npm run swizzle @docusaurus/theme-classic BlogPostItem -- --wrap
 ```
 This will create a BlogPostItemWrapper wrapper under ```src/theme```. Edit ```index.js``` as follows: 
 ```js
