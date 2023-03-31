@@ -29,13 +29,13 @@ function About() {
               <Translate id="about.aboutMeHello"/>
             </h2>
             <p>
-              I am <a>m19v</a>, a Software Developer with a focus on Backend Development and DevOps/Cloud.
+              I am <a>m19v</a>, a Software Developer with a focus on Backend Development and DevOps/Cloud technologies.
             </p>
             <p>
-              I am organized and analytical person, a problem solver with high attention to details. A fan of Football, Mysteries TV Series and Tajik/Persian Literature. I am a family person and father of two lovely girls.
+              I am (or strive to be) an organized and analytical person, a problem solver with high attention to detail. A fan of Football, Mysteries TV Series and Tajik/Persian Literature. I am a devoted family man and a proud father.
             </p>
             <p>
-              I strongly care about documenting and sharing knowledge. I use this website as a reference for my daily work and would be happy if it can help others.
+              I strongly care about documenting and sharing knowledge. I use this website as a reference in my daily work and would be glad if others could benefit from the information provided here.
             </p>
             <p>
               Feel free to contact me via email: <a href="mailto:mnineteenv@gmail.com">mnineteenv@gmail.com</a>
