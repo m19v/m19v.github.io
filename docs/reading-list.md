@@ -9,7 +9,7 @@ This is a collection of articles, books, conferences and podcasts related to Dev
 ### Articles 2023
 - [Containers landscape: seen through OCI and CNCF standards lens.](https://adriancitu.com/2021/12/30/containers-landscape-seen-through-oci-and-cncf-standards-lens/)
 - [The Arrival of Java 20!](https://inside.java/2023/03/21/the-arrival-of-java-20/)
-### Books 2022
+### Books 2023
  - A Brief History of Time by Stephen Hawking. From the Big Bang to Black Holes.
 
 ## 2022
