@@ -9,7 +9,7 @@ const katex = require('rehype-katex');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: '{ m19v }',
+  title: '{m19v}',
   url: 'https://m19v.github.io',
   baseUrl: '/',
   onBrokenLinks: 'warn',
@@ -150,7 +150,7 @@ const config = {
       },
       footer: {
         style: 'light',
-        copyright: `© ${new Date().getFullYear()} - { m19v }`,
+        copyright: `© ${new Date().getFullYear()} - {m19v}`,
       },
       prism: {
         theme: lightCodeTheme,
