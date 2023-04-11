@@ -1,4 +1,4 @@
-.musingsContainer{
+.literatureContainer{
   /* text-align: center;
   color:var(--ifm-heading-color);   */
   font-style: italic;
@@ -6,10 +6,10 @@
   white-space: pre-line;
 }
 
-.musingsAuthor{
+.literatureAuthor{
   color: var(--ifm-color-emphasis-600);
 }
 
-[data-theme='dark'] .musingsAuthor{
+[data-theme='dark'] .literatureAuthor{
   color: var(--ifm-color-emphasis-300);
 }
