@@ -54,13 +54,13 @@ def get_label_of_md_x(basedir, filename):
 
 
 def path_to_tree(path):
-    """Generates content.md
+    """Generates introduction.md
     Parameters
     ----------
     path : Path
         the path to be scanned
     """
-    with open(Path(f'{path}/content.md'), 'w', encoding='utf-8') as f:
+    with open(Path(f'{path}/introduction.md'), 'w', encoding='utf-8') as f:
         f.write(CONTENT_HEADER)
         for root, dirs, files in os.walk(path):
             # cut path from root and count folder level by os.separator. Omit root folder (i.e. '-1')
@@ -75,7 +75,7 @@ def path_to_tree(path):
                     'docs/category/' + os.path.basename(root)))
             subindent = ' ' * 4 * (level + 1)
             for file in files:
-                if (file.endswith("md") or file.endswith("mdx")) and file != "content.md":
+                if (file.endswith("md") or file.endswith("mdx")) and file != "introduction.md":
                     f.write('{}- [{}]({})\n'.format(
                         subindent,
                         get_label_of_md_x(root, file).strip(),
