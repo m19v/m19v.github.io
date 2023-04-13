@@ -22,6 +22,7 @@ Follow the steps in the sections of the current chapter to set up Giscus and con
 - Under "Features" section, click "Set up discussions".
 - Edit the template in "Start a new discussion" and click "Start discussion".
 
+<!--truncate-->
 ### Enable Giscus
 
 - [Configure](https://github.com/apps/giscus) giscus in your GitHub account.

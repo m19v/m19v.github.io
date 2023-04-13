@@ -17,6 +17,7 @@ In this post, we are going to discuss the process of installing, configuring, an
 
 ***SonarQube*** is an open-source tool which can be integrated with build tools, such as Jenkins, for continuous inspection and automatic static analysis of code quality to detect vulnerabilities, bugs and code smells in build process.
 
+<!--truncate-->
 ### Why it's important to bind them in IntelliJ IDE
 
 Both SonarLint and SonarQube are technologies that perform code inspection and analysis to detect and resolve code quality issues. Nevertheless, they have different functionality scopes. SonarLint analyzes code while writing it in the IDE, providing instant feedback, while SonarQube is used in the build phase to continuously inspect and analyze the codebase.
