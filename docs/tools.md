@@ -36,8 +36,8 @@ This is a list of all tools and applications, that I’m personally using in my 
  
 ## Etc.
 - Nexus Repository OSS - an open source repository that supports many artifact formats  
-- WildFly - a powerful, modular, & lightweight application server  
 - Inkscape - a free and open source vector graphics editor
+- Figma - the collaborative interface design tool  
 - Excalidraw - a virtual whiteboard for sketching hand-drawn like diagrams
 - Notion – a project management and note-taking software
 - Oh-my-posh with starship
