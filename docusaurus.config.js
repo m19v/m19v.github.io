@@ -124,7 +124,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'introduction', // must be the same as the name of file
+            docId: 'welcome', // must be the same as the name of file
             position: 'left',
             label: 'Docs',
           },

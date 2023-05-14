@@ -35,6 +35,7 @@ This is a list of all tools and applications, that I’m personally using in my 
 - Uptime Kuma - a self-hosted monitoring tool  
  
 ## Etc.
+- KiCad - an open source software suite for Electronic Design Automation (EDA)
 - Nexus Repository OSS - an open source repository that supports many artifact formats  
 - Inkscape - a free and open source vector graphics editor
 - Figma - the collaborative interface design tool  
