@@ -10,6 +10,7 @@ This is a collection of articles, books, conferences and podcasts related to Dev
 - [Containers landscape: seen through OCI and CNCF standards lens.](https://adriancitu.com/2021/12/30/containers-landscape-seen-through-oci-and-cncf-standards-lens/)
 - [The Arrival of Java 20!](https://inside.java/2023/03/21/the-arrival-of-java-20/)
 - [Laws and Principles of Software Development.](https://reflectoring.io/laws-and-principles-of-software-development/)
+- [Kubernetes: A Pod's Life](https://cloud.redhat.com/blog/kubernetes-pods-life)
 ### Books
  - A Brief History of Time by Stephen Hawking. From the Big Bang to Black Holes.
 ### Podcasts
