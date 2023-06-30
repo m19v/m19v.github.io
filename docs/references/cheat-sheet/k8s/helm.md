@@ -9,4 +9,4 @@ helm install <name> <chart> --dry-run --debug         # Run a test installation 
 ```
 
 ## References
-(Cheat Sheet - HELM)[https://helm.sh/docs/intro/cheatsheet/]
+[Cheat Sheet - HELM](https://helm.sh/docs/intro/cheatsheet/)
