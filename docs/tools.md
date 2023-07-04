@@ -22,7 +22,8 @@ This is a list of all tools and applications, that I’m personally using in my 
 ## Infrastructure and Home Server
 - Proxmox VE - Open-source server virtualization management platform  
 - Home Assistant -  a free and open-source software for home automation designed to be a central control system for smart home devices with a focus on local control and privacy  
-- Homer – A dead simple static HOMepage for a servER to keep the services on hand
+- Homer – A dead simple static HOMepage for a servER to keep the services on hand  
+- Nexus Repository OSS - an open source repository that supports many artifact formats  
 
 ## Networking and Security
 - Pi-hole - a Linux network-level advertisement and Internet tracker blocking application which acts as a DNS sinkhole and optionally a DHCP server, intended for use on a private network  
@@ -35,9 +36,9 @@ This is a list of all tools and applications, that I’m personally using in my 
 - Uptime Kuma - a self-hosted monitoring tool  
  
 ## Etc.
-- KiCad - an open source software suite for Electronic Design Automation (EDA)
-- Nexus Repository OSS - an open source repository that supports many artifact formats  
-- Inkscape - a free and open source vector graphics editor
+- Neovim - a Vim-based text editor engineered for extensibility and usability  
+- KiCad - an open source software suite for Electronic Design Automation (EDA)  
+- Inkscape - a free and open source vector graphics editor  
 - Figma - the collaborative interface design tool  
 - Excalidraw - a virtual whiteboard for sketching hand-drawn like diagrams
 - Notion – a project management and note-taking software
