@@ -1,6 +1,12 @@
 {
-  "Welcome to my website": {
-    "message": "Welcome to my website"
+  "homepage.hello": {
+    "message": "Салом, исми ман"
+  },
+  "homepage.iam": {
+    "message": "муҳандиси нармафзор ҳастам ва майли зиёде ба фанновариву барномасозӣ дорам."
+  },
+  "homepage.more": {
+    "message": "муфассалтар..."
   },
   "homepage.welcome.to": {
     "message": "Хуш омадед ба",
@@ -29,10 +35,6 @@
   },
   "home.feature.card.blog.description": {
     "message": "Мақолаҳои охиринро дар мавзӯъҳои Software Development ва DevSecOps пайгирӣ кунед."
-  },
-  "about.aboutMeTittle": {
-    "message": "Дар бораи муаллиф",
-    "description": "About me message"
   },
   "about.aboutMeHello": {
     "message": "Салом,"

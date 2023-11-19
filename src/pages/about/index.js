@@ -14,11 +14,6 @@ function About() {
 
   return (
     <Layout title="About" description={siteConfig.tagline}>
-      <header className={styles.aboutHeader}>
-        <h2 className="underlineColorSuccess">
-          <Translate id="about.aboutMeTittle"/>
-        </h2>
-      </header>
       <main id="main">
         <div className={styles.about}>
           <div>

@@ -1,10 +1,12 @@
 {
-  "Welcome to my website": {
-    "message": "Welcome to my website"
+  "homepage.hello": {
+    "message": "Hi, my name is"
   },
-  "homepage.welcome.to": {
-    "message": "Welcome to",
-    "description": "Welcome to message"
+  "homepage.iam": {
+    "message": "I am a Software Developer passionate about tech and programming."
+  },
+  "homepage.more": {
+    "message": "more..."
   },
   "homepage.hero.subtitle":{
     "message":"A space of a Linux enthusiast, DevSecOps Engineer and Backend Software Developer"

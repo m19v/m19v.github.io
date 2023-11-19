@@ -1,17 +1,3 @@
-.aboutHeader {
-  background-color: var(--ifm-footer-background-color);
-  padding: 1rem 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  display: block;
-}
-
-.aboutHeader h2 {
-  display: inline-block;
-  padding-bottom: 6px;
-}
-
 .about {
   display: flex;
   flex-direction: row;
