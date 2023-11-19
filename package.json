@@ -1,6 +1,6 @@
 {
   "name": "m-19-v",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
@@ -15,25 +15,25 @@
     "generate-doc-content": "python generate-doc-content.py"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.4.0",
-    "@docusaurus/plugin-sitemap": "^2.4.0",
-    "@docusaurus/preset-classic": "^2.4.0",
+    "@docusaurus/core": "^3.0.0",
+    "@docusaurus/plugin-sitemap": "^3.0.0",
+    "@docusaurus/preset-classic": "^3.0.0",
     "@easyops-cn/docusaurus-search-local": "^0.31.0",
-    "@giscus/react": "^2.2.6",
-    "@mdx-js/react": "^1.6.22",
+    "@giscus/react": "^2.3.0",
+    "@mdx-js/react": "^3.0.0",
     "clsx": "^1.2.1",
     "countapi-js": "^1.0.2",
     "hast-util-is-element": "^1.1.0",
-    "prism-react-renderer": "^1.3.5",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "prism-react-renderer": "^2.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-markdown": "^8.0.3",
-    "rehype-katex": "^5.0.0",
-    "rehype-raw": "^6.1.1",
-    "remark-math": "^3.0.1"
+    "rehype-katex": "^7.0.0",
+    "rehype-raw": "^7.0.0",
+    "remark-math": "^6.0.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^2.4.0"
+    "@docusaurus/module-type-aliases": "^3.0.0"
   },
   "browserslist": {
     "production": [
@@ -48,6 +48,6 @@
     ]
   },
   "engines": {
-    "node": ">=16.14"
+    "node": ">=18.0"
   }
 }
