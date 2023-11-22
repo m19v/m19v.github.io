@@ -21,21 +21,23 @@ function About() {
           </div>
           <div className={styles.aboutText}>
             <h2>
-              <Translate id="about.aboutMeHello"/>
+              <Translate id="about.hello" />
             </h2>
             <p>
-              I am <a>m19v</a>, a software developer with a focus on backend development and DevOps/Cloud technologies.
+              <Translate id="about.p.1.1" />
+              <a>m19v</a>
+              <Translate id="about.p.1.2" />
             </p>
             <p>
-              I am (or strive to be) an organized and analytical person, a problem solver with high attention to detail. A fan of football, mysteries TV Series and Tajik/Persian literature. I am a devoted family man and a proud father.
+              <Translate id="about.p.2" />
             </p>
             <p>
-              I strongly care about documenting and sharing knowledge. I use this website as a reference in my daily work and would be glad if others could benefit from the information provided here.
+              <Translate id="about.p.3" />
             </p>
             <p>
-              Feel free to contact me via email: <a href="mailto:mnineteenv@gmail.com">mnineteenv@gmail.com</a>
+              <Translate id="about.p.4" /><a href="mailto:mnineteenv@gmail.com">mnineteenv@gmail.com</a>
             </p>
-            <p>Thanks for stopping by.</p>
+            <p><Translate id="about.p.5"/></p>
             {/* <a href="https://stackoverflow.com/users/12501050/m19v">
               <img
                 src="https://stackexchange.com/users/flair/17263784.png"

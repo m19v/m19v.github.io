@@ -8,38 +8,25 @@
   "homepage.more": {
     "message": "more..."
   },
-  "homepage.hero.subtitle":{
-    "message":"A space of a Linux enthusiast, DevSecOps Engineer and Backend Software Developer"
-  },
-  "homepage.hero.subsubtitle":{
-    "message":"Here I aim to accumulate manuals, guides, references and articles on Linux, DevSecOps and Software Development for my daily use and for anyone who wants to become a software developer."
-  },
-  "home.feature.card.tutorials.title": {
-    "message": "Tutorials"
-  },
-  "home.feature.card.tutorials.description": {
-    "message": "Browse through the tutorials on programming languages and DevSecOps tools."
-  },
-  "home.feature.card.references.title": {
-    "message": "References"
-  },
-  "home.feature.card.references.description": {
-    "message": "Check out the CLI and API reference documentation of programming languages and DevSecOps tools."
-  },
-  "home.feature.card.blog.title": {
-    "message": "Articles"
-  },
-  "home.feature.card.blog.description": {
-    "message": "Read and Follow recent blog posts and articles on Software Development and DevSecOps topics."
-  },
-  "about.aboutMeTittle": {
-    "message": "About",
-    "description": "About me message"
-  },
-  "about.aboutMeHello": {
+  "about.hello": {
     "message": "Hello,"
   },
-  "about.aboutMeFirstP": {
-    "message": ""
+  "about.p.1.1": {
+    "message": "I am "
+  },
+  "about.p.1.2": {
+    "message": ", a software developer with a focus on backend development and DevOps/Cloud technologies."
+  },
+  "about.p.2": {
+    "message": "I am (or strive to be) an organized and analytical person, a problem solver with high attention to detail. A fan of football, mountain biking and tajik/persian literature. I am a devoted family man and a proud father."
+  },
+  "about.p.3": {
+    "message": "I strongly care about documenting and sharing knowledge. I use this website as a reference in my daily work and would be glad if others could benefit from the information provided here."
+  },
+  "about.p.4": {
+    "message": "Feel free to contact me via email: "
+  },
+  "about.p.5": {
+    "message": "Thanks for stopping by!"
   }
 }

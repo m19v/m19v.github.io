@@ -8,38 +8,25 @@
   "homepage.more": {
     "message": "муфассалтар..."
   },
-  "homepage.welcome.to": {
-    "message": "Хуш омадед ба",
-    "description": "Welcome to message"
-  },
-  "homepage.hero.subtitle":{
-    "message":"фазои як мухлиси Linux, DevSecOps Engineer ва Backend Software Developer"
-  },
-  "homepage.hero.subsubtitle":{
-    "message":"Дар ин ҷо дастурҳо, роҳнамоҳо, истинодҳо ва мақолаҳоро дар бораи Linux, DevSecOps ва Software Development барои истифодаи ҳаррӯзаи худ ва барои ҳар касе, ки мехоҳад Software Developer шавад, ҷамъоварӣ мешаванд."
-  },
-  "home.feature.card.tutorials.title": {
-    "message": "Дастурҳо"
-  },
-  "home.feature.card.tutorials.description": {
-    "message": "Дастурҳоро оид ба забонҳои барномасозӣ ва абзорҳои DevSecOps паймоиш кунед."
-  },
-  "home.feature.card.references.title": {
-    "message": "Истинодҳо"
-  },
-  "home.feature.card.references.description": {
-    "message": "Истинодҳои CLI ва API-и забонҳои барномасозӣ ва абзорҳои DevSecOps-ро истифода баред."
-  },
-  "home.feature.card.blog.title": {
-    "message": "Мақолаҳо"
-  },
-  "home.feature.card.blog.description": {
-    "message": "Мақолаҳои охиринро дар мавзӯъҳои Software Development ва DevSecOps пайгирӣ кунед."
-  },
-  "about.aboutMeHello": {
+  "about.hello": {
     "message": "Салом,"
   },
-  "about.aboutMeFirstP": {
-    "message": ""
+  "about.p.1.1": {
+    "message": "исми ман "
+  },
+  "about.p.1.2": {
+    "message": " аст ва ман муҳандиси нармафзор мебошам. Фаълияти ман асосан ба тавсеа ва таҳияи барономаҳо дар қисми сервер (server-side programming) ва муҳандисии DevOps (DevOps Engineering) равона шудааст."
+  },
+  "about.p.2": {
+    "message": "Дар раванди ҳалли масалаҳои муҳандисии нармафзор, ва на танҳо, кӯшиш ба харҷ медиҳам, то бо як низоми мураттаб кор кунам. Фикр кунам, ки шахси таҳлилӣ ва кунҷков ҳастам, ва ба тафсилоти ҳар масъалаи рӯ ба рӯ шуда диққати хоса зоҳир мекунам. Тамошо ва бозии футбол, рондани дучархаи куҳистон ва мутолиаи адабиёти форсу тоҷик шуғлҳои дустоштаам ҳастанд. Арзишҳои оиларо гиром медорам ва худ падар ҳастам."
+  },
+  "about.p.3": {
+    "message": "Ба ҳуҷҷатгузории мавзуъҳои тахассусӣ ва мубодилаи он бо дигарон таваҷҷӯҳи хос дорам. Ният дорам то дар ин вебгоҳ мавзуъҳои дар раванди таҳсил ва фаъолияти касбиам омӯхтаро, ки ба улуми роёна ва ё муҳандисии нармафзор рабт доранд,  ҳуҷҷатгузорӣ намоям. Умед дорам ба хонанда барои омӯхтани мавзуъҳои улуми роёна ва ё муҳандисии нармафзор ин вебгоҳ муфид хохад буд."
+  },
+  "about.p.4": {
+    "message": "Барои тамос лутфан аз роённомаи зер истифода баред: "
+  },
+  "about.p.5": {
+    "message": "Ташаккур барои боздид аз ин вебгоҳ!"
   }
 }

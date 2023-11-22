@@ -14,7 +14,9 @@
 }
 
 .aboutText {
-  max-width: 512px;
+  max-width: 40rem;
+  /* text-align: justify;
+  text-justify: inter-word; */
 }
 
 .aboutText a {
