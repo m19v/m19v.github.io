@@ -80,8 +80,8 @@ export default function BlogPostItemHeaderInfo({ className }) {
           <ReadingTime readingTime={readingTime} />
           {currentUriIsNotBlog && (
             <>
-              <Spacer />
-              <ViewCount />
+              {/* <Spacer /> */}
+              {/* <ViewCount /> */}
             </>
           )}
         </>
