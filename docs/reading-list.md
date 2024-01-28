@@ -5,6 +5,17 @@ sidebar_position: 3
 
 This is a collection of articles, books, conferences and podcasts related to DevSecOps, Software Engineering and Electrical Engineering which I have read, listened or watched so far and recommend to others.
 
+
+## 2024
+### Articles
+- 
+### Books
+- [Show Your Work! 10 ways to share your creativity and get discovered by Austin Kleon.](https://austinkleon.com/show-your-work/) 
+### Conferences
+- 
+### Podcasts
+- [AI predictions for 2024.](https://podcasts.google.com/feed/aHR0cHM6Ly9jaGFuZ2Vsb2cuY29tL3ByYWN0aWNhbGFpL2ZlZWQ/episode/Y2hhbmdlbG9nLmNvbS83LzIzMDM?sa=X&ved=0CAUQkfYCahcKEwiIpaS694CEAxUAAAAAHQAAAAAQLA)
+
 ## 2023
 ### Articles
 - [Containers landscape: seen through OCI and CNCF standards lens.](https://adriancitu.com/2021/12/30/containers-landscape-seen-through-oci-and-cncf-standards-lens/)
