@@ -4,9 +4,17 @@ title: asdf
 
 ## Manage plugins
 
+Plugins are how `asdf` knows to handle different tools like Java, Maven, Node.js etc.
+
 ```bash
-asdf plugin list all                       # List plugins
-asdf plugin add <name> [<git-url>]
+asdf plugin list all                       # List plugins registered on asdf with URLs
+asdf plugin list [--urls] [--refs]         # List installed plugins [git urls] [git-ref]
+
+asdf plugin add <name> [<git-url>]         # Add a plugin from the asdf plugin repo OR, add a custom Git repo with name and URL
+
+asdf plugin remove <name>                  # Remove plugin and package versions
+asdf plugin update <name> [<git-ref>]      # Update a plugin to latest commit
+
 asdf plugin update --all                   # Update all plugins to latest
 ```
 
