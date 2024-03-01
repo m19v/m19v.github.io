@@ -22,13 +22,13 @@ asdf plugin update --all                   # Update all plugins to latest
 ## Manage packages
 
 ```bash
-
+asdf current                               # Display current version set or being used for all packages
 ```
 
 ## Utils
 
 ```bash
-
+asdf version                               # Print the currently installed version of asdf
 ```
 
 ## Resources
