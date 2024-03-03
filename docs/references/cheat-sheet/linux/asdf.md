@@ -28,7 +28,10 @@ asdf current                               # Display current version set or bein
 ## Utils
 
 ```bash
+asdf info                                  # Print asdf information
 asdf version                               # Print the currently installed version of asdf
+asdf update                                # Update asdf to the latest stable release
+asdf update --head                         # Update asdf to the latest on the master branch
 ```
 
 ## Resources
