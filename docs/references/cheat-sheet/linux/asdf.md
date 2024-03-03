@@ -22,7 +22,19 @@ asdf plugin update --all                   # Update all plugins to latest
 ## Manage packages
 
 ```bash
-asdf current                               # Display current version set or being used for all packages
+asdf list <name> [version]                 # List installed versions of a package and optionally filter the versions
+asdf list all <name> [<version>]           # List all versions of a package and optionally filter the returned versions
+
+asdf latest --all                          # Show latest stable version of all the packages and if they are installed
+
+
+asdf install <name>                        # Install one tool at the version specified in the .tool-versions file
+asdf install <name> <version>              # Install a specific version of a package
+asdf uninstall <name> <version>            # Remove a specific version of a package
+
+
+asdf global <name> <version>               # Set the package global version
+asdf shell <name> <version>                # Set the package version to `ASDF_${LANG}_VERSION` in the current shell
 ```
 
 ## Utils
@@ -31,7 +43,6 @@ asdf current                               # Display current version set or bein
 asdf info                                  # Print asdf information
 asdf version                               # Print the currently installed version of asdf
 asdf update                                # Update asdf to the latest stable release
-asdf update --head                         # Update asdf to the latest on the master branch
 ```
 
 ## Resources
