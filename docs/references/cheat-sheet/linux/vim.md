@@ -5,7 +5,7 @@ title: vim
 ## Global
 
 ```bash
-[count] [operation] [motion]
+[count] [operation] [motion]                   # vim normal mode PATTERN
 # e.g."
 # 2dw    -    [2] [delete] [word]
 #  da"   -    [] [delete] [around "]
