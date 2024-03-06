@@ -25,6 +25,10 @@ title: vim
 ## Cursor movement
 
 ```bash
+],)                    # move to closing )
+],}                    # move to closing }
+],(                    # move to opening (
+],{                    # move to opening {
 ```
 
 ## Search and replace
