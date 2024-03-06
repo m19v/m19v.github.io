@@ -53,3 +53,11 @@ Ctrl + w, f                 # goto file under cursor in new window
 Ctrl + i                    # go to newer position in jump list
 Ctrl + o                    # go to older position in jump list
 ```
+
+Working with multiple files
+
+```bash
+:ls or :buffers             # list all open buffers
+:b[uffer] file              # go to a buffer by file
+:b[uffer]#                  # go to a buffer by index #
+```
