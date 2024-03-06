@@ -20,6 +20,7 @@ title: vim
 ## Editing
 
 ```bash
+.                      # repeat last command
 ```
 
 ## Cursor movement
@@ -39,6 +40,7 @@ title: vim
 ## Cut and paste
 
 ```bash
+:g/{pattern}/d              # delete all lines containing pattern
 ```
 
 ## Marks and positions
