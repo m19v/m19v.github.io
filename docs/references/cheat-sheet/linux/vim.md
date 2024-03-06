@@ -26,6 +26,9 @@ title: vim
 ## Cursor movement
 
 ```bash
+f(                     # find first (
+
+
 ],)                    # move to closing )
 ],}                    # move to closing }
 [,(                    # move to opening (
