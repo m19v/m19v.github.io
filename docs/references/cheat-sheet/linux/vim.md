@@ -27,8 +27,8 @@ title: vim
 ```bash
 ],)                    # move to closing )
 ],}                    # move to closing }
-],(                    # move to opening (
-],{                    # move to opening {
+[,(                    # move to opening (
+[,{                    # move to opening {
 ```
 
 ## Search and replace
