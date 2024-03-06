@@ -5,6 +5,16 @@ title: vim
 ## Global
 
 ```bash
+[count] [operation] [motion]
+# e.g."
+# 2dw    -    [2] [delete] [word]
+#  da"   -    [] [delete] [around "]
+#  da"   -    [] [delete] [around "]
+#  dat   -    [] [delete] [around (html)tag]
+#  ca"   -    [] [change] [around "]
+#  va"   -    [] [visual mode mark] [around "]
+
+#  zf at   -  [] [fold] [around (html)tag]
 ```
 
 ## Editing
