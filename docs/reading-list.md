@@ -12,7 +12,7 @@ This is a collection of articles, books, conferences and podcasts related to Dev
 ### Books
 - [Show Your Work! 10 ways to share your creativity and get discovered by Austin Kleon.](https://austinkleon.com/show-your-work/) 
 ### Conferences
-- 
+- [Modern Java in Action](https://youtu.be/4UDwrfTNmo4?si=Xr284fZANNxtYv8B)  
 ### Podcasts
 - [AI predictions for 2024.](https://podcasts.google.com/feed/aHR0cHM6Ly9jaGFuZ2Vsb2cuY29tL3ByYWN0aWNhbGFpL2ZlZWQ/episode/Y2hhbmdlbG9nLmNvbS83LzIzMDM?sa=X&ved=0CAUQkfYCahcKEwiIpaS694CEAxUAAAAAHQAAAAAQLA)
 
