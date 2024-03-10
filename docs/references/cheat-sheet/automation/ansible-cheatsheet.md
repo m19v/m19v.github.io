@@ -37,25 +37,41 @@ private_key_file = ~/.ssh/nameOfSSHKey
 
 ## Playbook
 
-### Running a playbook
-```shell
-ansible-playbook <YAML>                   # Run on all hosts defined
-ansible-playbook <YAML> -f 10             # Run 10 hosts parallel
-ansible-playbook <YAML> --verbose         # Verbose on successful tasks
-ansible-playbook <YAML> -C                # Test run
-ansible-playbook <YAML> -C -D             # Dry run
-ansible-playbook <YAML> -l <host>         # Run on single host
-```
+## Ansible commands
 
-### Run Infos
 ```shell
-ansible-playbook <YAML> --list-hosts
-ansible-playbook <YAML> --list-tasks
-```
+ansible all --key-file ~/.ssh/nameOfSSHKey -i inventory -m ping
 
-### Syntax Check
-```shell
+ansible all --list-hosts
+
+ansible all -m gather_facts
+ansible all -m gather_facts --limit ip.address.of.single.host
+
+# sudo apt update to update package index
+ansible all -i hosts -m apt -a update_cache=true --become --ask-become-pass
+
+# install tmux
+ansible all -i hosts -m apt -a name=tmux --become --ask-become-pass
+ansible all -i hosts -m apt -a "name=tmux state=latest" --become --ask-become-pass
+
+# sudo apt dist-upgrade
+ansible all -i hosts -m apt -a upgrade=dist --become --ask-become-pass
+
+ansible-playbook --ask-become-pass playbookFileName.yml
+
+# List tags of a playbook
+ansible-playbook -i nameOfInventory --list-tags playbookFileName.yml
+ansible-playbook -i nameOfInventory --tags "tag1,tag2,tag3" --ask-become-pass playbookFileName.yml
+
+# Syntax check
 ansible-playbook --syntax-check <YAML>
+
+# Ansoble Vaults
+ansible-vault create secret.yml
+ansible-vault edit secret.yml
+
+# Ansoble Galaxy
+ansible-galaxy install -r requirements.yml
 ```
 
 ## Playbook snippets
