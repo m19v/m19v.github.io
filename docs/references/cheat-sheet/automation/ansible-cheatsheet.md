@@ -24,7 +24,14 @@ apt upgrade -y
 apt install ansible -y
 ```
 
-## Yaml
+## Ansible configuration
+
+### ansible.cfg
+```shell
+[default]
+inventory = nameOfInventoryFile
+private_key_file = ~/.ssh/nameOfSSHKey
+```
 
 ## Ad-hoc commands
 
