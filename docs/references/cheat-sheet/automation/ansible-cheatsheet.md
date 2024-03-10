@@ -113,6 +113,47 @@ sudo apt install ansible
 
 ## Troubleshooting
 
+## SSH Overview
+### SSH Key-Based Authentication
+
+- Install OpenSSH on server
+
+```bash
+# Ubuntu
+sudo apt install openssh-server
+```
+
+- Create an SSH key pair (with a passphrase) for your normal user account and copy it to target server
+
+```bash
+
+# -t ed25519        type of algorith
+# -C                comment to ssh key
+ssh-keygen -t ed25519 -C "ansible tutorial key"
+
+# following command will copy the public key to the host under the folder 
+# .ssh/authorized_keys
+ssh-copy-id -i ~/.ssh/id_ed25519.pub 1p.address.of.host
+```
+
+- Create a specific SSH key for Ansible Control Node (without passphrase as ansible can not enter passphrase everytime connecting target servers) and copy it to target server
+
+```bash
+# with different name e.g. /home/username/.ssh/ansible
+ssh-keygen -t ed25519 -C "ansible control node"
+```
+
+### Adding SSH Key to SSH Agent
+
+```bash
+# Check if ssh-agent is running
+eval "$(ssh-agent -s)"        
+# Add ssh key to ssh-agent
+ssh-add ~/.ssh/nameOfSSHKey
+# Verify Key is added to ssh-agent
+ssh-add -l
+```
+
 ## References
 
 - [Ansible Documentation](https://docs.ansible.com/ansible/latest/)
