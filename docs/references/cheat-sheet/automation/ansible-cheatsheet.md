@@ -15,27 +15,14 @@ title: Ansible
 - Control machine − a system on which Ansible is installed which manages other machines by executing playbook.
 - Remote machine − a remote system managed by control machine.
 
-### Control Machine Requirement
-
-- Python 3 or higher
-
 ### Installation
 
-**Option 1.** Configure PPA on control machine and install Ansible as follows:
-
 ```shell
-sudo apt-get update
-sudo apt-get install software-properties-common 
-sudo apt-add-repository ppa:ansible/ansible $ sudo apt-get update 
-sudo apt-get install ansible
-```
-**Option 2.** Install Ansible using ```python pip```
+apt update
+apt upgrade -y
 
-```shell
-python3 -m pip install --user ansible
+apt install ansible -y
 ```
-
-or check official [getting started with Ansible](https://docs.ansible.com/ansible/latest/getting_started/index.html) for complete details!
 
 ## Yaml
 
@@ -69,6 +56,32 @@ ansible-playbook --syntax-check <YAML>
 ## Ansible Inventory
 A list of managed nodes that are logically organized. You create an inventory on the control node to describe host deployments to Ansible.
 
+## WSL Playbook
+
+```shell
+curl
+zsh
+git
+exa
+zsh-autosuggestions
+fzf
+direnv
+Hack Herd Font
+starship
+
+neovim
+vim-plug
+
+-----------------
+
+sudo apt update
+sudo apt install git
+
+# Create m19v user and group
+
+sudo apt install ansible
+```
+
 ## Roles
 
 ## Variables
@@ -79,7 +92,6 @@ A list of managed nodes that are logically organized. You create an inventory on
 
 ## References
 
-- [Getting started with Ansible](https://docs.ansible.com/ansible/latest/getting_started/index.html)
 - [Ansible Documentation](https://docs.ansible.com/ansible/latest/)
-- [Ansible Cheat Sheet](https://lzone.de/cheat-sheet/Ansible)
-- [Cheatsheet for Ansible](https://devhints.io/ansible)
+- [Ansible Best Practices](https://docs.ansible.com/ansible/2.9/user_guide/playbooks_best_practices.html)
+- [Ansible Builtin Modules, Plugins etc.](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/)
