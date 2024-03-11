@@ -90,7 +90,11 @@ zsh-autosuggestions
 fzf
 direnv
 Hack Herd Font
+
 starship
+  curl -sS https://starship.rs/install.sh | sh
+  Add the following to the end of ~/.zshrc:
+    eval "$(starship init zsh)"
 
 neovim
 vim-plug
