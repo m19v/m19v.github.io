@@ -82,6 +82,8 @@ A list of managed nodes that are logically organized. You create an inventory on
 ## WSL Playbook
 
 ```shell
+# TOOLS:
+# -------------
 curl
 zsh
 git
@@ -98,6 +100,8 @@ starship
 
 neovim
 vim-plug
+
+asdf
 
 -----------------
 
