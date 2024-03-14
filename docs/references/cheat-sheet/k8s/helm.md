@@ -52,6 +52,7 @@ helm install <name> <chart> --verify                  # Verify the package befor
 helm install <name> <chart> --dependency-update       # update dependencies if they are missing before installing the chart
 helm uninstall <name>                                 # Uninstall a release
 ```
+## Perform App Upgrade and Rollback
 
 ## List, Add, Remove, and Update Repositories
 
@@ -59,6 +60,20 @@ helm uninstall <name>                                 # Uninstall a release
 helm repo add <repo-name> <url>                   # Add a repository from the internet:
 helm repo list                                    # List added chart repositories
 helm repo update                                  # Update information of available charts locally from chart repositories
+```
+
+## Helm Release monitoring
+
+```bash
+helm env                                 # Env prints out all the environment information in use by Helm.
+```
+
+## Download Release Information
+
+## Plugin Management
+
+```bash
+helm plugin list                          # View a list of all installed plugins
 ```
 
 ## References
