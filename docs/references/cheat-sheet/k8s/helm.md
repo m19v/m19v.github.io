@@ -9,18 +9,13 @@ Chart        # It is name of your chart in case it has been pulled and untarred.
              # It is <repo_name>/<chart_name> in case the repository has been added but chart not pulled.
              # It is the URL/Absolute path to the chart.
 
-
 Name         # It is the name you want to give to your current helm chart installation.
-
 
 Release      # Is the name you assigned to an installation instance.
 
-
 Revision     # Is the value from the Helm history command
 
-
 Repo-name    # The name of a repository.
-
 
 DIR          # Directory name/path
 ```
@@ -60,6 +55,13 @@ helm uninstall <name>                                 # Uninstall a release
 helm repo add <repo-name> <url>                   # Add a repository from the internet:
 helm repo list                                    # List added chart repositories
 helm repo update                                  # Update information of available charts locally from chart repositories
+```
+
+## Search Repositories
+
+```bash
+helm search repo <keyword>        # Search repositories for a keyword in charts
+helm search hub <keyword>         # Search for charts in the Artifact Hub or your own hub instance
 ```
 
 ## Helm Release monitoring
