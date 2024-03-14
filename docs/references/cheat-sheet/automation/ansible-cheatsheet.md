@@ -82,7 +82,7 @@ A list of managed nodes that are logically organized. You create an inventory on
 ## WSL Playbook
 
 ```shell
-# TOOLS:
+# COMMON TOOLS:
 # -------------
 curl
 zsh
@@ -91,6 +91,7 @@ exa
 zsh-autosuggestions
 fzf
 direnv
+asdf
 Hack Herd Font
 
 starship
@@ -98,10 +99,12 @@ starship
   Add the following to the end of ~/.zshrc:
     eval "$(starship init zsh)"
 
+# EDITORS
 neovim
 vim-plug
 
-asdf
+# K8s
+kubectx + kubens
 
 -----------------
 
