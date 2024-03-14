@@ -53,5 +53,13 @@ helm install <name> <chart> --dependency-update       # update dependencies if t
 helm uninstall <name>                                 # Uninstall a release
 ```
 
+## List, Add, Remove, and Update Repositories
+
+```bash
+helm repo add <repo-name> <url>                   # Add a repository from the internet:
+helm repo list                                    # List added chart repositories
+helm repo update                                  # Update information of available charts locally from chart repositories
+```
+
 ## References
 [Cheat Sheet - HELM](https://helm.sh/docs/intro/cheatsheet/)
