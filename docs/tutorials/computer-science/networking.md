@@ -4,7 +4,7 @@ title: Networking
 
 ## Intro
 
-Networking Fundamentals I used to prepare for Cisco Certified Network Associate (CCNA).
+This document contains my notes on Networking Fundamentals, which I studied in preparation for the Cisco Certified Network Associate (CCNA) certification.
 
 ## Tools
 
@@ -33,6 +33,37 @@ A **wide area network** (WAN) is a telecommunications network that extends over 
 
 The Dynamic Host Configuration Protocol (**DHCP**) is a network management protocol used on Internet Protocol (**IP**) networks for automatically assigning IP addresses and other communication parameters to devices connected to the network using a client–server architecture
 
+### Firewall
+
+A **firewall** is a network security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules. A firewall typically establishes a barrier between a trusted network and an untrusted network, such as the Internet.  
+Firewalls are categorized as a
+
+- **Network-based** firewalls are positioned between two or more networks, typically between the local area network (LAN) and wide area network (WAN), their basic function being to control the flow of data between connected networks. They are either a software appliance running on general-purpose hardware, a hardware appliance running on special-purpose hardware, or a virtual appliance running on a virtual host controlled by a hypervisor.
+- **Host-based** firewalls are deployed directly on the host itself to control network traffic or other computing resources. This can be a daemon or service as a part of the operating system or an agent application for protection.
+
+## Network devices
+
+### Repeater
+
+A **Repeater** (also called a hub) is an electronic device that receives a signal and retransmits it. Repeaters are used to extend transmissions so that the signal can cover longer distances or be received on the other side of an obstruction.  
+Some types of repeaters broadcast an identical signal, but alter its method of transmission, for example, on another frequency or baud rate (speed of communication).  
+Repeaters operate on the _physical layer_, the first layer of the _OSI model_;
+
+### Network bridge
+
+A **network bridge** is a computer networking device that creates a single, aggregate network from multiple communication networks or network segments.
+
+### Network switch
+
+A **network switch** (also called **switching hub**, **bridging hub**, and, by the IEEE, **MAC bridge**) is networking hardware that connects devices on a computer network by using packet switching to receive and forward data to the destination device.  
+A network switch is a multiport network bridge that uses MAC addresses to forward data at the _data link layer_ (layer 2) of the _OSI model_. Some switches can also forward data at the _network layer_ (layer 3) by additionally incorporating routing functionality. Such switches are commonly known as _layer-3 switches_ or _multilayer switches_. In contrast to repeater, network switches has intelligence.  
+Network switches mainly operate on the _data link layer_, the second layer of the _OSI model_ and used in LAN.
+
+### Router
+
+A **router** is a networking device that forwards data packets between computer networks using IP addresses.  
+Routers operate on the _network layer_, the third layer of the _OSI model_ ;
+
 ## Computer network types by scale
 
 <img src="./resources/data_networks_classification_by_spatial_scope.svg" alt="drawing" width="200"/>
@@ -56,29 +87,6 @@ The Dynamic Host Configuration Protocol (**DHCP**) is a network management proto
 - Cloud
 - Internet
 - Interplanetary Internet
-
-## Network devices
-
-### Repeater
-
-A **Repeater** (also called a hub) is an electronic device that receives a signal and retransmits it. Repeaters are used to extend transmissions so that the signal can cover longer distances or be received on the other side of an obstruction.  
-Some types of repeaters broadcast an identical signal, but alter its method of transmission, for example, on another frequency or baud rate (speed of communication).  
-Repeaters operate on the _physical layer_, the first layer of the _OSI model_;
-
-### Network bridge
-
-A **network bridge** is a computer networking device that creates a single, aggregate network from multiple communication networks or network segments.
-
-### Network switch
-
-A **network switch** (also called **switching hub**, **bridging hub**, and, by the IEEE, **MAC bridge**) is networking hardware that connects devices on a computer network by using packet switching to receive and forward data to the destination device.  
-A network switch is a multiport network bridge that uses MAC addresses to forward data at the _data link layer_ (layer 2) of the _OSI model_. Some switches can also forward data at the _network layer_ (layer 3) by additionally incorporating routing functionality. Such switches are commonly known as _layer-3 switches_ or _multilayer switches_. In contrast to repeater, network switches has intelligence.  
-Network switches mainly operate on the _data link layer_, the second layer of the _OSI model_;
-
-### Router
-
-A **router** is a networking device that forwards data packets between computer networks using IP addresses.  
-Routers operate on the _network layer_, the third layer of the _OSI model_;
 
 ## References
 
