@@ -41,6 +41,10 @@ Firewalls are categorized as a
 - **Network-based** firewalls are positioned between two or more networks, typically between the local area network (LAN) and wide area network (WAN), their basic function being to control the flow of data between connected networks. They are either a software appliance running on general-purpose hardware, a hardware appliance running on special-purpose hardware, or a virtual appliance running on a virtual host controlled by a hypervisor.
 - **Host-based** firewalls are deployed directly on the host itself to control network traffic or other computing resources. This can be a daemon or service as a part of the operating system or an agent application for protection.
 
+### IDS & IPS
+
+**Intrusion detection systems** (IDS) and **intrusion prevention systems** (IPS) are device or software application that continually monitor a network or systems, detect and log potential incidents, take action to stop the incidents, and notify/warn security administrators.
+
 ## Network devices
 
 ### Repeater
@@ -63,6 +67,19 @@ Network switches mainly operate on the _data link layer_, the second layer of th
 
 A **router** is a networking device that forwards data packets between computer networks using IP addresses.  
 Routers operate on the _network layer_, the third layer of the _OSI model_ ;
+
+### Wireless Access Point
+
+A **wireless access point**, or just **access point** (AP), is a networking hardware device that allows other Wi-Fi devices to connect to a wired network or wireless network.  
+As a standalone device, the AP may have a wired connection to a _switch_ or _router_, but, in a _wireless router_, it can also be an integral component of the router itself.
+
+### Wireless LAN Controller
+
+A **wireless LAN controller** (WLC) is a network device used to monitor and manage wireless access points in an organization. WLCs are connected to routers and allow devices from across the organization to connect to the router via access points.
+
+### Lightweight Access Point
+
+A **Lightweight Access Point** (LWAP) is a type of wireless access point (AP) which is managed, configured and controlled by wireless LAN controller (WLC). Unlike LWAP, autonomous access points operates independently and does not need WLC.
 
 ## Computer network types by scale
 
