@@ -18,7 +18,7 @@ This is a list of all tools and applications, that I’m personally using in my 
 - Kubernetes – Container orchestrator to run applications in scalable environments  
 - Ansible – automation tool to configure systems, deploy software and orchestrate tasks
 - Jenkins – an open source continuous integration/continuous delivery and deployment (CI/CD) automation software DevOps tool
-- Terraform - an infrastructure as code tool to build, change, and version cloud and on-prem resources safely and efficiently.
+- Terraform - an infrastructure as code tool to build, change, and version cloud and on-prem resources safely and efficiently  
 
 ## Infrastructure and Home Server
 - Proxmox VE - Open-source server virtualization management platform  
