@@ -18,6 +18,7 @@ This is a list of all tools and applications, that I’m personally using in my 
 - Kubernetes – Container orchestrator to run applications in scalable environments  
 - Ansible – automation tool to configure systems, deploy software and orchestrate tasks
 - Jenkins – an open source continuous integration/continuous delivery and deployment (CI/CD) automation software DevOps tool
+- Terraform - an infrastructure as code tool to build, change, and version cloud and on-prem resources safely and efficiently.
 
 ## Infrastructure and Home Server
 - Proxmox VE - Open-source server virtualization management platform  
@@ -36,10 +37,10 @@ This is a list of all tools and applications, that I’m personally using in my 
 - Uptime Kuma - a self-hosted monitoring tool  
  
 ## Etc.
-- Neovim - a Vim-based text editor engineered for extensibility and usability  
+- Neovim (with LazyVim) - a Vim-based text editor engineered for extensibility and usability  
 - KiCad - an open source software suite for Electronic Design Automation (EDA)  
 - Inkscape - a free and open source vector graphics editor  
 - Figma - the collaborative interface design tool  
 - Excalidraw - a virtual whiteboard for sketching hand-drawn like diagrams
 - Notion – a project management and note-taking software
-- Oh-my-posh with starship
+- Oh My Zsh with starship
