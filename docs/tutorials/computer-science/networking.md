@@ -117,15 +117,15 @@ A **Lightweight Access Point** (LWAP) is a type of wireless access point (AP) wh
 
 ## OSI and TCP/IP Model
 
-|OSI Model|
-|---------|
-|Application|
-|Presentation|
-|Session|
-|Transport|
-|Network|
-|Data Link|
-|Physical|
+|#|OSI Model|TCP/IP|
+|-|---------|------|
+|7|Application||
+|6|Presentation|Application
+|5|Session|
+|4|Transport|Transport|
+|3|Network|Network|
+|2|Data Link|Data Link|
+|1|Physical|Physical|
 
 
 
