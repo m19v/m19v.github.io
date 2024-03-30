@@ -23,15 +23,15 @@ A **MAC address** (short for medium access control address) is a unique identifi
 
 ### LAN
 
-A **local area network** (LAN) is a computer network that interconnects computers within a limited area such as a residence, school, laboratory, university campus or office building.
+A **local area network** (**LAN**) is a computer network that interconnects computers within a limited area such as a residence, school, laboratory, university campus or office building.
 
 ### WAN
 
-A **wide area network** (WAN) is a telecommunications network that extends over a large geographic area.
+A **wide area network** (**WAN**) is a telecommunications network that extends over a large geographic area.
 
 ### DHCP
 
-The Dynamic Host Configuration Protocol (**DHCP**) is a network management protocol used on Internet Protocol (**IP**) networks for automatically assigning IP addresses and other communication parameters to devices connected to the network using a client–server architecture
+The **Dynamic Host Configuration Protocol** (**DHCP**) is a network management protocol used on **Internet Protocol** (**IP**) networks for automatically assigning IP addresses and other communication parameters to devices connected to the network using a client–server architecture
 
 ### Firewall
 
@@ -43,7 +43,17 @@ Firewalls are categorized as a
 
 ### IDS & IPS
 
-**Intrusion detection systems** (IDS) and **intrusion prevention systems** (IPS) are device or software application that continually monitor a network or systems, detect and log potential incidents, take action to stop the incidents, and notify/warn security administrators.
+**Intrusion detection systems** (**IDS**) and **intrusion prevention systems** (**IPS**) are device or software application that continually monitor a network or systems, detect and log potential incidents, take action to stop the incidents, and notify/warn security administrators.
+
+### TCP 
+**Transmission Control Protocol** (**TCP**) 
+
+### IP
+The **Internet Protocol** (**IP**) is the network layer communications protocol for routing and addressing packets of data to destination across network.
+
+### TLS
+**Transport Layer Security** (**TLS**) is a cryptographic protocol designed to provide communications security over a computer network.  
+TLS builds on the now-deprecated **Secure Sockets Layer** (**SSL**) specifications.
 
 ## Network devices
 
@@ -104,6 +114,20 @@ A **Lightweight Access Point** (LWAP) is a type of wireless access point (AP) wh
 - Cloud
 - Internet
 - Interplanetary Internet
+
+## OSI and TCP/IP Model
+
+|OSI Model|
+|---------|
+|Application|
+|Presentation|
+|Session|
+|Transport|
+|Network|
+|Data Link|
+|Physical|
+
+
 
 ## References
 
