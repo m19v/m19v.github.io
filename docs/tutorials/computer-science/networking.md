@@ -55,6 +55,9 @@ The **Internet Protocol** (**IP**) is the network layer communications protocol 
 **Transport Layer Security** (**TLS**) is a cryptographic protocol designed to provide communications security over a computer network.  
 TLS builds on the now-deprecated **Secure Sockets Layer** (**SSL**) specifications.
 
+### Communication protocol
+A **communication protocol** is a system of rules that allows two or more entities of a communications system to transmit information. The protocol defines the rules, syntax, semantics, and synchronization of communication and possible error recovery methods.
+
 ## Network devices
 
 ### Repeater
@@ -117,16 +120,32 @@ A **Lightweight Access Point** (LWAP) is a type of wireless access point (AP) wh
 
 ## OSI and TCP/IP Model
 
-|#|OSI Model|TCP/IP|
+### OSI and TCP/IP Model
+
+TCP/IP has 5 layers and we refer to the top layer (Application layer) as layer 7 because TCP/IP is originated from OSI Model.
+
+|Layers|OSI Model|TCP/IP|
 |-|---------|------|
-|7|Application||
-|6|Presentation|Application
-|5|Session|
+|7|Application|Application|
+|6|Presentation||
+|5|Session||
 |4|Transport|Transport|
 |3|Network|Network|
 |2|Data Link|Data Link|
 |1|Physical|Physical|
 
+### Devices & protocols
+
+
+|Layers|TCP/IP|TCP/IP|
+|-|---------|------|
+|7|Application|HTTP, HTTPS, Telnet,FTP, TFTP|
+|6|||
+|5|||
+|4|Transport|TCP/UDP|
+|3|Network|Router|
+|2|Data Link|Bridge/Switch|
+|1|Physical|Network Hub|
 
 
 ## References
