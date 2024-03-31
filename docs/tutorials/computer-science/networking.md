@@ -58,9 +58,12 @@ TLS builds on the now-deprecated **Secure Sockets Layer** (**SSL**) specificatio
 ### Communication protocol
 A **communication protocol** is a system of rules that allows two or more entities of a communications system to transmit information. The protocol defines the rules, syntax, semantics, and synchronization of communication and possible error recovery methods.
 
-### Protocol data unit
+### PDU
 A **protocol data unit** (**PDU**) is a single unit of information transmitted among peer entities of a computer network.
 
+### ARP
+
+The **Address Resolution Protocol** (**ARP**) is a communication protocol used for discovering the link layer address, such as a MAC address, associated with a given internet layer address, typically an IPv4 address.
 
 ## Network devices
 
@@ -139,7 +142,20 @@ TCP/IP has 5 layers and we refer to the top layer (Application layer) as layer 7
 |1|Physical|Physical|Physical transmission of signals,media or binary raw bits|Cable(CAT 5,6),DSL,Optic fiber|Network Hub|Bits|
 
 
+## Ports
+
+### Port ranges
+|Start|End|Designation|
+|-----|---|-----------|
+|0|1023|System or well-known ports|
+|1024|49151	|User or registered ports|
+|49152|	65535	|Dynamic, private or ephemeral ports|
+
+### Ephemeral port
+An **ephemeral port** is a communications endpoint (port) of a transport layer protocol of the Internet protocol suite that is used for only a short period of time for the duration of a communication session.
+
 ## References
 
 - [Wikipedia](https://www.wikipedia.org/)
 - [The Complete Networking Fundamentals Course. Your CCNA start](https://www.udemy.com/share/101WrE/)
+- [Service Name and Transport Protocol Port Number Registry](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml)
