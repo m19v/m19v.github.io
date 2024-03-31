@@ -19,7 +19,8 @@ A **computer network** is a group of two or more computers that are linked toget
 ### MAC address
 
 A **MAC address** (short for medium access control address) is a unique identifier assigned to a network interface controller (NIC) for use as a network address in communications within a network segment.  
-**MAC address formats**: XX:XX:XX:XX:XX:XX, XX-XX-XX-XX-XX-XX or XXXXXXXXXXXX - 6 groups of 2 hexadecimal digits (12-digit: 6 bytes or 48 bits).
+**MAC address formats**: XX:XX:XX:XX:XX:XX, XX-XX-XX-XX-XX-XX or XXXXXXXXXXXX - 6 groups of 2 hexadecimal digits (12-digit: 6 bytes or 48 bits).  
+First half of MAC address is typically the manufacturer's organizationally unique identifier (OUI) and the second half is unique number.
 
 ### LAN
 
@@ -141,7 +142,6 @@ TCP/IP has 5 layers and we refer to the top layer (Application layer) as layer 7
 |2|Data Link|Data Link|Physical addressing|Ethernet|Bridge/Switch|Frames|
 |1|Physical|Physical|Physical transmission of signals,media or binary raw bits|Cable(CAT 5,6),DSL,Optic fiber|Network Hub|Bits|
 
-
 ## Ports
 
 ### Port ranges
@@ -153,6 +153,30 @@ TCP/IP has 5 layers and we refer to the top layer (Application layer) as layer 7
 
 ### Ephemeral port
 An **ephemeral port** is a communications endpoint (port) of a transport layer protocol of the Internet protocol suite that is used for only a short period of time for the duration of a communication session.
+
+## Numeral system and networking
+
+- [Network Binary Math Explained](https://learningnetwork.cisco.com/s/blogs/a0D3i000002SKMwEAO/network-binary-math-explained)
+
+
+## IP Addressing
+
+## Commands
+
+```bash
+# How to get MAC address of device in network. See https://www.baeldung.com/linux/arp-command
+ping 10.0.0.1
+arp -a
+
+```
+
+```bash
+# Switch CLI
+show mac address-table
+```
+
+## Notes
+- [Link-local address](https://en.wikipedia.org/wiki/Link-local_address)
 
 ## References
 
