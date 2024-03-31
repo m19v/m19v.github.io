@@ -58,6 +58,10 @@ TLS builds on the now-deprecated **Secure Sockets Layer** (**SSL**) specificatio
 ### Communication protocol
 A **communication protocol** is a system of rules that allows two or more entities of a communications system to transmit information. The protocol defines the rules, syntax, semantics, and synchronization of communication and possible error recovery methods.
 
+### Protocol data unit
+A **protocol data unit** (**PDU**) is a single unit of information transmitted among peer entities of a computer network.
+
+
 ## Network devices
 
 ### Repeater
@@ -124,28 +128,15 @@ A **Lightweight Access Point** (LWAP) is a type of wireless access point (AP) wh
 
 TCP/IP has 5 layers and we refer to the top layer (Application layer) as layer 7 because TCP/IP is originated from OSI Model.
 
-|Layers|OSI Model|TCP/IP|
-|-|---------|------|
-|7|Application|Application|
-|6|Presentation||
-|5|Session||
-|4|Transport|Transport|
-|3|Network|Network|
-|2|Data Link|Data Link|
-|1|Physical|Physical|
-
-### Devices & protocols
-
-
-|Layers|TCP/IP|TCP/IP|
-|-|---------|------|
-|7|Application|HTTP, HTTPS, Telnet,FTP, TFTP|
-|6|||
-|5|||
-|4|Transport|TCP/UDP|
-|3|Network|Router|
-|2|Data Link|Bridge/Switch|
-|1|Physical|Network Hub|
+|Layers|OSI Model|TCP/IP |Description|Protocols|Devices|PDUs|
+|-|------|---------|------|-------|------|-------|
+|7|Application|Application|Human-Computer interaction|HTTP, HTTPS, Telnet,FTP, TFTP||Data|
+|6|Presentation||Compression and Encryption protocols|SSH|||
+|5|Session||Connection maintenance|NFS,RPC,SCP|||
+|4|Transport|Transport|End-to-end connection|TCP/UDP||Segments|
+|3|Network|Network|Logical addressing|IPv4/IPv6,ARP,IGMP,ICMP|Router|Packets|
+|2|Data Link|Data Link|Physical addressing|Ethernet|Bridge/Switch|Frames|
+|1|Physical|Physical|Physical transmission of signals,media or binary raw bits|Cable(CAT 5,6),DSL,Optic fiber|Network Hub|Bits|
 
 
 ## References
