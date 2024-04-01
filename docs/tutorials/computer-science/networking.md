@@ -161,6 +161,35 @@ An **ephemeral port** is a communications endpoint (port) of a transport layer p
 
 ## IP Addressing
 
+### What is IP Address?
+- layer 3 logical address assigned by an administrator
+- resides at layer 3 of OSI Model
+- used to identify specific devices on a network
+- every device on the internet has a unique IP address
+
+### IPv4 Characteristic
+
+IPv4
+- layer 3 or Network layer protocol
+- connectionless protocol
+  - TCP on other hand is connection oriented
+- packets are treated independently 
+  - may take different path (load balancing, bandwidth, hopcount)
+- hierarchical addressing structure
+  - network and host portion
+- best effort delivery with no guarantee
+- no data recovery features
+- no built-in sessions
+- no retransmission
+
+### IPv4 address format
+
+- 32 bit
+- x.x.x.x
+
+### Network and Host portion
+
+
 ## Commands
 
 ```bash
@@ -177,6 +206,13 @@ show mac address-table
 
 ## Notes
 - [Link-local address](https://en.wikipedia.org/wiki/Link-local_address)
+- [Network address translation](https://en.wikipedia.org/wiki/Network_address_translation)
+- [RFC 1918]()
+  - [Private network](https://en.wikipedia.org/wiki/Private_network)
+  - [RFC 1918 - Address Allocation for Private Internets](https://datatracker.ietf.org/doc/html/rfc1918)
+- [Routing Protocol](https://en.wikipedia.org/wiki/Routing_protocol)
+  - determines best path or route
+
 
 ## References
 
