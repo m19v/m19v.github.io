@@ -188,7 +188,9 @@ IPv4
 - x.x.x.x - 4 octets(8 bits or 1 byte)
 
 ### Network and Host portion
-
+- 10.x.x.x - IP address
+- 255.0.0.0 - network mask
+- N.H.H.H - Network/Host portions
 
 ### Private IPv4 address class ranges 
 
@@ -208,8 +210,23 @@ IPv4
 |Class D (multicast)|224.0.0.0|239.255.255.255|not defined||/4|
 |Class E (reserved)|240.0.0.0|255.255.255.255|not defined||not defined|
 
-A **loopback address** or 'localhost' IP addresses range 127.0. 0.0 to 127.255. 255.255.
+### Special addresses
+- **Directed Broadcast Address** 
+  - used by hosts to send data to all devices on a specific network.
+  - binary 1s in the entire host portion of the address (e.g. Network: 172.31.0.0, Directed broadcast:172.31.255.255)
+  - on routers disabled by default
 
+- **Local Broadcast Address**
+  - used to communicate with all devices of local network
+  - addresses is all binary 1s (e.g. 11111111.11111111.11111111.11111111 - 255.255.255.255)
+  - e.g. used by host to request an IP address from a DHCP server
+  - always dropped by routers and layer 3 switches
+
+- **Local loopback address**
+  - A loopback address or 'localhost' IP addresses range 127.0. 0.0 to 127.255. 255.255.
+  - used to let a system to send a message to itself for testing
+  - `::1` is IPv6 assigned to loopback
+  - NOTE: routers and switches also have loopback addresses which are not the same as local loopback address.
 
 ## Commands
 
