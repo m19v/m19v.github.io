@@ -185,9 +185,30 @@ IPv4
 ### IPv4 address format
 
 - 32 bit
-- x.x.x.x
+- x.x.x.x - 4 octets(8 bits or 1 byte)
 
 ### Network and Host portion
+
+
+### Private IPv4 address class ranges 
+
+|RFC 1918 name|IP address range|Number of addresses|Largest CIDR block (subnet mask)|Network/Host|Classful description|
+|-------------|----------------|-------------------|--------------------------------|--------|------------|
+|24-bit block|10.0.0.0 – 10.255.255.255|16777216|10.0.0.0/8 (255.0.0.0)|N.H.H.H|single class A network|
+|20-bit block|172.16.0.0 – 172.31.255.255|1048576|172.16.0.0/12 (255.240.0.0)|N.N.H.H|16 contiguous class B networks|
+|16-bit block|192.168.0.0 – 192.168.255.255|65536|192.168.0.0/16 (255.255.0.0)|N.N.N.H|256 contiguous class C networks|
+
+### Public IPv4 address class ranges 
+
+|Class|Start address|End address|Default address mask|Network/Host|CIDR notation|
+|-----|-------------|-----------|--------------------|------------|-------------|
+|Class A|0.0.0.0|127.255.255.255|255.0.0.0|N.H.H.H|/8|
+|Class B|128.0.0.0|191.255.255.255|255.255.0.0|N.N.H.H|/16|
+|Class C|192.0.0.0|223.255.255.255|255.255.255.0|N.N.N.H|/24|
+|Class D (multicast)|224.0.0.0|239.255.255.255|not defined||/4|
+|Class E (reserved)|240.0.0.0|255.255.255.255|not defined||not defined|
+
+A **loopback address** or 'localhost' IP addresses range 127.0. 0.0 to 127.255. 255.255.
 
 
 ## Commands
