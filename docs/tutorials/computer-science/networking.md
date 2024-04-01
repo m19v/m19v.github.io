@@ -228,6 +228,17 @@ IPv4
   - `::1` is IPv6 assigned to loopback
   - NOTE: routers and switches also have loopback addresses which are not the same as local loopback address.
 
+### Subnet Masks
+- used to determine network and host portion
+- used to determine weather a device is remote (i.e. to be reached via default gateway) or local (i.e. same subnet) (e.g. if two hosts are on the same subnet then they communicate directly with each other rather then forwarding the traffic to default gateway to route it)
+- e.g. IP: 10.1.1.1, Network mask: 255.0.0.0 (N.H.H.H), Network: 10.0.0.0, NetId: 10, HostId: .1.1.1
+
+
+### CIDR notation
+CIDR - Classless Inter-Domain Routing
+- uses 10.0.0.0/8 (8 binary bits) notation instead of 10.0.0.0 255.0.0.0
+- enables Variable Length Subnet Mask (VLSM) (e.g. 255.224.0.0 = /11) but in Class A is always /8, Class B is always /16 and Class C is always /24.
+
 ## Commands
 
 ```bash
