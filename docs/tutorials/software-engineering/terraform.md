@@ -56,12 +56,58 @@ Cloud agnostic:
 +------------------+         
 ```
 
+## Terraform project structure
+
+```txt
+project
+    .terraform
+        modules
+            modules.json
+            ...
+        provides
+            ...
+    .terraform.lock.hcl
+    main.tf
+```
+
+## Providers
+
+[Terraform providers](https://registry.terraform.io/browse/providers) are plugins that enable interaction with a resource API.
+
+```tf
+terraform {
+  required_providers {
+    ibm = {
+      source = "IBM-Cloud/ibm"
+      version = ">= 1.12.0"
+    }
+  }
+}
+```
+
+## Modules
+
+A Terraform module is 
+
+## State file
+
+- Terraform's representation of the world
+- JSON file containing information about every resource and data object
+- Contains sensitive info (e.g. database password), hence it should have restricted access and be encrypted 
+- Can be stored _locally/local_backend_ or _remotely/remote_backend_ (in object store like S3 bucket, google cloud storage)
+
 ## Terraform basic usage sequence
 
 - terraform init
+  - inits project and downloads associated providers to working directory from terraform registry
 - terraform plan
+  - compares _desired state_ (terraform config) with _actual state_(terraform state).
 - terraform apply
+  - apply terraform plan using providers
 - terraform destroy
+  - destroys all resources and data
+
+
 
 ## References
 - [Terraform Documentation](https://developer.hashicorp.com/terraform)
