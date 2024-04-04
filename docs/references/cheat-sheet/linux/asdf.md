@@ -45,6 +45,21 @@ asdf version                               # Print the currently installed versi
 asdf update                                # Update asdf to the latest stable release
 ```
 
+## Examples:
+
+```bash
+asdf plugin list all                       # list plugins on asdf and find one to be installed 
+asdf plugin add terraform                  # add terraform plugin
+asdf plugin list                           # check if plugin is added
+
+asdf list all terraform                    # list all available terraform versions
+asdf install terraform <version>           # install specific terraform version
+
+asdf global terraform <version>            # set specific terraform version globally
+
+asdf list                                  # list all installed packages
+```
+
 ## Resources
 - GitHub: https://github.com/asdf-vm/asdf
 - Docs:   https://asdf-vm.com
