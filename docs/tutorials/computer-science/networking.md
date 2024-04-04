@@ -257,7 +257,7 @@ show mac address-table
 ## Notes
 - [Link-local address](https://en.wikipedia.org/wiki/Link-local_address)
 - [Network address translation](https://en.wikipedia.org/wiki/Network_address_translation)
-- [RFC 1918]()
+- [RFC 1918](#)
   - [Private network](https://en.wikipedia.org/wiki/Private_network)
   - [RFC 1918 - Address Allocation for Private Internets](https://datatracker.ietf.org/doc/html/rfc1918)
 - [Routing Protocol](https://en.wikipedia.org/wiki/Routing_protocol)
