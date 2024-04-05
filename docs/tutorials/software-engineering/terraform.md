@@ -66,6 +66,7 @@ project
             ...
         provides
             ...
+        terraform.tfstate
     .terraform.lock.hcl
     main.tf
 ```
@@ -91,10 +92,11 @@ A Terraform module is
 
 ## State file
 
+_terraform.tfstate:_
 - Terraform's representation of the world
 - JSON file containing information about every resource and data object
 - Contains sensitive info (e.g. database password), hence it should have restricted access and be encrypted 
-- Can be stored _locally/local_backend_ or _remotely/remote_backend_ (in object store like S3 bucket, google cloud storage)
+- Can be stored **locally/local_backend** or **remotely/remote_backend** (in object store like S3 bucket, google cloud storage)
 
 ## Terraform basic usage sequence
 
@@ -106,7 +108,6 @@ A Terraform module is
   - apply terraform plan using providers
 - terraform destroy
   - destroys all resources and data
-
 
 
 ## References
