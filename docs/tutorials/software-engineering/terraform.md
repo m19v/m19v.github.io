@@ -88,7 +88,49 @@ terraform {
 
 ## Modules
 
-A Terraform module is 
+- Modules are containers for multiple resources that are used together. A module consists of a collection of `.tf` and/or `.tf.json` files kept together in a directory
+- Modules are the main way to package and reuse resource configurations with terraform
+
+### Types of modules
+
+- **Root module** is a default module containing all `.tf` files in main working directory
+- **Child module** is a separate external module referred to from a `.tf` file
+
+### Module sources
+
+- Local paths
+  ```tf
+  module "consul" {
+    source = "./consul"
+  }
+  ```
+- Terraform Registry
+  ```tf
+  module "consul" {
+    source = "hashicorp/consul/aws"
+    version = "0.1.0"
+  }
+  ```
+- GitHub
+  ```tf
+  module "consul" {
+    source = "git@github.com:hashicorp/example.git"
+  }
+  ```
+- Bitbucket
+- Generic Git, Mercurial repositories
+- HTTP URLs
+- S3 buckets
+- GCS buckets
+- Modules in Package Sub-directories
+
+### Good modules
+
+- Raises the abstraction level from base resource types
+- Groups resources in a logical fashion
+- Exposes input variables to allow necessary customization + composition
+- Provides useful defaults
+- Returns outputs to make further integrations possible
 
 ## State file
 
@@ -290,6 +332,24 @@ resource "azurerm_resource_group" "example" {
 }
 ```
 
+### Inputs + Meta arguments
+
+- input variables are passed in via module block
+
+```tf
+module "web_app" {
+  source = "./web-app-module"
+
+  # Input variables
+  bucket_name = "devops-directive-web-app-data"
+  domain = "example.com"
+  db_name = "mydb"
+  db_user = "foo"
+  db_pass = var.db_pass
+}
+
+```
+
 ## Provisioners
 
 Perform action on local or remote machine
@@ -300,6 +360,10 @@ Perform action on local or remote machine
 - vendor
   - chef
   - puppet
+
+## Project Organization + Modules
+
+
 
 ## References
 - [Terraform Documentation](https://developer.hashicorp.com/terraform)
