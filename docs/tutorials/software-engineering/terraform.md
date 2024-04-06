@@ -290,6 +290,17 @@ resource "azurerm_resource_group" "example" {
 }
 ```
 
+## Provisioners
+
+Perform action on local or remote machine
+
+- file
+- local-exec
+- remote-exec
+- vendor
+  - chef
+  - puppet
+
 ## References
 - [Terraform Documentation](https://developer.hashicorp.com/terraform)
 - [Terraform Language Documentation](https://developer.hashicorp.com/terraform/language)
