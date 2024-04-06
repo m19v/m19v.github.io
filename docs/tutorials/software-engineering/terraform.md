@@ -116,30 +116,30 @@ _terraform.tfstate:_
 - Input variables
   - var.\<name\>
 
-```tf
-variable "instance_type" {
-  description = "es2 instance type"
-  type = string
-  default = "t2.micro"
-}
-```
+  ```tf
+  variable "instance_type" {
+    description = "es2 instance type"
+    type = string
+    default = "t2.micro"
+  }
+  ```
 - Local variables
    - local.\<name>
 
-```tf
-locals {
-  service_name = "My Service"
-  owner = "Devops Directive"
-}
-```
+  ```tf
+  locals {
+    service_name = "My Service"
+    owner = "Devops Directive"
+  }
+  ```
 
 - Output variables
 
-```tf
-output "instance_ip_addr" {
-  value = aws_instance.instance.public_ip
-}
-```
+  ```tf
+  output "instance_ip_addr" {
+    value = aws_instance.instance.public_ip
+  }
+  ```
 
 ### Setting input variables
 
@@ -150,7 +150,7 @@ output "instance_ip_addr" {
 - `TF_VAR_\<name\>` environment variables 
 - terraform.tfvars file
 - *.auto.tfvars file
-- Command line `-var` or `-var-file`
+- Command line `-var` or `-var-file`. E.g. `-var="var_name=var_value"`
 
 ## Sensitive variables
 
@@ -183,7 +183,114 @@ output "instance_ip_addr" {
 - Type checking happens automatically
 - Custom conditions can also be enforced
 
+## Expressions
+
+- Types and Values
+- Strings and Templates
+- References to Values
+- Operators - `!, -, *, /, %, >, ==, etc.`
+- Function Calls
+- Conditional Expressions - `<CONDITION> ? <TRUE VAL> : <FALSE VAL>`
+- For Expressions - `[for o in var.list : o.id]`
+- Splat Expressions - `var.list[*].id`
+- Dynamic Blocks
+- Type Constraints
+- Version Constraints
+
+## Functions
+
+- Numeric
+- String 
+- Collection
+- Encoding
+- Filesystem
+- Data & Time
+- Hash & Crypto
+- IP Network
+- Type conversion
+
+## Meta arguments
+
+### `depends_on`
+
+- Terraform automatically generates dependency graph based on references
+- If two resources depends on each other (but not each others data), `depends_on` specifies that dependency to enforce ordering
+  - e.g. if software on the instance needs access to S3, trying to create the *aws_instance* would fail if atempting to create it before the *aws_aim_role_policy*.
+  ```
+  resource "aws_instance" "example" {
+    ami = "ami-1k2j123j"
+    instance_type = "t2.micro"
+
+    iam_instance_profile = aws_iam_instance_profile.example
+
+    depends_on = [
+      aws_iam_role_policy.example,
+    ]
+  }
+  ```
+
+### `count`
+
+- Allows for creation of multiple resources/modules from a single block
+- Useful when the multiple necessary resources are nearly identical
+
+```tf
+resource "aws_instance" "server" {
+  count = 4 # create four similar EC2 instances
+
+  ami           = "ami-a1b2c3d4"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "Server ${count.index}"
+  }
+}
+```
+
+### `for_each`
+
+- Allows for creation of multiple resources/modules from a single block
+- Allows more control to customize each resource than `count`
+
+```tf
+locals {
+  subnet_ids = toset([
+    "subnet-abcdef",
+    "subnet-012345",
+  ])
+}
+
+resource "aws_instance" "server" {
+  for_each = local.subnet_ids
+
+  ami           = "ami-a1b2c3d4"
+  instance_type = "t2.micro"
+  subnet_id     = each.key # note: each.key and each.value are the same for a set
+
+  tags = {
+    Name = "Server ${each.key}"
+  }
+}
+```
+
+### `lifecycle`
+
+- A set of meta arguments to control terraform behavior for specific resources
+- *create_before_destroy* can help with zero downtime deployments
+- *ignore_changes* prevents terraform from trying to revert metadata being set elsewhere
+- *prevent_destroy* causes terraform to reject any plan which would destroy this resource
+
+```tf
+resource "azurerm_resource_group" "example" {
+  # ...
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+```
 
 ## References
 - [Terraform Documentation](https://developer.hashicorp.com/terraform)
+- [Terraform Language Documentation](https://developer.hashicorp.com/terraform/language)
 - [Complete Terraform Course - From BEGINNER to PRO! by DevOps Directive](https://youtu.be/7xngnjfIlK4?si=XT2rH3c0AWKhG03F)
