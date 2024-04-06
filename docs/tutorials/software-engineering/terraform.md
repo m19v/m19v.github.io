@@ -109,6 +109,80 @@ _terraform.tfstate:_
 - terraform destroy
   - destroys all resources and data
 
+## Variables and Outputs
+
+### Variable types
+
+- Input variables
+  - var.\<name\>
+
+```tf
+variable "instance_type" {
+  description = "es2 instance type"
+  type = string
+  default = "t2.micro"
+}
+```
+- Local variables
+   - local.\<name>
+
+```tf
+locals {
+  service_name = "My Service"
+  owner = "Devops Directive"
+}
+```
+
+- Output variables
+
+```tf
+output "instance_ip_addr" {
+  value = aws_instance.instance.public_ip
+}
+```
+
+### Setting input variables
+
+(in order of precedence, lowest -> highest)
+
+- Manual entry during plan/apply 
+- Default value in declaration block
+- `TF_VAR_\<name\>` environment variables 
+- terraform.tfvars file
+- *.auto.tfvars file
+- Command line `-var` or `-var-file`
+
+## Sensitive variables
+
+- Mark variables as sensitive: 
+  - `sensitive = true`
+- Pass to terraform apply with:
+  - `TF_VAR_variable`
+  - `-var` (retrieve from secret manager at runtime)
+- Can also use external secret store 
+  - E.g. AWS Secrets Manager
+
+## Types and validation
+
+### Primitive types
+
+- string
+- number
+- bool
+
+### Complex types
+
+- list(\<TYP\E>)
+- set(\<TYPE\>)
+- map(\<TYPE\>)
+- object(\{\<ATTR NAME\> = \<TYPE\>, ...\})
+- tuple(\[\<TYPE\>, ...\])
+
+### Validation
+
+- Type checking happens automatically
+- Custom conditions can also be enforced
+
 
 ## References
 - [Terraform Documentation](https://developer.hashicorp.com/terraform)
