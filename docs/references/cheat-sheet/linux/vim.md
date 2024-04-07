@@ -6,7 +6,8 @@ title: vim
 
 ```bash
 [count] [operation] [motion]                   # vim normal mode PATTERN
-# e.g."
+
+# e.g.:
 # 2dw    -    [2] [delete] [word]
 #  da"   -    [] [delete] [around "]
 #  da"   -    [] [delete] [around "]
@@ -50,6 +51,15 @@ f(                     # find first (
 
 ```bash
 :g/{pattern}/d              # delete all lines containing pattern
+
+dG                          # delete(cut) from cursor to the end of document
+dgg                         # delete(cut) from cursor up to the beginning of document
+di"                         # delete(cut) inside "
+
+y                           # yank(copy)
+yi"                         # yank(copy) inside "
+
+p                           # paste
 ```
 
 ## Marks and positions
