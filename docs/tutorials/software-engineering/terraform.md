@@ -258,7 +258,7 @@ _terraform.tfstate:_
 - Terraform automatically generates dependency graph based on references
 - If two resources depends on each other (but not each others data), `depends_on` specifies that dependency to enforce ordering
   - e.g. if software on the instance needs access to S3, trying to create the *aws_instance* would fail if atempting to create it before the *aws_aim_role_policy*.
-  ```
+  ```tf
   resource "aws_instance" "example" {
     ami = "ami-1k2j123j"
     instance_type = "t2.micro"
@@ -394,11 +394,73 @@ production
 
 ### Terraform workspaces
 
+Pros:
+- Easy to get started
+- Convenient `terraform.workspace` expression
+- Minimize code duplication
+Cons:
+- Prone to human error
+- State stored within same backend
+- Codebase doesn't unambiguously show deployment configurations
+
+### File structure
+
+- Further separation (at logical component groups) useful for larger projects
+  - Isolate things that change frequently from those which don't
+- References resources across configurations is possible using `terraform_remote_state`
+
+```txt
+_modules
+  compute-module
+    main.tf
+    variables.tf
+  networking-module
+    main.tf
+    variables.tf
+dev
+  compute
+    main.tf
+    terraform.tfvars
+  networking
+    main.tf
+    terraform.tfvars
+staging
+  compute
+    main.tf
+    terraform.tfvars
+  networking
+    main.tf
+    terraform.tfvars
+production
+  compute
+    main.tf
+    terraform.tfvars
+  networking
+    main.tf
+    terraform.tfvars
+```
+
+Pros:
+- Isolation of backends
+  - Improved security
+  - Decreased potential for human error
+- Codebase fully represents deployed state
+Cons:
+- Multiple `terraform apply` required to provision environments
+- More code duplication, but can be minimized with modules
+
+### Terragrunt
+
+- Tool by gruntwork.io that provides utilities to make certain terraform use cases easier
+  - Keeping terraform code DRY
+  - Executing commands across multiple TG configs
+  - Working with multiple cloud accounts
 
 ## Commands
 
 ```sh
 terraform workspace list
+terraform workspace new <name-of-workspace>
 ```
 
 ## References
