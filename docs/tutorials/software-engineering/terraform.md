@@ -494,9 +494,65 @@ Cons:
 - **Automated testing**
   - Automate the manual testing steps using a shell script or a more robust method, such as utilizing a testing framework like `TerraTest` with Go to write complex tests and make assertions about your infrastructure.
 
+
+## Developer workflows
+
+### General workflow
+
+- Write/update code
+- Run changes locally (for development environment)
+- Create pull request
+- Run tests via CI
+- Deploy to staging via CD (on merge to main)
+- Deploy to production via CD (on release)
+
+### Multi account/project
+
+- Simplify IAM (Identity and Access Management) policies for enforcing controls for different environments (and remote TF backends)
+- Isolate environments to protect minimize blast radius
+- Reduce naming conflicts for resources
+- Con: Adds complexity to TF config (but still worth it + tooling can help)
+
+### Additional tools
+
+- Terragrunt
+  - Minimizes code repetition
+  - Enables multi-account separation (improved isolation/security)
+- Cloud Nuke
+  - Easy cleanup of cloud resources
+- Makefiles
+  - Prevent human error
+
+### Potential pitfalls
+
+- Name changes when refactoring may cause destroy/recreate resources
+- Sensitive data in terraform *state file*
+- Cloud timeouts on command execution
+- Naming conflicts 
+- Forgetting to destroy test-infra
+- Uni-directional version upgrades with different terraform versions
+  - terraform *state files* can be associated with the version of terraform binaries
+  - make sure to use the same terraform version in e.g. developers local environment, CI/CD system etc.
+- Multiple ways to accomplish same configuration
+- Some Params are immutable
+- Out of band changes, e.g. without terraform manually or other tools rather than terraform
+
 ## Commands
 
 ```sh
+# INIT
+terraform init
+
+# PLAN
+terraform plan
+
+# APPLY
+terraform apply
+
+# DESTROY
+terraform destroy
+
+# WORKSPACE
 terraform workspace list
 terraform workspace new <name-of-workspace>
 ```
