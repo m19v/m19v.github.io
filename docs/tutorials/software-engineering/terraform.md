@@ -456,6 +456,44 @@ Cons:
   - Executing commands across multiple TG configs
   - Working with multiple cloud accounts
 
+## Testing terraform code
+
+### Static checks
+
+- **Build-in**
+  - terraform fmt
+    ```sh
+    terraform fmt -check # checks if formatter would make chances
+    terraform fmt # applies those changes
+    ```
+  - terraform validate
+    ```sh
+    terraform validate
+    ```
+  - terraform plan
+    ```sh
+    terraform plan
+    ```
+  - custom validation rules
+    ```tf
+    variable "short_variable" {
+      type = string
+
+      validation {
+        condition = length(var.short_variable) < 4
+        error_message = "The short_variable value must be less than 4 characters!"
+      }
+    }
+    ```
+- **External**
+  - tflint
+  - checkov, tfsec, terrascan, terraform-compliance, snyk
+  - Terraform Sentinal (enterprise only)
+- **Manual testing**
+  - Follow the standard Terraform workflow, running `terraform init`, `terraform apply`, and `terraform destroy` to test your configuration manually.
+- **Automated testing**
+  - Automate the manual testing steps using a shell script or a more robust method, such as utilizing a testing framework like `TerraTest` with Go to write complex tests and make assertions about your infrastructure.
+
 ## Commands
 
 ```sh
