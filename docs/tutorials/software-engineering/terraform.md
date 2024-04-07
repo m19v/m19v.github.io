@@ -361,9 +361,45 @@ Perform action on local or remote machine
   - chef
   - puppet
 
-## Project Organization + Modules
+## Managing multiple environments
+
+Approaches:
+- **Workspaces**: multiple named section within a single backend
+```sh
+~ terraform workspace list
+   default
+ * dev
+   staging
+   production 
+```
+- **File structure**: directory layout provides separation, modules provide reuse
+```txt
+_modules
+  module-1
+    main.tf
+    variables.tf
+  module-2
+    main.tf
+    variables.tf
+dev
+  main.tf
+  terraform.tfvars
+staging
+  main.tf
+  terraform.tfvars
+production
+  main.tf
+  terraform.tfvars
+```
+
+### Terraform workspaces
 
 
+## Commands
+
+```sh
+terraform workspace list
+```
 
 ## References
 - [Terraform Documentation](https://developer.hashicorp.com/terraform)
