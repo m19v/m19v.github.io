@@ -60,6 +60,8 @@ y                           # yank(copy)
 yi"                         # yank(copy) inside "
 
 p                           # paste
+
+ALT + o                     # go to next line (insert mode)
 ```
 
 ## Marks and positions
