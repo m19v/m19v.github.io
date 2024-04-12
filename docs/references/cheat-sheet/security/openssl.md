@@ -2,6 +2,14 @@
 title: OpenSSL
 ---
 
+## Certificate and Key Formats
+
+- DER
+- PEM
+- PKCS#7
+- PKCS#8
+- PKCS#12
+
 ## Commands
 
 ```shell
