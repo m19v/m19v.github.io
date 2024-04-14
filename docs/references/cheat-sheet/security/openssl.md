@@ -24,5 +24,17 @@ openssl ciphers -v 'ALL:!aNULL'             # List all ciphers except ones with 
 [Testing TLS/SSL encryption](https://testssl.sh/)  
 [TLS Ciphersuite Search](https://ciphersuite.info/)  
 
+
+## Abbreviations
+
+- **PEM**: Privacy Enhanced Mail
+- **PKCS**: Public-Key Cryptography Standards
+- **SHA**: Secure Hash Algorithm
+- **SSL**: Secure Socket Layer
+- **TLS**: Transport Layer Security
+- **CSR**: Certificate Signing Request
+- **DER**: Distinguished Encoding Rules
+
+
 ## Resources
 [OpenSSL Introduction.](https://www.keycdn.com/blog/openssl-tutorial)
