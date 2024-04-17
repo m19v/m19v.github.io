@@ -58,6 +58,7 @@ di"                         # delete(cut) inside "
 
 y                           # yank(copy)
 yi"                         # yank(copy) inside "
+yaw                         # yank(copy) around word
 
 p                           # paste
 
