@@ -15,11 +15,11 @@
     "generate-doc-content": "python generate-doc-content.py"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.0.0",
-    "@docusaurus/plugin-sitemap": "^3.0.0",
-    "@docusaurus/preset-classic": "^3.0.0",
+    "@docusaurus/core": "^3.2.1",
+    "@docusaurus/plugin-sitemap": "^3.2.1",
+    "@docusaurus/preset-classic": "^3.2.1",
     "@easyops-cn/docusaurus-search-local": "^0.37.4",
-    "@giscus/react": "^2.3.0",
+    "@giscus/react": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^1.2.1",
     "countapi-js": "^1.0.2",
@@ -33,7 +33,7 @@
     "remark-math": "^6.0.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.0.0"
+    "@docusaurus/module-type-aliases": "^3.2.1"
   },
   "browserslist": {
     "production": [
