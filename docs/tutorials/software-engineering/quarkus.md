@@ -48,7 +48,23 @@ Options:
   -Dpath="/api/books" \
   -Dextensions="resteasy-jsonb"
   ```
+### Developer Joy
 
+- Hot reload
+- Update a java file or resource
+- Quarkus is reloaded
+- No need to stop and restart
+- Development vs production mode
+- Unified configuration (e.g. application.properties)
+- Integration with IDE
+- Debugging
+
+## Commands
+
+```bash
+mvn quarkus:dev                   # Run application in development mode
+mvn test                          # Run application test
+```
 
 ## References
 - [Get Started with Quarkus](https://quarkus.io/get-started/)
