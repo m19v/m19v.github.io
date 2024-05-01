@@ -59,10 +59,45 @@ Options:
 - Integration with IDE
 - Debugging
 
+
+## CDI
+
+## Quarkus Test
+
+- Tests in JVM mand Native mode
+  - Integrates with JUnit
+  - `@QuarkusTest` annotation
+- Starts Quarkus (on port 8081)
+- Executes the test suit
+
+### Unit Test
+
+- Test on class in isolation
+- No container services
+- Mock container services if needed
+
+### Integration Test
+
+- Test one or several classes interacting together
+- Container services are up and running
+- No need to mock container services
+
+### Testing frameworks
+
+- JUnit
+  - Quarkus supports JUnit 5 (JUnit 4 is deprecated)
+  - No TestNG support
+- RESTAssured
+  - Open-source Java library
+  - Domain Specific Language (DSL)
+  - Write tests for RESTful API
+  - Invokes APIs and validates the response
+
 ## Commands
 
 ```bash
 mvn quarkus:dev                   # Run application in development mode
+mvn quarkus:dev -Dsuspend         # Run application in development mode and suspend until a debugger is connected
 mvn test                          # Run application test
 ```
 
