@@ -125,6 +125,30 @@ By default, Quarkus reads configuration properties from multiple sources (by des
 | Converter           | Converts a configured values from a String to a Java type                      |
 
 
+### Configuration Profiles
+
+- Multiple configurations in same file
+- Possibility to select profiles via profile name
+- Syntax `%<profile_name>` in `application.properties`
+- Quarkus has built-in three profiles 
+  - `%dev`: `mvn quarkus:dev`
+  - `%test`: `mvn test`
+  - `%prod`: `java -jar`
+  - `%staging`: `mvn quarkus:dev -Dquarkus.profile=staging`
+
+```bash
+%dev.quarkus.log.console.level=DEBUG
+%test.quarkus.log.console.level=TRACE
+%prod.quarkus.log.console.level=SEVERE
+
+%staging.quarkus.log.console.level=INFO
+```
+
+
+
+
+
+
 ## Commands
 
 ```bash
