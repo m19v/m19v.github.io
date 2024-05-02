@@ -93,6 +93,27 @@ Options:
   - Write tests for RESTful API
   - Invokes APIs and validates the response
 
+## Application configuration
+
+### MicroProfile configuration
+
+- [MicroProfile specification](https://microprofile.io/)
+- Configuration from multiple sources
+  - application.properties
+  - command line parameters
+- Possibility to use dependency injection or lookup to get configuration
+
+### MicroProfile configuration APIs
+
+|    API              |                                 Description                                    |
+|---------------------|--------------------------------------------------------------------------------|
+| @ConfigProperty     | Binds the injection point with a configured value                              |
+| ConfigProvider      | Central class to access a Config                                               |
+| Config              | Resolves the property value by searching through all the configuration sources |
+| ConfigSource        | Provides configuration values from a specific place                            |
+| Converter           | Converts a configured values from a String to a Java type                      |
+
+
 ## Commands
 
 ```bash
