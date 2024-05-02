@@ -93,7 +93,16 @@ Options:
   - Write tests for RESTful API
   - Invokes APIs and validates the response
 
-## Application configuration
+## Quarkus configuration
+
+### Config Sources
+
+- System properties
+- Environment variables
+- `.env` file in the current working directory
+- Quarkus Application configuration file in `$PWD/config/application.properties`
+- Quarkus Application configuration file `application.properties` in classpath
+- MicroProfile Config configuration file `META-INF/microprofile-config.properties` in classpath
 
 ### MicroProfile configuration
 
@@ -117,11 +126,18 @@ Options:
 ## Commands
 
 ```bash
-mvn quarkus:dev                   # Run application in development mode
-mvn quarkus:dev -Dsuspend         # Run application in development mode and suspend until a debugger is connected
-mvn test                          # Run application test
+mvn quarkus:dev                                  # Run application in development mode
+mvn quarkus:dev -Dsuspend                        # Run application in development mode and suspend until a debugger is connected
+
+
+mvn quarkus:dev -Dkey.of.conf="Value-of-conf"    # Override configuration in dev mode
+mvn test -Dkey.of.conf="Value-of-conf"           # Override configuration in test mode
+
+mvn test                                         # Run application test
 ```
 
 ## References
 - [Get Started with Quarkus](https://quarkus.io/get-started/)
 - [Starting with Quarkus by Antonio Goncalves](https://www.udemy.com/course/quarkus-starting-with-quarkus/)
+- [Configuration Reference Guide](https://quarkus.io/guides/config-reference)
+- [All configuration options](https://quarkus.io/guides/all-config)
