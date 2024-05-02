@@ -97,6 +97,8 @@ Options:
 
 ### Config Sources
 
+By default, Quarkus reads configuration properties from multiple sources (by descending ordinal), see [config Sources](https://quarkus.io/guides/config-reference):
+
 - System properties
 - Environment variables
 - `.env` file in the current working directory
