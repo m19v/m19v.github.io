@@ -136,29 +136,52 @@ By default, Quarkus reads configuration properties from multiple sources (by des
   - `%prod`: `java -jar`
   - `%staging`: `mvn quarkus:dev -Dquarkus.profile=staging`
 
-```bash
-%dev.quarkus.log.console.level=DEBUG
-%test.quarkus.log.console.level=TRACE
-%prod.quarkus.log.console.level=SEVERE
+  ```bash
+  %dev.quarkus.log.console.level=DEBUG
+  %test.quarkus.log.console.level=TRACE
+  %prod.quarkus.log.console.level=SEVERE
 
-%staging.quarkus.log.console.level=INFO
-```
+  %staging.quarkus.log.console.level=INFO
+  ```
 
+## Packaging Application
 
+### Types of Executable JARs
 
+- JARs created by maven packages the code
+- JARs created by Quarkus packages code, dependencies and quarkus runtime
 
+### Types of Executable JARs
+
+- JAR (a.k.a Fast-JAR) bundles code, dependencies, quarkus runtime and index to speed up classpath scanning
+- Legacy JAR (a.k.a JAR) packages the application code and the quarkus runtime
+- Uber-JAR (a.k.a. Fat-JAR) contains all the classes of all dependencies
 
 
 ## Commands
 
 ```bash
+# Run application
 mvn quarkus:dev                                  # Run application in development mode
 mvn quarkus:dev -Dsuspend                        # Run application in development mode and suspend until a debugger is connected
 
 
+# Override configuration
 mvn quarkus:dev -Dkey.of.conf="Value-of-conf"    # Override configuration in dev mode
 mvn test -Dkey.of.conf="Value-of-conf"           # Override configuration in test mode
 
+
+# Packaging JARs
+mvn package                                      # package application in Fast-JAR file
+mvn package -Dquarkus.package.type=jar           # package application in Fast-JAR file
+mvn package -Dquarkus.package.type=legacy-jar    # package application in Legacy-JAR file
+mvn package -Dquarkus.package.type=uber-jar      # package application in Fat-JAR file
+
+
+# Executing JARs
+java -jar quarkus-run.jar                        # Execute JAR application (with %prod profile)
+
+# Run test
 mvn test                                         # Run application test
 ```
 
