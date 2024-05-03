@@ -146,10 +146,6 @@ By default, Quarkus reads configuration properties from multiple sources (by des
 
 ## Packaging Application
 
-### Types of Executable JARs
-
-- JARs created by maven packages the code
-- JARs created by Quarkus packages code, dependencies and quarkus runtime
 
 ### Types of Executable JARs
 
@@ -157,6 +153,7 @@ By default, Quarkus reads configuration properties from multiple sources (by des
 - Legacy JAR (a.k.a JAR) packages the application code and the quarkus runtime
 - Uber-JAR (a.k.a. Fat-JAR) contains all the classes of all dependencies
 
+JARs created by maven packages the code. JARs created by Quarkus packages code, dependencies and quarkus runtime
 
 ### Building Native Executables
 
@@ -167,7 +164,33 @@ By default, Quarkus reads configuration properties from multiple sources (by des
 
 ## Containerizing Quarkus Application
 
+Quarkus provides extensions for building (and pushing) [container images](https://quarkus.io/guides/container-image). Currently, it supports:
 
+- Jib
+- Docker
+- OpenShift
+- Buildpack
+
+### Containerize Executable JARs with Docker
+
+```bash
+mvn quarkus:add-extension -Dextensions="container-image-docker"
+mvn package -Dquarkus.container-image.build=true -Dquarkus.package.type=jar -Dquarkus.container-image.tag=jvm
+mvn package -Dquarkus.container-image.build=true -Dquarkus.package.type=legacy-jar
+
+docker run -i --rm -p 8080:8080 m19v/rest-book:jvm
+```
+
+### Containerizing Linux Native Executables
+
+```bash
+mvn package -Dquarkus.container-image.build=true \
+            -Dquarkus.package.type=native \
+            -Dquarkus.native.remote-container-build=true \
+            -Dquarkus.container-image.tag=native
+
+docker run -i --rm -p 8080:8080 m19v/rest-book:native
+```
 
 
 ## Commands
