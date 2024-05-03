@@ -228,5 +228,8 @@ mvn verify -Pnative                              # Execute native tests
 ## References
 - [Get Started with Quarkus](https://quarkus.io/get-started/)
 - [Starting with Quarkus by Antonio Goncalves](https://www.udemy.com/course/quarkus-starting-with-quarkus/)
+- [Quarkus Guides](https://quarkus.io/guides/)
+- [Quarkus Quickstarts](https://github.com/quarkusio/quarkus-quickstarts)
 - [Configuration Reference Guide](https://quarkus.io/guides/config-reference)
 - [All configuration options](https://quarkus.io/guides/all-config)
+- [Quarkiverse Hub](https://github.com/quarkiverse)
