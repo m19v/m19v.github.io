@@ -158,6 +158,18 @@ By default, Quarkus reads configuration properties from multiple sources (by des
 - Uber-JAR (a.k.a. Fat-JAR) contains all the classes of all dependencies
 
 
+### Building Native Executables
+
+- Executable JARs container bytecode and need JVM to run
+- Native images contain binary and the needed JVM is bundled inside (not the whole JVM but what quarkus application uses with the help of GraalVM)
+  - Compilation is resource intensive
+
+
+## Containerizing Quarkus Application
+
+
+
+
 ## Commands
 
 ```bash
@@ -177,12 +189,17 @@ mvn package -Dquarkus.package.type=jar           # package application in Fast-J
 mvn package -Dquarkus.package.type=legacy-jar    # package application in Legacy-JAR file
 mvn package -Dquarkus.package.type=uber-jar      # package application in Fat-JAR file
 
+mvn package -Dquarkus.package.type=native        # package application in native image format
+mvn package -Pnative                             # package application in native image format
+
 
 # Executing JARs
-java -jar quarkus-run.jar                        # Execute JAR application (with %prod profile)
+java -jar target/quarkus-app/quarkus-run.jar     # Execute JAR application (with %prod profile)
+./target/rest-book-runner                        # Execute Native Executable
 
 # Run test
 mvn test                                         # Run application test
+mvn verify -Pnative                              # Execute native tests
 ```
 
 ## References
