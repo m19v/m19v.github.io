@@ -240,6 +240,11 @@ CIDR - Classless Inter-Domain Routing
 - uses 10.0.0.0/8 (8 binary bits) notation instead of 10.0.0.0 255.0.0.0
 - enables Variable Length Subnet Mask (VLSM) (e.g. 255.224.0.0 = /11) but in Class A is always /8, Class B is always /16 and Class C is always /24.
 
+
+## Initial Device Configuration
+
+
+
 ## Commands
 
 ```bash
