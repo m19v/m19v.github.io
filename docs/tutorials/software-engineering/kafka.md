@@ -34,8 +34,21 @@ Real use cases examples:
 - **LinkedIn** - uses Kafka to prevent spam, collect user interactions to make better connection recommendations in real time.
 
 > [!NOTE]
-> :warning: Kafka is only used as a transportation mechanism!
+> Kafka is only used as a transportation mechanism!
 
+![Kafka Architecture](./assets/kafka-architecture.PNG)
+
+## What is Next?
+
+1. **Kafka for Beginners:** Kafka basics operations, producers and consumers
+2. **Kafka Connect API:** Import/Export data to/from Kafka
+3. **Kafka Streams API:** Process and Transform data within Kafka
+4. **ksqlDB:** Write Kafka Streams applications using SQL
+5. **Confluent Components:** REST Proxy and Schema Registry
+6. **Kafka Security:** Setup Kafka security in a Cluster and Integrate your applications with Kafka Security
+7. **Kafka Monitoring and Operations:** use Prometheus and Grafana to monitor Kafka, learn operations
+8. **Kafka Cluster Setup and Administration:** Get a deep understanding of how Kafka and Zookeeper works, how to setup Kafka and various administration tasks
+10. **Confluent Certifications**
 
 ## References
 
