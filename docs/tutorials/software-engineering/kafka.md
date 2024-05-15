@@ -33,10 +33,9 @@ Real use cases examples:
 - **Uber** - uses Kafka to gather user, taxi and trip data in real-time to compute and forecast demand, and compute surge pricing in real-time
 - **LinkedIn** - uses Kafka to prevent spam, collect user interactions to make better connection recommendations in real time.
 
-
+---
 ⚡ Kafka is only used as a transportation mechanism
-
-
+---
 
 ## References
 
