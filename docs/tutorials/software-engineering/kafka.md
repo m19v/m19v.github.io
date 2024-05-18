@@ -5,6 +5,8 @@ title: Apache Kafka
 
 ## Introduction
 
+This document contains my notes on Apache Kafka, which I studied from Udemy Course "Apache Kafka Series - Learn Apache Kafka for Beginners v3" by Stephane Maarek
+
 ### Why Apache Kafka
 
 - Decoupling of data streams and systems
@@ -37,6 +39,37 @@ Real use cases examples:
 > Kafka is only used as a transportation mechanism!
 
 ![Kafka Architecture](./assets/kafka-architecture.PNG)
+
+### [Course Material Download](https://www.conduktor.io/apache-kafka-for-beginners)
+
+
+## Kafka Theory
+
+### Topics
+
+- Topics: a particular streams of data
+- Like a table in database (without all the constrains)
+- One can have as many topics as one want
+- A topic is identified by its *name*
+- Topics support any kind of message format (e.g. json, txt, binary etc.)
+- The sequence of message is called a *data stream*
+- One can not query topics, instead, use Kafka **Producers** to send data and Kafka **Consumers** to read the data
+- Kafka topics are **immutable**
+- Data is kept only for a limited time (*default* is one week, but configurable)
+
+### Partitions and Offsets
+
+- Topics are split in **partitions** (e.g. 100 partitions)
+  - Messages within each partition are ordered
+  - Each message within a partition gets an incremental ID, called **offset**
+- Kafka topics are **immutable**: once data is written to a partition, it can not be changed
+- Offset only have a meaning for a specific partition
+  - E.g. offset 3 in partition 0 doesn't represent the same data as offset 3 in partition 1
+  - Offsets are not re-used even if previous message have been deleted
+- Order is guaranteed only within a partition (not across partitions)
+- Data is assigned randomly to a partition unless a key is provided
+- One can have as many partitions per topic as one want
+
 
 ## What is Next?
 
