@@ -71,6 +71,58 @@ Real use cases examples:
 - One can have as many partitions per topic as one want
 
 
+### Producers
+
+- Producers write date to topics (which are made of partitions)
+- Producers know in advance to which partition to write to (and which Kafka broker has it)
+- In case of Kafka failure, Producers will automatically recover
+
+#### **Producer's Message Key**
+
+- Producers can choose to send a **key** with the messsage (string, number, binary, etc.)
+- if `key=null`, data is sent round robin (partition 0, then 1, then 2..)
+- if `key!=null`, then all messages for that key will always go to the same partition (hashing)
+- A key are typically sent if you need message ordering for a specific field (ex: truck_id)
+
+#### Kafka Messages Anatomy
+
+- Key-binary
+  - can be null
+- Value-binary
+  - can be null
+- Compression Type
+  - none
+  - gzip
+  - snappy
+  - lz4
+  - zstd
+- Headers (optional)
+  - key/value
+  - key/value
+- Partition+Offset
+- Timestamp (system or user set)
+
+#### Kafka Message Serializer
+
+- Kafka only accepts bytes as an input from producers and sends bytes out as an output to consumers
+- Message Serialization means transforming objects/data into bytes
+- Serializers are used on the value and the key
+- Kafka comes with **Common Serializers**
+  - String (incl. JSON)
+  - Int, Float 
+  - Avro
+  - Protobuf
+
+#### Kafka Message Key Hashing
+
+- A Kafka partitioner is a code logic that takes a record and determines to which partition to send it into
+- **Key Hashing** is the process of determining the mapping of a key to a partition
+- In the defualt Kafka partitioner, the keys are hashed using the **marmur2 algorithm** with the formula below:
+
+`targetPartition = Math.abs(Utils.marmur2(keyBytes)) % (numPartitions - 1)`
+
+
+
 ## What is Next?
 
 1. **Kafka for Beginners:** Kafka basics operations, producers and consumers
