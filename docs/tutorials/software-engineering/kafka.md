@@ -122,6 +122,61 @@ Real use cases examples:
 `targetPartition = Math.abs(Utils.marmur2(keyBytes)) % (numPartitions - 1)`
 
 
+### Consumers
+
+- Consumers read data from a topic (identified by name) - pull model
+- Consumers automatically know which broker to read from
+- In case of broker failures, consumers know how to recover
+- Data is read in order from low to high offset **within each partitions**
+
+
+#### Consumer Deserializers
+
+- **Deserialize** indicates how to transform bytes into objects/data
+- Deserializers are used on the value and the key of the message
+- Kafka **Common Deserializers**
+  - String (incl. JSON)
+  - Int, Float
+  - Avro
+  - Protobuf
+
+> !NOTE
+> The serialization/deserialization type must not change during a topic lifecycle
+
+
+#### Consumer Groups
+
+- All the consumers in an application read data as a consumer groups
+- To create distinct consumer groups, use consumer property `group.id`
+- Each consumer within a group reads from exclusive partitions
+- If one have more consumers than partitions, some consumers will be inactive
+- **Multiple Consumers on one topic**
+  - In Apache Kafka it is acceptable to have multiple consumer groups on the same topic
+  - E.g. 1 consumer service for location, 1 consumer service for notification in track example
+
+
+#### Consumer Offsets
+
+- Kafka stores the offsets at which a consumer group has been reading
+- The offsets committed are in Kafka topics named `__consumer_offsets`
+- When a consumer in a group has processed data reveived from Kafka, it should be **periodically** committing the offsets (the Kafka broker will write to `__consumer_offsets`, not to the group itself)
+
+
+#### Delivery semantics for consumers 
+
+- By default, Java Consumers will automatically commit offsets (at least once)
+- There are 3 delivery semantics if you choose to commit manually:
+  - **At least once (usually preferred)**
+    - Offsets are committed after the message is processed
+    - If the processing goes wrong, the message will be read again
+    - If message is read again, it can result in duplicate processing of messages. Make sure your processing is *idempotent* (i.e. processing again the messages will not impact your systems)
+  - **At most once**
+    - Offsets are committed as soon as messages are received
+    - If the processing goes wrong, some messages will be lost (i.e. they will not be read again)
+  - **Exactly once**
+    - for Kafka -> Kafka workflows: use the Transactional API (easy with Kafka Streams API)
+    - for Kafka -> External System workflow: use an idempotent consumer
+
 
 ## What is Next?
 
