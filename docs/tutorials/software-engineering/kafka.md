@@ -140,7 +140,7 @@ Real use cases examples:
   - Avro
   - Protobuf
 
-> !NOTE
+> [!NOTE]
 > The serialization/deserialization type must not change during a topic lifecycle
 
 
@@ -176,6 +176,35 @@ Real use cases examples:
   - **Exactly once**
     - for Kafka -> Kafka workflows: use the Transactional API (easy with Kafka Streams API)
     - for Kafka -> External System workflow: use an idempotent consumer
+
+
+### Kafka Brokers
+
+- A **Kafka Cluster** is composed of multiple brokers (servers)
+- Each broker is identified with its ID (integer)
+- Each broker contains certain topic partitions
+- After connecting to any broker (called a bootstrap broker), you will be connected to the entire cluster (Kafka clients have smart mechanics for that)
+- A good number to get started is 3 brokers, but some big clusters have over 100 brokers
+
+
+#### Kafka vs Topics
+
+- Example of Topic-A with 3 partitions and Topic-B with 2 partitions, where data is distributed
+  - Broker 101
+    - Topic-A Partition 0
+    - Topic-B Partition 1
+  - Broker 102
+    - Topic-A Partition 2
+    - Topic-B Partition 0
+  - Broker 103
+    - Topic-A Partition 1
+
+
+#### Kafka Broker Discovery
+
+- Every Kafka broker is also called a *bootstrap server*
+- That means that *you only need to connect to one broker*, and the Kafka clients will know how to be connected to the entire cluster (smart client)
+- Each broker knows about all brokers, topics and partitions (metadata)
 
 
 ## What is Next?
