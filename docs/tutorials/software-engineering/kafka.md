@@ -314,6 +314,27 @@ Real use cases examples:
   - Production ready since Kafka 3.3.1 (KIP-833)
   - Kafka 4.0 will be released only with KRaft (no Zookeeper)
 
+#### Kafka KRaft Architecture
+
+- With Zookeeper
+
+```txt
+Zookeeper Server 1               +------  Kafka Broker 1
+Zookeeper Server 2 (Leader) -----+------  Kafka Broker 2
+Zookeeper Server 3               +------  Kafka Broker 3
+```
+
+- With Quorum Controller
+
+```txt
+Kafka Broker 1 <---> Kafka Broker 2 (L) <---> Kafka Broker 3
+
+L - Quorum Leader
+```
+
+> [!NOTE]
+> KRaft Performance Improvements with controller shutdown time and recovery time after uncontrolled shutdown. (see [here](https://www.confluent.io/blog/kafka-without-zookeeper-a-sneak-peek/) )
+
 ## What is Next?
 
 1. **Kafka for Beginners:** Kafka basics operations, producers and consumers
