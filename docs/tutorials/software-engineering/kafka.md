@@ -269,13 +269,50 @@ Real use cases examples:
 - Zookeeper helps in performing leader election for partition if broker goes down
 - Zookeeper sends notifications to Kafka brokers in case of changes (e.g. new topic, broker dies, broker comes up, delete topic, etc.)
 - **Kafka up to version v2.x can't work without Zookeeper**
-- **Kafka 3.x can work without Zookeeper (KIP-500) - using Kafka Raft instead**
+- **Kafka 3.x can work without Zookeeper (KIP-500) - using Kafka Raft (KRaft) instead**
 - **Kafka 4.x will not have Zookeeper anymore**
 - Zookeeper by design operates with an odd number of servers (1, 3, 5, 7)
 - Zookeeper has a leader(writes) the rest of the servers are followers (reads)
 - (Zookeeper does NOT store consumer offsets with Kafka > v0.10)
+- Example: 
+  - Zookeeper Server 1 (Follower)
+    - Kafka Broker 1
+    - Kafka Broker 2
+  - Zookeeper Server 2 (Leader)
+    - Kafka Broker 3
+    - Kafka Broker 4
+  - Zookeeper Server 3 (Follower)
+    - Kafka Broker 5
+
+#### Should you use Zookeeper?
+
+- With Kafka Brokers?
+  - Yes, until Kafka 4.0 is out while waiting for Kafka without Zookeeper to be production-ready
+- With Kafka Clients?
+  - Over time, the Kafka Clients and CLI have been migrated to leverage the brokers as a connection endpoint instead of Zookeeper
+  - Since Kafka v0.10, consumers store offset in Kafka Broker and Zookeeper and they must not connect to Zookeeper as it is deprecated
+  - Since Kafka v2.2, `kafka-topics.sh` CLI command references Kafka Brokers and not Zookeeper for topic management (creation, deletion, etc.) and the Zookeeper CLI argument is deprecated
+  - All the APIs and commands that were previously leveraging Zookeeper are migrated to use Kafka instead, so that when clusters are migrated to be without Zookeeper, the change is invisible to clients
+  - Zookeeper is also less secure than Kafka, and therefore Zookeeper ports should only be opened to allow traffic from Kafka Brokers, and not Kafka Clients
+
+> [!NOTE]
+> Never use Zookeeper as a configuration in your Kafka Client, and other program that connect to Kafka.
 
 
+### Kafka KRaft
+
+- In 2020, the Apache Kafka project started to work *to remove the Zookeeper dependency from it (KIP-500)*
+- Zookeeper shows scaling issues when Kafka cluster have > 100,000 partitions
+- By removing Zookeeper, Apache Kafka can 
+  - Scale to millions of partitions, and becomes easier to maintain and set-up
+  - Improve stability, makes it easier to monitor, support and administer
+  - Single security model for the whole system (not Kafka or Zookeeper separately)
+  - Single process to start with Kafka
+  - Faster controller shutdown and recovery time
+
+- Kafka 3.x now implements the Raft protocol (KRaft) in order to replace Zookeeper
+  - Production ready since Kafka 3.3.1 (KIP-833)
+  - Kafka 4.0 will be released only with KRaft (no Zookeeper)
 
 ## What is Next?
 
