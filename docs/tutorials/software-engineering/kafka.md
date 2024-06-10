@@ -1,4 +1,3 @@
-
 ---
 title: Apache Kafka
 ---
@@ -331,9 +330,12 @@ Kafka Broker 1 <---> Kafka Broker 2 (L) <---> Kafka Broker 3
 
 L - Quorum Leader
 ```
-
 > [!NOTE]
 > KRaft Performance Improvements with controller shutdown time and recovery time after uncontrolled shutdown. (see [here](https://www.confluent.io/blog/kafka-without-zookeeper-a-sneak-peek/) )
+
+
+## Starting Kafka
+
 
 ## What is Next?
 
