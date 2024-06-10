@@ -249,6 +249,33 @@ Real use cases examples:
 - This may help to improve latency, and also decrease network costs if using the cloud
 
 
+#### Kafka Topic Durability
+
+- For a topic replication factor of 3, topic data durability can withstand 2 broker loss
+- As a rule, for a replication factor of `N`, you can permanently lose up to `N-1` broker and still recover your data
+
+
+### Producer Acknowledgements (acks)
+
+- Producers can choose to receive acknowledgment of data writes: 
+  - `acks = 0`: Producer won't wait for acknowledgment (possible data loss) 
+  - `acks = 1`: Producer will wait for leader acknowledgment (limited data loss)
+  - `acks = all`: Leader + replicas acknowledgment (no data loss)
+
+
+### Zookeeper
+
+- **Zookeeper** manages brokers (keeps a list of them)
+- Zookeeper helps in performing leader election for partition if broker goes down
+- Zookeeper sends notifications to Kafka brokers in case of changes (e.g. new topic, broker dies, broker comes up, delete topic, etc.)
+- **Kafka up to version v2.x can't work without Zookeeper**
+- **Kafka 3.x can work without Zookeeper (KIP-500) - using Kafka Raft instead**
+- **Kafka 4.x will not have Zookeeper anymore**
+- Zookeeper by design operates with an odd number of servers (1, 3, 5, 7)
+- Zookeeper has a leader(writes) the rest of the servers are followers (reads)
+- (Zookeeper does NOT store consumer offsets with Kafka > v0.10)
+
+
 
 ## What is Next?
 
