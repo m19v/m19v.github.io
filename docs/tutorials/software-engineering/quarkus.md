@@ -207,7 +207,7 @@ mvn test -Dkey.of.conf="Value-of-conf"           # Override configuration in tes
 
 
 # Packaging JARs
-mvn package                                      # package application in Fast-JAR file
+mvn package                                      # package application in Fast-JAR file (DEFAULT)
 mvn package -Dquarkus.package.type=jar           # package application in Fast-JAR file
 mvn package -Dquarkus.package.type=legacy-jar    # package application in Legacy-JAR file
 mvn package -Dquarkus.package.type=uber-jar      # package application in Fat-JAR file
