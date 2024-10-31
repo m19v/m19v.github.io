@@ -14,6 +14,8 @@ title: Kubernetes
   - [5.4. Docker vs ContainerD](#54-docker-vs-containerd)
     - [5.4.1. Docker](#541-docker)
     - [5.4.2. ContainerD](#542-containerd)
+  - [5.5. ETCD](#55-etcd)
+    - [5.5.1. Get started quickly with ETCD](#551-get-started-quickly-with-etcd)
 - [6. Commands](#6-commands)
 - [7. References](#7-references)
 
@@ -84,9 +86,46 @@ This document contains my notes on preparation course of Certified Kubernetes Ad
 - **runc** is a container runtime
 - ContainerD works as container runtime on its own separate from Docker
 - ContainerD comes with `crt` CLI tool mainly made for debugging container. `nerdctl` (similar to docker CLI) provides stable and humand-friendly user experience
-- `crictl` is another CLI tool compatable with CRI which works accross different container runtime. Mainly used for debugging
+- `crictl` is another CLI tool from k8s community compatable with CRI which works accross different container runtime. Mainly used for debugging
+- Read [more](https://github.com/containerd/containerd/blob/main/docs/getting-started.md)
 
 
+## 5.5. ETCD
+
+- **ETCD** is a distributed reliable key-value store that is simple, secure and fast
+- **Key-Value Store** stores information if form of documents, pages (i.e. files) which can be in any format and structure
+
+### 5.5.1. Get started quickly with ETCD
+
+ - Download the relevant binary for your operating system from github releases page (https://github.com/etcd-io/etcd/releases)
+
+   For Example: To download ETCD v3.5.6, run the below curl command
+
+   ```
+   $ curl -LO https://github.com/etcd-io/etcd/releases/download/v3.5.6/etcd-v3.5.6-linux-amd64.tar.gz
+   ```
+ - Extract it.
+   ```
+   $ tar xvzf etcd-v3.5.6-linux-amd64.tar.gz
+   ```
+ - Run the ETCD Service
+   ```
+   $ ./etcd
+   ```
+ - When you start **`ETCD`** it will by default listen on port **`2379`**
+  - The default client that comes with **`ETCD`** is the [**`etcdctl`**](https://github.com/etcd-io/etcd/tree/main/etcdctl) client. You can use it to store and retrieve key-value pairs.
+    ```
+    Syntax: To Store a Key-Value pair
+    $ ./etcdctl put key1 value1
+    ```
+    ```
+    Syntax: To retrieve the stored data
+    $ ./etcdctl get key1
+    ```
+    ```
+    Syntax: To view more commands. Run etcdctl without any arguments
+    $ ./etcdctl
+    ```
 
 
 # 6. Commands
@@ -97,4 +136,5 @@ This document contains my notes on preparation course of Certified Kubernetes Ad
 ```
 
 # 7. References
-- []()
+
+- [Certified Kubernetes Administrator (CKA) with Practice Tests by Mumshad Mannambeth](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests)
