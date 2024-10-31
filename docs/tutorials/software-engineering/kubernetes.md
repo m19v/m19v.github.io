@@ -22,6 +22,9 @@ title: Kubernetes
   - [5.7. Kube Controller Manager](#57-kube-controller-manager)
     - [5.7.1. Installation of Kube-Controller-Manager](#571-installation-of-kube-controller-manager)
   - [5.8. Kube Scheduler](#58-kube-scheduler)
+  - [5.9. Kubelet](#59-kubelet)
+  - [5.10. Kube Proxy](#510-kube-proxy)
+  - [5.11. Pods](#511-pods)
 - [6. Commands](#6-commands)
 - [7. References](#7-references)
 
@@ -207,6 +210,26 @@ This document contains my notes on preparation course of Certified Kubernetes Ad
 
 ## 5.8. Kube Scheduler
 
+- **kube-scheduler** is responsible for scheduling pods on nodes. The kube-scheduler is only responsible for deciding which pod goes on which node depending on certain criteria (e.g. **Filter Nodes**, **Rank Nodes**). It doesn't actually place the pod on the nodes, that's the job of the `kubelet`.
+- Read [more](https://github.com/kodekloudhub/certified-kubernetes-administrator-course/blob/master/docs/02-Core-Concepts/08-Kube-Scheduler.md)
+
+## 5.9. Kubelet
+
+- **kubelet** is a node agent which is responsible for creating the pods on the nodes and the sole point of contact for the kubernetes cluster
+- kubelet also collects reports and sends regularly to master node
+
+
+## 5.10. Kube Proxy
+
+- **POD Network** is an internal virtual network that spans across all nodes in the cluster to which all pods are connected. Within k8s cluster every pod can reach every other pod which is accomplished by deploying networking solution, i.e. POD Network.
+- **kube-proxy** is a network component in Kubernetes that helps manage network communication to and from the Pods in a k8s cluster. Key function of kube-proxy:
+  - Traffic Routing
+  - Load Balancing
+  - Service Discovery
+  - Protocol Support
+
+
+## 5.11. Pods
 
 
 
