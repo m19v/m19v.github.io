@@ -16,6 +16,12 @@ title: Kubernetes
     - [5.4.2. ContainerD](#542-containerd)
   - [5.5. ETCD](#55-etcd)
     - [5.5.1. Get started quickly with ETCD](#551-get-started-quickly-with-etcd)
+    - [5.5.2. ETCD in Kubernetes](#552-etcd-in-kubernetes)
+    - [5.5.3. ETCD Setup - Manual vs kubeadm](#553-etcd-setup---manual-vs-kubeadm)
+  - [5.6. Kube-API Server](#56-kube-api-server)
+  - [5.7. Kube Controller Manager](#57-kube-controller-manager)
+    - [5.7.1. Installation of Kube-Controller-Manager](#571-installation-of-kube-controller-manager)
+  - [5.8. Kube Scheduler](#58-kube-scheduler)
 - [6. Commands](#6-commands)
 - [7. References](#7-references)
 
@@ -122,17 +128,94 @@ This document contains my notes on preparation course of Certified Kubernetes Ad
     Syntax: To retrieve the stored data
     $ ./etcdctl get key1
     ```
-    ```
+    ```sh
     Syntax: To view more commands. Run etcdctl without any arguments
     $ ./etcdctl
+
+    # etcdctl command in API 3 version
+    etcdctl snapshot save 
+    etcdctl endpoint health
+    etcdctl get
+    etcdctl put
+
+    export ETCDCTL_API=3           # set the environment variable ETCDCTL_API for desired API version
+
+    # Certs for ETCDCTL to authenticate to the ETCD API Server
+    --cacert /etc/kubernetes/pki/etcd/ca.crt     
+    --cert /etc/kubernetes/pki/etcd/server.crt     
+    --key /etc/kubernetes/pki/etcd/server.key
+
+    # Example: 
+    kubectl exec etcd-master -n kube-system -- sh -c "ETCDCTL_API=3 etcdctl get / --prefix --keys-only --limit=10 --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt  --key /etc/kubernetes/pki/etcd/server.key" 
+
     ```
+
+### 5.5.2. ETCD in Kubernetes
+
+- The **ETCD Datastore** stores following cluster information:
+  - Nodes
+  - PODS
+  - Configs
+  - Secrets
+  - Accounts
+  - Roles
+  - Bindings
+  - Others
+
+- `kubectl get` command retrieves all information from the **ETCD Server**
+
+### 5.5.3. ETCD Setup - Manual vs kubeadm
+
+- Read [more](https://github.com/kodekloudhub/certified-kubernetes-administrator-course/blob/master/docs/02-Core-Concepts/05-ETCD-in-Kubernetes.md)
+
+
+## 5.6. Kube-API Server
+
+- **Kube-API Server** is a primary management component in K8s
+- kube-api server performs following actions when  `kubectl` command is executed:
+  - Authenticate User
+  - Validate Request
+  - Retrieve dataf
+- Read [more](https://github.com/kodekloudhub/certified-kubernetes-administrator-course/blob/master/docs/02-Core-Concepts/06-Kube-API-Server.md)
+
+
+## 5.7. Kube Controller Manager
+
+- **Kube Controller Manager** manages various controllers in kubernetes
+- **Controller** is a process that continuously monitors the state of the components within the system and ensures the whole system to have the desired functioning state
+- Controllers:
+  - **Node Controller** - monitors health of Nodes every `5s`
+    - `Node Monitor Period = 5s`
+    - `Node Monitor Grace Period = 40s` (i.e. waits 40s before marking it as unreachable)
+    - `POD Eviction Timeout = 5m` (i.e. waits 5m to come back up if unreachable before removing pods and provisioning resources to the healthy nodes if it is part of replica set)
+  - **Replication Controller** - monitors state of replica sets
+  - **Deployment Controller**
+  - **Namespace Controller**
+  - **Endpoint-Controller**
+  - **CronJob**
+  - **Job Controller**
+  - **PV Protection Controller**
+  - **Service Account Controller**
+  - **Stateful Set**
+  - **Replica Set**
+  - **PV Binder Controller**
+
+### 5.7.1. Installation of Kube-Controller-Manager
+
+- Read [more](https://github.com/kodekloudhub/certified-kubernetes-administrator-course/blob/master/docs/02-Core-Concepts/07-Kube-Controller-Manager.md)
+
+
+## 5.8. Kube Scheduler
+
+
 
 
 # 6. Commands
 
 ```sh
-# COMMENT
+kubectl get pods -n kube-system
 
+kubectl exec etcd-master -n kube-system etcdctl get / --prefix -keys-only
 ```
 
 # 7. References
