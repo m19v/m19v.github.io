@@ -228,15 +228,37 @@ This document contains my notes on preparation course of Certified Kubernetes Ad
   - Service Discovery
   - Protocol Support
 
-
 ## 5.11. Pods
 
+- **Pod** is a logical host for one or more containers that are deployed together on the same host
+
+```yaml
+# Example of Pod definition with YAML
+
+apiVersion: v1
+kind: Pod               
+metadata:                       # dictionary
+    name: myapp-pod
+    labels:                     # under labels custom key:value allowed
+        app: myapp
+        type: front-end
+
+spec:                           # dictionary
+    containers:                 # list/array
+        - name: nginx-controller
+          image: nginx
+
+```
 
 
 # 6. Commands
 
 ```sh
 kubectl get pods -n kube-system
+
+
+kubectl describe pod myapp-pod
+
 
 kubectl exec etcd-master -n kube-system etcdctl get / --prefix -keys-only
 ```
