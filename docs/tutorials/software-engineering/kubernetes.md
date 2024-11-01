@@ -29,6 +29,10 @@ title: Kubernetes
   - [5.13. Labels and Selectors](#513-labels-and-selectors)
   - [5.14. Deployments](#514-deployments)
   - [5.15. Services](#515-services)
+    - [5.15.1. ClusterIP](#5151-clusterip)
+    - [5.15.2. NodePort](#5152-nodeport)
+    - [5.15.3. LoadBalancer](#5153-loadbalancer)
+    - [5.15.4. ExternalName](#5154-externalname)
 - [6. Commands](#6-commands)
 - [7. References](#7-references)
 
@@ -358,6 +362,88 @@ spec:                           # dictionary
 
 ## 5.15. Services
 
+- **Service** is used to expose a set of Pods and enable communication between them
+- Services enable communication between different components of an application, allowing Pods to discover and interact with each other reliably
+- There are different types of Services, each serving a specific purpose
+- Service acts as built-in *load balancer* to distribute load across different Pods (`Algorithm: Random, SessionAffinity: Yes`)
+  
+### 5.15.1. ClusterIP
+
+- This is the default service type
+- It exposes the service on a cluster-internal IP
+- Only accessible from within the cluste
+- Useful for internal communication between services
+
+```yaml
+# Example of Service of type ClusterIP definition with YAML
+
+apiVersion: v1
+kind: Service               
+metadata:                       # dictionary
+    name: back-end
+
+spec:
+    type: ClusterIP
+    ports:
+      - port: 80                # The port that the service will expose
+        targetPort: 8080        # The port on the pod that the service should forward to
+    selector:
+        app: myapp
+        type: back-end
+
+```
+
+### 5.15.2. NodePort
+
+- Service of type NodePort listens on the static port of each node's IP address in cluster and forward request to the Pods
+- Node's port range `30 000 to 32 767`
+
+```yaml
+# Example of Service of type NodePort definition with YAML
+
+apiVersion: v1
+kind: Service               
+metadata:                       # dictionary
+    name: myapp-service
+
+spec:
+    type: NodePort
+    ports:
+      - port: 80                # The port that the service will expose
+        targetPort: 8080        # The port on the pod that the service should forward to
+        nodePort: 30008         # The port on each node that will forward to the service
+    selector:
+        app: myapp
+        type: front-end
+
+```
+
+### 5.15.3. LoadBalancer
+
+- Creates an external load balancer (if supported by the cloud provider)
+- Automatically assigns a public IP address to the service
+- Distributes incoming traffic across multiple nodes
+- Ideal for production environments where you need to handle large amounts of traffic
+
+```yaml
+# Example of Service of type LoadBalancer definition with YAML
+
+apiVersion: v1
+kind: Service               
+metadata:                       # dictionary
+    name: myapp-service
+
+spec:
+    type: LoadBalancer
+    ports:
+      - port: 80                # The port that the service will expose
+        targetPort: 8080        # The port on the pod that the service should forward to
+        nodePort: 30008         # The port on each node that will forward to the service
+
+```
+
+### 5.15.4. ExternalName
+
 # 6. Commands
 
 ```sh
@@ -378,6 +464,8 @@ kubectl get replicaset
 kubectl get replicaset myapp-rs -o yaml
 
 kubectl get deployments
+
+kubectl get services
 
 
 # DESCRIBE
