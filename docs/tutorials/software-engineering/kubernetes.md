@@ -25,6 +25,9 @@ title: Kubernetes
   - [5.9. Kubelet](#59-kubelet)
   - [5.10. Kube Proxy](#510-kube-proxy)
   - [5.11. Pods](#511-pods)
+  - [5.12. ReplicaSets](#512-replicasets)
+  - [5.13. Labels and Selectors](#513-labels-and-selectors)
+  - [5.14. Deployments](#514-deployments)
 - [6. Commands](#6-commands)
 - [7. References](#7-references)
 
@@ -250,21 +253,138 @@ spec:                           # dictionary
 
 ```
 
+## 5.12. ReplicaSets
+
+- **ReplicaSet** and **ReplicationController** (deprecated in favor of ReplicaSet) are both Kubernetes resources for managing pod replication to ensure a specified number of pod replicas running at any given time
+
+```yaml
+# Example of ReplicationController definition with YAML
+
+apiVersion: v1
+kind: ReplicationController
+metadata:                       # dictionary
+    name: myapp-rc
+    labels:                     # under labels custom key:value allowed
+        app: myapp
+        type: front-end
+
+spec:                           # dictionary
+    template:                   # Pod template for replication
+        metadata:                       
+            name: myapp-pod
+            labels:                     
+                app: myapp
+                type: front-end
+
+        spec:                           
+            containers:                 
+                - name: nginx-controller
+                image: nginx
+    
+    replicas: 3
+```
+
+```yaml
+# Example of ReplicaSet definition with YAML
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:                       # dictionary
+    name: myapp-rs
+    labels:                     # under labels custom key:value allowed
+        app: myapp
+        type: front-end
+
+spec:                           # dictionary
+    template:                   # Pod template for replication
+        metadata:                       
+            name: myapp-pod
+            labels:                     
+                app: myapp
+                type: front-end
+
+        spec:                           
+            containers:                 
+                - name: nginx-controller
+                image: nginx
+    
+    replicas: 3
+    selector:                   # Major difference from ReplicationController
+        matchLabels:
+            type: front-end     # To select all existing Pods matching defined label
+```
+
+## 5.13. Labels and Selectors
+
+- **Labels** are *key/value* pairs that are attached to objects such as Pods for categorizing resources.
+- **Selectors** are *queries* to filter resources based on *labels*.
+
+
+## 5.14. Deployments
+
+
 
 # 6. Commands
 
 ```sh
+# GET
+
+kubectl get pods
 kubectl get pods -n kube-system
 kubectl get pods -o wide
 
+kubectl get pods -l environment=production,tier=frontend
+kubectl get pods -l 'environment in (production),tier in (frontend)'
+kubectl get pods -l 'environment,environment notin (frontend)'
+
+kubectl get replicationcontroller
+kubectl get replicaset
+kubectl get replicaset myapp-rs -o yaml
+
+
+
+# DESCRIBE
 
 kubectl describe pod myapp-pod
 
 
+
+# EXEC
+
 kubectl exec etcd-master -n kube-system etcdctl get / --prefix -keys-only
 
 
+
+# RUN
+
 kubectl run nginx --image=nginx --dry-run=client -o yaml
+
+
+
+
+# EDIT
+
+kubectl edit replicaset
+
+
+
+
+# REPLACE
+
+kubectl replace -f replicaset-definition.yaml
+
+
+
+# SCALE
+
+kubectl scale --replicas=6 -f replicaset-definition.yaml
+kubectl scale --replicas=6 -f replicaset myapp-rs
+
+
+
+# DELETE
+
+kubecetl delete replicaset myapp-replicaset               # deletes all underlying Pods 
 ```
 
 # 7. References
