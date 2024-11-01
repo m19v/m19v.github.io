@@ -255,12 +255,16 @@ spec:                           # dictionary
 
 ```sh
 kubectl get pods -n kube-system
+kubectl get pods -o wide
 
 
 kubectl describe pod myapp-pod
 
 
 kubectl exec etcd-master -n kube-system etcdctl get / --prefix -keys-only
+
+
+kubectl run nginx --image=nginx --dry-run=client -o yaml
 ```
 
 # 7. References
