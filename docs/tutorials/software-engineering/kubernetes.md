@@ -28,6 +28,7 @@ title: Kubernetes
   - [5.12. ReplicaSets](#512-replicasets)
   - [5.13. Labels and Selectors](#513-labels-and-selectors)
   - [5.14. Deployments](#514-deployments)
+  - [5.15. Services](#515-services)
 - [6. Commands](#6-commands)
 - [7. References](#7-references)
 
@@ -322,12 +323,47 @@ spec:                           # dictionary
 
 ## 5.14. Deployments
 
+- **Deployment** is a higher-level abstraction that manages a ReplicaSet, which in turn manages the Pods.
 
+```yaml
+# Example of Deployment definition with YAML
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:                       # dictionary
+    name: myapp-rs
+    labels:                     # under labels custom key:value allowed
+        app: myapp
+        type: front-end
+
+spec:                           # dictionary
+    template:                   # Pod template for replication
+        metadata:                       
+            name: myapp-pod
+            labels:                     
+                app: myapp
+                type: front-end
+
+        spec:                           
+            containers:                 
+                - name: nginx-controller
+                image: nginx
+    
+    replicas: 3
+    selector:                   
+        matchLabels:
+            type: front-end     # To select all existing Pods matching defined label
+```
+
+
+## 5.15. Services
 
 # 6. Commands
 
 ```sh
 # GET
+
+kubectl get all
 
 kubectl get pods
 kubectl get pods -n kube-system
@@ -341,11 +377,19 @@ kubectl get replicationcontroller
 kubectl get replicaset
 kubectl get replicaset myapp-rs -o yaml
 
+kubectl get deployments
 
 
 # DESCRIBE
 
 kubectl describe pod myapp-pod
+
+
+
+# CREATE
+
+kubectl create deployment --image=nginx nginx
+kubectl create deployment my-deployment --image=nginx nginx --replicas=3 --dry-run=client -o yaml
 
 
 
