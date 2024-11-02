@@ -33,6 +33,8 @@ title: Kubernetes
     - [5.15.2. NodePort](#5152-nodeport)
     - [5.15.3. LoadBalancer](#5153-loadbalancer)
     - [5.15.4. ExternalName](#5154-externalname)
+  - [5.16. Namespaces](#516-namespaces)
+    - [Resource Quota](#resource-quota)
 - [6. Commands](#6-commands)
 - [7. References](#7-references)
 
@@ -247,6 +249,7 @@ apiVersion: v1
 kind: Pod               
 metadata:                       # dictionary
     name: myapp-pod
+    namespace: dev
     labels:                     # under labels custom key:value allowed
         app: myapp
         type: front-end
@@ -269,6 +272,7 @@ apiVersion: v1
 kind: ReplicationController
 metadata:                       # dictionary
     name: myapp-rc
+    namespace: dev
     labels:                     # under labels custom key:value allowed
         app: myapp
         type: front-end
@@ -296,6 +300,7 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata:                       # dictionary
     name: myapp-rs
+    namespace: dev
     labels:                     # under labels custom key:value allowed
         app: myapp
         type: front-end
@@ -336,6 +341,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:                       # dictionary
     name: myapp-rs
+    namespace: dev
     labels:                     # under labels custom key:value allowed
         app: myapp
         type: front-end
@@ -381,6 +387,7 @@ apiVersion: v1
 kind: Service               
 metadata:                       # dictionary
     name: back-end
+    namespace: dev
 
 spec:
     type: ClusterIP
@@ -405,6 +412,7 @@ apiVersion: v1
 kind: Service               
 metadata:                       # dictionary
     name: myapp-service
+    namespace: dev
 
 spec:
     type: NodePort
@@ -432,6 +440,7 @@ apiVersion: v1
 kind: Service               
 metadata:                       # dictionary
     name: myapp-service
+    namespace: dev
 
 spec:
     type: LoadBalancer
@@ -443,6 +452,56 @@ spec:
 ```
 
 ### 5.15.4. ExternalName
+
+
+## 5.16. Namespaces
+
+- **Namespace** is a way to organize and manage resources within a cluster which provides a mechanism for isolating groups of resources
+- Key Points of Namespaces:
+  - Isolation
+  - Resource Management
+  - Access Control
+  - Resource Quotas
+  - Network Policies
+  - Scoped Resources
+  
+> **Info:** A pattern to access a service in a different namespace using DNS:  
+> 
+> `<service-name>.<namespace>.svc.cluster.local`  
+> - `<service-name>`: name of the service to access
+> - `<namespace>`: namespace where the service is located
+> - `svc`: indicates that a service being accessed
+> - `cluster.local`: default domain name for services in the k8s cluster (can be customized)
+
+```yaml
+# Example of Namespace definition with YAML
+
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: dev
+```
+
+### Resource Quota
+
+```yaml
+# Example of ResourceQuota definition with YAML
+
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+    name: compute-quota
+    namespace: dev
+
+spec: 
+  hard:
+    pods: "10"
+    requests.cpu: "4"
+    requests.memory: "5Gi"
+    limits.cpu: "10"
+    limits.memory: "10Gi"
+```
+
 
 # 6. Commands
 
@@ -459,6 +518,8 @@ kubectl get pods -l environment=production,tier=frontend
 kubectl get pods -l 'environment in (production),tier in (frontend)'
 kubectl get pods -l 'environment,environment notin (frontend)'
 
+kubectl get pod <pod-name> --all-namespaces
+
 kubectl get replicationcontroller
 kubectl get replicaset
 kubectl get replicaset myapp-rs -o yaml
@@ -468,16 +529,26 @@ kubectl get deployments
 kubectl get services
 
 
+
+
 # DESCRIBE
 
 kubectl describe pod myapp-pod
 
 
 
+
+
 # CREATE
 
-kubectl create deployment --image=nginx nginx
+kubectl create deployment --image=nginx nginx --namespace=dev
 kubectl create deployment my-deployment --image=nginx nginx --replicas=3 --dry-run=client -o yaml
+
+kubectl create service nodeport myapp-service --tcp=8080:8080 --dry-run=client -o yaml
+
+kubectl create namespace dev
+
+
 
 
 
@@ -487,9 +558,13 @@ kubectl exec etcd-master -n kube-system etcdctl get / --prefix -keys-only
 
 
 
+
+
 # RUN
 
-kubectl run nginx --image=nginx --dry-run=client -o yaml
+kubectl run nginx --image=nginx --namespace=default --dry-run=client -o yaml
+
+
 
 
 
@@ -501,9 +576,12 @@ kubectl edit replicaset
 
 
 
+
 # REPLACE
 
 kubectl replace -f replicaset-definition.yaml
+
+
 
 
 
@@ -514,9 +592,19 @@ kubectl scale --replicas=6 -f replicaset myapp-rs
 
 
 
+
+
 # DELETE
 
-kubecetl delete replicaset myapp-replicaset               # deletes all underlying Pods 
+kubectl delete replicaset myapp-replicaset               # deletes all underlying Pods 
+
+
+
+
+
+# CONFIG
+
+kubectl config set-context $(kubectl config current-context) --namespace=dev
 ```
 
 # 7. References
