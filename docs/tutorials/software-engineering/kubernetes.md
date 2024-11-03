@@ -34,7 +34,8 @@ title: Kubernetes
     - [5.15.3. LoadBalancer](#5153-loadbalancer)
     - [5.15.4. ExternalName](#5154-externalname)
   - [5.16. Namespaces](#516-namespaces)
-    - [Resource Quota](#resource-quota)
+    - [5.16.1. Resource Quota](#5161-resource-quota)
+  - [5.17. Imperative vs. Declarative](#517-imperative-vs-declarative)
 - [6. Commands](#6-commands)
 - [7. References](#7-references)
 
@@ -423,7 +424,6 @@ spec:
     selector:
         app: myapp
         type: front-end
-
 ```
 
 ### 5.15.3. LoadBalancer
@@ -482,7 +482,7 @@ metadata:
     name: dev
 ```
 
-### Resource Quota
+### 5.16.1. Resource Quota
 
 ```yaml
 # Example of ResourceQuota definition with YAML
@@ -501,6 +501,38 @@ spec:
     limits.cpu: "10"
     limits.memory: "10Gi"
 ```
+
+
+## 5.17. Imperative vs. Declarative
+
+In the context of Infrastructure as Code (IaC), imperative and declarative are two different approaches to defining and managing infrastructure. 
+
+- In an **imperative** approach, you specify how to achieve a desired state by providing a sequence of commands or instructions.
+-  In a **declarative** approach, you specify what the desired state of the infrastructure should be, without detailing the steps to achieve that state.
+
+```sh
+# IMPERAIVE APPROACH
+
+# create objects
+kubectl run --image=nginx nginx 
+kubectl create deployment --image=nginx nginx 
+kubectl expose deployment nginx --port 80
+
+# update objects
+kubectl edit deployment nginx
+kubectl scale deployment nginx --replicas=5
+kubectl set image deployment nginx nginx=nginx:1.18
+
+kubectl create -f nginx.yaml
+kubectl replace -f nginx.yaml
+kubectl delete -f nginx.yaml
+
+
+# DECLARATIVE APPROACH
+
+kubectl apply -f object-definition-file.yaml
+```
+
 
 
 # 6. Commands
@@ -534,6 +566,15 @@ kubectl get services
 # DESCRIBE
 
 kubectl describe pod myapp-pod
+
+
+
+
+
+# APPLY
+
+kubectl apply -f object-definition-file.yaml
+kubectl apply -f /path/to/object-definition-files
 
 
 
@@ -610,3 +651,4 @@ kubectl config set-context $(kubectl config current-context) --namespace=dev
 # 7. References
 
 - [Certified Kubernetes Administrator (CKA) with Practice Tests by Mumshad Mannambeth](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests)
+- [Kubernetes Commands](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
