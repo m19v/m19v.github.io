@@ -27,17 +27,22 @@ title: Kubernetes
   - [5.11. Pods](#511-pods)
   - [5.12. ReplicaSets](#512-replicasets)
   - [5.13. Labels and Selectors](#513-labels-and-selectors)
-  - [5.14. Deployments](#514-deployments)
-  - [5.15. Services](#515-services)
-    - [5.15.1. ClusterIP](#5151-clusterip)
-    - [5.15.2. NodePort](#5152-nodeport)
-    - [5.15.3. LoadBalancer](#5153-loadbalancer)
-    - [5.15.4. ExternalName](#5154-externalname)
-  - [5.16. Namespaces](#516-namespaces)
-    - [5.16.1. Resource Quota](#5161-resource-quota)
-  - [5.17. Imperative vs. Declarative](#517-imperative-vs-declarative)
-- [6. Commands](#6-commands)
-- [7. References](#7-references)
+  - [5.14. Annotations](#514-annotations)
+  - [5.15. Deployments](#515-deployments)
+  - [5.16. Services](#516-services)
+    - [5.16.1. ClusterIP](#5161-clusterip)
+    - [5.16.2. NodePort](#5162-nodeport)
+    - [5.16.3. LoadBalancer](#5163-loadbalancer)
+    - [5.16.4. ExternalName](#5164-externalname)
+  - [5.17. Namespaces](#517-namespaces)
+    - [5.17.1. Resource Quota](#5171-resource-quota)
+  - [5.18. Imperative vs. Declarative](#518-imperative-vs-declarative)
+- [6. Scheduling](#6-scheduling)
+  - [6.1. Manual Scheduling](#61-manual-scheduling)
+    - [6.1.1. Binding Object](#611-binding-object)
+  - [6.2. Taints and Tolerations](#62-taints-and-tolerations)
+- [7. Commands](#7-commands)
+- [8. References](#8-references)
 
 
 # 2. Intro
@@ -331,7 +336,16 @@ spec:                           # dictionary
 - **Selectors** are *queries* to filter resources based on *labels*.
 
 
-## 5.14. Deployments
+## 5.14. Annotations
+
+- **Annotations** are key-value pairs that can be attached to various Kubernetes objects (e.g. pods, services, deployments etc.) to store arbitrary metadata that is not used for identification or selection. 
+- Usage of Annotations:
+  - Storing build or version information
+  - Providing links to documentation or related resources
+  - Specifying configuration options for tools that interact with the resource (e.g., deployment tools, monitoring systems)
+
+
+## 5.15. Deployments
 
 - **Deployment** is a higher-level abstraction that manages a ReplicaSet, which in turn manages the Pods.
 
@@ -367,14 +381,14 @@ spec:                           # dictionary
 ```
 
 
-## 5.15. Services
+## 5.16. Services
 
 - **Service** is used to expose a set of Pods and enable communication between them
 - Services enable communication between different components of an application, allowing Pods to discover and interact with each other reliably
 - There are different types of Services, each serving a specific purpose
 - Service acts as built-in *load balancer* to distribute load across different Pods (`Algorithm: Random, SessionAffinity: Yes`)
   
-### 5.15.1. ClusterIP
+### 5.16.1. ClusterIP
 
 - This is the default service type
 - It exposes the service on a cluster-internal IP
@@ -401,7 +415,7 @@ spec:
 
 ```
 
-### 5.15.2. NodePort
+### 5.16.2. NodePort
 
 - Service of type NodePort listens on the static port of each node's IP address in cluster and forward request to the Pods
 - Node's port range `30 000 to 32 767`
@@ -426,7 +440,7 @@ spec:
         type: front-end
 ```
 
-### 5.15.3. LoadBalancer
+### 5.16.3. LoadBalancer
 
 - Creates an external load balancer (if supported by the cloud provider)
 - Automatically assigns a public IP address to the service
@@ -451,10 +465,10 @@ spec:
 
 ```
 
-### 5.15.4. ExternalName
+### 5.16.4. ExternalName
 
 
-## 5.16. Namespaces
+## 5.17. Namespaces
 
 - **Namespace** is a way to organize and manage resources within a cluster which provides a mechanism for isolating groups of resources
 - Key Points of Namespaces:
@@ -482,7 +496,7 @@ metadata:
     name: dev
 ```
 
-### 5.16.1. Resource Quota
+### 5.17.1. Resource Quota
 
 ```yaml
 # Example of ResourceQuota definition with YAML
@@ -503,7 +517,7 @@ spec:
 ```
 
 
-## 5.17. Imperative vs. Declarative
+## 5.18. Imperative vs. Declarative
 
 In the context of Infrastructure as Code (IaC), imperative and declarative are two different approaches to defining and managing infrastructure. 
 
@@ -534,21 +548,61 @@ kubectl apply -f object-definition-file.yaml
 ```
 
 
+# 6. Scheduling
 
-# 6. Commands
+- **Scheduling** is a process of assigning pods (the smallest deployable units in Kubernetes) to nodes (the machines or virtual machines in the cluster) based on resource availability and other constraints.
+
+## 6.1. Manual Scheduling
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+ name: nginx
+ labels:
+  name: nginx
+spec:
+ containers:
+ - name: nginx
+   image: nginx
+   ports:
+   - containerPort: 8080
+ nodeName: node02                            # Specifies the name of Node, by default is not set
+```
+
+### 6.1.1. Binding Object
+
+```yaml
+apiVersion: v1
+kind: Binding
+metadata:
+  name: my-pod
+  namespace: default
+target:
+  apiVersion: v1
+  kind: Node
+  name: my-node
+```
+
+## 6.2. Taints and Tolerations
+
+
+# 7. Commands
 
 ```sh
 # GET
 
 kubectl get all
 
-kubectl get pods
+kubectl get pods --watch
 kubectl get pods -n kube-system
 kubectl get pods -o wide
 
 kubectl get pods -l environment=production,tier=frontend
 kubectl get pods -l 'environment in (production),tier in (frontend)'
 kubectl get pods -l 'environment,environment notin (frontend)'
+
+kubectl get pods --selector app=App1
 
 kubectl get pod <pod-name> --all-namespaces
 
@@ -648,7 +702,7 @@ kubectl delete replicaset myapp-replicaset               # deletes all underlyin
 kubectl config set-context $(kubectl config current-context) --namespace=dev
 ```
 
-# 7. References
+# 8. References
 
 - [Certified Kubernetes Administrator (CKA) with Practice Tests by Mumshad Mannambeth](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests)
 - [Kubernetes Commands](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
