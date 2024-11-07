@@ -586,6 +586,41 @@ target:
 
 ## 6.2. Taints and Tolerations
 
+- **Taints** are applied to nodes to prevent certain pods from being scheduled on them
+- **Tolerations** are applied to pods to allow them to be scheduled on nodes with specific taints
+
+```sh
+kubectl taint nodes <NODE-NAME> <KEY>=<VALUE>:<TAINT-EFFECT>
+
+# TAINT-EFFECT defines what happens to Pods that do not TOLERATE this taint.
+# TAINT-EFFECTs: NoSchedule, PreferNoSchedule, NoExecute
+
+
+
+# TAINTING NODE EXAMPLE
+kubectl taint nodes node1 app=blue:NoSchedule
+
+# TOLERATION DEFINITION OF POD EXAMPLE
+apiVersion: v1
+kind: Pod
+metadata:
+ name: nginx
+ labels:
+  name: nginx
+spec:
+ containers:
+ - name: nginx
+   image: nginx
+   ports:
+   - containerPort: 8080
+ toleration:
+ - key: "app"
+   operator: "Equal" 
+   value: "blue"
+   effect: "NoSchedule"
+```
+
+
 
 # 7. Commands
 
@@ -603,6 +638,7 @@ kubectl get pods -l 'environment in (production),tier in (frontend)'
 kubectl get pods -l 'environment,environment notin (frontend)'
 
 kubectl get pods --selector app=App1
+kubectl get pods --selector app=App1 --no-headers | wc -l
 
 kubectl get pod <pod-name> --all-namespaces
 
@@ -620,6 +656,8 @@ kubectl get services
 # DESCRIBE
 
 kubectl describe pod myapp-pod
+kubectl describe node kubemaster
+
 
 
 
@@ -700,6 +738,14 @@ kubectl delete replicaset myapp-replicaset               # deletes all underlyin
 # CONFIG
 
 kubectl config set-context $(kubectl config current-context) --namespace=dev
+
+
+
+
+
+# TAINT
+
+kubectl taint nodes <NODE-NAME> <KEY>=<VALUE>:<TAINT-EFFECT>                    # TAINT-EFFECTs: NoSchedule, PreferNoSchedule, NoExecute
 ```
 
 # 8. References
