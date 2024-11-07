@@ -613,7 +613,7 @@ spec:
    image: nginx
    ports:
    - containerPort: 8080
- toleration:
+ tolerations:
  - key: "app"
    operator: "Equal" 
    value: "blue"
@@ -746,6 +746,7 @@ kubectl config set-context $(kubectl config current-context) --namespace=dev
 # TAINT
 
 kubectl taint nodes <NODE-NAME> <KEY>=<VALUE>:<TAINT-EFFECT>                    # TAINT-EFFECTs: NoSchedule, PreferNoSchedule, NoExecute
+kubectl taint nodes <NODE-NAME> <KEY>=<VALUE>:<TAINT-EFFECT>-                   # UNTAINT
 ```
 
 # 8. References
