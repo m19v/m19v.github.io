@@ -41,6 +41,8 @@ title: Kubernetes
   - [6.1. Manual Scheduling](#61-manual-scheduling)
     - [6.1.1. Binding Object](#611-binding-object)
   - [6.2. Taints and Tolerations](#62-taints-and-tolerations)
+  - [6.3. Node Selectors](#63-node-selectors)
+  - [6.4. Node Affinity](#64-node-affinity)
 - [7. Commands](#7-commands)
 - [8. References](#8-references)
 
@@ -621,6 +623,50 @@ spec:
 ```
 
 
+## 6.3. Node Selectors
+
+- Label a node:
+```sh
+kubectl label nodes node01 size=Large
+```
+- Assign a Pod to the Node
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  nodeSelector:
+    size: Large
+```
+- Node Selector's Limitations:
+  - Advanced expressions, e.g. Large OR Medium, NOT Small etc. 
+
+## 6.4. Node Affinity
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: with-node-affinity
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: size
+            operator: In
+            values:
+            - Large
+            - Medium
+```
 
 # 7. Commands
 
@@ -705,6 +751,15 @@ kubectl run nginx --image=nginx --namespace=default --dry-run=client -o yaml
 # EDIT
 
 kubectl edit replicaset
+
+
+
+
+
+
+# LABEL
+
+kubectl label nodes <node-name> <label-key>=<label-value>
 
 
 
