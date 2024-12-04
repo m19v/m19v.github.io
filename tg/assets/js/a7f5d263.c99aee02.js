@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkm_19_v=self.webpackChunkm_19_v||[]).push([[8617],{502:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/tg/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":2,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
