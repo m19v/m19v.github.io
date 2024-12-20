@@ -43,6 +43,7 @@ title: Kubernetes
   - [6.2. Taints and Tolerations](#62-taints-and-tolerations)
   - [6.3. Node Selectors](#63-node-selectors)
   - [6.4. Node Affinity](#64-node-affinity)
+    - [6.4.1. Node Affinity Types](#641-node-affinity-types)
 - [7. Commands](#7-commands)
 - [8. References](#8-references)
 
@@ -662,11 +663,26 @@ spec:
         nodeSelectorTerms:
         - matchExpressions:
           - key: size
-            operator: In
+            operator: In                                        # operators: In, NotIn, Exists, DoesNotExist
             values:
             - Large
             - Medium
 ```
+
+### 6.4.1. Node Affinity Types
+
+- Available:
+  - `requiredDuringSchedulingIgnoredDuringExecution`
+  - `preferredDuringSchedulingIgnoredDuringExecution`
+- Planned:
+  - `requiredDuringSchedulingRequiredDuringExecution`
+
+
+Two states in the lifecycle of the Pod considering Node Affinity:
+- **DuringScheduling** is a state when Pod does not exists and is created for the first time. If *reqired* then a node with specified lable must exist in order the Pod to be scheduled. 
+- **DuringExecution** is a state where the Pod is running and the change made in environment which affects Node Affinity, e.g. change in the label of the Node. If *ignored*, the Pod will continue running if node label is changed or removed.  
+
+Read [more.](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity)
 
 # 7. Commands
 
