@@ -44,6 +44,13 @@ title: Kubernetes
   - [6.3. Node Selectors](#63-node-selectors)
   - [6.4. Node Affinity](#64-node-affinity)
     - [6.4.1. Node Affinity Types](#641-node-affinity-types)
+  - [6.5. Taints and Tolerations vs Node Affinity](#65-taints-and-tolerations-vs-node-affinity)
+  - [6.6. Resource Requirements and Limits](#66-resource-requirements-and-limits)
+    - [6.6.1. Default Behaviour](#661-default-behaviour)
+    - [6.6.2. Resource Requests](#662-resource-requests)
+    - [6.6.3. Resource Limits](#663-resource-limits)
+    - [6.6.4. LimitRange](#664-limitrange)
+    - [6.6.5. ResourceQuota](#665-resourcequota)
 - [7. Commands](#7-commands)
 - [8. References](#8-references)
 
@@ -648,6 +655,8 @@ spec:
 
 ## 6.4. Node Affinity
 
+Node affinity is conceptually similar to `nodeSelector`, allowing you to constrain which nodes your Pod can be scheduled on based on node labels.
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -683,6 +692,128 @@ Two states in the lifecycle of the Pod considering Node Affinity:
 - **DuringExecution** is a state where the Pod is running and the change made in environment which affects Node Affinity, e.g. change in the label of the Node. If *ignored*, the Pod will continue running if node label is changed or removed.  
 
 Read [more.](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity)
+
+
+## 6.5. Taints and Tolerations vs Node Affinity
+
+**Taints and Tolerations**: Taints are applied to nodes to repel certain pods unless those pods have matching tolerations. This mechanism is useful for reserving nodes for specific workloads.
+**Node Affinity**: Node affinity allows you to specify rules based on node labels that determine which nodes a pod can be scheduled on. It helps ensure that pods are placed on nodes with specific characteristics.
+
+
+- Taints and Tolerations do not guarantee that the pods will only prefer these nodes.
+- As such, a combination of taints and tolerations and node affinity rules can be used together to completely dedicate nodes for specific parts.
+
+
+## 6.6. Resource Requirements and Limits
+
+> **Note**: Requests and Limits for resources are set per container in the pod.
+
+### 6.6.1. Default Behaviour
+
+### 6.6.2. Resource Requests
+
+```sh
+apiVersion: v1
+kind: Pod
+metadata:
+ name: nginx
+ labels:
+  name: nginx
+spec:
+ containers:
+ - name: nginx
+   image: nginx
+   ports:
+   - containerPort: 8080
+   resources:
+     requests:
+       memory: "4Gi"  
+       cpu: 2                           # 1 CPU Count: 1 AWS vCPU, 1 GCP Core, 1 Azure Core, 1 Hyperthread
+```
+
+### 6.6.3. Resource Limits
+
+- **Limit = Requests** if `Request` is not defined
+
+```sh
+apiVersion: v1
+kind: Pod
+metadata:
+ name: nginx
+ labels:
+  name: nginx
+spec:
+ containers:
+ - name: nginx
+   image: nginx
+   ports:
+   - containerPort: 8080
+   resources:
+     requests:
+       memory: "4Gi"  
+       cpu: 1                           # 1 CPU Count: 1 AWS vCPU, 1 GCP Core, 1 Azure Core, 1 Hyperthread
+    limits:
+       memory: "8Gi"  
+       cpu: 2
+```
+
+### 6.6.4. LimitRange
+
+- Applies in Namespace level (Namespace level object)
+- 
+
+```sh
+# LimitRange CPU
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-resource-constraint
+spec:
+  limits:
+  - default: # this section defines default limits
+      cpu: 500m
+    defaultRequest: # this section defines default requests
+      cpu: 500m
+    max: # max and min define the limit range
+      cpu: "1"
+    min:
+      cpu: 100m
+    type: Container
+
+
+# LimitRange Memory
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: memory-resource-constraint
+spec:
+  limits:
+  - default:
+      memory: 1Gi
+    defaultRequest:
+      memory: 1Gi
+    max: 
+      memory: 1Gi
+    min:
+      memory: 500Mi
+    type: Container
+
+```
+
+### 6.6.5. ResourceQuota
+
+```sh
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: my-resource-quota
+spec:
+  hard:
+    requests.cpu: 4
+    requests.memory: 4Gi
+    limit.cpu: 10
+    limit.memory: 10Gi
+```
 
 # 7. Commands
 
