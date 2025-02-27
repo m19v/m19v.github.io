@@ -189,7 +189,7 @@ IPv4
 
 ### Network and Host portion
 - 10.x.x.x - IP address
-- 255.0.0.0 - network mask
+- 255.0.0.0 - network mask (also known as subnet mask)
 - N.H.H.H - Network/Host portions
 
 ### Private IPv4 address class ranges 
@@ -242,6 +242,16 @@ CIDR - Classless Inter-Domain Routing
 
 
 ## Initial Device Configuration
+
+### How to connect to a Cisco router or switch
+
+- Router/Switch Console port RJ45 <-> DVG/USB (NOT Ethernet port)
+
+
+## IP Subnetting
+
+### IP Subnetting - Part I
+
 
 
 
