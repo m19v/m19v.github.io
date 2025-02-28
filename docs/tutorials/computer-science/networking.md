@@ -288,7 +288,14 @@ CIDR - Classless Inter-Domain Routing
   - First host = Subnet + 1:       172.16.32.0 + 1 = 172.16.32.1
   - Last host = Broadcast - 1:     172.16.47.255 - 1 = 172.16.47.254
 
+### Subdivide a network/subnet
 
+- How to subdivide a network/subnet when given:
+  - Specific number of host required
+  - Specific number of subnets 
+
+Hosts = 2^n - 2  (-2 is -Subnet and -Broadcast addresses)
+Subnets: 2^n 
 
 
 
