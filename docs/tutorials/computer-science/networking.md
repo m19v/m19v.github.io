@@ -250,7 +250,44 @@ CIDR - Classless Inter-Domain Routing
 
 ## IP Subnetting
 
-### IP Subnetting - Part I
+### Subnetting - Binary Method
+
+- IP Address
+  - Subnet/Network Address: Fill the host portion of an address with binaries 0's
+  - 1st Host Address: Fill the host portion of an address with binary 0's expect for the last bit which is set to binary 1
+  - Last Host Address: Fill the host portion of an address with binary 1's expect for the last bit which is set to binary 0
+  - Broadcast Address: Fill the host portion of an address with binary 1's
+
+- Example 1: 
+  - IP Address is 192.168.1.18/24 or 192.168.1.18 255.255.255.0, N.N.N.H - Network and Host Portion
+  - Subnet: 192.168.1.00000000    = 192.168.1.0
+  - 1st Host: 192.168.1.00000001  = 192.168.1.1 
+  - Last Host: 192.168.1.11111110 = 192.168.1.254   
+  - Broadcast: 192.168.1.11111111 = 192.168.1.255 
+
+- Example 2: 
+  - IP Address is 172.16.35.123/20 or 172.16.35.123 255.255.240.0 or 172.16.0010|0011.01111011 
+  - Subnet: 172.16.0010|0000.00000000 = 172.16.32.0
+  - 1st Host: 172.16.0010|0000.00000001 = 172.16.32.1
+  - Last Host: 172.16.0010|1111.11111110 = 172.16.47.254
+  - Broadcast: 172.16.0010|1111.11111111 = 172.16.47.255
+
+
+
+### Subnetting - Quick method
+
+- Shortcut Table
+
+| 128 | 64  | 32  | 16  | 8   | 4   | 2   | 1   |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 128 | 192 | 224 | 240 | 248 | 252 | 254 | 255 |
+
+- IP Address is 172.16.35.123/20 or 172.16.35.123 and Mask 255.255.240.0 
+  - Subnet/Network octet lies between 32 and 48 with the interval of 16 (from table for mask value 240), last octet is always 0: 172.16.32.0
+  - Broadcast = Next Network - 1:  172.16.48.0 - 1 = 172.16.47.255
+  - First host = Subnet + 1:       172.16.32.0 + 1 = 172.16.32.1
+  - Last host = Broadcast - 1:     172.16.47.255 - 1 = 172.16.47.254
+
 
 
 
