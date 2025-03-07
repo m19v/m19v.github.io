@@ -245,7 +245,7 @@ CIDR - Classless Inter-Domain Routing
 
 ### How to connect to a Cisco router or switch
 
-- Router/Switch Console port RJ45 <-> DVG/USB (NOT Ethernet port)
+- Router/Switch Console port RJ45 to/form DVG/USB (NOT Ethernet port)
 
 
 ## IP Subnetting
