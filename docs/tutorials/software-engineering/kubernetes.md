@@ -914,7 +914,7 @@ kubectl label nodes <node-name> <label-key>=<label-value>
 
 # REPLACE
 
-kubectl replace -f replicaset-definition.yaml
+kubectl replace --force -f replicaset-definition.yaml
 
 
 
