@@ -815,6 +815,45 @@ spec:
     limit.memory: 10Gi
 ```
 
+## DeamonSets
+
+- DeamonSet ensures that one copy of pod is present in all nodes of cluster
+- Similar to `ReplicaSet` but deployes a pod on each nodes
+- A pod is deployed on new node and removed when node is removed
+- Use cases
+  - Monitoring solution
+  - Logs Viewer
+  - Examples:
+    - kube-proxy
+    - weave-net (networking solution)
+
+```yaml
+# deamon-set-definition.yaml
+
+apiVersion: apps/v1
+kind: DeamonSet
+metadata:
+  name: monitoring-deamon
+spec:
+  selector:
+    matchLabels:
+      app: monitoring-agent
+  template:
+    metadata:
+      labels:
+        app: monitoring-agent
+    spec:
+      containers:
+      - name: monitoring-agent
+        image: monitoring-agent
+```
+```
+```
+
+
+
+
+
 # 7. Commands
 
 ```sh
