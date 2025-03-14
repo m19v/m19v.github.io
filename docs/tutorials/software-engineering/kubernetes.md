@@ -892,6 +892,27 @@ spec:
 
 ## Multiple Schedulers
 
+## Configuring Scheduler Profiles
+
+## Admission Controllers
+
+## Validating and Mutating Admission Controllers
+
+### Validating Admission Controllers
+
+- Validates the request and allow/deny it
+
+### Mutating Admission Controller
+
+- Mutates/Changes object before it is created (e.g. `DefaultStorageClass`)
+
+### Custom Validating/Mutating Admission Controllers
+
+- `MutatingAdmissionWebhook`
+- `ValidatingAdmissionWebhook`
+
+
+- Webhooks above will reference `Admission Webhook Server` with custom logic
 
 
 # 7. Commands
