@@ -847,10 +847,15 @@ spec:
       - name: monitoring-agent
         image: monitoring-agent
 ```
-```
-```
 
 
+## Static Pods
+
+- `kubelet` can manage pod independently from `kube-apiserver`
+- Pod definition files must be provided to `kubelet` manually by putting them into `/etc/kubernetes/manifests` directory designated to store information about pods
+- `kubelet` periodically checks `/etc/kubernetes/manifests` 
+- `kubelet` creates a pod and makes sure it stays alive and removes pods if definition file is removed from manifests directory
+- 
 
 
 
