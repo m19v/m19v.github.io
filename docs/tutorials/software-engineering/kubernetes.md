@@ -851,11 +851,41 @@ spec:
 
 ## Static Pods
 
+### What is Static Pods
+
+- `Static Pods` are pods with `kubelet` without `kube-apiserver` or other k8s control plain components
 - `kubelet` can manage pod independently from `kube-apiserver`
 - Pod definition files must be provided to `kubelet` manually by putting them into `/etc/kubernetes/manifests` directory designated to store information about pods
 - `kubelet` periodically checks `/etc/kubernetes/manifests` 
 - `kubelet` creates a pod and makes sure it stays alive and removes pods if definition file is removed from manifests directory
-- 
+- On `Static Pods` `kubelet` works in pod level and it is not possible to create `ReplicaSets`, `Deployments` or `Services` by copying definition files into manifest directory as it requires other control plane components, such as `replication`, `deployment-controller` etc.
+- `--pod-manifest-path=/etc/kubernetes/manifests` flag or `--config=kubeconfig.yaml with content: staticPodPath: /etc/kubernetes/manifests` is used to set a designated directory to be scanned by `kubelet`
+- Check running containers with: (i: no `kubectrl` util as `kube-apiserver` not available)
+  - `docker ps` for `Docker`
+  - `crictl ps` for `cri-o`
+  - `nerdctl ps` for `containerd`
+
+
+### Static Pods in Cluster
+
+- `kubelet` takes requests to create pod from different inputs:
+  - from definition file from static pod folder
+  - from http api endpoint (i.e. from `kube-apiserver`)
+- `kubectl get pods` will also list pods created statically but they can NOT be edited, deleted etc. from `kube-apiserver`
+
+
+### Static Pods Use Case
+
+- `kubeadm` tool uses a mechanist of Static Pods to create a k8s cluster. E.g. by just putting `controller-manager.yaml`, `apiserver.yaml`, `etcd.yaml` into static pod folder and the k8s control plane components will be started as pods
+
+
+### Static Pods vs. DaemonSets
+
+| Static Pods                                      | DaemonSets                                         |
+| ------------------------------------------------ | -------------------------------------------------- |
+| Created by kubelet                               | Created kube-apiserver (DaemonSet Controller)      |
+| Deploy Control Plane components as Static Pods   | Deploy Monitoring Agents, Logging Agents on nodes  |
+|                                        Ignored by kube-scheduler                                      |
 
 
 
