@@ -872,11 +872,12 @@ spec:
   - from definition file from static pod folder
   - from http api endpoint (i.e. from `kube-apiserver`)
 - `kubectl get pods` will also list pods created statically but they can NOT be edited, deleted etc. from `kube-apiserver`
+- Static pods can be recognized by their name where node name is appended to it 
 
 
 ### Static Pods Use Case
 
-- `kubeadm` tool uses a mechanist of Static Pods to create a k8s cluster. E.g. by just putting `controller-manager.yaml`, `apiserver.yaml`, `etcd.yaml` into static pod folder and the k8s control plane components will be started as pods
+- To deploy Control Plane components as Static Pods. E.g. `kubeadm` tool uses a mechanist of Static Pods to create a k8s cluster. E.g. by just putting `controller-manager.yaml`, `apiserver.yaml`, `etcd.yaml` into static pod folder and the k8s control plane components will be started as pods
 
 
 ### Static Pods vs. DaemonSets
@@ -885,7 +886,11 @@ spec:
 | ------------------------------------------------ | -------------------------------------------------- |
 | Created by kubelet                               | Created kube-apiserver (DaemonSet Controller)      |
 | Deploy Control Plane components as Static Pods   | Deploy Monitoring Agents, Logging Agents on nodes  |
-|                                        Ignored by kube-scheduler                                      |
+| Ignored by kube-scheduler                        | Ignored by kube-scheduler                          |
+
+
+
+## Multiple Schedulers
 
 
 
