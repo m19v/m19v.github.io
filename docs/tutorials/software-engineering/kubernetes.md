@@ -51,6 +51,19 @@ title: Kubernetes
     - [6.6.3. Resource Limits](#663-resource-limits)
     - [6.6.4. LimitRange](#664-limitrange)
     - [6.6.5. ResourceQuota](#665-resourcequota)
+  - [6.7. DeamonSets](#67-deamonsets)
+  - [6.8. Static Pods](#68-static-pods)
+    - [6.8.1. What is Static Pods](#681-what-is-static-pods)
+    - [6.8.2. Static Pods in Cluster](#682-static-pods-in-cluster)
+    - [6.8.3. Static Pods Use Case](#683-static-pods-use-case)
+    - [6.8.4. Static Pods vs. DaemonSets](#684-static-pods-vs-daemonsets)
+  - [6.9. Multiple Schedulers](#69-multiple-schedulers)
+  - [6.10. Configuring Scheduler Profiles](#610-configuring-scheduler-profiles)
+  - [6.11. Admission Controllers](#611-admission-controllers)
+  - [6.12. Validating and Mutating Admission Controllers](#612-validating-and-mutating-admission-controllers)
+    - [6.12.1. Validating Admission Controllers](#6121-validating-admission-controllers)
+    - [6.12.2. Mutating Admission Controller](#6122-mutating-admission-controller)
+    - [6.12.3. Custom Validating/Mutating Admission Controllers](#6123-custom-validatingmutating-admission-controllers)
 - [7. Commands](#7-commands)
 - [8. References](#8-references)
 
@@ -815,7 +828,7 @@ spec:
     limit.memory: 10Gi
 ```
 
-## DeamonSets
+## 6.7. DeamonSets
 
 - DeamonSet ensures that one copy of pod is present in all nodes of cluster
 - Similar to `ReplicaSet` but deployes a pod on each nodes
@@ -849,9 +862,9 @@ spec:
 ```
 
 
-## Static Pods
+## 6.8. Static Pods
 
-### What is Static Pods
+### 6.8.1. What is Static Pods
 
 - `Static Pods` are pods with `kubelet` without `kube-apiserver` or other k8s control plain components
 - `kubelet` can manage pod independently from `kube-apiserver`
@@ -866,7 +879,7 @@ spec:
   - `nerdctl ps` for `containerd`
 
 
-### Static Pods in Cluster
+### 6.8.2. Static Pods in Cluster
 
 - `kubelet` takes requests to create pod from different inputs:
   - from definition file from static pod folder
@@ -875,12 +888,12 @@ spec:
 - Static pods can be recognized by their name where node name is appended to it 
 
 
-### Static Pods Use Case
+### 6.8.3. Static Pods Use Case
 
 - To deploy Control Plane components as Static Pods. E.g. `kubeadm` tool uses a mechanist of Static Pods to create a k8s cluster. E.g. by just putting `controller-manager.yaml`, `apiserver.yaml`, `etcd.yaml` into static pod folder and the k8s control plane components will be started as pods
 
 
-### Static Pods vs. DaemonSets
+### 6.8.4. Static Pods vs. DaemonSets
 
 | Static Pods                                      | DaemonSets                                         |
 | ------------------------------------------------ | -------------------------------------------------- |
@@ -890,23 +903,23 @@ spec:
 
 
 
-## Multiple Schedulers
+## 6.9. Multiple Schedulers
 
-## Configuring Scheduler Profiles
+## 6.10. Configuring Scheduler Profiles
 
-## Admission Controllers
+## 6.11. Admission Controllers
 
-## Validating and Mutating Admission Controllers
+## 6.12. Validating and Mutating Admission Controllers
 
-### Validating Admission Controllers
+### 6.12.1. Validating Admission Controllers
 
 - Validates the request and allow/deny it
 
-### Mutating Admission Controller
+### 6.12.2. Mutating Admission Controller
 
 - Mutates/Changes object before it is created (e.g. `DefaultStorageClass`)
 
-### Custom Validating/Mutating Admission Controllers
+### 6.12.3. Custom Validating/Mutating Admission Controllers
 
 - `MutatingAdmissionWebhook`
 - `ValidatingAdmissionWebhook`
