@@ -64,8 +64,12 @@ title: Kubernetes
     - [6.12.1. Validating Admission Controllers](#6121-validating-admission-controllers)
     - [6.12.2. Mutating Admission Controller](#6122-mutating-admission-controller)
     - [6.12.3. Custom Validating/Mutating Admission Controllers](#6123-custom-validatingmutating-admission-controllers)
-- [7. Commands](#7-commands)
-- [8. References](#8-references)
+- [7. Logging and Monitoring](#7-logging-and-monitoring)
+  - [7.1. Monitor Cluster Components](#71-monitor-cluster-components)
+    - [7.1.1. Tools](#711-tools)
+  - [7.2. Managing Application Logs](#72-managing-application-logs)
+- [8. Commands](#8-commands)
+- [9. References](#9-references)
 
 
 # 2. Intro
@@ -928,7 +932,29 @@ spec:
 - Webhooks above will reference `Admission Webhook Server` with custom logic
 
 
-# 7. Commands
+# 7. Logging and Monitoring
+
+## 7.1. Monitor Cluster Components
+
+### 7.1.1. Tools
+
+- Prometheus
+- DataDog
+- Elastic Stack
+- Dynatrace
+- Mentics Server: in-memory solution without storing data option. 
+  - `kubelet` contains sub-component called `cAdvisor` (i.e. container advisor) responsible for retrieving performance metrics and exposing them through `kubelet` API for Metrics Server. 
+  - Enable Metrics Service: 
+    - `git clone https://github.com/kubernetes-incubator/metrics-server.git & kubectl create -f deploy/1.8+`
+  - Cluster Performance view:
+    - `kubectl top node`
+    - `kubectl top pod`
+
+## 7.2. Managing Application Logs 
+
+
+
+# 8. Commands
 
 ```sh
 # GET
@@ -1062,9 +1088,15 @@ kubectl config set-context $(kubectl config current-context) --namespace=dev
 
 kubectl taint nodes <NODE-NAME> <KEY>=<VALUE>:<TAINT-EFFECT>                    # TAINT-EFFECTs: NoSchedule, PreferNoSchedule, NoExecute
 kubectl taint nodes <NODE-NAME> <KEY>=<VALUE>:<TAINT-EFFECT>-                   # UNTAINT
+
+
+# LOGS
+
+kubectl logs -f <pod-name>
+kubectl logs -f <pod-name> [container-name]
 ```
 
-# 8. References
+# 9. References
 
 - [Certified Kubernetes Administrator (CKA) with Practice Tests by Mumshad Mannambeth](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests)
 - [Kubernetes Commands](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
