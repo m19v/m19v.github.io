@@ -68,8 +68,10 @@ title: Kubernetes
   - [7.1. Monitor Cluster Components](#71-monitor-cluster-components)
     - [7.1.1. Tools](#711-tools)
   - [7.2. Managing Application Logs](#72-managing-application-logs)
-- [8. Commands](#8-commands)
-- [9. References](#9-references)
+- [8. Application Lifecycle Management](#8-application-lifecycle-management)
+  - [8.1.](#81)
+- [9. Commands](#9-commands)
+- [10. References](#10-references)
 
 
 # 2. Intro
@@ -950,11 +952,15 @@ spec:
     - `kubectl top node`
     - `kubectl top pod`
 
-## 7.2. Managing Application Logs 
+## 7.2. Managing Application Logs
 
 
+# 8. Application Lifecycle Management
 
-# 8. Commands
+## 8.1. 
+
+
+# 9. Commands
 
 ```sh
 # GET
@@ -1096,7 +1102,7 @@ kubectl logs -f <pod-name>
 kubectl logs -f <pod-name> [container-name]
 ```
 
-# 9. References
+# 10. References
 
 - [Certified Kubernetes Administrator (CKA) with Practice Tests by Mumshad Mannambeth](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests)
 - [Kubernetes Commands](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
