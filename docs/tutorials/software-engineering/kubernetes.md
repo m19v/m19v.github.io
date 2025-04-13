@@ -1100,6 +1100,13 @@ kubectl taint nodes <NODE-NAME> <KEY>=<VALUE>:<TAINT-EFFECT>-                   
 
 kubectl logs -f <pod-name>
 kubectl logs -f <pod-name> [container-name]
+
+
+# AUTH
+
+kubectl auth can-i --list                                                      # check current user permissions
+kubectl auth can-i <verb> <resource> -n <namespace>                            # check if the current user can perform a specific action on a resource
+kubectl auth can-i create pods -n <namespace>                                  
 ```
 
 # 10. References
