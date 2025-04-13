@@ -1,5 +1,11 @@
 m19v:
   name: m19v
-  title: Software Developer
+  title: Software Engineer
   url: https://github.com/m19v
   image_url: https://github.com/m19v.png
+  page:
+    permalink: '/about'
+  socials:
+    x: m19v
+    linkedin: m19v
+    github: m19v
