@@ -69,7 +69,20 @@ title: Kubernetes
     - [7.1.1. Tools](#711-tools)
   - [7.2. Managing Application Logs](#72-managing-application-logs)
 - [8. Application Lifecycle Management](#8-application-lifecycle-management)
-  - [8.1.](#81)
+  - [8.1. Rolling Updates and Rollbacks](#81-rolling-updates-and-rollbacks)
+  - [8.2. Configure Applications](#82-configure-applications)
+  - [8.3. Commands and Arguments](#83-commands-and-arguments)
+  - [8.4. Configuring ConfigMaps in Applications](#84-configuring-configmaps-in-applications)
+  - [8.5. Configure Secrets an Applications](#85-configure-secrets-an-applications)
+    - [8.5.1. Encrypting Secret Data at Rest](#851-encrypting-secret-data-at-rest)
+  - [8.6. Scale Applications](#86-scale-applications)
+  - [8.7. Multi Container Pods](#87-multi-container-pods)
+  - [8.8. InitContainers](#88-initcontainers)
+  - [8.9. Self Healing Applications](#89-self-healing-applications)
+  - [8.10. Intro to Autoscaling](#810-intro-to-autoscaling)
+  - [8.11. Horizontal Pod Autoscaler (HPA)](#811-horizontal-pod-autoscaler-hpa)
+  - [8.12. In-place resize Pods](#812-in-place-resize-pods)
+  - [8.13. Vertical Pod Autoscaling (VPA)](#813-vertical-pod-autoscaling-vpa)
 - [9. Commands](#9-commands)
 - [10. References](#10-references)
 
@@ -957,7 +970,34 @@ spec:
 
 # 8. Application Lifecycle Management
 
-## 8.1. 
+## 8.1. Rolling Updates and Rollbacks
+
+## 8.2. Configure Applications
+
+## 8.3. Commands and Arguments
+
+## 8.4. Configuring ConfigMaps in Applications
+
+## 8.5. Configure Secrets an Applications
+
+### 8.5.1. Encrypting Secret Data at Rest
+
+## 8.6. Scale Applications
+
+## 8.7. Multi Container Pods
+
+## 8.8. InitContainers
+
+## 8.9. Self Healing Applications
+
+## 8.10. Intro to Autoscaling
+
+## 8.11. Horizontal Pod Autoscaler (HPA)
+
+## 8.12. In-place resize Pods
+
+## 8.13. Vertical Pod Autoscaling (VPA)
+
 
 
 # 9. Commands
