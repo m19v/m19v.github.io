@@ -70,19 +70,20 @@ title: Kubernetes
   - [7.2. Managing Application Logs](#72-managing-application-logs)
 - [8. Application Lifecycle Management](#8-application-lifecycle-management)
   - [8.1. Rolling Updates and Rollbacks](#81-rolling-updates-and-rollbacks)
+    - [8.1.1. Deployment Strategy](#811-deployment-strategy)
   - [8.2. Configure Applications](#82-configure-applications)
-  - [8.3. Commands and Arguments](#83-commands-and-arguments)
-  - [8.4. Configuring ConfigMaps in Applications](#84-configuring-configmaps-in-applications)
-  - [8.5. Configure Secrets an Applications](#85-configure-secrets-an-applications)
-    - [8.5.1. Encrypting Secret Data at Rest](#851-encrypting-secret-data-at-rest)
-  - [8.6. Scale Applications](#86-scale-applications)
-  - [8.7. Multi Container Pods](#87-multi-container-pods)
-  - [8.8. InitContainers](#88-initcontainers)
-  - [8.9. Self Healing Applications](#89-self-healing-applications)
-  - [8.10. Intro to Autoscaling](#810-intro-to-autoscaling)
-  - [8.11. Horizontal Pod Autoscaler (HPA)](#811-horizontal-pod-autoscaler-hpa)
-  - [8.12. In-place resize Pods](#812-in-place-resize-pods)
-  - [8.13. Vertical Pod Autoscaling (VPA)](#813-vertical-pod-autoscaling-vpa)
+    - [8.2.1. Commands and Arguments](#821-commands-and-arguments)
+    - [8.2.2. Configuring ConfigMaps in Applications](#822-configuring-configmaps-in-applications)
+    - [8.2.3. Configure Secrets an Applications](#823-configure-secrets-an-applications)
+      - [8.2.3.1. Encrypting Secret Data at Rest](#8231-encrypting-secret-data-at-rest)
+  - [8.3. Scale Applications](#83-scale-applications)
+  - [8.4. Multi Container Pods](#84-multi-container-pods)
+  - [8.5. InitContainers](#85-initcontainers)
+  - [8.6. Self Healing Applications](#86-self-healing-applications)
+  - [8.7. Intro to Autoscaling](#87-intro-to-autoscaling)
+  - [8.8. Horizontal Pod Autoscaler (HPA)](#88-horizontal-pod-autoscaler-hpa)
+  - [8.9. In-place resize Pods](#89-in-place-resize-pods)
+  - [8.10. Vertical Pod Autoscaling (VPA)](#810-vertical-pod-autoscaling-vpa)
 - [9. Commands](#9-commands)
 - [10. References](#10-references)
 
@@ -972,31 +973,40 @@ spec:
 
 ## 8.1. Rolling Updates and Rollbacks
 
+### 8.1.1. Deployment Strategy
+
+- Recreate: destroy all and create all
+- Rolling Update: destroy and create one-by-one (DEFAULT Deployment Strategy)
+
 ## 8.2. Configure Applications
 
-## 8.3. Commands and Arguments
+- Configuring Command and Arguments on applications
+- Configure Environment Variables
+- Configure Secrets
 
-## 8.4. Configuring ConfigMaps in Applications
+### 8.2.1. Commands and Arguments
 
-## 8.5. Configure Secrets an Applications
+### 8.2.2. Configuring ConfigMaps in Applications
 
-### 8.5.1. Encrypting Secret Data at Rest
+### 8.2.3. Configure Secrets an Applications
 
-## 8.6. Scale Applications
+#### 8.2.3.1. Encrypting Secret Data at Rest
 
-## 8.7. Multi Container Pods
+## 8.3. Scale Applications
 
-## 8.8. InitContainers
+## 8.4. Multi Container Pods
 
-## 8.9. Self Healing Applications
+## 8.5. InitContainers
 
-## 8.10. Intro to Autoscaling
+## 8.6. Self Healing Applications
 
-## 8.11. Horizontal Pod Autoscaler (HPA)
+## 8.7. Intro to Autoscaling
 
-## 8.12. In-place resize Pods
+## 8.8. Horizontal Pod Autoscaler (HPA)
 
-## 8.13. Vertical Pod Autoscaling (VPA)
+## 8.9. In-place resize Pods
+
+## 8.10. Vertical Pod Autoscaling (VPA)
 
 
 
@@ -1043,7 +1053,7 @@ kubectl describe node kubemaster
 
 # APPLY
 
-kubectl apply -f object-definition-file.yaml
+kubectl apply -f object-definition-file.yaml                                   # Create or Update (DEFAULT Rolling Update) k8s object 
 kubectl apply -f /path/to/object-definition-files
 
 
@@ -1136,10 +1146,14 @@ kubectl taint nodes <NODE-NAME> <KEY>=<VALUE>:<TAINT-EFFECT>                    
 kubectl taint nodes <NODE-NAME> <KEY>=<VALUE>:<TAINT-EFFECT>-                   # UNTAINT
 
 
+
+
 # LOGS
 
 kubectl logs -f <pod-name>
 kubectl logs -f <pod-name> [container-name]
+
+
 
 
 # AUTH
@@ -1147,6 +1161,15 @@ kubectl logs -f <pod-name> [container-name]
 kubectl auth can-i --list                                                      # check current user permissions
 kubectl auth can-i <verb> <resource> -n <namespace>                            # check if the current user can perform a specific action on a resource
 kubectl auth can-i create pods -n <namespace>                                  
+
+
+
+
+# ROLLOUT
+
+kubectl rollout status deployment/<depoyment-name>                                 # Check the status of a rollout
+kubectl rollout history deployment/<depoyment-name>                                # Show the history of rollouts
+kubectl rollout undo deployment/<depoyment-name> --to-revision=<revision_number>   # Undo a rollout to the specific revision
 ```
 
 # 10. References
