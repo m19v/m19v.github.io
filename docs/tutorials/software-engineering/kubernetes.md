@@ -72,7 +72,7 @@ title: Kubernetes
   - [8.1. Rolling Updates and Rollbacks](#81-rolling-updates-and-rollbacks)
     - [8.1.1. Deployment Strategy](#811-deployment-strategy)
   - [8.2. Configure Applications](#82-configure-applications)
-    - [8.2.1. Commands and Arguments](#821-commands-and-arguments)
+    - [8.2.1. Commands and Arguments in Docker and K8s](#821-commands-and-arguments-in-docker-and-k8s)
     - [8.2.2. Configuring ConfigMaps in Applications](#822-configuring-configmaps-in-applications)
     - [8.2.3. Configure Secrets an Applications](#823-configure-secrets-an-applications)
       - [8.2.3.1. Encrypting Secret Data at Rest](#8231-encrypting-secret-data-at-rest)
@@ -984,7 +984,32 @@ spec:
 - Configure Environment Variables
 - Configure Secrets
 
-### 8.2.1. Commands and Arguments
+### 8.2.1. Commands and Arguments in Docker and K8s
+
+- Read [more](https://docs.docker.com/reference/dockerfile/#cmd)
+- Containers (unlike VMs) are not meant to host OS, but run specific process.
+
+
+```Dockerfile
+FROM nginx
+
+ENTRYPOINT ["sleep"]
+CMD ["5"]
+```
+
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+ name: nginx-sleeper-pod
+spec:
+ containers:
+ - name: nginx
+   image: nginx
+   command: ["sleep"]                    # Overrides executables ENTRYPOINT in Dockerfile
+   args: ["10"]                          # Overrides CMD defined after ENTRYPOINT as arguments in Dockerfile
+```
 
 ### 8.2.2. Configuring ConfigMaps in Applications
 
