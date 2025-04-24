@@ -1056,6 +1056,64 @@ spec:
 
 ### 8.2.2. Configuring ConfigMaps in Applications
 
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-demo
+data:
+  # property-like keys; each key maps to a simple value
+  player_initial_lives: "3"
+  ui_properties_file_name: "user-interface.properties"
+
+  # file-like keys
+  game.properties: |
+    enemy.types=aliens,monsters
+    player.maximum-lives=5    
+  user-interface.properties: |
+    color.good=purple
+    color.bad=yellow
+    allow.textmode=true  
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: env-configmap
+spec:
+  containers:
+    - name: app
+      command: ["/bin/sh", "-c", "printenv"]
+      image: busybox:latest
+      envFrom:
+        - configMapRef:
+            name: configmap-demo
+```
+
+```yaml
+# ConfigMaps in Pods
+
+# 1. ENV
+envFrom:
+  - configMapRef:
+      name: app-config
+
+# 2. SINGLE ENV
+env:
+  - name: APP_COLOR
+    valueFrom:
+      configMapKeyRef:
+        name: app-config
+        key: APP_COLOR
+
+# 3. VOLUME
+volumes:
+- name: app-config-value
+  configMap:
+    name: app-config
+```
+
 ### 8.2.3. Configure Secrets an Applications
 
 #### 8.2.3.1. Encrypting Secret Data at Rest
@@ -1106,6 +1164,8 @@ kubectl get deployments
 
 kubectl get services
 
+kubectl get configmaps
+
 
 
 
@@ -1136,6 +1196,9 @@ kubectl create deployment my-deployment --image=nginx nginx --replicas=3 --dry-r
 kubectl create service nodeport myapp-service --tcp=8080:8080 --dry-run=client -o yaml
 
 kubectl create namespace dev
+
+kubectl create configmap <config-name> --from-literal=APP_COLOR=blue
+kubectl create configmap <config-name> --from-file=app_config.properties
 
 
 
