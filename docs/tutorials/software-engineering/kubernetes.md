@@ -73,6 +73,7 @@ title: Kubernetes
     - [8.1.1. Deployment Strategy](#811-deployment-strategy)
   - [8.2. Configure Applications](#82-configure-applications)
     - [8.2.1. Commands and Arguments in Docker and K8s](#821-commands-and-arguments-in-docker-and-k8s)
+    - [8.2.2. Configuring Environment Variables in Applications](#822-configuring-environment-variables-in-applications)
     - [8.2.2. Configuring ConfigMaps in Applications](#822-configuring-configmaps-in-applications)
     - [8.2.3. Configure Secrets an Applications](#823-configure-secrets-an-applications)
       - [8.2.3.1. Encrypting Secret Data at Rest](#8231-encrypting-secret-data-at-rest)
@@ -997,7 +998,6 @@ ENTRYPOINT ["sleep"]
 CMD ["5"]
 ```
 
-
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -1009,6 +1009,49 @@ spec:
    image: nginx
    command: ["sleep"]                    # Overrides executables ENTRYPOINT in Dockerfile
    args: ["10"]                          # Overrides CMD defined after ENTRYPOINT as arguments in Dockerfile
+```
+
+### 8.2.2. Configuring Environment Variables in Applications
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: envar-demo
+spec:
+  containers:
+  - name: envar-demo-container
+    image: nginx
+    env:
+    - name: MY_VAR
+      value: "My Value"
+```
+
+```yaml
+# ENV Value Types
+
+# 1. Plain Key Value
+...
+    env:
+    - name: MY_VAR
+      value: "My Value"
+...
+
+# 2. ConfigMap
+...
+    env:
+    - name: MY_VAR
+      valueFrom: 
+        configMapKeyRef:
+...
+
+# 3. Secrets
+...
+    env:
+    - name: MY_VAR
+      valueFrom: 
+        secretKeyRef:
+...
 ```
 
 ### 8.2.2. Configuring ConfigMaps in Applications
@@ -1109,6 +1152,8 @@ kubectl exec etcd-master -n kube-system etcdctl get / --prefix -keys-only
 # RUN
 
 kubectl run nginx --image=nginx --namespace=default --dry-run=client -o yaml
+kubectl run nginx --image=nginx -- <arg1> <arg2> ... <argN>
+kubectl run nginx --image=nginx --command -- <cmd> <arg1> <arg2> ... <argN>
 
 
 
