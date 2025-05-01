@@ -74,9 +74,11 @@ title: Kubernetes
   - [8.2. Configure Applications](#82-configure-applications)
     - [8.2.1. Commands and Arguments in Docker and K8s](#821-commands-and-arguments-in-docker-and-k8s)
     - [8.2.2. Configuring Environment Variables in Applications](#822-configuring-environment-variables-in-applications)
-    - [8.2.2. Configuring ConfigMaps in Applications](#822-configuring-configmaps-in-applications)
-    - [8.2.3. Configure Secrets an Applications](#823-configure-secrets-an-applications)
-      - [8.2.3.1. Encrypting Secret Data at Rest](#8231-encrypting-secret-data-at-rest)
+    - [8.2.3. Configuring ConfigMaps in Applications](#823-configuring-configmaps-in-applications)
+    - [8.2.4. Configure Secrets an Applications](#824-configure-secrets-an-applications)
+      - [8.2.4.1. Create Secrets](#8241-create-secrets)
+      - [8.2.4.2. Encrypting Secret Data at Rest](#8242-encrypting-secret-data-at-rest)
+      - [8.2.4.3. Secret Store Providers](#8243-secret-store-providers)
   - [8.3. Scale Applications](#83-scale-applications)
   - [8.4. Multi Container Pods](#84-multi-container-pods)
   - [8.5. InitContainers](#85-initcontainers)
@@ -1054,7 +1056,7 @@ spec:
 ...
 ```
 
-### 8.2.2. Configuring ConfigMaps in Applications
+### 8.2.3. Configuring ConfigMaps in Applications
 
 ```yaml
 apiVersion: v1
@@ -1114,9 +1116,80 @@ volumes:
     name: app-config
 ```
 
-### 8.2.3. Configure Secrets an Applications
+### 8.2.4. Configure Secrets an Applications
 
-#### 8.2.3.1. Encrypting Secret Data at Rest
+#### 8.2.4.1. Create Secrets
+
+- Imperative approach - see [Commands](#9-commands)
+- Declarative approach
+
+```yaml
+# kubectl create -f secret-data.yaml
+
+# Secrets are only encoded, NOT Encryped
+# echo -n 'password' | base64
+# echo -n 'cGFzc3dvcmQ=' | base64 --decode
+
+# secret-data.yaml
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secret
+data:
+  DB_User: root
+  DB_Password: dmFsdWUtMg0KDQo=
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sapmple-secret-pod
+spec:
+  containers:
+    - name: test-container
+      image: registry.k8s.io/busybox
+      envFrom:
+        - secretRef:
+            name: app-secret                           # ref to secret name
+```
+
+```yaml
+# Secrets in Pods
+
+# 1. ENV
+envFrom:
+  - secretRef:
+      name: app-config
+
+# 2. SINGLE ENV
+env:
+  - name: DB_password
+    valueFrom:
+      secretKeyRef:
+        name: app-secret
+        key: DB_password
+
+# 3. VOLUME
+volumes:
+- name: app-secret-volume
+  secret:
+    secretName: app-secret
+```    
+
+
+#### 8.2.4.2. Encrypting Secret Data at Rest
+
+Secrets are not encrypted, so it is not safer in that sense. However, some best practices around using secrets make it safer. As in best practices like:
+
+- Not checking-in secret object definition files to source code repositories.
+- Enabling Encryption at Rest for Secrets so they are stored encrypted in ETCD. 
+  - Read more about [Encrypting Confidential Data at Rest](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/)
+  - Or [here](https://www.youtube.com/watch?v=MTnQW9MxnRI)
+
+#### 8.2.4.3. Secret Store Providers
+
+- Third-party secrets store providers: AWS Provider, Azure Provider, GCP Provider, Vault Provider (HashiCorp Vault)
+- Helm Secrets plugin
 
 ## 8.3. Scale Applications
 
@@ -1166,6 +1239,9 @@ kubectl get services
 
 kubectl get configmaps
 
+kubectl get secrets
+kubectl get secret app-secret -o yaml
+
 
 
 
@@ -1199,6 +1275,9 @@ kubectl create namespace dev
 
 kubectl create configmap <config-name> --from-literal=APP_COLOR=blue
 kubectl create configmap <config-name> --from-file=app_config.properties
+
+kubectl create secret generic <secret-name> --from-literal=<key>=<value>
+kubectl create secret generic <secret-name> --from-file=<path-to-file>
 
 
 
