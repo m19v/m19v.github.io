@@ -81,6 +81,7 @@ title: Kubernetes
       - [8.2.4.3. Secret Store Providers](#8243-secret-store-providers)
   - [8.3. Scale Applications](#83-scale-applications)
   - [8.4. Multi Container Pods](#84-multi-container-pods)
+    - [8.4.1. Multi-container Pods Design Patterns](#841-multi-container-pods-design-patterns)
   - [8.5. InitContainers](#85-initcontainers)
   - [8.6. Self Healing Applications](#86-self-healing-applications)
   - [8.7. Intro to Autoscaling](#87-intro-to-autoscaling)
@@ -1193,9 +1194,57 @@ Secrets are not encrypted, so it is not safer in that sense. However, some best 
 
 ## 8.3. Scale Applications
 
+- See [Deployments, Rolling updates and Rollback section](#81-rolling-updates-and-rollbacks)
+
 ## 8.4. Multi Container Pods
 
+```yaml
+# pod-definition.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+  - name: nginx-2
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 81
+```
+
+### 8.4.1. Multi-container Pods Design Patterns
+
+- Sidecar (e.g. service and logging containers)
+- Adapter
+- Ambassador
+
 ## 8.5. InitContainers
+
+```yaml
+# pod-definition.yaml
+# initContainer must run to a completion before the real container hosting the application starts. 
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+spec:
+  containers:
+  - name: myapp-container
+    image: busybox:1.28
+    command: ['sh', '-c', 'echo The app is running! && sleep 3600']
+  initContainers:
+  - name: init-myservice
+    image: busybox
+    command: ['sh', '-c', 'git clone <some-repository-that-will-be-used-by-application> ; done;']
+```
 
 ## 8.6. Self Healing Applications
 
