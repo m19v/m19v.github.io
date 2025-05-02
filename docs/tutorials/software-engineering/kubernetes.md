@@ -95,8 +95,22 @@ title: Kubernetes
     - [8.7.5. In-place resize Pods](#875-in-place-resize-pods)
       - [8.7.5.1. Limitations](#8751-limitations)
     - [8.7.6. VPA vs. HPA](#876-vpa-vs-hpa)
-- [9. Commands](#9-commands)
-- [10. References](#10-references)
+- [9. Cluster Maintenance](#9-cluster-maintenance)
+- [10. Security](#10-security)
+- [11. Storage](#11-storage)
+- [12. Networking](#12-networking)
+- [13. Design and Install a Kubernetes Cluster](#13-design-and-install-a-kubernetes-cluster)
+- [14. Install "K8s the kubeadm way"](#14-install-k8s-the-kubeadm-way)
+- [15. Helm Basics](#15-helm-basics)
+- [16. Kustomize Basics](#16-kustomize-basics)
+- [17. End to End tests on a K8s Cluster](#17-end-to-end-tests-on-a-k8s-cluster)
+- [18. Troubleshooting](#18-troubleshooting)
+- [19. Other Topics](#19-other-topics)
+- [20. Ligtning Labs](#20-ligtning-labs)
+- [21. Mock Exams](#21-mock-exams)
+- [22. Course Conclusion](#22-course-conclusion)
+- [23. Commands](#23-commands)
+- [24. References](#24-references)
 
 
 # 2. Intro
@@ -1430,7 +1444,26 @@ spec:
 | Best for                 | Stateful workloads, CPU/RAM-heavy apps     | Stateless services, web apps, microservices                      |
 | Use cases                | DBs, JVM-baseds apps, AI/ML workloads      | Web servers (Nginx, API services), message queues, microservices |
 
-# 9. Commands
+
+
+# 9. Cluster Maintenance
+
+# 10. Security
+# 11. Storage
+# 12. Networking
+# 13. Design and Install a Kubernetes Cluster
+# 14. Install "K8s the kubeadm way"
+# 15. Helm Basics
+# 16. Kustomize Basics
+# 17. End to End tests on a K8s Cluster
+# 18. Troubleshooting
+# 19. Other Topics
+# 20. Ligtning Labs
+# 21. Mock Exams
+# 22. Course Conclusion
+
+
+# 23. Commands
 
 ```sh
 # GET
@@ -1614,7 +1647,7 @@ kubectl rollout history deployment/<depoyment-name>                             
 kubectl rollout undo deployment/<depoyment-name> --to-revision=<revision_number>   # Undo a rollout to the specific revision
 ```
 
-# 10. References
+# 24. References
 
 - [Certified Kubernetes Administrator (CKA) with Practice Tests by Mumshad Mannambeth](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests)
 - [Kubernetes Commands](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
