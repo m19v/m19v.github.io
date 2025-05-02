@@ -87,12 +87,14 @@ title: Kubernetes
   - [8.7. Intro to Autoscaling](#87-intro-to-autoscaling)
     - [8.7.1. Scaling Cluster Infra vs Scaling Workloads](#871-scaling-cluster-infra-vs-scaling-workloads)
     - [8.7.2. Manual vs Automated Scaling](#872-manual-vs-automated-scaling)
-  - [8.8. Horizontal Pod Autoscaler (HPA)](#88-horizontal-pod-autoscaler-hpa)
-    - [8.8.1. Scaling a workload manually](#881-scaling-a-workload-manually)
-    - [8.8.2. HPA](#882-hpa)
-  - [8.9. Vertical Pod Autoscaling (VPA)](#89-vertical-pod-autoscaling-vpa)
-  - [8.10. In-place resize Pods](#810-in-place-resize-pods)
-    - [8.10.1. Limitations](#8101-limitations)
+    - [8.7.3. Horizontal Pod Autoscaler (HPA)](#873-horizontal-pod-autoscaler-hpa)
+      - [8.7.3.1. Scaling a workload manually](#8731-scaling-a-workload-manually)
+      - [8.7.3.2. HPA](#8732-hpa)
+    - [8.7.4. Vertical Pod Autoscaling (VPA)](#874-vertical-pod-autoscaling-vpa)
+      - [8.7.4.1. Deployment of VPA Components](#8741-deployment-of-vpa-components)
+    - [8.7.5. In-place resize Pods](#875-in-place-resize-pods)
+      - [8.7.5.1. Limitations](#8751-limitations)
+    - [8.7.6. VPA vs. HPA](#876-vpa-vs-hpa)
 - [9. Commands](#9-commands)
 - [10. References](#10-references)
 
@@ -1265,14 +1267,14 @@ Kubernetes supports self-healing applications through ReplicaSets and Replicatio
 
 ### 8.7.2. Manual vs Automated Scaling
 
-- Manual Scaling of 
+- **Manual Scaling** of 
   - Cluster Infra:
     - Horizontally: `kubeadm join ...`
     - Vertically: rare
   - Workloads:
     - Horizontally: `kubectl scale ...`
     - Vertically: `kubectl edit ...`
-- Automatied Scaling of
+- **Automatied Scaling** of
   - Cluster Infra:
     - **Cluster Autoscaler**
   - Workloads:
@@ -1280,14 +1282,14 @@ Kubernetes supports self-healing applications through ReplicaSets and Replicatio
     - [Vertical Pod Autoscaler (VPA)](#89-vertical-pod-autoscaling-vpa)
 
 
-## 8.8. Horizontal Pod Autoscaler (HPA)
+### 8.7.3. Horizontal Pod Autoscaler (HPA)
 
 - Increate the running instances of application horizontally
 - HPA relies on 
   - **Metrics Server** or **Custom Metrics Adapter** for *internal sources*
   - **External Adapter** for e.g. DataDog, Dynatrace etc.
 
-### 8.8.1. Scaling a workload manually
+#### 8.7.3.1. Scaling a workload manually
 
 ```sh
 # Manually check the load and increase replicas
@@ -1296,7 +1298,7 @@ kubectl top pod my-app-pod
 kubectl scale deployment my-app --replicas=3
 ```
 
-### 8.8.2. HPA
+#### 8.7.3.2. HPA
 
 HPA:
   - Observes metrics
@@ -1334,11 +1336,50 @@ spec:
         averageUtilization: 50
 ```
 
-## 8.9. Vertical Pod Autoscaling (VPA)
+### 8.7.4. Vertical Pod Autoscaling (VPA)
 
-- Increase the size of resources vertically, such as CPU, RAM
+- Manual:
+  - `kubectl edit deployment my-app` and manually change resources
+- VPA:
+  - Observe metrics
+  - Adjust pod resources: e.g. increase the size of resources vertically, such as CPU, RAM
+  - Balances threshold
 
-## 8.10. In-place resize Pods
+```yaml
+apiVersion: "autoscaling.k8s.io/v1"
+kind: VerticalPodAutoscaler
+metadata:
+  name: stress-vpa
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: Deployment
+    name: high-cpu-utilization-deployment
+  updatePolicy:
+    updateMode: Auto                # Modes: Off, Initial, Recreate and Auto         
+  resourcePolicy:
+    containerPolicies:
+      - containerName: '*'
+        minAllowed:
+          cpu: 100m
+          memory: 50Mi
+        maxAllowed:
+          cpu: 200m                 # maximum vpa will be allocating this many cpus even if demand is higher.
+          memory: 500Mi
+        controlledResources: ["cpu", "memory"]
+```
+
+#### 8.7.4.1. Deployment of VPA Components
+
+- VPA does NOT come built-in with K8s, but must be deployed
+  - `kubectl apply -f https://github.com/kubernetes/autoscaler/releases/latest/download/vertical-pod-autoscaler.yaml`
+- VPA includes following pods:
+  - `vpa recommender` - continuously monitoring resource usage from Metrics Server and provides recommendation for optimal cpu, ram values
+  - `vpa updater` - get an information from recommender and evicts pods needed to be updated with recommended resources
+  - `vpa admission controller` - controller then creates new pod with new resources values recommended
+
+
+### 8.7.5. In-place resize Pods
 
 - As of kubernetes version 1.32, if the resource definition parameter is changed, the default behaviour is delete running instance of pod and spin up a new pod with changes
 - **InPlacePodVerticalScaling:** Resize CPU and Memory Resources assigned to Containers without restart
@@ -1369,7 +1410,7 @@ spec:
         cpu: "700m"
 ```
 
-### 8.10.1. Limitations
+#### 8.7.5.1. Limitations
 
 - Only CPU and Memory resources can be changed
 - Pod QoS Class cannot change
@@ -1378,6 +1419,16 @@ spec:
 - A container's memor limit may not be reduced below its usage. If a request pts a container in this state, the resize status will remain in InProgress until the resired memory limit becomes feasible. 
 
 
+### 8.7.6. VPA vs. HPA
+
+| Feature                  | VPA (Vertical Scaling)                     | HPA (Horizontal Scaling)                                         |
+|--------------------------|--------------------------------------------|------------------------------------------------------------------|
+| Scaling Method           | Increase CPU & memory of existing Pods     | Adds/Removes Pods based on load                                  |
+| Pods Behavior            | Restarts Pods to apply new resource values | Keeps existing Pods running                                      |
+| Handles Traffic Spikes?  | NO, because scaling requires a Pod restart | YES, instantly adds more Pods                                    |
+| Optimizes Costs?         | Prevents over-provisioning of CPU/RAM      | Avoids unnecessary idle Pods                                     |
+| Best for                 | Stateful workloads, CPU/RAM-heavy apps     | Stateless services, web apps, microservices                      |
+| Use cases                | DBs, JVM-baseds apps, AI/ML workloads      | Web servers (Nginx, API services), message queues, microservices |
 
 # 9. Commands
 
