@@ -92,6 +92,7 @@ title: Kubernetes
     - [8.8.2. HPA](#882-hpa)
   - [8.9. Vertical Pod Autoscaling (VPA)](#89-vertical-pod-autoscaling-vpa)
   - [8.10. In-place resize Pods](#810-in-place-resize-pods)
+    - [8.10.1. Limitations](#8101-limitations)
 - [9. Commands](#9-commands)
 - [10. References](#10-references)
 
@@ -1339,6 +1340,42 @@ spec:
 
 ## 8.10. In-place resize Pods
 
+- As of kubernetes version 1.32, if the resource definition parameter is changed, the default behaviour is delete running instance of pod and spin up a new pod with changes
+- **InPlacePodVerticalScaling:** Resize CPU and Memory Resources assigned to Containers without restart
+  - FEATURE STATE: K8s v1.27 [alpha][enabled by default:false]
+  - Enable feature: `FEaTURE_GATES:InPlacePodVerticalScaling=true`
+
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: resize-demo
+spec:
+  containers:
+  - name: pause
+    image: registry.k8s.io/pause:3.8
+    resizePolicy:
+    - resourceName: cpu
+      restartPolicy: NotRequired                   # Default, but explicit here
+    - resourceName: memory
+      restartPolicy: RestartContainer
+    resources:
+      limits:
+        memory: "200Mi"
+        cpu: "700m"
+      requests:
+        memory: "200Mi"
+        cpu: "700m"
+```
+
+### 8.10.1. Limitations
+
+- Only CPU and Memory resources can be changed
+- Pod QoS Class cannot change
+- InitContainers and Ephemeral COntainers cannot be resized
+- Resource requests and limits cannot be removed once set
+- A container's memor limit may not be reduced below its usage. If a request pts a container in this state, the resize status will remain in InProgress until the resired memory limit becomes feasible. 
 
 
 
