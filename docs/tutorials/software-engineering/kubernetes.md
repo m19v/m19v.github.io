@@ -96,6 +96,7 @@ title: Kubernetes
       - [8.7.5.1. Limitations](#8751-limitations)
     - [8.7.6. VPA vs. HPA](#876-vpa-vs-hpa)
 - [9. Cluster Maintenance](#9-cluster-maintenance)
+  - [9.1. OS Upgrade](#91-os-upgrade)
 - [10. Security](#10-security)
 - [11. Storage](#11-storage)
 - [12. Networking](#12-networking)
@@ -1448,6 +1449,8 @@ spec:
 
 # 9. Cluster Maintenance
 
+## 9.1. OS Upgrade
+
 # 10. Security
 # 11. Storage
 # 12. Networking
@@ -1645,6 +1648,34 @@ kubectl auth can-i create pods -n <namespace>
 kubectl rollout status deployment/<depoyment-name>                                 # Check the status of a rollout
 kubectl rollout history deployment/<depoyment-name>                                # Show the history of rollouts
 kubectl rollout undo deployment/<depoyment-name> --to-revision=<revision_number>   # Undo a rollout to the specific revision
+
+
+
+
+# DRAIN
+
+kubectl drain <node-name>                                   # drain the node (will be marked as unschedulable) for maintenance purpose to gracefully terminate pods running on it and to reschedule them. 
+
+
+
+
+# CORDON
+
+kubectl cordon <node-name>                                  # cordon node (mark as unschedulable) so that no new pods are scheduled on it
+
+
+
+
+# UNCORDON
+
+kubectl uncordon <node-name>                                # uncordon the node so that pods can be scheduled on it after drain
+
+
+
+
+# KUBE-CONTROLLER-MANAGER
+
+kube-controller-manager --pod-eviction-timeout=5m0s                          # set time to wait pods to be evicted. I.e. control plane waits 5 minutes before considering the pod as dead and redeploy it
 ```
 
 # 24. References
