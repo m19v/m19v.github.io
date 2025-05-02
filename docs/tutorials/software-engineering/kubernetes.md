@@ -85,9 +85,13 @@ title: Kubernetes
   - [8.5. InitContainers](#85-initcontainers)
   - [8.6. Self Healing Applications](#86-self-healing-applications)
   - [8.7. Intro to Autoscaling](#87-intro-to-autoscaling)
+    - [8.7.1. Scaling Cluster Infra vs Scaling Workloads](#871-scaling-cluster-infra-vs-scaling-workloads)
+    - [8.7.2. Manual vs Automated Scaling](#872-manual-vs-automated-scaling)
   - [8.8. Horizontal Pod Autoscaler (HPA)](#88-horizontal-pod-autoscaler-hpa)
-  - [8.9. In-place resize Pods](#89-in-place-resize-pods)
-  - [8.10. Vertical Pod Autoscaling (VPA)](#810-vertical-pod-autoscaling-vpa)
+    - [8.8.1. Scaling a workload manually](#881-scaling-a-workload-manually)
+    - [8.8.2. HPA](#882-hpa)
+  - [8.9. Vertical Pod Autoscaling (VPA)](#89-vertical-pod-autoscaling-vpa)
+  - [8.10. In-place resize Pods](#810-in-place-resize-pods)
 - [9. Commands](#9-commands)
 - [10. References](#10-references)
 
@@ -1248,13 +1252,93 @@ spec:
 
 ## 8.6. Self Healing Applications
 
+Kubernetes supports self-healing applications through ReplicaSets and Replication Controllers. The replication controller helps in ensuring that a POD is re-created automatically when the application within the POD crashes.
+
 ## 8.7. Intro to Autoscaling
+
+
+### 8.7.1. Scaling Cluster Infra vs Scaling Workloads
+
+- **Scaling Cluster Infra** by increasing number of nodes horizontally or increasing size of resources (CPU, RAM) on existing node
+- **Scaling Workloads** by increasing the number of pods horizontally or increase resources allocated to existing pods
+
+### 8.7.2. Manual vs Automated Scaling
+
+- Manual Scaling of 
+  - Cluster Infra:
+    - Horizontally: `kubeadm join ...`
+    - Vertically: rare
+  - Workloads:
+    - Horizontally: `kubectl scale ...`
+    - Vertically: `kubectl edit ...`
+- Automatied Scaling of
+  - Cluster Infra:
+    - **Cluster Autoscaler**
+  - Workloads:
+    - [Horizontal Pod Autoscaler (HPA)](#88-horizontal-pod-autoscaler-hpa)
+    - [Vertical Pod Autoscaler (VPA)](#89-vertical-pod-autoscaling-vpa)
+
 
 ## 8.8. Horizontal Pod Autoscaler (HPA)
 
-## 8.9. In-place resize Pods
+- Increate the running instances of application horizontally
+- HPA relies on 
+  - **Metrics Server** or **Custom Metrics Adapter** for *internal sources*
+  - **External Adapter** for e.g. DataDog, Dynatrace etc.
 
-## 8.10. Vertical Pod Autoscaling (VPA)
+### 8.8.1. Scaling a workload manually
+
+```sh
+# Manually check the load and increase replicas
+
+kubectl top pod my-app-pod
+kubectl scale deployment my-app --replicas=3
+```
+
+### 8.8.2. HPA
+
+HPA:
+  - Observes metrics
+  - Adds pods
+  - Balances thresholds
+  - Tracks multiple metrics
+
+```sh
+# IMPERATIVE: Create HPA for specific deployment
+
+kubectl autoscale deployment my-app \
+          --cpu-percent=50 --min=1 --max=10                       # CPU thresholds of 50% and min 1 pod and max 10 pods
+```
+
+```yaml
+# DECLARATIVE: Create HPA for specific deployment
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: php-apache
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: my-app
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+```
+
+## 8.9. Vertical Pod Autoscaling (VPA)
+
+- Increase the size of resources vertically, such as CPU, RAM
+
+## 8.10. In-place resize Pods
+
 
 
 
@@ -1290,6 +1374,8 @@ kubectl get configmaps
 
 kubectl get secrets
 kubectl get secret app-secret -o yaml
+
+kubectl get hpa
 
 
 
@@ -1381,6 +1467,13 @@ kubectl replace --force -f replicaset-definition.yaml
 kubectl scale --replicas=6 -f replicaset-definition.yaml
 kubectl scale --replicas=6 -f replicaset myapp-rs
 
+
+
+
+
+# AUTOSCALE 
+
+kubectl autoscale deployment foo --cpu-percent=50 --min=1 --max=10                # Create HPA for a deployment "foo" with CPU thresholds of 50% and min 1 pod and max 10 pods
 
 
 
