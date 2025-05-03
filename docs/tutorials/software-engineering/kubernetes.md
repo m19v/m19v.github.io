@@ -97,6 +97,7 @@ title: Kubernetes
     - [8.7.6. VPA vs. HPA](#876-vpa-vs-hpa)
 - [9. Cluster Maintenance](#9-cluster-maintenance)
   - [9.1. OS Upgrade](#91-os-upgrade)
+  - [Kubernetes Software Versions](#kubernetes-software-versions)
 - [10. Security](#10-security)
 - [11. Storage](#11-storage)
 - [12. Networking](#12-networking)
@@ -1450,6 +1451,13 @@ spec:
 # 9. Cluster Maintenance
 
 ## 9.1. OS Upgrade
+
+- Drain and cordon nodes (see Command section)
+- Uncordon nodes (see Command section)
+
+## Kubernetes Software Versions
+
+
 
 # 10. Security
 # 11. Storage
