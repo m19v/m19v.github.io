@@ -97,7 +97,8 @@ title: Kubernetes
     - [8.7.6. VPA vs. HPA](#876-vpa-vs-hpa)
 - [9. Cluster Maintenance](#9-cluster-maintenance)
   - [9.1. OS Upgrade](#91-os-upgrade)
-  - [Kubernetes Software Versions](#kubernetes-software-versions)
+  - [9.2. Kubernetes Software Versions](#92-kubernetes-software-versions)
+  - [9.3. Cluster Upgrade Process](#93-cluster-upgrade-process)
 - [10. Security](#10-security)
 - [11. Storage](#11-storage)
 - [12. Networking](#12-networking)
@@ -1455,8 +1456,39 @@ spec:
 - Drain and cordon nodes (see Command section)
 - Uncordon nodes (see Command section)
 
-## Kubernetes Software Versions
+## 9.2. Kubernetes Software Versions
 
+Kubernetes version 1.27
+- kube-apiserver: v1.27.0
+- kube-scheduler: v1.27.0
+- kube-controller-manager: v1.27.0
+- kubelet: v1.27.0
+- kube-proxy: v1.27.0
+- etcd: v3.5.7 (or similar, depending on the Kubernetes version)
+- coredns: v1.10.1 (or similar, depending on the Kubernetes version)
+- container runtime: Versions can vary (e.g., containerd v1.6.0 or Docker v20.10.0)
+
+## 9.3. Cluster Upgrade Process
+
+- Kubenrnetes Supports only 3 last versions
+- It is recommended to upgrade one MINOR version at a time. 
+- Upgrade possibilies of different versions.
+
+  - kube-apiserver: vX
+  ---
+  - kube-controller-manager: vX-1
+  - kube-scheduler: vX-1
+  ---
+  - kubelet: vX-2
+  - kube-proxy: vX-2
+  ---
+  - kubectl: vX+1, vX, vX-1
+- Upgrade using `kubeadm`
+  - `kubeadm upgrade plan`
+  - `kubeadm upgrade apply`
+- Upgrade Sequence:
+  - First Master Node
+  - Then Worker Nodes
 
 
 # 10. Security
