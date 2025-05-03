@@ -99,6 +99,7 @@ title: Kubernetes
   - [9.1. OS Upgrade](#91-os-upgrade)
   - [9.2. Kubernetes Software Versions](#92-kubernetes-software-versions)
   - [9.3. Cluster Upgrade Process](#93-cluster-upgrade-process)
+    - [9.3.1. `kubeadm upgrade`](#931-kubeadm-upgrade)
 - [10. Security](#10-security)
 - [11. Storage](#11-storage)
 - [12. Networking](#12-networking)
@@ -1489,6 +1490,29 @@ Kubernetes version 1.27
 - Upgrade Sequence:
   - First Master Node
   - Then Worker Nodes
+- Upgrade Strategies of Worker Nodes
+    - Upgrade ALL of Worker Nodes at once
+    - Upgrade ONE node as a time
+    - Add NEW node with new k8s version. I.e. provision new nodes and decomission old one. 
+
+### 9.3.1. `kubeadm upgrade`
+
+Upgrade Master Node:
+- `kubeadm upgrade plan`     # `kubeadm` does not upgrade `kubelet`
+- `apt-get upgrade -y kubeadm=1.12.0-00` 
+- `kubeadm upgrade apply v1.12.0`
+- `apt-get upgrade -y kubelet=1.12.0-00`
+- `systemctl restart kubelet`
+
+Upgrade Worker Nodes:
+- `kubectl drain node-1`
+- `apt-get upgrade -y kubeadm=1.12.0-00` 
+- `apt-get upgrade -y kubelet=1.12.0-00`
+- `kubeadm upgrade node config --kubelet-version 1.12.0`
+- `systemctl restart kubelet`
+- `kubectl get nodes`
+- `kubectl uncordon node-1`
+
 
 
 # 10. Security
