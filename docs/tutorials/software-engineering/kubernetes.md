@@ -100,6 +100,9 @@ title: Kubernetes
   - [9.2. Kubernetes Software Versions](#92-kubernetes-software-versions)
   - [9.3. Cluster Upgrade Process](#93-cluster-upgrade-process)
     - [9.3.1. `kubeadm upgrade`](#931-kubeadm-upgrade)
+    - [9.3.2. Cluster Upgrade - Demo](#932-cluster-upgrade---demo)
+    - [9.3.3. Backup and Restore Methods](#933-backup-and-restore-methods)
+      - [Backup Candidates](#backup-candidates)
 - [10. Security](#10-security)
 - [11. Storage](#11-storage)
 - [12. Networking](#12-networking)
@@ -1513,7 +1516,30 @@ Upgrade Worker Nodes:
 - `kubectl get nodes`
 - `kubectl uncordon node-1`
 
+### 9.3.2. Cluster Upgrade - Demo
 
+- Read [more](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
+
+### 9.3.3. Backup and Restore Methods
+
+#### Backup Candidates
+
+- Resource Configurations (namespace, configmap, secrets etc.)
+  - `kubectl get all --all-namespaces -o yaml > all-resources.yaml`
+- ETCD Cluster (Stores information about the state of k8s cluster)
+  - ETCD Cluster is hosted on Master Nodes
+  - ETCD Cluster data dir to backup `--data-dir=/var/lib/etcd`
+  - Create a Snapshot of ETCD with  
+    `ETCDCTL_API=3 etcdctl snapshot save etcd_snapshot.db`
+  - Restore ETCD from Backup  
+    ```sh
+    service kube-apiserver stop
+    ETCDCTL_API=3 etcdctl snapshot restore etcd_snapshot.db --data-dir /var/lib/etcd-from-backup
+    systemctl daemon-reload
+    service etcd restart
+    service kube-apiserver start
+    ```
+- Persistence Volumes
 
 # 10. Security
 # 11. Storage
@@ -1564,6 +1590,8 @@ kubectl get secrets
 kubectl get secret app-secret -o yaml
 
 kubectl get hpa
+
+kubectl get all --all-namespaces -o yaml > all-resources.yaml                 # Backup all resource configurations
 
 
 
@@ -1740,6 +1768,20 @@ kubectl uncordon <node-name>                                # uncordon the node 
 # KUBE-CONTROLLER-MANAGER
 
 kube-controller-manager --pod-eviction-timeout=5m0s                          # set time to wait pods to be evicted. I.e. control plane waits 5 minutes before considering the pod as dead and redeploy it
+
+
+
+
+# ETCDCTL
+
+ETCDCTL_API=3 etcdctl snapshot save etcd_snapshot.db \
+                      --endpoints=https://127.0.0.1:2379 \
+                      --cacert=/etc/etcd/ca.crt \
+                      --cert=/etc/etcd/etcd-server.crt \
+                      --key=/etc/etcd/etcd-server.key
+ETCDCTL_API=3 etcdctl snapshot status etcd_snapshot.db
+ETCDCTL_API=3 etcdctl snapshot restore etcd_snapshot.db --data-dir /var/lib/etcd-from-backup
+
 ```
 
 # 24. References
