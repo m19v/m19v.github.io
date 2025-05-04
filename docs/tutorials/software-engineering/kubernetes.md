@@ -102,8 +102,9 @@ title: Kubernetes
     - [9.3.1. `kubeadm upgrade`](#931-kubeadm-upgrade)
     - [9.3.2. Cluster Upgrade - Demo](#932-cluster-upgrade---demo)
     - [9.3.3. Backup and Restore Methods](#933-backup-and-restore-methods)
-      - [Backup Candidates](#backup-candidates)
+      - [9.3.3.1. Backup Candidates](#9331-backup-candidates)
 - [10. Security](#10-security)
+  - [10.1. Kubernetes Security Primitives](#101-kubernetes-security-primitives)
 - [11. Storage](#11-storage)
 - [12. Networking](#12-networking)
 - [13. Design and Install a Kubernetes Cluster](#13-design-and-install-a-kubernetes-cluster)
@@ -1522,7 +1523,7 @@ Upgrade Worker Nodes:
 
 ### 9.3.3. Backup and Restore Methods
 
-#### Backup Candidates
+#### 9.3.3.1. Backup Candidates
 
 - Resource Configurations (namespace, configmap, secrets etc.)
   - `kubectl get all --all-namespaces -o yaml > all-resources.yaml`
@@ -1545,6 +1546,7 @@ Upgrade Worker Nodes:
 
 # 10. Security
 
+## 10.1. Kubernetes Security Primitives
 
 # 11. Storage
 # 12. Networking
