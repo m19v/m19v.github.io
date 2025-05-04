@@ -1539,9 +1539,13 @@ Upgrade Worker Nodes:
     service etcd restart
     service kube-apiserver start
     ```
+  - Read more about [backup tools](https://velero.io/docs/v1.15/)
 - Persistence Volumes
 
+
 # 10. Security
+
+
 # 11. Storage
 # 12. Networking
 # 13. Design and Install a Kubernetes Cluster
@@ -1705,6 +1709,7 @@ kubectl delete replicaset myapp-replicaset               # deletes all underlyin
 # CONFIG
 
 kubectl config set-context $(kubectl config current-context) --namespace=dev
+kubectl config use-context <cluster-name>
 
 
 
@@ -1774,6 +1779,7 @@ kube-controller-manager --pod-eviction-timeout=5m0s                          # s
 
 # ETCDCTL
 
+ETCDCTL_API=3 etcdctl member list
 ETCDCTL_API=3 etcdctl snapshot save etcd_snapshot.db \
                       --endpoints=https://127.0.0.1:2379 \
                       --cacert=/etc/etcd/ca.crt \
