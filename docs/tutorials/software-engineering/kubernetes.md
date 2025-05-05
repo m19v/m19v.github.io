@@ -105,6 +105,17 @@ title: Kubernetes
       - [9.3.3.1. Backup Candidates](#9331-backup-candidates)
 - [10. Security](#10-security)
   - [10.1. Kubernetes Security Primitives](#101-kubernetes-security-primitives)
+    - [10.1.1. Cluster Hosts Security](#1011-cluster-hosts-security)
+    - [10.1.2. Kubernetes Security](#1012-kubernetes-security)
+    - [10.1.3. TLS Certificates](#1013-tls-certificates)
+    - [10.1.4. Application Communication within Cluster](#1014-application-communication-within-cluster)
+  - [10.2. Authentication](#102-authentication)
+    - [10.2.1. Users](#1021-users)
+      - [10.2.1.1. Basic Authentication Mechanism - Static Password File](#10211-basic-authentication-mechanism---static-password-file)
+      - [10.2.1.2. Basic Authentication Mechanism - Static Token File](#10212-basic-authentication-mechanism---static-token-file)
+    - [10.2.2. Service Accounts](#1022-service-accounts)
+  - [10.3. TLS Certificates in K8s](#103-tls-certificates-in-k8s)
+    - [10.3.1. TLS Basics](#1031-tls-basics)
 - [11. Storage](#11-storage)
 - [12. Networking](#12-networking)
 - [13. Design and Install a Kubernetes Cluster](#13-design-and-install-a-kubernetes-cluster)
@@ -1548,6 +1559,118 @@ Upgrade Worker Nodes:
 
 ## 10.1. Kubernetes Security Primitives
 
+### 10.1.1. Cluster Hosts Security
+
+- All access to cluster host must be secured
+- `root` access disabled
+- Password based authentication disabled
+- SSH Key based authentication enabled
+
+### 10.1.2. Kubernetes Security
+
+- Securing the access to `kube-apiserver` is the first line of diffence
+  - **Authentication**, i.e. who can access it?
+    - Files - Username and Passwords
+    - Files - Username and Tokens
+    - Certificates
+    - External Authentication providers - LDAP
+    - Service Accounts
+  - **Authorization**, i.e. what can they do?
+    - RBAC Authorization
+    - ABAC Authorization
+    - Node Authorization
+    - Webhook Mode
+  
+### 10.1.3. TLS Certificates
+
+-  All communication between `kube-apiserver` and
+  - ETCD Cluster
+  - Kubelet
+  - Kube Proxy
+  - Kube Scheduler
+  - Kube Controller Manager is secured TLS Encryption.
+
+### 10.1.4. Application Communication within Cluster
+
+- By default all Pods can access other Pods within the Cluster
+- The Pods access by another Pods can be restricted by [Network Policies](#)
+
+
+## 10.2. Authentication 
+
+- Users who may access K8s Cluster
+  - Users
+    - Admins
+    - Developers
+  - Service Accounts
+    - Bots (CI/CD etc.)
+  - Application End Users (Usually managed by Application Authentication Management)
+
+### 10.2.1. Users
+
+All user access are managed by `kube-apiserver` whether access with `kubectl` or `curl https://kube-server-ip:6443/` by
+ - First **Authenticate Users**
+ - Then **Process Requests**
+
+`kube-apiserver` Authentication Mechanisms:
+
+  - Static Password File (not recommended)
+  - Static Token File (not recommended)
+  - Certificates
+  - Identity Services (e.g. third Party Auth protocol LDAP, Cerberus etc.)
+
+#### 10.2.1.1. Basic Authentication Mechanism - Static Password File
+
+```csv
+# basic-auth.csv
+password123,user1,u001,group1
+password123,user2,u002,group2
+password123,user3,u003,group3
+```
+
+```sh
+kube-apiserver --basic-auth-file=/path/to/basic-auth.csv
+systemctl restart kube-apiserver
+```
+
+Then `kube-apiserver` can be access with
+
+```sh
+curl -v -k https://master-node-ip:6443/api/v1/pods -u "user1:password123"
+```
+
+#### 10.2.1.2. Basic Authentication Mechanism - Static Token File
+
+```csv
+# basic-token-auth.csv
+a3f5c8e1d2b4a6e7,user1,u001,group1
+9b1e2c3d4f5a6b7c,user2,u002,group2
+7e8f9a0b1c2d3e4f,user3,u003,group3
+```
+
+```sh
+kube-apiserver --token-auth-file=/path/to/basic-token-auth.csv
+systemctl restart kube-apiserver
+```
+
+Then `kube-apiserver` can be access with
+
+```sh
+curl -v -k https://master-node-ip:6443/api/v1/pods --header "Authorization: Bearer a3f5c8e1d2b4a6e7"
+```
+
+### 10.2.2. Service Accounts
+
+- `kubectl create serviceaccount sa1`
+
+
+## 10.3. TLS Certificates in K8s
+
+### 10.3.1. TLS Basics
+
+
+
+
 # 11. Storage
 # 12. Networking
 # 13. Design and Install a Kubernetes Cluster
@@ -1599,6 +1722,9 @@ kubectl get hpa
 
 kubectl get all --all-namespaces -o yaml > all-resources.yaml                 # Backup all resource configurations
 
+kubectl get serviceaccount
+
+
 
 
 
@@ -1636,7 +1762,7 @@ kubectl create configmap <config-name> --from-file=app_config.properties
 kubectl create secret generic <secret-name> --from-literal=<key>=<value>
 kubectl create secret generic <secret-name> --from-file=<path-to-file>
 
-
+kubectl create serviceaccount sa1
 
 
 
