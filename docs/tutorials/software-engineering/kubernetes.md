@@ -116,6 +116,9 @@ title: Kubernetes
     - [10.2.2. Service Accounts](#1022-service-accounts)
   - [10.3. TLS Certificates in K8s](#103-tls-certificates-in-k8s)
     - [10.3.1. TLS Basics](#1031-tls-basics)
+      - [10.3.1.1. Naming Convention of Public and Private Keys](#10311-naming-convention-of-public-and-private-keys)
+    - [10.3.2. TLS in Kubernetes](#1032-tls-in-kubernetes)
+    - [10.3.2. TLS in Kubernetes - Certificate Creation](#1032-tls-in-kubernetes---certificate-creation)
 - [11. Storage](#11-storage)
 - [12. Networking](#12-networking)
 - [13. Design and Install a Kubernetes Cluster](#13-design-and-install-a-kubernetes-cluster)
@@ -1668,7 +1671,24 @@ curl -v -k https://master-node-ip:6443/api/v1/pods --header "Authorization: Bear
 
 ### 10.3.1. TLS Basics
 
+#### 10.3.1.1. Naming Convention of Public and Private Keys
 
+- Certificate (Public Key)
+  - *.crt, *.pem: 
+    - server.crt
+    - server.pem
+    - client.crt
+    - client.pem
+- Private Key
+  - *.key, *-key.pem:
+    - server.key
+    - server-key.pem
+    - client.key
+    - client-key.pem
+
+### 10.3.2. TLS in Kubernetes
+
+### 10.3.2. TLS in Kubernetes - Certificate Creation
 
 
 # 11. Storage
