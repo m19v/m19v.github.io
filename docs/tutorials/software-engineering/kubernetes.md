@@ -1761,8 +1761,8 @@ Public CAs:
 ### 10.3.2. TLS in Kubernetes
 
 - Root Certificates (on CA Servers)
-- Server Certificates (on Servers)
-- Client Certificates (on Clients)
+- Server Certificates signed by CA (on Servers)
+- Client Certificates signed by CA (on Clients)
 
 **Server Certificates for Servers**
 - kube-apiserver
@@ -1786,7 +1786,8 @@ Public CAs:
   - kube-controller-manager.crt, kube-controller-manager.key
 - kube-proxy                                ---> kube-apiserve 
   - kube-proxy.crt, kube-proxy.key
-  - 
+
+
 ### 10.3.3. TLS in Kubernetes - Certificate Creation
 
 ```sh
