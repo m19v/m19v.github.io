@@ -116,9 +116,12 @@ title: Kubernetes
     - [10.2.2. Service Accounts](#1022-service-accounts)
   - [10.3. TLS Certificates in K8s](#103-tls-certificates-in-k8s)
     - [10.3.1. TLS Basics](#1031-tls-basics)
-      - [10.3.1.1. Naming Convention of Public and Private Keys](#10311-naming-convention-of-public-and-private-keys)
+      - [10.3.1.1. Symmetric Encryption](#10311-symmetric-encryption)
+      - [10.3.1.2. Asymmetric Encryption](#10312-asymmetric-encryption)
+      - [10.3.1.3. Certificate Authority (CA)](#10313-certificate-authority-ca)
+      - [10.3.1.4. Naming Convention of Public and Private Keys](#10314-naming-convention-of-public-and-private-keys)
     - [10.3.2. TLS in Kubernetes](#1032-tls-in-kubernetes)
-    - [10.3.2. TLS in Kubernetes - Certificate Creation](#1032-tls-in-kubernetes---certificate-creation)
+    - [10.3.3. TLS in Kubernetes - Certificate Creation](#1033-tls-in-kubernetes---certificate-creation)
 - [11. Storage](#11-storage)
 - [12. Networking](#12-networking)
 - [13. Design and Install a Kubernetes Cluster](#13-design-and-install-a-kubernetes-cluster)
@@ -1671,7 +1674,31 @@ curl -v -k https://master-node-ip:6443/api/v1/pods --header "Authorization: Bear
 
 ### 10.3.1. TLS Basics
 
-#### 10.3.1.1. Naming Convention of Public and Private Keys
+- **Key Pair Generation**: When you create a key pair, a cryptographic algorithm (like RSA or ECC) generates two keys: a private key and a public key. These keys are mathematically linked.
+- **Private Key**: is used to *decrypt information* or *sign data* and is kept secret.
+- **Public Key**: is used to *encrypt information* or *verify signatures* and can be shared with anyone.
+- **Certificate Signing Request (CSR)**: includes the public key along with information about the entity requesting a certificate (e.g. organization’s name, domain). When you generate a CSR, you create it using your public key.
+- **Certificate (CRT or Digital Certificate)**: contains the public key along with information about the certificate holder (e.g. their identity, domain). It is issued by a Certificate Authority (CA) after verifying the information in the CSR. The CRT allows others to trust that the public key belongs to the entity it claims to represent.
+- **Digital Signature**: When you sign data with your private key, others can use your public key to verify that the signature is valid. This ensures that the data hasn’t been tampered with and confirms the identity of the sender.
+- **Certificate Authority (CA)**: An entity that issues digital certificates, verifying the identity of the certificate holder and ensuring the integrity of the public key.
+
+
+#### 10.3.1.1. Symmetric Encryption
+
+- Symmetric encryption is a cryptographic method where the same key is used for both encrypting and decrypting data, ensuring that only parties with the shared key can access the original information.
+
+#### 10.3.1.2. Asymmetric Encryption
+
+- Asymmetric encryption is a cryptographic method that uses a pair of keys—a public key for encryption and a private key for decryption—allowing secure communication where the public key can be shared openly while the private key remains confidential.
+
+#### 10.3.1.3. Certificate Authority (CA)
+
+- Symantec
+- Comodo
+- GlobalSign
+- Digicert
+
+#### 10.3.1.4. Naming Convention of Public and Private Keys
 
 - Certificate (Public Key)
   - *.crt, *.pem: 
@@ -1688,8 +1715,11 @@ curl -v -k https://master-node-ip:6443/api/v1/pods --header "Authorization: Bear
 
 ### 10.3.2. TLS in Kubernetes
 
-### 10.3.2. TLS in Kubernetes - Certificate Creation
+### 10.3.3. TLS in Kubernetes - Certificate Creation
 
+```sh
+openssl s_client -connect <ip-of-host>
+```
 
 # 11. Storage
 # 12. Networking
