@@ -1764,6 +1764,10 @@ Public CAs:
 - Server Certificates signed by CA (on Servers)
 - Client Certificates signed by CA (on Clients)
 
+
+**Certificate Authority**
+- ca.crt, ca.key
+
 **Server Certificates for Servers**
 - kube-apiserver
   - kube-apiserver.crt, kube-apiserver.key
