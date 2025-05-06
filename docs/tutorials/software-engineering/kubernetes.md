@@ -118,8 +118,11 @@ title: Kubernetes
     - [10.3.1. TLS Basics](#1031-tls-basics)
       - [10.3.1.1. Symmetric Encryption](#10311-symmetric-encryption)
       - [10.3.1.2. Asymmetric Encryption](#10312-asymmetric-encryption)
-      - [10.3.1.3. Certificate Authority (CA)](#10313-certificate-authority-ca)
-      - [10.3.1.4. Naming Convention of Public and Private Keys](#10314-naming-convention-of-public-and-private-keys)
+      - [10.3.1.3. Asymmetric Encryption - SSH](#10313-asymmetric-encryption---ssh)
+      - [10.3.1.3. Asymmetric Encryption - HTTPS](#10313-asymmetric-encryption---https)
+      - [10.3.1.4. Certificate Authority (CA)](#10314-certificate-authority-ca)
+      - [10.3.1.5. Naming Convention of Public and Private Keys](#10315-naming-convention-of-public-and-private-keys)
+      - [TLS Use Cases](#tls-use-cases)
     - [10.3.2. TLS in Kubernetes](#1032-tls-in-kubernetes)
     - [10.3.3. TLS in Kubernetes - Certificate Creation](#1033-tls-in-kubernetes---certificate-creation)
 - [11. Storage](#11-storage)
@@ -1674,6 +1677,9 @@ curl -v -k https://master-node-ip:6443/api/v1/pods --header "Authorization: Bear
 
 ### 10.3.1. TLS Basics
 
+**Transport Layer Security (TLS)** is primarily associated with securing communications over the internet and it is used in various applications and protocols, like: SSH, HTTPS, Email Protocols(SMTP, IMAP), FPN, FTPS, APIs(RESTful APIs), WebSocket Secure (WSS), DB Connections etc.
+
+- **TLS** certificates are digital certificates that authenticate the identity of a website or server and enable encrypted communication between clients and servers over the internet, ensuring data privacy and integrity during transmission.
 - **Key Pair Generation**: When you create a key pair, a cryptographic algorithm (like RSA or ECC) generates two keys: a private key and a public key. These keys are mathematically linked.
 - **Private Key**: is used to *decrypt information* or *sign data* and is kept secret.
 - **Public Key**: is used to *encrypt information* or *verify signatures* and can be shared with anyone.
@@ -1685,20 +1691,38 @@ curl -v -k https://master-node-ip:6443/api/v1/pods --header "Authorization: Bear
 
 #### 10.3.1.1. Symmetric Encryption
 
-- Symmetric encryption is a cryptographic method where the same key is used for both encrypting and decrypting data, ensuring that only parties with the shared key can access the original information.
+Symmetric encryption is a cryptographic method where the same key is used for both encrypting and decrypting data, ensuring that only parties with the shared key can access the original information.
 
 #### 10.3.1.2. Asymmetric Encryption
 
-- Asymmetric encryption is a cryptographic method that uses a pair of keys—a public key for encryption and a private key for decryption—allowing secure communication where the public key can be shared openly while the private key remains confidential.
+Asymmetric encryption is a cryptographic method that uses a pair of keys—a public key for encryption and a private key for decryption—allowing secure communication where the public key can be shared openly while the private key remains confidential.
 
-#### 10.3.1.3. Certificate Authority (CA)
+#### 10.3.1.3. Asymmetric Encryption - SSH
+
+Asymmetric encryption in SSH (Secure Shell) uses a pair of keys—a public key and a private key—to secure communications between a client and a server. The public key is shared with the server, while the private key remains confidential on the client.
+
+#### 10.3.1.3. Asymmetric Encryption - HTTPS
+
+In **HTTPS** (Hypertext Transfer Protocol Secure), **both symmetric and asymmetric encryption are used** to secure communications between a web browser and a server:
+
+- **Asymmetric Encryption**: Initially used during the SSL/TLS handshake process to establish a secure connection. The server presents its public key to the client, allowing the client to encrypt a shared secret (session key) that only the server can decrypt with its private key. This ensures that the client is communicating with the legitimate server.
+- **Symmetric Encryption**: Once the secure connection is established and the session key is shared, symmetric encryption is used for the actual data transmission. This is because symmetric encryption is faster and more efficient for encrypting large amounts of data compared to asymmetric encryption.
+
+
+#### 10.3.1.4. Certificate Authority (CA)
+
+- Public CAs have also Private and Public Keys
+  - Private CA Service can be hosted within ones infrastructure
+- CA uses Private Key to **sign** Certificates
+- Public Keys of CAs are available in e.g. Browsers (Trusted Root Certification Authorities)
+- Browser uses Public Key of CA to **verify** that a specific Certificate was signed with Private Key of Official CA
 
 - Symantec
 - Comodo
 - GlobalSign
 - Digicert
 
-#### 10.3.1.4. Naming Convention of Public and Private Keys
+#### 10.3.1.5. Naming Convention of Public and Private Keys
 
 - Certificate (Public Key)
   - *.crt, *.pem: 
@@ -1712,6 +1736,13 @@ curl -v -k https://master-node-ip:6443/api/v1/pods --header "Authorization: Bear
     - server-key.pem
     - client.key
     - client-key.pem
+
+#### TLS Use Cases
+
+- Admins generate Key Pairs to secure SSH
+- Web Server has Key Pairs to secure Website with HTTPS
+- CA Generates its own Key Pairs to sign/verify Certificates
+- End Users/Browser only generates single Symetric Key
 
 ### 10.3.2. TLS in Kubernetes
 
