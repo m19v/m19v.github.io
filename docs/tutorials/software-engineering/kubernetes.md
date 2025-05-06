@@ -116,13 +116,14 @@ title: Kubernetes
     - [10.2.2. Service Accounts](#1022-service-accounts)
   - [10.3. TLS Certificates in K8s](#103-tls-certificates-in-k8s)
     - [10.3.1. TLS Basics](#1031-tls-basics)
-      - [10.3.1.1. Symmetric Encryption](#10311-symmetric-encryption)
-      - [10.3.1.2. Asymmetric Encryption](#10312-asymmetric-encryption)
-      - [10.3.1.3. Asymmetric Encryption - SSH](#10313-asymmetric-encryption---ssh)
-      - [10.3.1.3. Asymmetric Encryption - HTTPS](#10313-asymmetric-encryption---https)
-      - [10.3.1.4. Certificate Authority (CA)](#10314-certificate-authority-ca)
-      - [10.3.1.5. Naming Convention of Public and Private Keys](#10315-naming-convention-of-public-and-private-keys)
-      - [TLS Use Cases](#tls-use-cases)
+      - [10.3.1.1. Private vs Public Key](#10311-private-vs-public-key)
+      - [10.3.1.2. Symmetric Encryption](#10312-symmetric-encryption)
+      - [10.3.1.3. Asymmetric Encryption](#10313-asymmetric-encryption)
+      - [10.3.1.4. Asymmetric Encryption - SSH](#10314-asymmetric-encryption---ssh)
+      - [10.3.1.5. Asymmetric Encryption - HTTPS](#10315-asymmetric-encryption---https)
+      - [10.3.1.6. Certificate Authority (CA)](#10316-certificate-authority-ca)
+      - [10.3.1.7. Naming Convention of Public and Private Keys](#10317-naming-convention-of-public-and-private-keys)
+      - [10.3.1.8. TLS Use Cases](#10318-tls-use-cases)
     - [10.3.2. TLS in Kubernetes](#1032-tls-in-kubernetes)
     - [10.3.3. TLS in Kubernetes - Certificate Creation](#1033-tls-in-kubernetes---certificate-creation)
 - [11. Storage](#11-storage)
@@ -1688,20 +1689,28 @@ curl -v -k https://master-node-ip:6443/api/v1/pods --header "Authorization: Bear
 - **Digital Signature**: When you sign data with your private key, others can use your public key to verify that the signature is valid. This ensures that the data hasn’t been tampered with and confirms the identity of the sender.
 - **Certificate Authority (CA)**: An entity that issues digital certificates, verifying the identity of the certificate holder and ensuring the integrity of the public key.
 
+#### 10.3.1.1. Private vs Public Key
 
-#### 10.3.1.1. Symmetric Encryption
+- Key Pair
+- Data can be encrytped with ANY of them and ONLY decrypted with other
+- Data can NOT be encrypted with one and descrypted with the same key
+- If data is encrypted with Private Key, anyone who has Public Key can decrypt data!
+- **Signing** is done with a private key and **Verification** is done with a public key
+- **Encryption** is done with a public key and **Decryption** is done with a private key
+
+#### 10.3.1.2. Symmetric Encryption
 
 Symmetric encryption is a cryptographic method where the same key is used for both encrypting and decrypting data, ensuring that only parties with the shared key can access the original information.
 
-#### 10.3.1.2. Asymmetric Encryption
+#### 10.3.1.3. Asymmetric Encryption
 
 Asymmetric encryption is a cryptographic method that uses a pair of keys—a public key for encryption and a private key for decryption—allowing secure communication where the public key can be shared openly while the private key remains confidential.
 
-#### 10.3.1.3. Asymmetric Encryption - SSH
+#### 10.3.1.4. Asymmetric Encryption - SSH
 
 Asymmetric encryption in SSH (Secure Shell) uses a pair of keys—a public key and a private key—to secure communications between a client and a server. The public key is shared with the server, while the private key remains confidential on the client.
 
-#### 10.3.1.3. Asymmetric Encryption - HTTPS
+#### 10.3.1.5. Asymmetric Encryption - HTTPS
 
 In **HTTPS** (Hypertext Transfer Protocol Secure), **both symmetric and asymmetric encryption are used** to secure communications between a web browser and a server:
 
@@ -1709,7 +1718,7 @@ In **HTTPS** (Hypertext Transfer Protocol Secure), **both symmetric and asymmetr
 - **Symmetric Encryption**: Once the secure connection is established and the session key is shared, symmetric encryption is used for the actual data transmission. This is because symmetric encryption is faster and more efficient for encrypting large amounts of data compared to asymmetric encryption.
 
 
-#### 10.3.1.4. Certificate Authority (CA)
+#### 10.3.1.6. Certificate Authority (CA)
 
 - Public CAs have also Private and Public Keys
   - Private CA Service can be hosted within ones infrastructure
@@ -1722,7 +1731,7 @@ In **HTTPS** (Hypertext Transfer Protocol Secure), **both symmetric and asymmetr
 - GlobalSign
 - Digicert
 
-#### 10.3.1.5. Naming Convention of Public and Private Keys
+#### 10.3.1.7. Naming Convention of Public and Private Keys
 
 - Certificate (Public Key)
   - *.crt, *.pem: 
@@ -1737,7 +1746,7 @@ In **HTTPS** (Hypertext Transfer Protocol Secure), **both symmetric and asymmetr
     - client.key
     - client-key.pem
 
-#### TLS Use Cases
+#### 10.3.1.8. TLS Use Cases
 
 - Admins generate Key Pairs to secure SSH
 - Web Server has Key Pairs to secure Website with HTTPS
