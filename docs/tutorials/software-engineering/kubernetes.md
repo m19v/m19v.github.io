@@ -1687,6 +1687,7 @@ curl -v -k https://master-node-ip:6443/api/v1/pods --header "Authorization: Bear
 - **Certificate Signing Request (CSR)**: includes the public key along with information about the entity requesting a certificate (e.g. organization’s name, domain). When you generate a CSR, you create it using your public key.
 - **Certificate (CRT or Digital Certificate)**: contains the public key along with information about the certificate holder (e.g. their identity, domain). It is issued by a Certificate Authority (CA) after verifying the information in the CSR. The CRT allows others to trust that the public key belongs to the entity it claims to represent.
 - **Digital Signature**: When you sign data with your private key, others can use your public key to verify that the signature is valid. This ensures that the data hasn’t been tampered with and confirms the identity of the sender.
+- **Root Certificate** is a special type of digital certificate that belongs to a trusted organization called a Certificate Authority (CA).
 - **Certificate Authority (CA)**: An entity that issues digital certificates, verifying the identity of the certificate holder and ensuring the integrity of the public key.
 
 #### 10.3.1.1. Private vs Public Key
@@ -1704,7 +1705,7 @@ Symmetric encryption is a cryptographic method where the same key is used for bo
 
 #### 10.3.1.3. Asymmetric Encryption
 
-Asymmetric encryption is a cryptographic method that uses a pair of keys—a public key for encryption and a private key for decryption—allowing secure communication where the public key can be shared openly while the private key remains confidential.
+Asymmetric encryption is a cryptographic method that uses a pair of keys—a public key for encryption and a private key for decryption-allowing secure communication where the public key can be shared openly while the private key remains confidential.
 
 #### 10.3.1.4. Asymmetric Encryption - SSH
 
@@ -1726,6 +1727,8 @@ In **HTTPS** (Hypertext Transfer Protocol Secure), **both symmetric and asymmetr
 - Public Keys of CAs are available in e.g. Browsers (Trusted Root Certification Authorities)
 - Browser uses Public Key of CA to **verify** that a specific Certificate was signed with Private Key of Official CA
 
+
+Public CAs:
 - Symantec
 - Comodo
 - GlobalSign
@@ -1753,8 +1756,37 @@ In **HTTPS** (Hypertext Transfer Protocol Secure), **both symmetric and asymmetr
 - CA Generates its own Key Pairs to sign/verify Certificates
 - End Users/Browser only generates single Symetric Key
 
+
+
 ### 10.3.2. TLS in Kubernetes
 
+- Root Certificates (on CA Servers)
+- Server Certificates (on Servers)
+- Client Certificates (on Clients)
+
+**Server Certificates for Servers**
+- kube-apiserver
+  - kube-apiserver.crt, kube-apiserver.key
+- etcd
+  - etcd.crt, etcd.key
+- kubelet
+  - kubelet.crt, kubelet.key
+
+**Client Certificates for Clients**
+- kube-apiserver                            ---> etcd, kubelet
+  -  kube-apiserver-etcd.crt, -  kube-apiserver-etcd.key
+  -  kube-apiserver-kubelet.crt, -  kube-apiserver-kubelet.key
+- kubelet                                   ---> kube-apiserver
+  - kubelet-apiserver.crt, kubelet-apiserver.key
+- admin                                     ---> kube-apiserver
+  - admin.crt, admin.key
+- kube-scheduler                            ---> kube-apiserver
+  - kube-scheduler.crt, kube-scheduler.key
+- kube-controller-manager                   ---> kube-apiserve 
+  - kube-controller-manager.crt, kube-controller-manager.key
+- kube-proxy                                ---> kube-apiserve 
+  - kube-proxy.crt, kube-proxy.key
+  - 
 ### 10.3.3. TLS in Kubernetes - Certificate Creation
 
 ```sh
