@@ -39,6 +39,11 @@ Challenges of above approach:
 
 # 4. Git as Single Source of Truth
 
+- K8s configuration defined as Code in Git repository
+- Desired State is defined in Git repository (i.e. manual change of cluster will be reverted,synced with desried state in git)
+- Git repository is a single interface of version controlled changes
+
+> **Info:** It is also possible to configure ArgoCD to not sync manual cluster changes automatically but send alert instead. 
 
 
 # 5. References
