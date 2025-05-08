@@ -10,6 +10,8 @@ title: Managing Security in Google Cloud
   - [3.1. IAM Objects managed by Resource Manager](#31-iam-objects-managed-by-resource-manager)
   - [3.2. IAM Roles](#32-iam-roles)
   - [3.3. Service Accounts](#33-service-accounts)
+  - [3.4. Workload Identity Federation](#34-workload-identity-federation)
+  - [3.5. IAM and Organization policy](#35-iam-and-organization-policy)
 
 
 # 1. Intro
@@ -81,3 +83,8 @@ Use `gcloud` command-line tool to list all of the keys associated with a Service
 ```sh
 gcloud iam service-accounts keys list --iam-account service-account-email-id
 ```
+
+## 3.4. Workload Identity Federation
+
+## 3.5. IAM and Organization policy 
+
