@@ -11,7 +11,9 @@ title: Managing Security in Google Cloud
   - [3.2. IAM Roles](#32-iam-roles)
   - [3.3. Service Accounts](#33-service-accounts)
   - [3.4. Workload Identity Federation](#34-workload-identity-federation)
-  - [3.5. IAM and Organization policy](#35-iam-and-organization-policy)
+  - [3.5. IAM and Organization Policy](#35-iam-and-organization-policy)
+  - [3.6. Policy Intelligence](#36-policy-intelligence)
+- [4. References](#4-references)
 
 
 # 1. Intro
@@ -86,5 +88,31 @@ gcloud iam service-accounts keys list --iam-account service-account-email-id
 
 ## 3.4. Workload Identity Federation
 
-## 3.5. IAM and Organization policy 
+## 3.5. IAM and Organization Policy 
 
+A Policy is a collection of access statements. Each policy contains a set of roles and role members.
+
+- Allow policy
+- Deny policy
+
+
+**Organization Policies** focus on **what**, and lets the administrator set restrictions on specific resources, services, or groups of services to determine how they can be configured and used.  
+**IAM policies** focus on **who**, and lets the administrator authorize who can take action on specific resources or services based on permissions.  
+
+
+## 3.6. Policy Intelligence
+
+Policy Intelligence assists through the lifecycle of policy management to manage policies securely. Policy Intelligence gives a suite of tools for troubleshooting, analysis, and recommendations.  
+
+Policy Troubleshooter can be accessed using the 
+- Console
+  - Simple queries
+- Google Cloud CLI
+  - Complex Scenarios
+- REST API
+  - Complex Scenarios
+
+
+# 4. References
+
+- [Managing Security in Google Cloud](https://www.cloudskillsboost.google/paths/15/course_templates/21)
