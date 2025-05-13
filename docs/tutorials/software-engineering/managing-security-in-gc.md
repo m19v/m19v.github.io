@@ -189,8 +189,22 @@ Secure connections to public cloud providers are a concern for all organizations
 
 **Access Context Manager** is a tool with an API that allows Google Cloud organization administrators to define fine-grained, attribute based access control for projects and resources in Google Cloud.
 
+Access Context Manager reduces the size of your privileged network:
+- Access Policies
+- Access Levels
+  - IP address
+  - Device type
+  - User identity
+
+
 # 6. VPC Flow Logs
+
+VPC Flow Logs record network flows sent from or received by VM instances, e.g. geographic details, source and destination IPs, etc.
+
+
 # 7. Cloud IDS
+
+**Cloud IDS** is an intrusion detection service that provides threat detection for intrusions, malware, spyware, and command-and-control attacks on your network.
 
 # 8. References
 
