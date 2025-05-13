@@ -13,7 +13,18 @@ title: Managing Security in Google Cloud
   - [3.4. Workload Identity Federation](#34-workload-identity-federation)
   - [3.5. IAM and Organization Policy](#35-iam-and-organization-policy)
   - [3.6. Policy Intelligence](#36-policy-intelligence)
-- [4. References](#4-references)
+- [4. Configuring Virtual Private Cloud for Isolation and Security](#4-configuring-virtual-private-cloud-for-isolation-and-security)
+  - [4.1. Virtual Private Cloud (VPC) firewalls](#41-virtual-private-cloud-vpc-firewalls)
+    - [4.1.1. Configuring VPC Firewalls](#411-configuring-vpc-firewalls)
+  - [4.2. Load balancing and SSL policies](#42-load-balancing-and-ssl-policies)
+  - [4.3. Interconnect and Peering options](#43-interconnect-and-peering-options)
+  - [4.4. Connecting to GC](#44-connecting-to-gc)
+  - [4.5. VPC Service Controls](#45-vpc-service-controls)
+    - [4.5.1. Private Google API access](#451-private-google-api-access)
+- [5. Access Context Manager](#5-access-context-manager)
+- [6. VPC Flow Logs](#6-vpc-flow-logs)
+- [7. Cloud IDS](#7-cloud-ids)
+- [8. References](#8-references)
 
 
 # 1. Intro
@@ -113,6 +124,74 @@ Policy Troubleshooter can be accessed using the
   - Complex Scenarios
 
 
-# 4. References
+# 4. Configuring Virtual Private Cloud for Isolation and Security
+
+## 4.1. Virtual Private Cloud (VPC) firewalls
+
+A Virtual Private Cloud (or VPC) is a global, private, isolated virtual network partition that provides managed networking functionality for your Google Cloud resources.
+
+Firewall rules:
+- Directional 
+  - Ingress
+  - Egress
+- Source or destination
+  - The source parameter is only applicable to ingress rules
+  - The destination parameter is only applicable to egress rules
+- Protocol and port 
+  - Rules can be restricted to apply to specific protocols only, or combinations of protocols and ports only
+- Action
+  - Allow or deny
+- Priority 
+  - A numerical value from 0 to 65,535, which is used to determine the order the rules are evaluated. Lower number indicates a higher priority and Increased network security.
+
+
+
+### 4.1.1. Configuring VPC Firewalls
+
+```sh
+# gcloud commands to configure VPC
+```
+
+
+## 4.2. Load balancing and SSL policies
+
+Application Load Balancer or Proxy Network Load Balancer support SSL for encryption in transit.
+
+
+## 4.3. Interconnect and Peering options
+
+VPC peering allows you to create connectivity across two nonoverlapping VPC networks. Peered networks do not need to be in the same project, or even in the same organization. VPC Network Peering gives you several advantages over using external IP addresses or VPNs to connect networks, including: Decreased network latency.
+
+
+## 4.4. Connecting to GC
+
+Secure connections to public cloud providers are a concern for all organizations and can be securely accomplished through Cloud VPN or Cloud Interconnect:
+
+- **Cloud VPN** securely connects your peer network to your Virtual Private Cloud network through an IPsec VPN connection.  
+- **Cloud Interconnect** extends your on-premises network to Google's network through a highly available, low latency connection.
+  - Dadicated Interconnect
+    - Minimum bandwidth of 10 Gbps
+  - Partner Interconnect
+    - - Minimum bandwidth of 50 Mbps
+
+
+## 4.5. VPC Service Controls
+
+**VPC Service Controls** improve your ability to reduce the risk of data exfiltration from your Google-managed services like Cloud Storage and BigQuery.
+
+
+### 4.5.1. Private Google API access
+
+**Private Google API Access** enables Compute Engine instances on a VPC subnet to reach Google APIs and services using an internal IP address rather than an external IP address.
+
+
+# 5. Access Context Manager
+
+**Access Context Manager** is a tool with an API that allows Google Cloud organization administrators to define fine-grained, attribute based access control for projects and resources in Google Cloud.
+
+# 6. VPC Flow Logs
+# 7. Cloud IDS
+
+# 8. References
 
 - [Managing Security in Google Cloud](https://www.cloudskillsboost.google/paths/15/course_templates/21)
