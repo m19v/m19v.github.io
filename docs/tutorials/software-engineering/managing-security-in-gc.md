@@ -23,6 +23,8 @@ title: Managing Security in Google Cloud
     - [4.5.1. Private Google API access](#451-private-google-api-access)
 - [5. Access Context Manager](#5-access-context-manager)
 - [6. VPC Flow Logs](#6-vpc-flow-logs)
+  - [6.1. Configuring and Using VPC Flow Logs in Cloud Logging](#61-configuring-and-using-vpc-flow-logs-in-cloud-logging)
+  - [Log Explorer](#log-explorer)
 - [7. Cloud IDS](#7-cloud-ids)
 - [8. References](#8-references)
 
@@ -199,7 +201,49 @@ Access Context Manager reduces the size of your privileged network:
 
 # 6. VPC Flow Logs
 
-VPC Flow Logs record network flows sent from or received by VM instances, e.g. geographic details, source and destination IPs, etc.
+VPC Flow Logs record network flows sent from or received by VM instances, e.g. geographic details, source and destination IPs, etc. These logs can be used for network monitoring, forensics, real-time security analysis, and even for expense optimization.
+
+## 6.1. Configuring and Using VPC Flow Logs in Cloud Logging
+
+```sh
+# gcloud commands for VPC Flow Logs
+
+gcloud auth list                                             # list the active account name
+gcloud config list project                                   # list the project ID
+
+
+gcloud compute networks subnets update default \
+--region us-central1 --enable-flow-logs \
+--logging-metadata=include-all
+
+
+gcloud compute instances create default-us-vm \
+--machine-type e2-micro \
+--zone=us-central1-f --network=default
+
+```
+
+## Log Explorer
+
+```sh
+# type = Subnetwork, Log name = vpc_flows
+resource.type="gce_subnetwork"
+log_name="projects/qwiklabs-gcp-02-67bdee26242f/logs/compute.googleapis.com%2Fvpc_flows"
+
+# Add FILTERS:
+# Access logs for a specific source or destination IP address
+jsonPayload.connection.src_ip="10.128.0.2"
+
+# Access logs for specific ports and protocols
+jsonPayload.connection.dest_port=22
+jsonPayload.connection.dest_port=(80 OR 22)
+jsonPayload.connection.protocol=17                       # UDP (protocol #17) and TCP (protocol #6),  ICMP is protocol #1
+
+# E.g.:
+resource.type="gce_subnetwork"
+log_name="projects/qwiklabs-gcp-02-67bdee26242f/logs/compute.googleapis.com%2Fvpc_flows"
+jsonPayload.connection.src_ip="10.128.0.2"
+```
 
 
 # 7. Cloud IDS
