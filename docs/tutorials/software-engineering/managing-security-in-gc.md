@@ -29,7 +29,10 @@ title: Managing Security in Google Cloud
 - [8. References](#8-references)
 
 
+
 # 1. Intro
+
+The [Managing Security in Google Cloud](https://www.cloudskillsboost.google/paths/15/course_templates/21) training course gives developers broad study of security controls and techniques on Google Cloud.
 
 # 2. Foundations of Google Cloud Security
 
