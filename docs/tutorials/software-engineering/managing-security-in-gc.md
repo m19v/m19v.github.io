@@ -24,7 +24,7 @@ title: Managing Security in Google Cloud
 - [5. Access Context Manager](#5-access-context-manager)
 - [6. VPC Flow Logs](#6-vpc-flow-logs)
   - [6.1. Configuring and Using VPC Flow Logs in Cloud Logging](#61-configuring-and-using-vpc-flow-logs-in-cloud-logging)
-  - [Log Explorer](#log-explorer)
+  - [6.2. Log Explorer](#62-log-explorer)
 - [7. Cloud IDS](#7-cloud-ids)
 - [8. References](#8-references)
 
@@ -224,7 +224,7 @@ gcloud compute instances create default-us-vm \
 
 ```
 
-## Log Explorer
+## 6.2. Log Explorer
 
 ```sh
 # type = Subnetwork, Log name = vpc_flows
