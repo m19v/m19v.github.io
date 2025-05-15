@@ -210,6 +210,7 @@ VPC Flow Logs record network flows sent from or received by VM instances, e.g. g
 
 gcloud auth list                                             # list the active account name
 gcloud config list project                                   # list the project ID
+gcloud config get-value project
 
 
 gcloud compute networks subnets update default \
