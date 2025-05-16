@@ -2,7 +2,20 @@
 title: Ansible
 ---
 
-# Installation
+## Ansible
+
+- Ansible is an open source engine that automates application deployment, orchestration, cloud provisioning etc. 
+- It uses human readable YAML syntax for Ansible Playbooks to describe automation jobs. 
+- Ansible is agent-less and designed for multi-tier deployment. Connects nodes via ssh by pushing "Ansible modules" which is removed after its execution.
+
+## Environment Setup
+
+### Types of machines:
+
+- Control machine − a system on which Ansible is installed which manages other machines by executing playbook.
+- Remote machine − a remote system managed by control machine.
+
+### Installation
 
 ```shell
 apt update
@@ -11,16 +24,20 @@ apt upgrade -y
 apt install ansible -y
 ```
 
-# Ansible configuration
+## Ansible configuration
 
-## ansible.cfg
+### ansible.cfg
 ```shell
 [default]
 inventory = nameOfInventoryFile
 private_key_file = ~/.ssh/nameOfSSHKey
 ```
 
-# Ansible commands
+## Ad-hoc commands
+
+## Playbook
+
+## Ansible commands
 
 ```shell
 ansible all --key-file ~/.ssh/nameOfSSHKey -i inventory -m ping
@@ -57,7 +74,27 @@ ansible-vault edit secret.yml
 ansible-galaxy install -r requirements.yml
 ```
 
-# SSH Key-Based Authentication
+## Playbook snippets
+
+## Ansible Inventory
+A list of managed nodes that are logically organized. You create an inventory on the control node to describe host deployments to Ansible.
+
+## WSL Playbook
+
+```shell
+See https://github.com/m19v/dotfiles/blob/main/README.md
+```
+
+## Roles
+
+## Variables
+
+## Advanced execution
+
+## Troubleshooting
+
+## SSH Overview
+### SSH Key-Based Authentication
 
 - Install OpenSSH on server
 
