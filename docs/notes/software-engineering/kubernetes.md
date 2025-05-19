@@ -1685,7 +1685,7 @@ curl -v -k https://master-node-ip:6443/api/v1/pods --header "Authorization: Bear
 - **Private Key**: is used to *decrypt information* or *sign data* and is kept secret.
 - **Public Key**: is used to *encrypt information* or *verify signatures* and can be shared with anyone.
 - **Certificate Signing Request (CSR)**: includes the public key along with information about the entity requesting a certificate (e.g. organization’s name, domain). When you generate a CSR, you create it using your public key.
-- **Certificate (CRT or Digital Certificate)**: contains the public key along with information about the certificate holder (e.g. their identity, domain). It is issued by a Certificate Authority (CA) after verifying the information in the CSR. The CRT allows others to trust that the public key belongs to the entity it claims to represent.
+- **Certificate (CRT or Digital Certificate)**: contains the public key along with information about the certificate holder (e.g. their identity, domain). It is issued by a Certificate Authority (CA) after verifying the information in the CSR. The CRT allows others to trust that the public key belongs to the entity it claims to represent. I.e. Certificate is so called Validated User ID and Key is Password.
 - **Digital Signature**: When you sign data with your private key, others can use your public key to verify that the signature is valid. This ensures that the data hasn’t been tampered with and confirms the identity of the sender.
 - **Root Certificate** is a special type of digital certificate that belongs to a trusted organization called a Certificate Authority (CA).
 - **Certificate Authority (CA)**: An entity that issues digital certificates, verifying the identity of the certificate holder and ensuring the integrity of the public key.
@@ -1805,8 +1805,71 @@ Public CAs:
 
 ### 10.3.3. TLS in Kubernetes - Certificate Creation
 
+Tools to create certificates
+- EASYRSA
+- OPENSSL
+- CFSSL
+
 ```sh
+# Show certificate of server
 openssl s_client -connect <ip-of-host>
+```
+
+
+```sh
+# CA --------------------------------------------------------------------------
+
+# Generate Private Key ca.key for CA
+openssl genrsa -out ca.key 2048
+
+# Generate Certificate Signing Request (CSR) ca.crs using ca.key for CA. CSR is a certificate with all your details but without signature
+openssl req -new -key ca.key -subj "/CN=KUBERNETES-CA" -out ca.csr
+
+# Sign (ROOT) Certificate ca.crt using ca.csr and ca.key for CA (self-signed). CA ca.crt must be in ALL k8s hosts (servers/clients)
+openssl x509 -req -in ca.csr -signkey ca.key -out ca.crt
+
+
+
+# Client Certificates ---------------------------------------------------------
+
+# Generate Private Key admin.key for Admin
+openssl genrsa -out admin.key 2048
+
+# Generate Certificate Signing Request (CSR) admin.crs using admin.key for Admin. CSR is a certificate with all your details but without signature. Certificate is so called Validated User ID and Key is Password
+# "/CN=kube-admin" is admin name which e.g. appears in audit logs
+# "/O=system:masters" is a Group Detail added to Certificate to differentiat admin user from simple user. 
+# Groups named "system:masters", "system:kube-scheduler", "system:kube-controller-manager", "system:kube-proxy" exists in k8s with admin/relevant priviledges
+openssl req -new -key admin.key -subj "/CN=kube-admin/O=system:masters" -out admin.csr
+
+# Sign Admin admin.crt using ca.csr and ca.key. CA Key Pair is used to sign all server and client certificates
+openssl x509 -req -in ca.csr -signkey ca.key -out admin.crt
+
+
+
+# Server Certificates ---------------------------------------------------------
+
+```
+
+
+```sh
+# Authenticate using Certificates with curl or kube-config.yaml
+
+curl https://kube-apiserver:6443/api/v1/pods --key admin.key --cert admin.crt --cacert ca.crt
+
+
+# kube-config.yaml
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: ca.crt
+    server: https://kube-apiserver:6443
+  name: kubernetes
+kind: Config
+users:
+- name: kubernetes-admin
+  user:
+    client-certificate: admin.crt
+    client-key: admin.key
 ```
 
 # 11. Storage
