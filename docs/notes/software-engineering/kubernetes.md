@@ -1848,6 +1848,30 @@ openssl x509 -req -in ca.csr -signkey ca.key -out admin.crt
 
 # Server Certificates ---------------------------------------------------------
 
+# Generate Private Key kube-apiserver.key for kube-apiserver
+openssl genrsa -out kube-apiserver.key 2048
+
+# Generate Certificate Signing Request (CSR) kube-apiserver.crs using kube-apiserver.key for kube-apiserver. CSR is a certificate with all your details but without signature
+openssl req -new -key kube-apiserver.key -subj "/CN=kube-apiserver" -out kube-apiserver.csr -config openssl.cnf
+
+# openssl.cnf
+[req]
+req_extensions = v3_req
+distinguished_name = req_distinguished_name
+[ v3_req ]
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation,
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = kubernetes
+DNS.2 = kubernetes.default
+DNS.3 = kubernetes.default.svc
+DNS.4 = kubernetes.deafult.svc.cluster.local
+IP.1 = 10.96.0.1
+IP.2 = 172.17.0.87
+
+# Sign kube-apiserver kube-apiserver.crt using ca.csr and ca.key. CA Key Pair is used to sign all server and client certificates
+openssl x509 -req -in kube-apiserver.csr -signkey ca.key -out kube-apiserver.crt
 ```
 
 
