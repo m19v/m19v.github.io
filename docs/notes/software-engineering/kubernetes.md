@@ -126,6 +126,7 @@ title: Kubernetes
       - [10.3.1.8. TLS Use Cases](#10318-tls-use-cases)
     - [10.3.2. TLS in Kubernetes](#1032-tls-in-kubernetes)
     - [10.3.3. TLS in Kubernetes - Certificate Creation](#1033-tls-in-kubernetes---certificate-creation)
+    - [10.3.4. View Certificate Details](#1034-view-certificate-details)
 - [11. Storage](#11-storage)
 - [12. Networking](#12-networking)
 - [13. Design and Install a Kubernetes Cluster](#13-design-and-install-a-kubernetes-cluster)
@@ -1810,11 +1811,6 @@ Tools to create certificates
 - OPENSSL
 - CFSSL
 
-```sh
-# Show certificate of server
-openssl s_client -connect <ip-of-host>
-```
-
 
 ```sh
 # CA --------------------------------------------------------------------------
@@ -1830,7 +1826,7 @@ openssl x509 -req -in ca.csr -signkey ca.key -out ca.crt
 
 
 
-# Client Certificates ---------------------------------------------------------
+# CLIENT Certificates ---------------------------------------------------------
 
 # Generate Private Key admin.key for Admin
 openssl genrsa -out admin.key 2048
@@ -1838,7 +1834,7 @@ openssl genrsa -out admin.key 2048
 # Generate Certificate Signing Request (CSR) admin.crs using admin.key for Admin. CSR is a certificate with all your details but without signature. Certificate is so called Validated User ID and Key is Password
 # "/CN=kube-admin" is admin name which e.g. appears in audit logs
 # "/O=system:masters" is a Group Detail added to Certificate to differentiat admin user from simple user. 
-# Groups named "system:masters", "system:kube-scheduler", "system:kube-controller-manager", "system:kube-proxy" exists in k8s with admin/relevant priviledges
+# Groups named "system:masters", "system:kube-scheduler", "system:kube-controller-manager", "system:kube-proxy", "system:nodes" exists in k8s with admin/relevant priviledges
 openssl req -new -key admin.key -subj "/CN=kube-admin/O=system:masters" -out admin.csr
 
 # Sign Admin admin.crt using ca.csr and ca.key. CA Key Pair is used to sign all server and client certificates
@@ -1846,7 +1842,7 @@ openssl x509 -req -in ca.csr -signkey ca.key -out admin.crt
 
 
 
-# Server Certificates ---------------------------------------------------------
+# SERVER Certificates ---------------------------------------------------------
 
 # Generate Private Key kube-apiserver.key for kube-apiserver
 openssl genrsa -out kube-apiserver.key 2048
@@ -1862,7 +1858,7 @@ distinguished_name = req_distinguished_name
 basicConstraints = CA:FALSE
 keyUsage = nonRepudiation,
 subjectAltName = @alt_names
-[alt_names]
+[alt_names]                        # Only clients refering to kube-apiserver by defined names can establish valid connection
 DNS.1 = kubernetes
 DNS.2 = kubernetes.default
 DNS.3 = kubernetes.default.svc
@@ -1894,6 +1890,33 @@ users:
   user:
     client-certificate: admin.crt
     client-key: admin.key
+```
+
+
+### 10.3.4. View Certificate Details
+
+```sh
+# View Certificate Details and Perform a healthcheck of Certificates ----------
+# Check Details:
+#   - Common Name (e.g. kube-apiserver)
+#   - Subject Alternative Name (kubernetes, kubernetes.default etc.)
+#   - Validity (e.g. expirity date)
+#   - Issuer (e.g. CA)
+#   - See https://kubernetes.io/docs/setup/best-practices/certificates/ or https://github.com/mmumshad/kubernetes-the-hard-way/tree/master/tools
+
+openssl x509 -in /etc/kubernetes/pki/apiserver.crt -text -noout
+
+
+# Show certificate of server --------------------------------------------------
+
+openssl s_client -connect <ip-of-host>
+
+
+# Inspect Service Logs --------------------------------------------------------
+
+journalctl -u etcd.service -l
+
+kubectl logs etcd-master
 ```
 
 # 11. Storage
