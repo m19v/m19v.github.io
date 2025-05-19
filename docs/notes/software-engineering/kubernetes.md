@@ -1766,30 +1766,41 @@ Public CAs:
 
 
 **Certificate Authority**
-- ca.crt, ca.key
+
+- CA
+  - ca.crt, ca.key
 
 **Server Certificates for Servers**
-- kube-apiserver
+
+- kube-apiserver (server)
   - kube-apiserver.crt, kube-apiserver.key
-- etcd
+- etcd (server)
   - etcd.crt, etcd.key
-- kubelet
+- kubelet (server)
   - kubelet.crt, kubelet.key
 
 **Client Certificates for Clients**
-- kube-apiserver                            ---> etcd, kubelet
-  -  kube-apiserver-etcd.crt, -  kube-apiserver-etcd.key
-  -  kube-apiserver-kubelet.crt, -  kube-apiserver-kubelet.key
-- kubelet                                   ---> kube-apiserver
-  - kubelet-apiserver.crt, kubelet-apiserver.key
-- admin                                     ---> kube-apiserver
-  - admin.crt, admin.key
-- kube-scheduler                            ---> kube-apiserver
-  - kube-scheduler.crt, kube-scheduler.key
-- kube-controller-manager                   ---> kube-apiserve 
-  - kube-controller-manager.crt, kube-controller-manager.key
-- kube-proxy                                ---> kube-apiserve 
-  - kube-proxy.crt, kube-proxy.key
+
+- kube-apiserver (client)
+  - etcd (server)
+    -  kube-apiserver-etcd.crt, kube-apiserver-etcd.key
+  - kubelet (server)
+    -  kube-apiserver-kubelet.crt, kube-apiserver-kubelet.key
+- kubelet (client)
+  - kube-apiserver (server) 
+    - kubelet-kube-apiserver.crt, kubelet-kube-apiserver.key
+- admin (client)
+  - kube-apiserver (server)
+    - admin-kube-apiserver.crt, admin-kube-apiserver.key
+- kube-scheduler (client)
+  - kube-apiserver (server)
+    - kube-scheduler-kube-apiserver.crt, kube-scheduler-kube-apiserver.key
+- kube-controller-manager (client)
+  - kube-apiserve (server)
+    - kube-controller-manager-kube-apiserver.crt, kube-controller-manager-kube-apiserver.key
+- kube-proxy (client)
+  - kube-apiserve (server)
+    - kube-proxy-kube-apiserver.crt, kube-proxy-kube-apiserver.key
 
 
 ### 10.3.3. TLS in Kubernetes - Certificate Creation
