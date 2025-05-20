@@ -140,6 +140,7 @@ title: Kubernetes
       - [10.8.2.3. **RBAC**](#10823-rbac)
       - [10.8.2.4. Webhook](#10824-webhook)
     - [10.8.3. RBAC](#1083-rbac)
+    - [10.8.4. Cluster Roles and Role Bindings](#1084-cluster-roles-and-role-bindings)
 - [11. Storage](#11-storage)
 - [12. Networking](#12-networking)
 - [13. Design and Install a Kubernetes Cluster](#13-design-and-install-a-kubernetes-cluster)
@@ -2134,6 +2135,9 @@ e.g. is managed by policy file defined in Kube ApiServer
 
 ### 10.8.3. RBAC
 
+
+**Roles** and **RoleBindings** are namespaces, i.e. created within namespace. They created in `default` namespace if the namespace is not defined in description file.
+
 ```sh
 # Check RBAC
 
@@ -2178,6 +2182,58 @@ kubectl auth can-i --list
       apiGroup: rbac.authorization.k8s.io
     ```
 
+
+### 10.8.4. Cluster Roles and Role Bindings
+
+**Resources**:
+  - **namespaced**
+    - pods, replicasets, jobs, deployments, services, secrets, roles, rolebindings, configmaps, PVC
+  - **cluster-scoped**
+    - nodes 
+      - nodes are cluster wide/scoped resources and can not be assosiated to any particular namespace
+    - clusterroles
+    - clusterrolebindings
+    - PV
+    - certificatesigningrequests
+    - namespaces
+
+```sh
+# List namespaced and non-namespaces api-resources
+kubectl api-resources --namespaced=true/false
+```
+
+E.g. of cluster roles:
+- Cluster Admin
+  - Can view, create or delete Nodes
+- Storage Admin
+  - Can view, create or delete PVs/PVCs
+
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cluster-administrator
+rules:
+  - apiGroups: [""]                  # "" indicates the core API group
+    resources: ["nodes"]
+    verbs: ["list", "get", "create", "delete"]
+```
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: cluster-admin-clusterrolebinding
+subjects:
+  - kind: User
+    name: cluster-admin
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: cluster-administrator
+  apiGroup: rbac.authorization.k8s.io
+```
 
 
 # 11. Storage
