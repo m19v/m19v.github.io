@@ -127,6 +127,8 @@ title: Kubernetes
     - [10.3.2. TLS in Kubernetes](#1032-tls-in-kubernetes)
     - [10.3.3. TLS in Kubernetes - Certificate Creation](#1033-tls-in-kubernetes---certificate-creation)
     - [10.3.4. View Certificate Details](#1034-view-certificate-details)
+  - [10.4. Certificate API](#104-certificate-api)
+    - [Steps to generate certificate for a new User](#steps-to-generate-certificate-for-a-new-user)
 - [11. Storage](#11-storage)
 - [12. Networking](#12-networking)
 - [13. Design and Install a Kubernetes Cluster](#13-design-and-install-a-kubernetes-cluster)
@@ -1918,6 +1920,51 @@ journalctl -u etcd.service -l
 
 kubectl logs etcd-master
 ```
+
+
+## 10.4. Certificate API
+
+- In a Kubernetes cluster, a **Certificate Authority (CA) server** is responsible for managing and issuing digital certificates
+- If a new developer needs to access k8s cluster, he/she must create Private Key and provide CSR which then will be signed with CA private key on CA server by k8s admins
+- The built-in **Certificate API** in Kubernetes is a set of resources and functionalities that facilitate the management of TLS certificates within a Kubernetes cluster (e.g. sign and rotate certificates etc.)
+  - Admin creates `CertificateSigningRequest` object (e.g. Instead of signing to CA server and signing certificate manually)
+  - Request then can be reviewed
+  - And approved using `kubectl get csr && kubectl certificate approve <name-of-csr>` commands
+  - Certificates then can be extracted and shared with users with `kubectl get csr <name-of-csr> -o yaml && echo "certificate-encoded-in-base64" | base64 --decode`
+  - **Kube Controller Manager** is responsible for operations with certificates (components: CSR-APPROVING, CSR-SIGNING)
+
+
+### Steps to generate certificate for a new User
+
+```sh
+# USER creates Private Key and CSR
+openssh genrsa -out jane.key 2048
+openssl req -new -key jane.key -subj "/CN=jane" -out jane.csr
+
+
+# ADMIN encodes in with base64, creates CertificateSigningRequest object, approve and share certificate with user
+cat jane.csr | base64
+
+
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+metadata:
+  name: jane
+spec:
+  request: <base64-encoded-csr>
+  expirationSeconds: 600
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth
+
+
+kubect get csr
+kubect certificate approve jane
+kubectl get csr <name-of-csr> -o yaml 
+echo "certificate-encoded-in-base64" | base64 --decode
+```
+``
 
 # 11. Storage
 # 12. Networking
