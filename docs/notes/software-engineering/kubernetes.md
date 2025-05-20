@@ -139,6 +139,7 @@ title: Kubernetes
       - [10.8.2.2. **ABAC**](#10822-abac)
       - [10.8.2.3. **RBAC**](#10823-rbac)
       - [10.8.2.4. Webhook](#10824-webhook)
+    - [10.8.3. RBAC](#1083-rbac)
 - [11. Storage](#11-storage)
 - [12. Networking](#12-networking)
 - [13. Design and Install a Kubernetes Cluster](#13-design-and-install-a-kubernetes-cluster)
@@ -2130,6 +2131,55 @@ e.g. is managed by policy file defined in Kube ApiServer
 - Authorization managed by external tool
   - Open Policy Agent
 
+
+### 10.8.3. RBAC
+
+```sh
+# Check RBAC
+
+kubectl roles
+kubectl rolebindings
+kubectl auth can-i --list 
+```
+
+1. Create a Role 
+    ```yaml
+    # Role definition file developer-role.yaml
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: Role
+    metadata:
+      name: developer-role
+      namespace: dev-namespace
+    rules:
+      - apiGroups: [""]                       # "" indicates the core API group
+        resources: ["pods", "services"]
+        verbs: ["get", "list", "create", "update", "delete"]
+        resourceName: ["blue", "orange"]      # Specify Pod Names
+      - apiGroups: ["apps"]                   # For resources in the apps API group
+        resources: ["deployments"]
+        verbs: ["get", "list", "create", "update", "delete"]
+    ```
+
+2. Link a Role to User
+    ```yaml
+    # Bind a Role to User in developer-rolebinding.yaml
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      name: developer-rolebinding
+      namespace: dev-namespace
+    subjects:
+      - kind: User
+        name: dev-user
+        apiGroup: rbac.authorization.k8s.io
+    roleRef:
+      kind: Role
+      name: developer-role
+      apiGroup: rbac.authorization.k8s.io
+    ```
+
+
+
 # 11. Storage
 # 12. Networking
 # 13. Design and Install a Kubernetes Cluster
@@ -2182,6 +2232,10 @@ kubectl get hpa
 kubectl get all --all-namespaces -o yaml > all-resources.yaml                 # Backup all resource configurations
 
 kubectl get serviceaccount
+
+kubectl get roles
+
+kubectl get rolebindings
 
 
 
@@ -2323,8 +2377,8 @@ kubectl logs -f <pod-name> [container-name]
 # AUTH
 
 kubectl auth can-i --list                                                      # check current user permissions
-kubectl auth can-i <verb> <resource> -n <namespace>                            # check if the current user can perform a specific action on a resource
-kubectl auth can-i create pods -n <namespace>                                  
+kubectl auth can-i <verb> <resource> -n <namespace> --as <user-name>           # check if the current user can perform a specific action on a resource
+kubectl auth can-i create pods -n <namespace> --as dev-user                                  
 
 
 
