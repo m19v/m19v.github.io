@@ -132,6 +132,13 @@ title: Kubernetes
   - [10.5. KubeConfig](#105-kubeconfig)
   - [10.6. Persistent Key/Value Store](#106-persistent-keyvalue-store)
   - [10.7. API Group](#107-api-group)
+  - [10.8. Authorization](#108-authorization)
+    - [10.8.1. Authorization Modes](#1081-authorization-modes)
+    - [10.8.2. Authorization Mechanisms](#1082-authorization-mechanisms)
+      - [10.8.2.1. **Node Authorizer**](#10821-node-authorizer)
+      - [10.8.2.2. **ABAC**](#10822-abac)
+      - [10.8.2.3. **RBAC**](#10823-rbac)
+      - [10.8.2.4. Webhook](#10824-webhook)
 - [11. Storage](#11-storage)
 - [12. Networking](#12-networking)
 - [13. Design and Install a Kubernetes Cluster](#13-design-and-install-a-kubernetes-cluster)
@@ -2048,6 +2055,80 @@ kubectl proxy
 curl https://localhost:6443 -k
 ```
 
+
+## 10.8. Authorization
+
+- Admins
+- Developers
+- Bots
+
+
+### 10.8.1. Authorization Modes
+
+**Authorization modes** refer to the specific configurations or settings that determine which [authorization mechanisms](#1082-authorization-mechanisms) are active:
+
+- AlwaysAllow
+- Node
+- ABAC
+- RBAC
+- Webhook
+- AlwaysDeny
+
+
+### 10.8.2. Authorization Mechanisms
+
+- Node based 
+  - used to access within the cluster, e.g. node access to apiserver
+- Attribute Based Authorization (ABAC)
+  - difficult to manage as it is managed by policy file defined in Kube ApiServer 
+  - external access to apiserver 
+- Role Based Authorization (RBAC)
+- Webhook
+
+```sh
+# Flag used to set authorization mode on Kube ApiServer. Authorization check in defined ORDER of authorization mode
+---authorization-mode = Node,RBAC,Webhook \\
+```
+
+
+#### 10.8.2.1. **Node Authorizer**
+
+e.g. is managed by certificates
+- Kube ApiServer (server)
+  - Kubelet (client, certificate group part of "system:node:node1") 
+    - Read:
+      - Services, Endpoints, Nodes, Pods
+    - Write
+      - Node status, Pod status, events
+
+
+#### 10.8.2.2. **ABAC**
+
+e.g. is managed by policy file defined in Kube ApiServer (see below)
+- Kube ApiServer (server)
+  - User (client, e.g. dev-user-1)
+    - Can View, Create, Delete Pods
+
+```json
+// ABAC policy file
+{"kind": "Policy", "spec": {"user":"dev-user-1", "namespace": "*", "resource": "pods", "apiGroup": "*" }}
+```
+
+#### 10.8.2.3. **RBAC**
+
+e.g. is managed by policy file defined in Kube ApiServer
+- Kube ApiServer (server)
+  - Developers
+    - User (client, e.g. dev-user-1)
+      - Can View Pods
+  - Admins
+    - User (client, e.g. admin-user-1)
+      - Can View, Create, Delete Pods
+
+#### 10.8.2.4. Webhook
+
+- Authorization managed by external tool
+  - Open Policy Agent
 
 # 11. Storage
 # 12. Networking
