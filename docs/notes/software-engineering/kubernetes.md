@@ -128,7 +128,8 @@ title: Kubernetes
     - [10.3.3. TLS in Kubernetes - Certificate Creation](#1033-tls-in-kubernetes---certificate-creation)
     - [10.3.4. View Certificate Details](#1034-view-certificate-details)
   - [10.4. Certificate API](#104-certificate-api)
-    - [Steps to generate certificate for a new User](#steps-to-generate-certificate-for-a-new-user)
+    - [10.4.1. Steps to generate certificate for a new User](#1041-steps-to-generate-certificate-for-a-new-user)
+  - [10.5. KubeConfig](#105-kubeconfig)
 - [11. Storage](#11-storage)
 - [12. Networking](#12-networking)
 - [13. Design and Install a Kubernetes Cluster](#13-design-and-install-a-kubernetes-cluster)
@@ -1873,28 +1874,6 @@ openssl x509 -req -in kube-apiserver.csr -signkey ca.key -out kube-apiserver.crt
 ```
 
 
-```sh
-# Authenticate using Certificates with curl or kube-config.yaml
-
-curl https://kube-apiserver:6443/api/v1/pods --key admin.key --cert admin.crt --cacert ca.crt
-
-
-# kube-config.yaml
-apiVersion: v1
-clusters:
-- cluster:
-    certificate-authority: ca.crt
-    server: https://kube-apiserver:6443
-  name: kubernetes
-kind: Config
-users:
-- name: kubernetes-admin
-  user:
-    client-certificate: admin.crt
-    client-key: admin.key
-```
-
-
 ### 10.3.4. View Certificate Details
 
 ```sh
@@ -1934,7 +1913,7 @@ kubectl logs etcd-master
   - **Kube Controller Manager** is responsible for operations with certificates (components: CSR-APPROVING, CSR-SIGNING)
 
 
-### Steps to generate certificate for a new User
+### 10.4.1. Steps to generate certificate for a new User
 
 ```sh
 # USER creates Private Key and CSR
@@ -1943,7 +1922,7 @@ openssl req -new -key jane.key -subj "/CN=jane" -out jane.csr
 
 
 # ADMIN encodes in with base64, creates CertificateSigningRequest object, approve and share certificate with user
-cat jane.csr | base64
+cat jane.csr | base64 -w 0
 
 
 apiVersion: certificates.k8s.io/v1
@@ -1964,7 +1943,46 @@ kubect certificate approve jane
 kubectl get csr <name-of-csr> -o yaml 
 echo "certificate-encoded-in-base64" | base64 --decode
 ```
-``
+
+## 10.5. KubeConfig
+
+```sh
+# View KubeConfig
+kubectl config view --kubeconfig=/custom/path/to/config
+kubectl config use-context prod-user@production
+kubectl config -h
+
+```
+
+```sh
+# Authenticate using Certificates with curl,kubectl or define all values in $HOME/.kube/config
+
+curl https://kube-apiserver:6443/api/v1/pods --key admin.key --cert admin.crt --cacert ca.crt
+kubect get pods --server kube-apiserver:6443 --client-key admin.key --client-certificate admin.crt --certificate-authority ca.crt
+
+
+# $HOME/.kube/config
+apiVersion: v1
+kind: Config
+current-context: kubernetes-admin@kubernetes-cluster
+clusters:                                     # Clusters (e.g. dev, prod, google)
+- name: kubernetes-cluster
+  cluster:
+    certificate-authority: ca.crt             # alternatively use "certificate-authority-data: <base64-encoded-certificate>"
+    server: https://kube-apiserver:6443
+kind: Config
+users:                                        # Users (e.g. admin, devuser, produser)
+- name: kubernetes-admin
+  user:
+    client-certificate: admin.crt
+    client-key: admin.key
+contexts:                                     # Contexts (<user>@<cluster> e.g. admin@dev, devuser@prod)
+- name: kubernetes-admin@kubernetes-cluster
+  context:
+    cluster: kubernetes-cluster
+    user: kubernetes-admin
+    namespace: kubernetes-namespace
+```
 
 # 11. Storage
 # 12. Networking
@@ -2131,8 +2149,10 @@ kubectl delete replicaset myapp-replicaset               # deletes all underlyin
 
 # CONFIG
 
+kubectl config -h
+kubectl config view --kubeconfig=/custom/path/to/config
+kubectl config use-context <user-name>@<cluster-name>
 kubectl config set-context $(kubectl config current-context) --namespace=dev
-kubectl config use-context <cluster-name>
 
 
 
