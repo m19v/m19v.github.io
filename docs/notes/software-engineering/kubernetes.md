@@ -130,6 +130,8 @@ title: Kubernetes
   - [10.4. Certificate API](#104-certificate-api)
     - [10.4.1. Steps to generate certificate for a new User](#1041-steps-to-generate-certificate-for-a-new-user)
   - [10.5. KubeConfig](#105-kubeconfig)
+  - [10.6. Persistent Key/Value Store](#106-persistent-keyvalue-store)
+  - [10.7. API Group](#107-api-group)
 - [11. Storage](#11-storage)
 - [12. Networking](#12-networking)
 - [13. Design and Install a Kubernetes Cluster](#13-design-and-install-a-kubernetes-cluster)
@@ -1983,6 +1985,69 @@ contexts:                                     # Contexts (<user>@<cluster> e.g. 
     user: kubernetes-admin
     namespace: kubernetes-namespace
 ```
+
+## 10.6. Persistent Key/Value Store
+
+## 10.7. API Group
+
+**API groups** make it easier to extend the Kubernetes API. The API group is specified in a *REST path* and in the *apiVersion field* of a serialized object.
+  - /metrics
+  - /healthz
+  - /version
+  - /logs
+  - /api (responsible for cluster functionality)
+  - /apis (responsible for cluster functionality)
+
+API groups in Kubernetes:
+
+- The **core** (also called legacy) group is found at REST path `/api/v1`. The core group is not specified as part of the apiVersion field, for example, apiVersion: v1.
+- The **named groups** are at REST path `/apis/$GROUP_NAME/$VERSION`, more organized and use apiVersion: $GROUP_NAME/$VERSION (for example, apiVersion: batch/v1).
+
+
+**Core groups:**
+
+- /api
+  - /v1
+    - namespaces
+    - pods
+    - rc
+    - events
+    - endpoints
+    - nodes
+    - bindings
+    - PV
+    - PVC
+    - configmaps
+    - secrets
+    - services
+
+**Named groups:**
+
+- /apis
+  - /apps (API Groups)
+    - /v1 (aka apiVersion)
+      - /deployments (aka RESOURCES)
+        - list, get, create, delete, update, watch (aka VERBS)
+      - /replicasets
+      - /statefulsets
+  - /extensions
+  - /networking.k8s.io
+    - /v1
+      - /networkpolicies
+  - /storage.k8s.io
+  - /authentication.k8s.io
+  - /certificates.k8s.io
+    - /v1
+      - /certificatesigningrequests
+
+
+```sh
+# Start Kubectl Proxy (i.e. http proxy service) locally which uses credentials from KubeConfig and provides access to Kube ApiServer
+kubectl proxy
+# List available API Groups in K8s Cluster/Kube ApiServer
+curl https://localhost:6443 -k
+```
+
 
 # 11. Storage
 # 12. Networking
