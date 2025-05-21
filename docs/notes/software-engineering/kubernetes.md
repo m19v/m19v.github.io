@@ -145,6 +145,11 @@ title: Kubernetes
   - [10.10. Image Security](#1010-image-security)
   - [10.11. Docker Security](#1011-docker-security)
   - [10.12. Security Context](#1012-security-context)
+  - [10.13. Network Policies](#1013-network-policies)
+  - [10.14. Kubectx and Kubens](#1014-kubectx-and-kubens)
+  - [10.15. Custorm Resource Definition (CRD)](#1015-custorm-resource-definition-crd)
+  - [10.16. Custom Controllers](#1016-custom-controllers)
+  - [10.17. Operator Framework](#1017-operator-framework)
 - [11. Storage](#11-storage)
 - [12. Networking](#12-networking)
 - [13. Design and Install a Kubernetes Cluster](#13-design-and-install-a-kubernetes-cluster)
@@ -2314,13 +2319,100 @@ spec:
     - name: ubuntu-container
       image: ubuntu:latest
       command: ["sleep"]
-      args: ["3600"]  # Sleep for 3600 seconds (1 hour)
+      args: ["3600"]
       securityContext:    # Container Level Security Context
         runAsUser: 1000   # Run the container as user ID 1000
         runAsGroup: 3000  # Run the container as group ID 3000
         capabilities:     # Capabilities are supported only in container level
           add: ["MAC_ADMIN"]
 ```
+
+## 10.13. Network Policies
+
+A **NetworkPolicy** in Kubernetes is a resource that defines rules for controlling the **ingress** and **egress** traffic to and from Pods, allowing administrators to specify which Pods can communicate with each other and with external endpoints.
+
+```sh
+# Egress poicity type is not defined, hence egress response traffic not isolated. But egress originiating from db still requires egress policy definition
+# Below db only accepts traffic from api-pod on port 3306
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: db-policy
+spec:
+  podSelector:
+    matchLabels:
+      role: db
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:              # all Pods will be allowed to reach db within defined namespace if podSelector not defined (AND operation)
+            matchLabels:
+              name: api-pod
+          namespaceSelector:        # to restrict Network Policy to specific namespace traffic flow (if - in front of it, then separate rule)
+            matchLabels:
+              name: prod
+        - ipBlock:
+            cidr: 192.168.5.10/32   # Allow traffic from specific ip (OR operation with 1st rule "podSelector")
+      ports:
+      - protocol: TCP
+        port: 3306
+
+
+
+# Below db only accepts traffic from api-pod on port 3306 AND can push backups to external server with defined ip
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: db-policy
+spec:
+  podSelector:
+    matchLabels:
+      role: db
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - podSelector:              # all Pods will be allowed to reach db within defined namespace if podSelector not defined (AND operation)
+            matchLabels:
+              name: api-pod
+      ports:
+      - protocol: TCP
+        port: 3306
+  egress:
+    - to:
+        - ipBlock:
+            cidr: 192.168.5.10/32 
+      ports:
+      - protocol: TCP
+        port: 80
+```
+
+
+## 10.14. Kubectx and Kubens
+
+**kubectx** is a tool to switch between contexts (clusters)
+**kubens** is a tool to switch between Kubernetes namespaces
+
+```sh
+# kubens and kubectx installation
+sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
+sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+```
+
+
+## 10.15. Custorm Resource Definition (CRD)
+
+
+
+## 10.16. Custom Controllers
+## 10.17. Operator Framework
+
+
 
 # 11. Storage
 # 12. Networking
