@@ -2407,7 +2407,93 @@ sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 
 ## 10.15. Custorm Resource Definition (CRD)
 
+- Resource - objects that represent the state of the cluster
+  - ReplicaSet
+  - Deployments
+  - Job
+  - CronJob
+  - Statefulset
+  - Namespace
+- Controller -  control loops that manage the lifecycle of resources to maintain the desired state
+  - ReplicaSet
+  - Deployments
+  - Job
+  - CronJob
+  - Statefulset
+  - Namespace
 
+
+Custom resource
+
+```yaml
+# flight-ticket.yaml
+apiVersion: flights.com/v1
+kind: FlightTicket
+metadata:
+  name: my-flight-ticket
+spec:
+  from: Berlin
+  to: London
+  number: 2
+```
+
+Custom Resource Definition (CRD)
+
+```yaml
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: flighttickets.flights.com
+spec:
+  group: flights.com         # value of "apiVersion" of definition file
+  scope: Namespaced
+  names:
+    kind: FlightTicket       # value of "kind" of definition file
+    singular: flightticket
+    plural: flighttickets
+  versions:
+  - name: v1
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              color:
+                type: string
+              size:
+                type: string
+    selectableFields:
+    - jsonPath: .spec.color
+    - jsonPath: .spec.size
+    additionalPrinterColumns:
+    - jsonPath: .spec.color
+      name: Color
+      type: string
+    - jsonPath: .spec.size
+      name: Size
+      type: string
+
+```
+
+Custom Controller
+
+```go
+// flightticket_controller.go
+package flightticket
+
+var controllerKind = 
+apps.SchemeGroupVersion.WithKind("Flightticket")
+
+// Run begins watching and syncing
+func (dc *FligjtTicketController) Run (worker int, stopCh <-chan struct{})
+
+// Cal BookFlightAPIReplicaSet
+func (dc *FlightTicketController) callBookFlightAPI(obj interface{})
+```
 
 ## 10.16. Custom Controllers
 ## 10.17. Operator Framework
