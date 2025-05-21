@@ -141,6 +141,10 @@ title: Kubernetes
       - [10.8.2.4. Webhook](#10824-webhook)
     - [10.8.3. RBAC](#1083-rbac)
     - [10.8.4. Cluster Roles and Role Bindings](#1084-cluster-roles-and-role-bindings)
+  - [10.9. Service Accounts](#109-service-accounts)
+  - [10.10. Image Security](#1010-image-security)
+  - [10.11. Docker Security](#1011-docker-security)
+  - [10.12. Security Context](#1012-security-context)
 - [11. Storage](#11-storage)
 - [12. Networking](#12-networking)
 - [13. Design and Install a Kubernetes Cluster](#13-design-and-install-a-kubernetes-cluster)
@@ -2235,6 +2239,88 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
+## 10.9. Service Accounts
+
+Types of user accounts:
+- User account
+  - used by humans
+- Service account
+  - used by machines, bots, application (e.g. Premetheus, Jenkins)
+  - has an automatically (must be manually created from version v1.24) created token, stored as secret 
+  - every namespace has default service account, which associated to pod on creation
+
+```sh
+kubectl get serviceaccount
+kubectl create serviceaccount <service-account-name>
+```
+
+## 10.10. Image Security
+
+```sh
+# Create a secret of type docker-registry
+kubectl create secret docker-registry <secret-name> \
+--docker-server=string \
+--docker-username=user \
+--docker-password=password \
+--docker-email=email \
+[--from-file=[key=]source] [--dry-run=server|client|none]
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx:latest
+  imagePullSecrets:
+  - name: <docker-registry-secret-name>
+```
+
+## 10.11. Docker Security
+
+```sh
+# Capability of root user list under
+cat /usr/include/linux/capability.h
+# E.g.: CHOWN, DAC, KILL, SETFCAP, SETPCAP, SETGID, SETUID, NET_BIND, NET_RAW, MAC_ADMIN, BROADCAST, NET_ADMIN, SYS_ADMIN, SYS_CHROOT, AUDIT_WRITE, MANY MORE
+
+
+# Root user in linux and docker container does not have the same capabilities
+
+# Add or Drop additional capabilities to docker container with
+docker run --cap-add MAC_ADMIN ubuntu
+docker run --cap-drop KILL ubuntu
+
+# Run docker container with all capabilities
+docker run --privilided ubuntu 
+```
+
+## 10.12. Security Context
+
+```sh
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-sleep-pod
+  labels:
+    app: ubuntu-sleep
+spec:
+  securityContext:    # Pod Level Security Context
+    runAsUser: 1000   # Run the container as user ID 1000
+    runAsGroup: 3000  # Run the container as group ID 3000
+    fsGroup: 2000     # Set the group ID for mounted volumes
+  containers:
+    - name: ubuntu-container
+      image: ubuntu:latest
+      command: ["sleep"]
+      args: ["3600"]  # Sleep for 3600 seconds (1 hour)
+      securityContext:    # Container Level Security Context
+        runAsUser: 1000   # Run the container as user ID 1000
+        runAsGroup: 3000  # Run the container as group ID 3000
+        capabilities:     # Capabilities are supported only in container level
+          add: ["MAC_ADMIN"]
+```
 
 # 11. Storage
 # 12. Networking
@@ -2331,7 +2417,14 @@ kubectl create configmap <config-name> --from-file=app_config.properties
 kubectl create secret generic <secret-name> --from-literal=<key>=<value>
 kubectl create secret generic <secret-name> --from-file=<path-to-file>
 
-kubectl create serviceaccount sa1
+kubectl create serviceaccount <service-account-name>
+kubectl create token <service-account-name>
+
+kubectl create secret docker-registry <secret-name> \
+--docker-server=string \
+--docker-username=user \
+--docker-password=password \
+--docker-email=email [--from-file=[key=]source] [--dry-run=server|client|none]
 
 
 
@@ -2462,6 +2555,7 @@ kubectl cordon <node-name>                                  # cordon node (mark 
 
 
 
+
 # UNCORDON
 
 kubectl uncordon <node-name>                                # uncordon the node so that pods can be scheduled on it after drain
@@ -2469,9 +2563,11 @@ kubectl uncordon <node-name>                                # uncordon the node 
 
 
 
+
 # KUBE-CONTROLLER-MANAGER
 
 kube-controller-manager --pod-eviction-timeout=5m0s                          # set time to wait pods to be evicted. I.e. control plane waits 5 minutes before considering the pod as dead and redeploy it
+
 
 
 
