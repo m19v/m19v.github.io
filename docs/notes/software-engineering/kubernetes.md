@@ -2507,6 +2507,17 @@ func (dc *FlightTicketController) callBookFlightAPI(obj interface{})
 
 ## 10.17. Operator Framework
 
+- Operator Framework can be used to package Custom Resource Definition and Custom Controller together as simple entity
+- **etcd operator** is famous example to deploy and manage an etcd cluster within kubernetes
+  - CRS
+    - EtcdCluster
+    - EtcdBackup
+    - EtcdRestore
+  - CC
+    - ETCD Controller
+    - Backup Operator
+    - Restore Operator
+- Check [OperatorHub.io](https://operatorhub.io/) for available operators
 
 
 # 11. Storage
