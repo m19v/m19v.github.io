@@ -2451,6 +2451,8 @@ spec:
     kind: FlightTicket       # value of "kind" of definition file
     singular: flightticket
     plural: flighttickets
+    shortnames:
+      - ft
   versions:
   - name: v1
     served: true
@@ -2462,24 +2464,32 @@ spec:
           spec:
             type: object
             properties:
-              color:
+              from:
                 type: string
-              size:
+              to:
                 type: string
-    selectableFields:
-    - jsonPath: .spec.color
-    - jsonPath: .spec.size
-    additionalPrinterColumns:
-    - jsonPath: .spec.color
-      name: Color
-      type: string
-    - jsonPath: .spec.size
-      name: Size
-      type: string
-
+              number:
+                type: integer
+                minumum: 1
+                maximum: 10
 ```
 
-Custom Controller
+```sh
+kubectl create -f flight-ticket.yaml
+kubectl get flightticket
+kubectl delete flightticket
+```
+
+## 10.16. Custom Controllers
+
+To create Custom Controller
+- Install Go
+- Clone [sample of custom controller](https://github.com/kubernetes/sample-controller)
+- Customize controller.go
+- Build it with `go build -o sample-controller .`
+- Run it with `./sample-controller -kubeconfig=$HOME/.kube/config`
+  - Custom Controller can be containerized and run as k8s pod
+
 
 ```go
 // flightticket_controller.go
@@ -2495,7 +2505,6 @@ func (dc *FligjtTicketController) Run (worker int, stopCh <-chan struct{})
 func (dc *FlightTicketController) callBookFlightAPI(obj interface{})
 ```
 
-## 10.16. Custom Controllers
 ## 10.17. Operator Framework
 
 
