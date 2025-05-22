@@ -2677,18 +2677,29 @@ kind: PersistentVolume
 metadata:
   name: pv-vol1
 spec:
-  accessModes:
+  accessModes:                                    # accessMode - how a volume should be mounted on the host
     - ReadWriteOnce                               # ReadOnlyMany, ReadWriteOnce, ReadWriteMany
+  capacity:
+    storage: 1Gi
+  # 1. Option
+  hostPath:                                       # Not for PROD
+    path: /tmp/data
+  # 2. Option
+  awsElasticBlockStore:
+    volumeID: <volume-id>
+    fsType: ext4
+
+
   storageClassName: ""
   claimRef:
     name: foo-pvc
     namespace: foo
 ```
 
-
-
-
 ## 11.5. Persistent Volume Claims (PVC)
+
+
+
 ## 11.6. Application Configuration
 ## 11.7. Storage Class
 
