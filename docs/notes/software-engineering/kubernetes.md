@@ -157,6 +157,8 @@ title: Kubernetes
   - [11.2. Container Interfaces](#112-container-interfaces)
     - [11.2.1. Container Storage Interface (CSI)](#1121-container-storage-interface-csi)
   - [11.3. Volumes](#113-volumes)
+    - [11.3.1. Volumes and Mounts](#1131-volumes-and-mounts)
+    - [11.3.2. Volume Types](#1132-volume-types)
   - [11.4. Persistent Volumes (PV)](#114-persistent-volumes-pv)
   - [11.5. Persistent Volume Claims (PVC)](#115-persistent-volume-claims-pvc)
   - [11.6. Application Configuration](#116-application-configuration)
@@ -2550,7 +2552,7 @@ func (dc *FlightTicketController) callBookFlightAPI(obj interface{})
 By default Docker stores data in
 - /var/lib/docker
   - /aufs
-  - /containers      (layered architecture, **container layers are read/write**)
+  - /containers      (layered architecture, transient, **container layers are read/write**)
   - /image           (layered architecture, **image layers are read-only**)
   - /volumes
     - /data_volume
@@ -2612,7 +2614,80 @@ Container Storage Interface (CSI) is not kubernetes specific but universal stand
 - ControllerPublishVolume
 
 ## 11.3. Volumes
+
+### 11.3.1. Volumes and Mounts
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: random-number-generator
+spec:
+  containers:
+  - image: alpine
+    name: alpine
+    command: ["/bin/sh","-c"]
+    args: ["shuf -i 0-100 -n 1 >> /opt/number.out;"]
+    volumeMounts:
+    - mountPath: /opt
+      name: data-volume
+  
+  volumes:
+  - name: data-volume
+    hostPath:                             # hostPath (bounded to node)
+      path: /data
+      type: Directory
+```
+
+### 11.3.2. Volume Types
+
+Volume Types:
+- NFS
+- GlusterFS
+- Flocker
+- Ceph
+- Scaleio
+- AWS
+
+
+```yaml
+volumes:
+- name: data-volume
+  hostPath:                             # hostPath (bounded to node)
+    path: /data
+    type: Directory
+
+
+volumes:
+- name: data-volume
+  awsElasticBlockStore:                 # awsElasticBlockStore (not bounded to node)
+    volumeID: <volume-id>
+    fsType: ext4
+```
+
 ## 11.4. Persistent Volumes (PV)
+
+
+**Persistent Volumes (PV)** is a cluster-wide pool of storage volumes configured by administrator. Resources can select storage from PV pool using **Persistent Volume Claims (PVC)**.
+
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-vol1
+spec:
+  accessModes:
+    - ReadWriteOnce                               # ReadOnlyMany, ReadWriteOnce, ReadWriteMany
+  storageClassName: ""
+  claimRef:
+    name: foo-pvc
+    namespace: foo
+```
+
+
+
+
 ## 11.5. Persistent Volume Claims (PVC)
 ## 11.6. Application Configuration
 ## 11.7. Storage Class
