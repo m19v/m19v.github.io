@@ -152,7 +152,7 @@ title: Kubernetes
   - [10.17. Operator Framework](#1017-operator-framework)
 - [11. Storage](#11-storage)
   - [11.1. Docker Storage](#111-docker-storage)
-    - [11.1.1. Storage Drivers in Docker](#1111-storage-drivers-in-docker)
+    - [11.1.1. Docker Storage Drivers and File Systems](#1111-docker-storage-drivers-and-file-systems)
     - [11.1.2. Volume Driver Plugins in Docker](#1112-volume-driver-plugins-in-docker)
   - [11.2. Container Storage Interface (CSI)](#112-container-storage-interface-csi)
   - [11.3. Volumes](#113-volumes)
@@ -2536,11 +2536,59 @@ func (dc *FlightTicketController) callBookFlightAPI(obj interface{})
 - Storage Drivers
 - Volume Drivers
 
-### 11.1.1. Storage Drivers in Docker
+### 11.1.1. Docker Storage Drivers and File Systems
+
+**Storage Drivers** in Docker enables Layered Architecture and helps to manage storage on images and containers. Common Storage Drivers:
+- AUFS (default SD on Ubuntu)
+- ZFS
+- BTRFS
+- Device Mapper
+- Overlay
+- Overlay2
+
+By default Docker stores data in
+- /var/lib/docker
+  - /aufs
+  - /containers      (layered architecture, **container layers are read/write**)
+  - /image           (layered architecture, **image layers are read-only**)
+  - /volumes
+    - /data_volume
+      ```sh
+      # Volume created with
+      docker volume create data_volume 
+      # and use either with VOLUME MOUNT: 
+      docker run -v data_volume:/var/lib/mysql mysql 
+      # BIND MOUNT: 
+      docker run -v /data/mysql:/var/lib/mysql mysql
+      docker run --mount type=bind, source=/data/mysql, target=/var/lib/mysql mysql
+      ```
+
 ### 11.1.2. Volume Driver Plugins in Docker
 
+**Volumes** in Docker are handled by **Volume Driver Plugins** and not by Storage Drivers.
+
+Volume Driver Plugins:
+- Local (default)
+- Azure File Storage
+- Convoy
+- DigitalOcean Block Storage
+- Flocker
+- gce-docker
+- GlusterFS
+- NetApp
+- RexRay
+- Portworx
+- VMware vSphere Storage
+
+```sh
+# AWS Cloud Storage
+docker run -it --name mysql --volume-driver rexray/ebs --mount src=ebs-vol, target=/var/lib/mysql mysql
+```
 
 ## 11.2. Container Storage Interface (CSI)
+
+
+
 ## 11.3. Volumes
 ## 11.4. Persistent Volumes (PV)
 ## 11.5. Persistent Volume Claims (PVC)
