@@ -161,8 +161,9 @@ title: Kubernetes
     - [11.3.2. Volume Types](#1132-volume-types)
   - [11.4. Persistent Volumes (PV)](#114-persistent-volumes-pv)
   - [11.5. Persistent Volume Claims (PVC)](#115-persistent-volume-claims-pvc)
-  - [11.6. Application Configuration](#116-application-configuration)
-  - [11.7. Storage Class](#117-storage-class)
+  - [11.6. Storage Class](#116-storage-class)
+    - [11.6.1. Static Provisioning of Volume](#1161-static-provisioning-of-volume)
+    - [11.6.2. Dynamic Provisioning of Volume](#1162-dynamic-provisioning-of-volume)
 - [12. Networking](#12-networking)
 - [13. Design and Install a Kubernetes Cluster](#13-design-and-install-a-kubernetes-cluster)
 - [14. Install "K8s the kubeadm way"](#14-install-k8s-the-kubeadm-way)
@@ -2679,6 +2680,7 @@ metadata:
 spec:
   accessModes:                                    # accessMode - how a volume should be mounted on the host
     - ReadWriteOnce                               # ReadOnlyMany, ReadWriteOnce, ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain           # Defines what happens to the volume when it is released. Recycle, Delete, Retain (will not be deleted)
   capacity:
     storage: 1Gi
   # 1. Option
@@ -2688,21 +2690,96 @@ spec:
   awsElasticBlockStore:
     volumeID: <volume-id>
     fsType: ext4
-
-
-  storageClassName: ""
-  claimRef:
-    name: foo-pvc
-    namespace: foo
 ```
 
 ## 11.5. Persistent Volume Claims (PVC)
 
+Resources will be boind to a single Persistent Volume (PV) by Persistent Volume Claims (PVC). During the bind following criterias are considered:
+- Sufficient Capacity
+- Access Modes
+- Volume Modes
+- Storage Class
+- Selector (is used to bind PVC to specific PV)
 
 
-## 11.6. Application Configuration
-## 11.7. Storage Class
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-persistent-volume-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+    - name: myfrontend
+      image: nginx
+      volumeMounts:
+      - mountPath: "/var/www/html"
+        name: mypd
+  volumes:
+    - name: mypd
+      persistentVolumeClaim:
+        claimName: my-persistent-volume-claim
+```
 
+## 11.6. Storage Class
+
+### 11.6.1. Static Provisioning of Volume
+
+- Before PV is created a disk on e.g. google-cloud must be created manually
+
+```sh
+gcloud beta compute disks create --size 1GB --region us-east1 pd-disk
+```
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-persistent-volume-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
+```
+
+### 11.6.2. Dynamic Provisioning of Volume
+
+- PV Definition is not needed for DPV but created automatically by StorageClass
+
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: google-storage
+provisioner: kubernetes.io/gce-pd
+parameters:
+  type: pd-standard
+  replication-type: none
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-persistent-volume-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: google-storage               # Definition of storageClassName to dynamically define PV and create disk
+  resources:
+    requests:
+      storage: 500Mi
+```
 
 # 12. Networking
 # 13. Design and Install a Kubernetes Cluster
