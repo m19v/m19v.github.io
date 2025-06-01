@@ -168,6 +168,7 @@ title: Kubernetes
 - [13. Design and Install a Kubernetes Cluster](#13-design-and-install-a-kubernetes-cluster)
 - [14. Install "K8s the kubeadm way"](#14-install-k8s-the-kubeadm-way)
 - [15. Helm Basics](#15-helm-basics)
+  - [15.1. What is Helm](#151-what-is-helm)
 - [16. Kustomize Basics](#16-kustomize-basics)
 - [17. End to End tests on a K8s Cluster](#17-end-to-end-tests-on-a-k8s-cluster)
 - [18. Troubleshooting](#18-troubleshooting)
@@ -176,6 +177,8 @@ title: Kubernetes
 - [21. Mock Exams](#21-mock-exams)
 - [22. Course Conclusion](#22-course-conclusion)
 - [23. Commands](#23-commands)
+  - [23.1. Kubernetes](#231-kubernetes)
+  - [23.2. Helm](#232-helm)
 - [24. References](#24-references)
 
 
@@ -2784,7 +2787,13 @@ spec:
 # 12. Networking
 # 13. Design and Install a Kubernetes Cluster
 # 14. Install "K8s the kubeadm way"
+
 # 15. Helm Basics
+
+## 15.1. What is Helm
+
+**Helm** is a package manager for Kubernetes.
+
 # 16. Kustomize Basics
 # 17. End to End tests on a K8s Cluster
 # 18. Troubleshooting
@@ -2795,6 +2804,8 @@ spec:
 
 
 # 23. Commands
+
+## 23.1. Kubernetes
 
 ```sh
 # GET
@@ -3041,6 +3052,36 @@ ETCDCTL_API=3 etcdctl snapshot save etcd_snapshot.db \
 ETCDCTL_API=3 etcdctl snapshot status etcd_snapshot.db
 ETCDCTL_API=3 etcdctl snapshot restore etcd_snapshot.db --data-dir /var/lib/etcd-from-backup
 
+```
+
+
+## 23.2. Helm
+
+```sh
+# INSTALL
+
+helm install <package-name>
+
+
+
+
+# UNINSTALL
+
+helm uninstall <package-name>
+
+
+
+
+# UPGRARE
+
+helm upgrade <package-name>
+
+
+
+
+# ROLLBACK
+
+helm rollback <package-name>
 ```
 
 # 24. References
