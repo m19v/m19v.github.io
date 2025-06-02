@@ -165,7 +165,7 @@ title: Kubernetes
     - [11.6.1. Static Provisioning of Volume](#1161-static-provisioning-of-volume)
     - [11.6.2. Dynamic Provisioning of Volume](#1162-dynamic-provisioning-of-volume)
 - [12. Networking](#12-networking)
-  - [CoreDNS](#coredns)
+  - [12.1. CoreDNS](#121-coredns)
 - [13. Design and Install a Kubernetes Cluster](#13-design-and-install-a-kubernetes-cluster)
 - [14. Install "K8s the kubeadm way"](#14-install-k8s-the-kubeadm-way)
 - [15. Helm Basics](#15-helm-basics)
@@ -2788,7 +2788,7 @@ spec:
 
 # 12. Networking
 
-## CoreDNS
+## 12.1. CoreDNS
 
 Read more about CoreDNS here:
 
