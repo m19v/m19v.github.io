@@ -170,6 +170,7 @@ title: Kubernetes
 - [14. Install "K8s the kubeadm way"](#14-install-k8s-the-kubeadm-way)
 - [15. Helm Basics](#15-helm-basics)
   - [15.1. What is Helm](#151-what-is-helm)
+  - [15.2. Helm Components](#152-helm-components)
 - [16. Kustomize Basics](#16-kustomize-basics)
 - [17. End to End tests on a K8s Cluster](#17-end-to-end-tests-on-a-k8s-cluster)
 - [18. Troubleshooting](#18-troubleshooting)
@@ -2804,6 +2805,18 @@ https://coredns.io/plugins/kubernetes/
 ## 15.1. What is Helm
 
 **Helm** is a package manager for Kubernetes.
+
+## 15.2. Helm Components
+
+- helm charts
+- helm cli
+- helm releases
+- helm chart repository
+  - ArtifactHun.io
+    - Appscode
+    - TrueCharts
+    - Bitnami
+    - Community Operators
 
 # 16. Kustomize Basics
 # 17. End to End tests on a K8s Cluster
