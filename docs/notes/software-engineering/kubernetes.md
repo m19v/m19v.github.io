@@ -3084,7 +3084,9 @@ ETCDCTL_API=3 etcdctl snapshot restore etcd_snapshot.db --data-dir /var/lib/etcd
 ```sh
 # INSTALL
 
-helm install <package-name>
+helm install <release-name> <package-name> --version <version>
+helm install --set <varName1>="newValue1" --set <varName2>="newValue2" <release-name> <package-name>
+helm install --values <custom-value-file-name.yaml> <release-name> <package-name>
 
 
 
@@ -3096,16 +3098,31 @@ helm uninstall <package-name>
 
 
 
+# PULL
+
+helm pull --untar <package-name>
+
+
+
+
+
 # UPGRARE
 
-helm upgrade <package-name>
+helm upgrade <release-name> <package-name>
 
 
 
 
 # ROLLBACK
 
-helm rollback <package-name>
+helm rollback <release-name> <revision-number>
+
+
+
+
+# HISTORY
+
+helm history <release-name>
 ```
 
 # 24. References
