@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkm_19_v=self.webpackChunkm_19_v||[]).push([[5710],{7181:e=>{e.exports=JSON.parse('{"tag":{"label":"quotes","permalink":"/docs/tags/quotes","allTagsPath":"/docs/tags","count":1,"items":[{"id":"literature/proverbs-and-quotes","title":"Proverbs and Quotes","description":"","permalink":"/docs/literature/proverbs-and-quotes"}],"unlisted":false}}')}}]);
