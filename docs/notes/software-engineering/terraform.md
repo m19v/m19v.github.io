@@ -194,6 +194,23 @@ _terraform.tfstate:_
 - *.auto.tfvars file
 - Command line `-var` or `-var-file`. E.g. `-var="var_name=var_value"`
 
+
+### Ways to assign values to variables
+
+```sh
+# .tfvars file (Recommended method)
+tf apply -var-file my-vars.tfvars
+
+# CLI options
+tf apply -var project_id="my-project"
+
+# environment variables
+TF_VAR_project_id="my-project" && tf apply
+
+# If using terraform.tfvars
+tf apply
+```
+
 ## Sensitive variables
 
 - Mark variables as sensitive: 
@@ -555,6 +572,9 @@ terraform destroy
 # WORKSPACE
 terraform workspace list
 terraform workspace new <name-of-workspace>
+
+# GRAPH
+terraform graph | dot -Tpng > graph.png                        # create dependency graph
 ```
 
 ## References
