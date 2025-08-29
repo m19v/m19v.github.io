@@ -5,6 +5,16 @@ sidebar_position: 3
 
 This is a collection of articles, books, conferences and podcasts related to DevSecOps, Software Engineering and Electrical Engineering which I have read, listened or watched so far and recommend to others.
 
+## 2025
+### Articles
+- [Docker Run, Attach, and Exec: How They Work Under the Hood (and Why It Matters)](https://labs.iximiuz.com/tutorials/docker-run-vs-attach-vs-exec)
+  
+### Books
+   
+### Conferences
+    
+### Podcasts
+  
 
 ## 2024
 ### Articles
