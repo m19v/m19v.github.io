@@ -10,6 +10,7 @@ This is a collection of articles, books, conferences and podcasts related to Dev
 - [Docker Run, Attach, and Exec: How They Work Under the Hood (and Why It Matters)](https://labs.iximiuz.com/tutorials/docker-run-vs-attach-vs-exec)
   
 ### Books
+- [Хуросон аст ин ҷо. Муҳаммадҷон Шакурии Бухороӣ/Khurāsān ast īn jā, Shakūrī, Muḥammad](https://kitobkhon.net/book/khuroson-ast-in-jo/)  
    
 ### Conferences
     
