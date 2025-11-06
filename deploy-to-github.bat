@@ -1,1 +1,0 @@
-cmd /C "set "GIT_USER=m19v" && set "USE_SSH=true" && npm run deploy"
