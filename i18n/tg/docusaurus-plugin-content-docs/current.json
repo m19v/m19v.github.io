@@ -1,0 +1,166 @@
+{
+  "version.label": {
+    "message": "Навбатӣ",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Book Summaries": {
+    "message": "Китобҳо",
+    "description": "The label for category 'Book Summaries' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Book Summaries.link.generated-index.description": {
+    "message": " ",
+    "description": "The generated-index page description for category 'Book Summaries' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Notes": {
+    "message": "Қайдҳо",
+    "description": "The label for category 'Notes' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Notes.link.generated-index.description": {
+    "message": " ",
+    "description": "The generated-index page description for category 'Notes' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Computer Science": {
+    "message": "Computer Science",
+    "description": "The label for category 'Computer Science' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Computer Science.link.generated-index.description": {
+    "message": " ",
+    "description": "The generated-index page description for category 'Computer Science' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Electrical Engineering": {
+    "message": "Electrical Engineering",
+    "description": "The label for category 'Electrical Engineering' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Electrical Engineering.link.generated-index.description": {
+    "message": " ",
+    "description": "The generated-index page description for category 'Electrical Engineering' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Engineering Mathematics": {
+    "message": "Engineering Mathematics",
+    "description": "The label for category 'Engineering Mathematics' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Engineering Mathematics.link.generated-index.description": {
+    "message": "Engineering mathematics is a branch of applied mathematics concerning mathematical methods and techniques that are typically used in engineering and industry.",
+    "description": "The generated-index page description for category 'Engineering Mathematics' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Software Engineering": {
+    "message": "Software Engineering",
+    "description": "The label for category 'Software Engineering' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Software Engineering.link.generated-index.description": {
+    "message": " ",
+    "description": "The generated-index page description for category 'Software Engineering' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.References": {
+    "message": "Мароҷеъ",
+    "description": "The label for category 'References' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.References.link.generated-index.description": {
+    "message": " ",
+    "description": "The generated-index page description for category 'References' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Cheat-Sheet": {
+    "message": "Cheat-Sheet",
+    "description": "The label for category 'Cheat-Sheet' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Cheat-Sheet.link.generated-index.description": {
+    "message": " ",
+    "description": "The generated-index page description for category 'Cheat-Sheet' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Automation": {
+    "message": "Automation",
+    "description": "The label for category 'Automation' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Automation.link.generated-index.description": {
+    "message": "Automation.",
+    "description": "The generated-index page description for category 'Automation' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.CICD": {
+    "message": "CICD",
+    "description": "The label for category 'CICD' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.CICD.link.generated-index.description": {
+    "message": "CICD.",
+    "description": "The generated-index page description for category 'CICD' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Container": {
+    "message": "Container",
+    "description": "The label for category 'Container' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Container.link.generated-index.description": {
+    "message": "Container.",
+    "description": "The generated-index page description for category 'Container' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Kubernetes": {
+    "message": "Kubernetes",
+    "description": "The label for category 'Kubernetes' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Kubernetes.link.generated-index.description": {
+    "message": "Kubernetes.",
+    "description": "The generated-index page description for category 'Kubernetes' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Linux": {
+    "message": "Linux",
+    "description": "The label for category 'Linux' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Linux.link.generated-index.description": {
+    "message": "Linux.",
+    "description": "The generated-index page description for category 'Linux' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Network": {
+    "message": "Network",
+    "description": "The label for category 'Network' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Network.link.generated-index.description": {
+    "message": "Network.",
+    "description": "The generated-index page description for category 'Network' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Scripting": {
+    "message": "Scripting",
+    "description": "The label for category 'Scripting' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Scripting.link.generated-index.description": {
+    "message": " ",
+    "description": "The generated-index page description for category 'Scripting' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Security": {
+    "message": "Security",
+    "description": "The label for category 'Security' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Security.link.generated-index.description": {
+    "message": "Security.",
+    "description": "The generated-index page description for category 'Security' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Windows": {
+    "message": "Windows",
+    "description": "The label for category 'Windows' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Windows.link.generated-index.description": {
+    "message": "Windows.",
+    "description": "The generated-index page description for category 'Windows' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Design Patterns": {
+    "message": "Design Patterns",
+    "description": "The label for category 'Design Patterns' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Design Patterns.link.generated-index.description": {
+    "message": "In software engineering, a design pattern is a general repeatable solution to a commonly occurring problem in software design.",
+    "description": "The generated-index page description for category 'Design Patterns' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Glossary": {
+    "message": "Glossary",
+    "description": "The label for category 'Glossary' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Glossary.link.generated-index.description": {
+    "message": "The glossary of computer science is a list of definitions of terms and concepts used in computer science, its sub-disciplines, and related fields, including terms relevant to software, data science, and computer programming.",
+    "description": "The generated-index page description for category 'Glossary' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Literature": {
+    "message": "Адабиёт",
+    "description": "The label for category 'Literature' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Literature.link.generated-index.description": {
+    "message": " ",
+    "description": "The generated-index page description for category 'Literature' in sidebar 'tutorialSidebar'"
+  }
+}
