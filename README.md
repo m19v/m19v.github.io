@@ -22,6 +22,14 @@ Start a local development server in dev mode, using the locale of your choice:
 npm run start -- --locale tg
 ```
 
+## I18N
+
+Extract and initialize the JSON translation files:
+
+```bash
+npm run write-translations -- --locale tg
+```
+
 
 ## Build
 
