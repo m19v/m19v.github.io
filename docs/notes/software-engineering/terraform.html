@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en-US" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-notes/software-engineering/terraform" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Terraform | {m19v}</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://m19v.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://m19v.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://m19v.github.io/docs/notes/software-engineering/terraform"><meta data-rh="true" property="og:locale" content="en_US"><meta data-rh="true" property="og:locale:alternate" content="tj_TJ"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="-5zh_8T7Z6ZPupTzJH9LcYznhfRid8I7y2TRsaHcrsE"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Terraform | {m19v}"><meta data-rh="true" name="description" content="What is Terraform?"><meta data-rh="true" property="og:description" content="What is Terraform?"><link data-rh="true" rel="icon" href="/img/m19v.ico"><link data-rh="true" rel="canonical" href="https://m19v.github.io/docs/notes/software-engineering/terraform"><link data-rh="true" rel="alternate" href="https://m19v.github.io/docs/notes/software-engineering/terraform" hreflang="en-US"><link data-rh="true" rel="alternate" href="https://m19v.github.io/tg/docs/notes/software-engineering/terraform" hreflang="tj-TJ"><link data-rh="true" rel="alternate" href="https://m19v.github.io/docs/notes/software-engineering/terraform" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Notes","item":"https://m19v.github.io/docs/category/notes"},{"@type":"ListItem","position":2,"name":"Software Engineering","item":"https://m19v.github.io/docs/category/software-engineering"},{"@type":"ListItem","position":3,"name":"Terraform","item":"https://m19v.github.io/docs/notes/software-engineering/terraform"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="{m19v} RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="{m19v} Atom Feed">
+
+<link rel="preconnect" href="https://www.google-analytics.com">
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LVEVW4JNSB"></script>
+<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-LVEVW4JNSB",{anonymize_ip:!0})</script><link rel="stylesheet" href="/assets/css/styles.0d0fcfae.css">
+<script src="/assets/js/runtime~main.e4aee2e7.js" defer="defer"></script>
+<script src="/assets/js/main.105dba41.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/{m19v}_black_without_bg.png"><link rel="preload" as="image" href="/img/{m19v}_white_without_bg.png"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/{m19v}_black_without_bg.png" alt="My Site Logo" class="header-m19v-logo themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/{m19v}_white_without_bg.png" alt="My Site Logo" class="header-m19v-logo themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"></b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs">Docs</a><a class="navbar__item navbar__link" href="/blog">Blog</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/m19v" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" aria-label="GitHub repository"></a><a href="https://youtube.com/@m19v" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-youtube-link" aria-label="YouTube channel"></a><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" class="iconLanguage_nlXk"><path fill="currentColor" d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"></path></svg>English</a><ul class="dropdown__menu"><li><a href="/docs/notes/software-engineering/terraform" target="_self" rel="noopener noreferrer" class="dropdown__link dropdown__link--active" lang="en-US">English</a></li><li><a href="/tg/docs/notes/software-engineering/terraform" target="_self" rel="noopener noreferrer" class="dropdown__link" lang="tj-TJ">Тоҷикӣ</a></li></ul></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a tabindex="-1" class="sidebarLogo_isFc" href="/"><img src="/img/{m19v}_black_without_bg.png" alt="My Site Logo" class="header-m19v-logo themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/{m19v}_white_without_bg.png" alt="My Site Logo" class="header-m19v-logo themedComponent_mlkZ themedComponent--dark_xIcU"><b></b></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs"><span title="Welcome" class="linkLabel_WmDU">Welcome</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/reading-list"><span title="Reading List" class="linkLabel_WmDU">Reading List</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/category/book-summaries"><span title="Book Summaries" class="categoryLinkLabel_W154">Book Summaries</span></a><button aria-label="Expand sidebar category &#x27;Book Summaries&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/docs/category/notes"><span title="Notes" class="categoryLinkLabel_W154">Notes</span></a><button aria-label="Collapse sidebar category &#x27;Notes&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/category/computer-science"><span title="Computer Science" class="categoryLinkLabel_W154">Computer Science</span></a><button aria-label="Expand sidebar category &#x27;Computer Science&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/category/electrical-engineering"><span title="Electrical Engineering" class="categoryLinkLabel_W154">Electrical Engineering</span></a><button aria-label="Expand sidebar category &#x27;Electrical Engineering&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/docs/category/engineering-mathematics"><span title="Engineering Mathematics" class="categoryLinkLabel_W154">Engineering Mathematics</span></a><button aria-label="Expand sidebar category &#x27;Engineering Mathematics&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" tabindex="0" href="/docs/category/software-engineering"><span title="Software Engineering" class="categoryLinkLabel_W154">Software Engineering</span></a><button aria-label="Collapse sidebar category &#x27;Software Engineering&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/notes/software-engineering/ansible"><span title="Ansible" class="linkLabel_WmDU">Ansible</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/notes/software-engineering/argocd"><span title="ArgoCD" class="linkLabel_WmDU">ArgoCD</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/notes/software-engineering/bash"><span title="Bash" class="linkLabel_WmDU">Bash</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/notes/software-engineering/java"><span title="Java" class="linkLabel_WmDU">Java</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/notes/software-engineering/kafka"><span title="Apache Kafka" class="linkLabel_WmDU">Apache Kafka</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/notes/software-engineering/kubernetes"><span title="Kubernetes" class="linkLabel_WmDU">Kubernetes</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/notes/software-engineering/managing-security-in-gc"><span title="Managing Security in Google Cloud" class="linkLabel_WmDU">Managing Security in Google Cloud</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/notes/software-engineering/python"><span title="Python" class="linkLabel_WmDU">Python</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/notes/software-engineering/quarkus"><span title="Quarkus" class="linkLabel_WmDU">Quarkus</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/notes/software-engineering/terraform"><span title="Terraform" class="linkLabel_WmDU">Terraform</span></a></li></ul></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/category/references"><span title="References" class="categoryLinkLabel_W154">References</span></a><button aria-label="Expand sidebar category &#x27;References&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/category/literature"><span title="Literature" class="categoryLinkLabel_W154">Literature</span></a><button aria-label="Expand sidebar category &#x27;Literature&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/tools"><span title="Tools" class="linkLabel_WmDU">Tools</span></a></li></ul></nav><button type="button" title="Collapse sidebar" aria-label="Collapse sidebar" class="button button--secondary button--outline collapseSidebarButton_PEFL"><svg width="20" height="20" aria-hidden="true" class="collapseSidebarButtonIcon_kv0_"><g fill="#7a7a7a"><path d="M9.992 10.023c0 .2-.062.399-.172.547l-4.996 7.492a.982.982 0 01-.828.454H1c-.55 0-1-.453-1-1 0-.2.059-.403.168-.551l4.629-6.942L.168 3.078A.939.939 0 010 2.528c0-.548.45-.997 1-.997h2.996c.352 0 .649.18.828.45L9.82 9.472c.11.148.172.347.172.55zm0 0"></path><path d="M19.98 10.023c0 .2-.058.399-.168.547l-4.996 7.492a.987.987 0 01-.828.454h-3c-.547 0-.996-.453-.996-1 0-.2.059-.403.168-.551l4.625-6.942-4.625-6.945a.939.939 0 01-.168-.55 1 1 0 01.996-.997h3c.348 0 .649.18.828.45l4.996 7.492c.11.148.168.347.168.55zm0 0"></path></g></svg></button></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/category/notes"><span>Notes</span></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/category/software-engineering"><span>Software Engineering</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Terraform</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Terraform</h1></header><h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="what-is-terraform">What is Terraform?<a href="#what-is-terraform" class="hash-link" aria-label="Direct link to What is Terraform?" title="Direct link to What is Terraform?" translate="no">​</a></h2>
+<p>Terraform is a declarative (i.e. end state to be declared/defined) infrastructure as code tool to automate build, change, and versioning of infrastructure safely and efficiently with</p>
+<ul>
+<li class="">low-level components: compute instances, storage, networking etc.</li>
+<li class="">high-level components: DNS entries and SaaS features</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="terraform-vs-ansible">Terraform vs. Ansible<a href="#terraform-vs-ansible" class="hash-link" aria-label="Direct link to Terraform vs. Ansible" title="Direct link to Terraform vs. Ansible" translate="no">​</a></h2>
+<p>Terraform mainly focuses on infrastructure provisioning while Ansible aims to configure that infrastructure.</p>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="provisioning-cloud-resources">Provisioning cloud resources<a href="#provisioning-cloud-resources" class="hash-link" aria-label="Direct link to Provisioning cloud resources" title="Direct link to Provisioning cloud resources" translate="no">​</a></h2>
+<p>Approaches:</p>
+<ul>
+<li class="">GUI</li>
+<li class="">API/CLI</li>
+<li class="">IaC (Infrastructure as Code)</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="categories-of-iac-tools">Categories of IaC tools<a href="#categories-of-iac-tools" class="hash-link" aria-label="Direct link to Categories of IaC tools" title="Direct link to Categories of IaC tools" translate="no">​</a></h2>
+<ul>
+<li class="">Ad hoc scripts</li>
+<li class="">Configuration management tools</li>
+<li class="">Server templating tools</li>
+<li class="">Orchestration tools</li>
+<li class="">Provisioning tools</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="iac-provisioning-tools-landscape">IaC Provisioning tools landscape<a href="#iac-provisioning-tools-landscape" class="hash-link" aria-label="Direct link to IaC Provisioning tools landscape" title="Direct link to IaC Provisioning tools landscape" translate="no">​</a></h2>
+<p>Cloud specific:</p>
+<ul>
+<li class="">Cloud Foundation</li>
+<li class="">Azure Resource Manager</li>
+<li class="">Google Cloud Deployment Manager</li>
+</ul>
+<p>Cloud agnostic:</p>
+<ul>
+<li class="">Terraform</li>
+<li class="">Pulumi</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="common-patterns-of-terraform-usage">Common patterns of terraform usage<a href="#common-patterns-of-terraform-usage" class="hash-link" aria-label="Direct link to Common patterns of terraform usage" title="Direct link to Common patterns of terraform usage" translate="no">​</a></h2>
+<ul>
+<li class="">Terraform (Provisioning) + Ansible (Config Management)</li>
+<li class="">Terraform (Provisioning) + Packer (Server Templating)</li>
+<li class="">Terraform (Provisioning) + Kubernetes (Orchestration)</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="terraform-architecture">Terraform architecture<a href="#terraform-architecture" class="hash-link" aria-label="Direct link to Terraform architecture" title="Direct link to Terraform architecture" translate="no">​</a></h2>
+<div class="language-txt codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-txt codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">+------------------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">|  Terraform State |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">+------------------+ &lt;-----&gt; +----------------+         +--------------+         +-----+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                             | Terraform Core | &lt;-----&gt; | AWS Provider | &lt;-----&gt; | AWS |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">+------------------+ ------&gt; +----------------+         +--------------+         +-----+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">| Terraform Config |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">+------------------+         </span><br></span></code></pre></div></div>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="terraform-project-structure">Terraform project structure<a href="#terraform-project-structure" class="hash-link" aria-label="Direct link to Terraform project structure" title="Direct link to Terraform project structure" translate="no">​</a></h2>
+<div class="language-txt codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-txt codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">project</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    .terraform</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        modules</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            modules.json</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            ...</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        provides</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            ...</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        terraform.tfstate</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    .terraform.lock.hcl</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    main.tf</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="providers">Providers<a href="#providers" class="hash-link" aria-label="Direct link to Providers" title="Direct link to Providers" translate="no">​</a></h2>
+<p><a href="https://registry.terraform.io/browse/providers" target="_blank" rel="noopener noreferrer" class="">Terraform providers</a> are plugins that enable interaction with a resource API.</p>
+<div class="language-tf codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-tf codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">terraform {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  required_providers {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    ibm = {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      source = &quot;IBM-Cloud/ibm&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      version = &quot;&gt;= 1.12.0&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="modules">Modules<a href="#modules" class="hash-link" aria-label="Direct link to Modules" title="Direct link to Modules" translate="no">​</a></h2>
+<ul>
+<li class="">Modules are containers for multiple resources that are used together. A module consists of a collection of <code>.tf</code> and/or <code>.tf.json</code> files kept together in a directory</li>
+<li class="">Modules are the main way to package and reuse resource configurations with terraform</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="types-of-modules">Types of modules<a href="#types-of-modules" class="hash-link" aria-label="Direct link to Types of modules" title="Direct link to Types of modules" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Root module</strong> is a default module containing all <code>.tf</code> files in main working directory</li>
+<li class=""><strong>Child module</strong> is a separate external module referred to from a <code>.tf</code> file</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="module-sources">Module sources<a href="#module-sources" class="hash-link" aria-label="Direct link to Module sources" title="Direct link to Module sources" translate="no">​</a></h3>
+<ul>
+<li class="">Local paths<!-- -->
+<div class="language-tf codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-tf codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">module &quot;consul&quot; {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  source = &quot;./consul&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+</li>
+<li class="">Terraform Registry<!-- -->
+<div class="language-tf codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-tf codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">module &quot;consul&quot; {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  source = &quot;hashicorp/consul/aws&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  version = &quot;0.1.0&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+</li>
+<li class="">GitHub<!-- -->
+<div class="language-tf codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-tf codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">module &quot;consul&quot; {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  source = &quot;git@github.com:hashicorp/example.git&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+</li>
+<li class="">Bitbucket</li>
+<li class="">Generic Git, Mercurial repositories</li>
+<li class="">HTTP URLs</li>
+<li class="">S3 buckets</li>
+<li class="">GCS buckets</li>
+<li class="">Modules in Package Sub-directories</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="good-modules">Good modules<a href="#good-modules" class="hash-link" aria-label="Direct link to Good modules" title="Direct link to Good modules" translate="no">​</a></h3>
+<ul>
+<li class="">Raises the abstraction level from base resource types</li>
+<li class="">Groups resources in a logical fashion</li>
+<li class="">Exposes input variables to allow necessary customization + composition</li>
+<li class="">Provides useful defaults</li>
+<li class="">Returns outputs to make further integrations possible</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="state-file">State file<a href="#state-file" class="hash-link" aria-label="Direct link to State file" title="Direct link to State file" translate="no">​</a></h2>
+<p><em>terraform.tfstate:</em></p>
+<ul>
+<li class="">Terraform&#x27;s representation of the world</li>
+<li class="">JSON file containing information about every resource and data object</li>
+<li class="">Contains sensitive info (e.g. database password), hence it should have restricted access and be encrypted</li>
+<li class="">Can be stored <strong>locally/local_backend</strong> or <strong>remotely/remote_backend</strong> (in object store like S3 bucket, google cloud storage)</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="terraform-basic-usage-sequence">Terraform basic usage sequence<a href="#terraform-basic-usage-sequence" class="hash-link" aria-label="Direct link to Terraform basic usage sequence" title="Direct link to Terraform basic usage sequence" translate="no">​</a></h2>
+<ul>
+<li class="">terraform init<!-- -->
+<ul>
+<li class="">inits project and downloads associated providers to working directory from terraform registry</li>
+</ul>
+</li>
+<li class="">terraform plan<!-- -->
+<ul>
+<li class="">compares <em>desired state</em> (terraform config) with <em>actual state</em>(terraform state).</li>
+</ul>
+</li>
+<li class="">terraform apply<!-- -->
+<ul>
+<li class="">apply terraform plan using providers</li>
+</ul>
+</li>
+<li class="">terraform destroy<!-- -->
+<ul>
+<li class="">destroys all resources and data</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="variables-and-outputs">Variables and Outputs<a href="#variables-and-outputs" class="hash-link" aria-label="Direct link to Variables and Outputs" title="Direct link to Variables and Outputs" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="variable-types">Variable types<a href="#variable-types" class="hash-link" aria-label="Direct link to Variable types" title="Direct link to Variable types" translate="no">​</a></h3>
+<ul>
+<li class="">
+<p>Input variables</p>
+<ul>
+<li class="">var.&lt;name&gt;</li>
+</ul>
+<div class="language-tf codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-tf codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">variable &quot;instance_type&quot; {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  description = &quot;es2 instance type&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  type = string</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  default = &quot;t2.micro&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+</li>
+<li class="">
+<p>Local variables</p>
+<ul>
+<li class="">local.&lt;name&gt;</li>
+</ul>
+<div class="language-tf codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-tf codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">locals {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  service_name = &quot;My Service&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  owner = &quot;Devops Directive&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+</li>
+<li class="">
+<p>Output variables</p>
+<div class="language-tf codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-tf codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">output &quot;instance_ip_addr&quot; {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  value = aws_instance.instance.public_ip</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="setting-input-variables">Setting input variables<a href="#setting-input-variables" class="hash-link" aria-label="Direct link to Setting input variables" title="Direct link to Setting input variables" translate="no">​</a></h3>
+<p>(in order of precedence, lowest -&gt; highest)</p>
+<ul>
+<li class="">Manual entry during plan/apply</li>
+<li class="">Default value in declaration block</li>
+<li class=""><code>TF_VAR_\&lt;name\&gt;</code> environment variables</li>
+<li class="">terraform.tfvars file</li>
+<li class="">*.auto.tfvars file</li>
+<li class="">Command line <code>-var</code> or <code>-var-file</code>. E.g. <code>-var=&quot;var_name=var_value&quot;</code></li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="ways-to-assign-values-to-variables">Ways to assign values to variables<a href="#ways-to-assign-values-to-variables" class="hash-link" aria-label="Direct link to Ways to assign values to variables" title="Direct link to Ways to assign values to variables" translate="no">​</a></h3>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># .tfvars file (Recommended method)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">tf apply -var-file my-vars.tfvars</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># CLI options</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">tf apply </span><span class="token parameter variable" style="color:#36acaa">-var</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">project_id</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;my-project&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># environment variables</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">TF_VAR_project_id</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;my-project&quot;</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">&amp;&amp;</span><span class="token plain"> tf apply</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># If using terraform.tfvars</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">tf apply</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="sensitive-variables">Sensitive variables<a href="#sensitive-variables" class="hash-link" aria-label="Direct link to Sensitive variables" title="Direct link to Sensitive variables" translate="no">​</a></h2>
+<ul>
+<li class="">Mark variables as sensitive:<!-- -->
+<ul>
+<li class=""><code>sensitive = true</code></li>
+</ul>
+</li>
+<li class="">Pass to terraform apply with:<!-- -->
+<ul>
+<li class=""><code>TF_VAR_variable</code></li>
+<li class=""><code>-var</code> (retrieve from secret manager at runtime)</li>
+</ul>
+</li>
+<li class="">Can also use external secret store<!-- -->
+<ul>
+<li class="">E.g. AWS Secrets Manager</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="types-and-validation">Types and validation<a href="#types-and-validation" class="hash-link" aria-label="Direct link to Types and validation" title="Direct link to Types and validation" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="primitive-types">Primitive types<a href="#primitive-types" class="hash-link" aria-label="Direct link to Primitive types" title="Direct link to Primitive types" translate="no">​</a></h3>
+<ul>
+<li class="">string</li>
+<li class="">number</li>
+<li class="">bool</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="complex-types">Complex types<a href="#complex-types" class="hash-link" aria-label="Direct link to Complex types" title="Direct link to Complex types" translate="no">​</a></h3>
+<ul>
+<li class="">list(&lt;TYP\E&gt;)</li>
+<li class="">set(&lt;TYPE&gt;)</li>
+<li class="">map(&lt;TYPE&gt;)</li>
+<li class="">object({&lt;ATTR NAME&gt; = &lt;TYPE&gt;, ...})</li>
+<li class="">tuple([&lt;TYPE&gt;, ...])</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="validation">Validation<a href="#validation" class="hash-link" aria-label="Direct link to Validation" title="Direct link to Validation" translate="no">​</a></h3>
+<ul>
+<li class="">Type checking happens automatically</li>
+<li class="">Custom conditions can also be enforced</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="expressions">Expressions<a href="#expressions" class="hash-link" aria-label="Direct link to Expressions" title="Direct link to Expressions" translate="no">​</a></h2>
+<ul>
+<li class="">Types and Values</li>
+<li class="">Strings and Templates</li>
+<li class="">References to Values</li>
+<li class="">Operators - <code>!, -, *, /, %, &gt;, ==, etc.</code></li>
+<li class="">Function Calls</li>
+<li class="">Conditional Expressions - <code>&lt;CONDITION&gt; ? &lt;TRUE VAL&gt; : &lt;FALSE VAL&gt;</code></li>
+<li class="">For Expressions - <code>[for o in var.list : o.id]</code></li>
+<li class="">Splat Expressions - <code>var.list[*].id</code></li>
+<li class="">Dynamic Blocks</li>
+<li class="">Type Constraints</li>
+<li class="">Version Constraints</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions" translate="no">​</a></h2>
+<ul>
+<li class="">Numeric</li>
+<li class="">String</li>
+<li class="">Collection</li>
+<li class="">Encoding</li>
+<li class="">Filesystem</li>
+<li class="">Data &amp; Time</li>
+<li class="">Hash &amp; Crypto</li>
+<li class="">IP Network</li>
+<li class="">Type conversion</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="meta-arguments">Meta arguments<a href="#meta-arguments" class="hash-link" aria-label="Direct link to Meta arguments" title="Direct link to Meta arguments" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="depends_on"><code>depends_on</code><a href="#depends_on" class="hash-link" aria-label="Direct link to depends_on" title="Direct link to depends_on" translate="no">​</a></h3>
+<ul>
+<li class="">Terraform automatically generates dependency graph based on references</li>
+<li class="">If two resources depends on each other (but not each others data), <code>depends_on</code> specifies that dependency to enforce ordering<!-- -->
+<ul>
+<li class="">e.g. if software on the instance needs access to S3, trying to create the <em>aws_instance</em> would fail if atempting to create it before the <em>aws_aim_role_policy</em>.</li>
+</ul>
+<div class="language-tf codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-tf codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">resource &quot;aws_instance&quot; &quot;example&quot; {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  ami = &quot;ami-1k2j123j&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  instance_type = &quot;t2.micro&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  iam_instance_profile = aws_iam_instance_profile.example</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  depends_on = [</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    aws_iam_role_policy.example,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  ]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="count"><code>count</code><a href="#count" class="hash-link" aria-label="Direct link to count" title="Direct link to count" translate="no">​</a></h3>
+<ul>
+<li class="">Allows for creation of multiple resources/modules from a single block</li>
+<li class="">Useful when the multiple necessary resources are nearly identical</li>
+</ul>
+<div class="language-tf codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-tf codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">resource &quot;aws_instance&quot; &quot;server&quot; {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  count = 4 # create four similar EC2 instances</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  ami           = &quot;ami-a1b2c3d4&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  instance_type = &quot;t2.micro&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  tags = {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    Name = &quot;Server ${count.index}&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="for_each"><code>for_each</code><a href="#for_each" class="hash-link" aria-label="Direct link to for_each" title="Direct link to for_each" translate="no">​</a></h3>
+<ul>
+<li class="">Allows for creation of multiple resources/modules from a single block</li>
+<li class="">Allows more control to customize each resource than <code>count</code></li>
+</ul>
+<div class="language-tf codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-tf codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">locals {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  subnet_ids = toset([</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &quot;subnet-abcdef&quot;,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &quot;subnet-012345&quot;,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  ])</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">resource &quot;aws_instance&quot; &quot;server&quot; {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  for_each = local.subnet_ids</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  ami           = &quot;ami-a1b2c3d4&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  instance_type = &quot;t2.micro&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  subnet_id     = each.key # note: each.key and each.value are the same for a set</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  tags = {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    Name = &quot;Server ${each.key}&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="lifecycle"><code>lifecycle</code><a href="#lifecycle" class="hash-link" aria-label="Direct link to lifecycle" title="Direct link to lifecycle" translate="no">​</a></h3>
+<ul>
+<li class="">A set of meta arguments to control terraform behavior for specific resources</li>
+<li class=""><em>create_before_destroy</em> can help with zero downtime deployments</li>
+<li class=""><em>ignore_changes</em> prevents terraform from trying to revert metadata being set elsewhere</li>
+<li class=""><em>prevent_destroy</em> causes terraform to reject any plan which would destroy this resource</li>
+</ul>
+<div class="language-tf codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-tf codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">resource &quot;azurerm_resource_group&quot; &quot;example&quot; {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  # ...</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  lifecycle {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    create_before_destroy = true</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="inputs--meta-arguments">Inputs + Meta arguments<a href="#inputs--meta-arguments" class="hash-link" aria-label="Direct link to Inputs + Meta arguments" title="Direct link to Inputs + Meta arguments" translate="no">​</a></h3>
+<ul>
+<li class="">input variables are passed in via module block</li>
+</ul>
+<div class="language-tf codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-tf codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">module &quot;web_app&quot; {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  source = &quot;./web-app-module&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  # Input variables</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  bucket_name = &quot;devops-directive-web-app-data&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  domain = &quot;example.com&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  db_name = &quot;mydb&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  db_user = &quot;foo&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  db_pass = var.db_pass</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="provisioners">Provisioners<a href="#provisioners" class="hash-link" aria-label="Direct link to Provisioners" title="Direct link to Provisioners" translate="no">​</a></h2>
+<p>Perform action on local or remote machine</p>
+<ul>
+<li class="">file</li>
+<li class="">local-exec</li>
+<li class="">remote-exec</li>
+<li class="">vendor<!-- -->
+<ul>
+<li class="">chef</li>
+<li class="">puppet</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="managing-multiple-environments">Managing multiple environments<a href="#managing-multiple-environments" class="hash-link" aria-label="Direct link to Managing multiple environments" title="Direct link to Managing multiple environments" translate="no">​</a></h2>
+<p>Approaches:</p>
+<ul>
+<li class=""><strong>Workspaces</strong>: multiple named section within a single backend</li>
+</ul>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">~ terraform workspace list</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">   default</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"> * dev</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">   staging</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">   production </span><br></span></code></pre></div></div>
+<ul>
+<li class=""><strong>File structure</strong>: directory layout provides separation, modules provide reuse</li>
+</ul>
+<div class="language-txt codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-txt codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">_modules</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  module-1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    main.tf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    variables.tf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  module-2</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    main.tf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    variables.tf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">dev</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  main.tf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  terraform.tfvars</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">staging</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  main.tf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  terraform.tfvars</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">production</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  main.tf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  terraform.tfvars</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="terraform-workspaces">Terraform workspaces<a href="#terraform-workspaces" class="hash-link" aria-label="Direct link to Terraform workspaces" title="Direct link to Terraform workspaces" translate="no">​</a></h3>
+<p>Pros:</p>
+<ul>
+<li class="">Easy to get started</li>
+<li class="">Convenient <code>terraform.workspace</code> expression</li>
+<li class="">Minimize code duplication
+Cons:</li>
+<li class="">Prone to human error</li>
+<li class="">State stored within same backend</li>
+<li class="">Codebase doesn&#x27;t unambiguously show deployment configurations</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="file-structure">File structure<a href="#file-structure" class="hash-link" aria-label="Direct link to File structure" title="Direct link to File structure" translate="no">​</a></h3>
+<ul>
+<li class="">Further separation (at logical component groups) useful for larger projects<!-- -->
+<ul>
+<li class="">Isolate things that change frequently from those which don&#x27;t</li>
+</ul>
+</li>
+<li class="">References resources across configurations is possible using <code>terraform_remote_state</code></li>
+</ul>
+<div class="language-txt codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-txt codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">_modules</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  compute-module</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    main.tf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    variables.tf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  networking-module</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    main.tf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    variables.tf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">dev</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  compute</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    main.tf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    terraform.tfvars</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  networking</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    main.tf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    terraform.tfvars</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">staging</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  compute</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    main.tf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    terraform.tfvars</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  networking</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    main.tf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    terraform.tfvars</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">production</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  compute</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    main.tf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    terraform.tfvars</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  networking</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    main.tf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    terraform.tfvars</span><br></span></code></pre></div></div>
+<p>Pros:</p>
+<ul>
+<li class="">Isolation of backends<!-- -->
+<ul>
+<li class="">Improved security</li>
+<li class="">Decreased potential for human error</li>
+</ul>
+</li>
+<li class="">Codebase fully represents deployed state
+Cons:</li>
+<li class="">Multiple <code>terraform apply</code> required to provision environments</li>
+<li class="">More code duplication, but can be minimized with modules</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="terragrunt">Terragrunt<a href="#terragrunt" class="hash-link" aria-label="Direct link to Terragrunt" title="Direct link to Terragrunt" translate="no">​</a></h3>
+<ul>
+<li class="">Tool by gruntwork.io that provides utilities to make certain terraform use cases easier<!-- -->
+<ul>
+<li class="">Keeping terraform code DRY</li>
+<li class="">Executing commands across multiple TG configs</li>
+<li class="">Working with multiple cloud accounts</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="testing-terraform-code">Testing terraform code<a href="#testing-terraform-code" class="hash-link" aria-label="Direct link to Testing terraform code" title="Direct link to Testing terraform code" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="static-checks">Static checks<a href="#static-checks" class="hash-link" aria-label="Direct link to Static checks" title="Direct link to Static checks" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Build-in</strong>
+<ul>
+<li class="">terraform fmt<!-- -->
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">terraform </span><span class="token function" style="color:#d73a49">fmt</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-check</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic"># checks if formatter would make chances</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">terraform </span><span class="token function" style="color:#d73a49">fmt</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic"># applies those changes</span><br></span></code></pre></div></div>
+</li>
+<li class="">terraform validate<!-- -->
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">terraform validate</span><br></span></code></pre></div></div>
+</li>
+<li class="">terraform plan<!-- -->
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">terraform plan</span><br></span></code></pre></div></div>
+</li>
+<li class="">custom validation rules<!-- -->
+<div class="language-tf codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-tf codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">variable &quot;short_variable&quot; {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  type = string</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  validation {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    condition = length(var.short_variable) &lt; 4</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    error_message = &quot;The short_variable value must be less than 4 characters!&quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+</li>
+</ul>
+</li>
+<li class=""><strong>External</strong>
+<ul>
+<li class="">tflint</li>
+<li class="">checkov, tfsec, terrascan, terraform-compliance, snyk</li>
+<li class="">Terraform Sentinal (enterprise only)</li>
+</ul>
+</li>
+<li class=""><strong>Manual testing</strong>
+<ul>
+<li class="">Follow the standard Terraform workflow, running <code>terraform init</code>, <code>terraform apply</code>, and <code>terraform destroy</code> to test your configuration manually.</li>
+</ul>
+</li>
+<li class=""><strong>Automated testing</strong>
+<ul>
+<li class="">Automate the manual testing steps using a shell script or a more robust method, such as utilizing a testing framework like <code>TerraTest</code> with Go to write complex tests and make assertions about your infrastructure.</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="developer-workflows">Developer workflows<a href="#developer-workflows" class="hash-link" aria-label="Direct link to Developer workflows" title="Direct link to Developer workflows" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="general-workflow">General workflow<a href="#general-workflow" class="hash-link" aria-label="Direct link to General workflow" title="Direct link to General workflow" translate="no">​</a></h3>
+<ul>
+<li class="">Write/update code</li>
+<li class="">Run changes locally (for development environment)</li>
+<li class="">Create pull request</li>
+<li class="">Run tests via CI</li>
+<li class="">Deploy to staging via CD (on merge to main)</li>
+<li class="">Deploy to production via CD (on release)</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="multi-accountproject">Multi account/project<a href="#multi-accountproject" class="hash-link" aria-label="Direct link to Multi account/project" title="Direct link to Multi account/project" translate="no">​</a></h3>
+<ul>
+<li class="">Simplify IAM (Identity and Access Management) policies for enforcing controls for different environments (and remote TF backends)</li>
+<li class="">Isolate environments to protect minimize blast radius</li>
+<li class="">Reduce naming conflicts for resources</li>
+<li class="">Con: Adds complexity to TF config (but still worth it + tooling can help)</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="additional-tools">Additional tools<a href="#additional-tools" class="hash-link" aria-label="Direct link to Additional tools" title="Direct link to Additional tools" translate="no">​</a></h3>
+<ul>
+<li class="">Terragrunt<!-- -->
+<ul>
+<li class="">Minimizes code repetition</li>
+<li class="">Enables multi-account separation (improved isolation/security)</li>
+</ul>
+</li>
+<li class="">Cloud Nuke<!-- -->
+<ul>
+<li class="">Easy cleanup of cloud resources</li>
+</ul>
+</li>
+<li class="">Makefiles<!-- -->
+<ul>
+<li class="">Prevent human error</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="potential-pitfalls">Potential pitfalls<a href="#potential-pitfalls" class="hash-link" aria-label="Direct link to Potential pitfalls" title="Direct link to Potential pitfalls" translate="no">​</a></h3>
+<ul>
+<li class="">Name changes when refactoring may cause destroy/recreate resources</li>
+<li class="">Sensitive data in terraform <em>state file</em></li>
+<li class="">Cloud timeouts on command execution</li>
+<li class="">Naming conflicts</li>
+<li class="">Forgetting to destroy test-infra</li>
+<li class="">Uni-directional version upgrades with different terraform versions<!-- -->
+<ul>
+<li class="">terraform <em>state files</em> can be associated with the version of terraform binaries</li>
+<li class="">make sure to use the same terraform version in e.g. developers local environment, CI/CD system etc.</li>
+</ul>
+</li>
+<li class="">Multiple ways to accomplish same configuration</li>
+<li class="">Some Params are immutable</li>
+<li class="">Out of band changes, e.g. without terraform manually or other tools rather than terraform</li>
+</ul>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="commands">Commands<a href="#commands" class="hash-link" aria-label="Direct link to Commands" title="Direct link to Commands" translate="no">​</a></h2>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># INIT</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">terraform init</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># PLAN</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">terraform plan</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># APPLY</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">terraform apply</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># DESTROY</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">terraform destroy</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># WORKSPACE</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">terraform workspace list</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">terraform workspace new </span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">name-of-workspace</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># GRAPH</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">terraform graph </span><span class="token operator" style="color:#393A34">|</span><span class="token plain"> dot </span><span class="token parameter variable" style="color:#36acaa">-Tpng</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"> graph.png                        </span><span class="token comment" style="color:#999988;font-style:italic"># create dependency graph</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="references">References<a href="#references" class="hash-link" aria-label="Direct link to References" title="Direct link to References" translate="no">​</a></h2>
+<ul>
+<li class=""><a href="https://developer.hashicorp.com/terraform" target="_blank" rel="noopener noreferrer" class="">Terraform Documentation</a></li>
+<li class=""><a href="https://developer.hashicorp.com/terraform/language" target="_blank" rel="noopener noreferrer" class="">Terraform Language Documentation</a></li>
+<li class=""><a href="https://youtu.be/7xngnjfIlK4?si=XT2rH3c0AWKhG03F" target="_blank" rel="noopener noreferrer" class="">Complete Terraform Course - From BEGINNER to PRO! by DevOps Directive</a></li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/m19v/m19v.github.io/blob/main/docs/notes/software-engineering/terraform.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2025-11-24T09:43:10.000Z" itemprop="dateModified">Nov 24, 2025</time></b> by <b>m19v</b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/notes/software-engineering/quarkus"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Quarkus</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/category/references"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">References</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#what-is-terraform" class="table-of-contents__link toc-highlight">What is Terraform?</a></li><li><a href="#terraform-vs-ansible" class="table-of-contents__link toc-highlight">Terraform vs. Ansible</a></li><li><a href="#provisioning-cloud-resources" class="table-of-contents__link toc-highlight">Provisioning cloud resources</a></li><li><a href="#categories-of-iac-tools" class="table-of-contents__link toc-highlight">Categories of IaC tools</a></li><li><a href="#iac-provisioning-tools-landscape" class="table-of-contents__link toc-highlight">IaC Provisioning tools landscape</a></li><li><a href="#common-patterns-of-terraform-usage" class="table-of-contents__link toc-highlight">Common patterns of terraform usage</a></li><li><a href="#terraform-architecture" class="table-of-contents__link toc-highlight">Terraform architecture</a></li><li><a href="#terraform-project-structure" class="table-of-contents__link toc-highlight">Terraform project structure</a></li><li><a href="#providers" class="table-of-contents__link toc-highlight">Providers</a></li><li><a href="#modules" class="table-of-contents__link toc-highlight">Modules</a><ul><li><a href="#types-of-modules" class="table-of-contents__link toc-highlight">Types of modules</a></li><li><a href="#module-sources" class="table-of-contents__link toc-highlight">Module sources</a></li><li><a href="#good-modules" class="table-of-contents__link toc-highlight">Good modules</a></li></ul></li><li><a href="#state-file" class="table-of-contents__link toc-highlight">State file</a></li><li><a href="#terraform-basic-usage-sequence" class="table-of-contents__link toc-highlight">Terraform basic usage sequence</a></li><li><a href="#variables-and-outputs" class="table-of-contents__link toc-highlight">Variables and Outputs</a><ul><li><a href="#variable-types" class="table-of-contents__link toc-highlight">Variable types</a></li><li><a href="#setting-input-variables" class="table-of-contents__link toc-highlight">Setting input variables</a></li><li><a href="#ways-to-assign-values-to-variables" class="table-of-contents__link toc-highlight">Ways to assign values to variables</a></li></ul></li><li><a href="#sensitive-variables" class="table-of-contents__link toc-highlight">Sensitive variables</a></li><li><a href="#types-and-validation" class="table-of-contents__link toc-highlight">Types and validation</a><ul><li><a href="#primitive-types" class="table-of-contents__link toc-highlight">Primitive types</a></li><li><a href="#complex-types" class="table-of-contents__link toc-highlight">Complex types</a></li><li><a href="#validation" class="table-of-contents__link toc-highlight">Validation</a></li></ul></li><li><a href="#expressions" class="table-of-contents__link toc-highlight">Expressions</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a></li><li><a href="#meta-arguments" class="table-of-contents__link toc-highlight">Meta arguments</a><ul><li><a href="#depends_on" class="table-of-contents__link toc-highlight"><code>depends_on</code></a></li><li><a href="#count" class="table-of-contents__link toc-highlight"><code>count</code></a></li><li><a href="#for_each" class="table-of-contents__link toc-highlight"><code>for_each</code></a></li><li><a href="#lifecycle" class="table-of-contents__link toc-highlight"><code>lifecycle</code></a></li><li><a href="#inputs--meta-arguments" class="table-of-contents__link toc-highlight">Inputs + Meta arguments</a></li></ul></li><li><a href="#provisioners" class="table-of-contents__link toc-highlight">Provisioners</a></li><li><a href="#managing-multiple-environments" class="table-of-contents__link toc-highlight">Managing multiple environments</a><ul><li><a href="#terraform-workspaces" class="table-of-contents__link toc-highlight">Terraform workspaces</a></li><li><a href="#file-structure" class="table-of-contents__link toc-highlight">File structure</a></li><li><a href="#terragrunt" class="table-of-contents__link toc-highlight">Terragrunt</a></li></ul></li><li><a href="#testing-terraform-code" class="table-of-contents__link toc-highlight">Testing terraform code</a><ul><li><a href="#static-checks" class="table-of-contents__link toc-highlight">Static checks</a></li></ul></li><li><a href="#developer-workflows" class="table-of-contents__link toc-highlight">Developer workflows</a><ul><li><a href="#general-workflow" class="table-of-contents__link toc-highlight">General workflow</a></li><li><a href="#multi-accountproject" class="table-of-contents__link toc-highlight">Multi account/project</a></li><li><a href="#additional-tools" class="table-of-contents__link toc-highlight">Additional tools</a></li><li><a href="#potential-pitfalls" class="table-of-contents__link toc-highlight">Potential pitfalls</a></li></ul></li><li><a href="#commands" class="table-of-contents__link toc-highlight">Commands</a></li><li><a href="#references" class="table-of-contents__link toc-highlight">References</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">© 2025 - {m19v}</div></div></div></footer></div>
+</body>
+</html>

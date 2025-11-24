@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="tj-TJ" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-notes/software-engineering/kafka" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Apache Kafka | {m19v}</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://m19v.github.io/tg/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://m19v.github.io/tg/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://m19v.github.io/tg/docs/notes/software-engineering/kafka"><meta data-rh="true" property="og:locale" content="tj_TJ"><meta data-rh="true" property="og:locale:alternate" content="en_US"><meta data-rh="true" name="docusaurus_locale" content="tg"><meta data-rh="true" name="docsearch:language" content="tg"><meta data-rh="true" name="google-site-verification" content="-5zh_8T7Z6ZPupTzJH9LcYznhfRid8I7y2TRsaHcrsE"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Apache Kafka | {m19v}"><meta data-rh="true" name="description" content="Introduction"><meta data-rh="true" property="og:description" content="Introduction"><link data-rh="true" rel="icon" href="/tg/img/m19v.ico"><link data-rh="true" rel="canonical" href="https://m19v.github.io/tg/docs/notes/software-engineering/kafka"><link data-rh="true" rel="alternate" href="https://m19v.github.io/docs/notes/software-engineering/kafka" hreflang="en-US"><link data-rh="true" rel="alternate" href="https://m19v.github.io/tg/docs/notes/software-engineering/kafka" hreflang="tj-TJ"><link data-rh="true" rel="alternate" href="https://m19v.github.io/docs/notes/software-engineering/kafka" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Notes","item":"https://m19v.github.io/tg/docs/category/notes"},{"@type":"ListItem","position":2,"name":"Software Engineering","item":"https://m19v.github.io/tg/docs/category/software-engineering"},{"@type":"ListItem","position":3,"name":"Apache Kafka","item":"https://m19v.github.io/tg/docs/notes/software-engineering/kafka"}]}</script><link rel="alternate" type="application/rss+xml" href="/tg/blog/rss.xml" title="{m19v} RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/tg/blog/atom.xml" title="{m19v} Atom Feed">
+
+<link rel="preconnect" href="https://www.google-analytics.com">
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LVEVW4JNSB"></script>
+<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-LVEVW4JNSB",{anonymize_ip:!0})</script><link rel="stylesheet" href="/tg/assets/css/styles.0d0fcfae.css">
+<script src="/tg/assets/js/runtime~main.c27f8637.js" defer="defer"></script>
+<script src="/tg/assets/js/main.4d693455.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/tg/img/{m19v}_black_without_bg.png"><link rel="preload" as="image" href="/tg/img/{m19v}_white_without_bg.png"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/tg/"><div class="navbar__logo"><img src="/tg/img/{m19v}_black_without_bg.png" alt="My Site Logo" class="header-m19v-logo themedComponent_mlkZ themedComponent--light_NVdE"><img src="/tg/img/{m19v}_white_without_bg.png" alt="My Site Logo" class="header-m19v-logo themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"></b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/tg/docs">Ҳуҷҷатҳо</a><a class="navbar__item navbar__link" href="/tg/blog">Блог</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/m19v" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" aria-label="GitHub repository"></a><a href="https://youtube.com/@m19v" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-youtube-link" aria-label="YouTube channel"></a><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" class="iconLanguage_nlXk"><path fill="currentColor" d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"></path></svg>Тоҷикӣ</a><ul class="dropdown__menu"><li><a href="/docs/notes/software-engineering/kafka" target="_self" rel="noopener noreferrer" class="dropdown__link" lang="en-US">English</a></li><li><a href="/tg/docs/notes/software-engineering/kafka" target="_self" rel="noopener noreferrer" class="dropdown__link dropdown__link--active" lang="tj-TJ">Тоҷикӣ</a></li></ul></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a tabindex="-1" class="sidebarLogo_isFc" href="/tg/"><img src="/tg/img/{m19v}_black_without_bg.png" alt="My Site Logo" class="header-m19v-logo themedComponent_mlkZ themedComponent--light_NVdE"><img src="/tg/img/{m19v}_white_without_bg.png" alt="My Site Logo" class="header-m19v-logo themedComponent_mlkZ themedComponent--dark_xIcU"><b></b></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/tg/docs"><span title="Welcome" class="linkLabel_WmDU">Welcome</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/tg/docs/reading-list"><span title="Reading List" class="linkLabel_WmDU">Reading List</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/tg/docs/category/book-summaries"><span title="Book Summaries" class="categoryLinkLabel_W154">Book Summaries</span></a><button aria-label="Expand sidebar category &#x27;Book Summaries&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/tg/docs/category/notes"><span title="Notes" class="categoryLinkLabel_W154">Notes</span></a><button aria-label="Collapse sidebar category &#x27;Notes&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/tg/docs/category/computer-science"><span title="Computer Science" class="categoryLinkLabel_W154">Computer Science</span></a><button aria-label="Expand sidebar category &#x27;Computer Science&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/tg/docs/category/electrical-engineering"><span title="Electrical Engineering" class="categoryLinkLabel_W154">Electrical Engineering</span></a><button aria-label="Expand sidebar category &#x27;Electrical Engineering&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" tabindex="0" href="/tg/docs/category/engineering-mathematics"><span title="Engineering Mathematics" class="categoryLinkLabel_W154">Engineering Mathematics</span></a><button aria-label="Expand sidebar category &#x27;Engineering Mathematics&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" tabindex="0" href="/tg/docs/category/software-engineering"><span title="Software Engineering" class="categoryLinkLabel_W154">Software Engineering</span></a><button aria-label="Collapse sidebar category &#x27;Software Engineering&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/tg/docs/notes/software-engineering/ansible"><span title="Ansible" class="linkLabel_WmDU">Ansible</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/tg/docs/notes/software-engineering/argocd"><span title="ArgoCD" class="linkLabel_WmDU">ArgoCD</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/tg/docs/notes/software-engineering/bash"><span title="Bash" class="linkLabel_WmDU">Bash</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/tg/docs/notes/software-engineering/java"><span title="Java" class="linkLabel_WmDU">Java</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/tg/docs/notes/software-engineering/kafka"><span title="Apache Kafka" class="linkLabel_WmDU">Apache Kafka</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/tg/docs/notes/software-engineering/kubernetes"><span title="Kubernetes" class="linkLabel_WmDU">Kubernetes</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/tg/docs/notes/software-engineering/managing-security-in-gc"><span title="Managing Security in Google Cloud" class="linkLabel_WmDU">Managing Security in Google Cloud</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/tg/docs/notes/software-engineering/python"><span title="Python" class="linkLabel_WmDU">Python</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/tg/docs/notes/software-engineering/quarkus"><span title="Quarkus" class="linkLabel_WmDU">Quarkus</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/tg/docs/notes/software-engineering/terraform"><span title="Terraform" class="linkLabel_WmDU">Terraform</span></a></li></ul></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/tg/docs/category/references"><span title="References" class="categoryLinkLabel_W154">References</span></a><button aria-label="Expand sidebar category &#x27;References&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/tg/docs/category/literature"><span title="Literature" class="categoryLinkLabel_W154">Literature</span></a><button aria-label="Expand sidebar category &#x27;Literature&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/tg/docs/tools"><span title="Абзорҳо" class="linkLabel_WmDU">Абзорҳо</span></a></li></ul></nav><button type="button" title="Collapse sidebar" aria-label="Collapse sidebar" class="button button--secondary button--outline collapseSidebarButton_PEFL"><svg width="20" height="20" aria-hidden="true" class="collapseSidebarButtonIcon_kv0_"><g fill="#7a7a7a"><path d="M9.992 10.023c0 .2-.062.399-.172.547l-4.996 7.492a.982.982 0 01-.828.454H1c-.55 0-1-.453-1-1 0-.2.059-.403.168-.551l4.629-6.942L.168 3.078A.939.939 0 010 2.528c0-.548.45-.997 1-.997h2.996c.352 0 .649.18.828.45L9.82 9.472c.11.148.172.347.172.55zm0 0"></path><path d="M19.98 10.023c0 .2-.058.399-.168.547l-4.996 7.492a.987.987 0 01-.828.454h-3c-.547 0-.996-.453-.996-1 0-.2.059-.403.168-.551l4.625-6.942-4.625-6.945a.939.939 0 01-.168-.55 1 1 0 01.996-.997h3c.348 0 .649.18.828.45l4.996 7.492c.11.148.168.347.168.55zm0 0"></path></g></svg></button></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/tg/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/tg/docs/category/notes"><span>Notes</span></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/tg/docs/category/software-engineering"><span>Software Engineering</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Apache Kafka</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Apache Kafka</h1></header><h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="introduction">Introduction<a href="#introduction" class="hash-link" aria-label="Direct link to Introduction" title="Direct link to Introduction" translate="no">​</a></h2>
+<p>This document contains my notes on Apache Kafka, which I studied from Udemy Course &quot;Apache Kafka Series - Learn Apache Kafka for Beginners v3&quot; by Stephane Maarek</p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="why-apache-kafka">Why Apache Kafka<a href="#why-apache-kafka" class="hash-link" aria-label="Direct link to Why Apache Kafka" title="Direct link to Why Apache Kafka" translate="no">​</a></h3>
+<ul>
+<li class="">Decoupling of data streams and systems<!-- -->
+<ul>
+<li class="">N Source Systems ---&gt; Kafka ---&gt; N Target Systems</li>
+</ul>
+</li>
+<li class="">Distributed, resilient architecture, fault tolerant</li>
+<li class="">Horizontal scalability:<!-- -->
+<ul>
+<li class="">Can scale to 100s of brokes</li>
+<li class="">Can scale to millions of messages per second</li>
+</ul>
+</li>
+<li class="">High performance (latency of less than 10ms) - real life</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="apache-kafka-use-cases">Apache Kafka Use Cases<a href="#apache-kafka-use-cases" class="hash-link" aria-label="Direct link to Apache Kafka Use Cases" title="Direct link to Apache Kafka Use Cases" translate="no">​</a></h3>
+<ul>
+<li class="">Messaging System</li>
+<li class="">Activity Tracking</li>
+<li class="">Gather metrics from many different locations</li>
+<li class="">Application Logs gathering</li>
+<li class="">Stream processing (with the Kafka Streams API for example)</li>
+<li class="">De-coupling of system dependencies</li>
+<li class="">Integration with Spark, Flink, Storm, Hadoop and many other Big Data Technologies</li>
+<li class="">Micro-services pub/sub</li>
+</ul>
+<p>Real use cases examples:</p>
+<ul>
+<li class=""><strong>Netflix</strong> - uses Kafka to apply recommendations in real-time while you&#x27;re watching TV shows</li>
+<li class=""><strong>Uber</strong> - uses Kafka to gather user, taxi and trip data in real-time to compute and forecast demand, and compute surge pricing in real-time</li>
+<li class=""><strong>LinkedIn</strong> - uses Kafka to prevent spam, collect user interactions to make better connection recommendations in real time.</li>
+</ul>
+<blockquote>
+<p>[!NOTE]
+Kafka is only used as a transportation mechanism!</p>
+</blockquote>
+<p><img decoding="async" loading="lazy" alt="Kafka Architecture" src="/tg/assets/images/kafka-architecture-6c03a275699b007d1e2b2a8d0d0bda3d.PNG" width="1542" height="755" class="img_ev3q"></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="course-material-download"><a href="https://www.conduktor.io/apache-kafka-for-beginners" target="_blank" rel="noopener noreferrer" class="">Course Material Download</a><a href="#course-material-download" class="hash-link" aria-label="Direct link to course-material-download" title="Direct link to course-material-download" translate="no">​</a></h3>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="kafka-theory">Kafka Theory<a href="#kafka-theory" class="hash-link" aria-label="Direct link to Kafka Theory" title="Direct link to Kafka Theory" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="topics">Topics<a href="#topics" class="hash-link" aria-label="Direct link to Topics" title="Direct link to Topics" translate="no">​</a></h3>
+<ul>
+<li class="">Topics: a particular streams of data</li>
+<li class="">Like a table in database (without all the constrains)</li>
+<li class="">One can have as many topics as one want</li>
+<li class="">A topic is identified by its <em>name</em></li>
+<li class="">Topics support any kind of message format (e.g. json, txt, binary etc.)</li>
+<li class="">The sequence of message is called a <em>data stream</em></li>
+<li class="">One can not query topics, instead, use Kafka <strong>Producers</strong> to send data and Kafka <strong>Consumers</strong> to read the data</li>
+<li class="">Kafka topics are <strong>immutable</strong></li>
+<li class="">Data is kept only for a limited time (<em>default</em> is one week, but configurable)</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="partitions-and-offsets">Partitions and Offsets<a href="#partitions-and-offsets" class="hash-link" aria-label="Direct link to Partitions and Offsets" title="Direct link to Partitions and Offsets" translate="no">​</a></h3>
+<ul>
+<li class="">Topics are split in <strong>partitions</strong> (e.g. 100 partitions)<!-- -->
+<ul>
+<li class="">Messages within each partition are ordered</li>
+<li class="">Each message within a partition gets an incremental ID, called <strong>offset</strong></li>
+</ul>
+</li>
+<li class="">Kafka topics are <strong>immutable</strong>: once data is written to a partition, it can not be changed</li>
+<li class="">Offset only have a meaning for a specific partition<!-- -->
+<ul>
+<li class="">E.g. offset 3 in partition 0 doesn&#x27;t represent the same data as offset 3 in partition 1</li>
+<li class="">Offsets are not re-used even if previous message have been deleted</li>
+</ul>
+</li>
+<li class="">Order is guaranteed only within a partition (not across partitions)</li>
+<li class="">Data is assigned randomly to a partition unless a key is provided</li>
+<li class="">One can have as many partitions per topic as one want</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="producers">Producers<a href="#producers" class="hash-link" aria-label="Direct link to Producers" title="Direct link to Producers" translate="no">​</a></h3>
+<ul>
+<li class="">Producers write date to topics (which are made of partitions)</li>
+<li class="">Producers know in advance to which partition to write to (and which Kafka broker has it)</li>
+<li class="">In case of Kafka failure, Producers will automatically recover</li>
+</ul>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="producers-message-key"><strong>Producer&#x27;s Message Key</strong><a href="#producers-message-key" class="hash-link" aria-label="Direct link to producers-message-key" title="Direct link to producers-message-key" translate="no">​</a></h4>
+<ul>
+<li class="">Producers can choose to send a <strong>key</strong> with the messsage (string, number, binary, etc.)</li>
+<li class="">if <code>key=null</code>, data is sent round robin (partition 0, then 1, then 2..)</li>
+<li class="">if <code>key!=null</code>, then all messages for that key will always go to the same partition (hashing)</li>
+<li class="">A key are typically sent if you need message ordering for a specific field (ex: truck_id)</li>
+</ul>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="kafka-messages-anatomy">Kafka Messages Anatomy<a href="#kafka-messages-anatomy" class="hash-link" aria-label="Direct link to Kafka Messages Anatomy" title="Direct link to Kafka Messages Anatomy" translate="no">​</a></h4>
+<ul>
+<li class="">Key-binary<!-- -->
+<ul>
+<li class="">can be null</li>
+</ul>
+</li>
+<li class="">Value-binary<!-- -->
+<ul>
+<li class="">can be null</li>
+</ul>
+</li>
+<li class="">Compression Type<!-- -->
+<ul>
+<li class="">none</li>
+<li class="">gzip</li>
+<li class="">snappy</li>
+<li class="">lz4</li>
+<li class="">zstd</li>
+</ul>
+</li>
+<li class="">Headers (optional)<!-- -->
+<ul>
+<li class="">key/value</li>
+<li class="">key/value</li>
+</ul>
+</li>
+<li class="">Partition+Offset</li>
+<li class="">Timestamp (system or user set)</li>
+</ul>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="kafka-message-serializer">Kafka Message Serializer<a href="#kafka-message-serializer" class="hash-link" aria-label="Direct link to Kafka Message Serializer" title="Direct link to Kafka Message Serializer" translate="no">​</a></h4>
+<ul>
+<li class="">Kafka only accepts bytes as an input from producers and sends bytes out as an output to consumers</li>
+<li class="">Message Serialization means transforming objects/data into bytes</li>
+<li class="">Serializers are used on the value and the key</li>
+<li class="">Kafka comes with <strong>Common Serializers</strong>
+<ul>
+<li class="">String (incl. JSON)</li>
+<li class="">Int, Float</li>
+<li class="">Avro</li>
+<li class="">Protobuf</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="kafka-message-key-hashing">Kafka Message Key Hashing<a href="#kafka-message-key-hashing" class="hash-link" aria-label="Direct link to Kafka Message Key Hashing" title="Direct link to Kafka Message Key Hashing" translate="no">​</a></h4>
+<ul>
+<li class="">A Kafka partitioner is a code logic that takes a record and determines to which partition to send it into</li>
+<li class=""><strong>Key Hashing</strong> is the process of determining the mapping of a key to a partition</li>
+<li class="">In the defualt Kafka partitioner, the keys are hashed using the <strong>marmur2 algorithm</strong> with the formula below:</li>
+</ul>
+<p><code>targetPartition = Math.abs(Utils.marmur2(keyBytes)) % (numPartitions - 1)</code></p>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="consumers">Consumers<a href="#consumers" class="hash-link" aria-label="Direct link to Consumers" title="Direct link to Consumers" translate="no">​</a></h3>
+<ul>
+<li class="">Consumers read data from a topic (identified by name) - pull model</li>
+<li class="">Consumers automatically know which broker to read from</li>
+<li class="">In case of broker failures, consumers know how to recover</li>
+<li class="">Data is read in order from low to high offset <strong>within each partitions</strong></li>
+</ul>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="consumer-deserializers">Consumer Deserializers<a href="#consumer-deserializers" class="hash-link" aria-label="Direct link to Consumer Deserializers" title="Direct link to Consumer Deserializers" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Deserialize</strong> indicates how to transform bytes into objects/data</li>
+<li class="">Deserializers are used on the value and the key of the message</li>
+<li class="">Kafka <strong>Common Deserializers</strong>
+<ul>
+<li class="">String (incl. JSON)</li>
+<li class="">Int, Float</li>
+<li class="">Avro</li>
+<li class="">Protobuf</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>[!NOTE]
+The serialization/deserialization type must not change during a topic lifecycle</p>
+</blockquote>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="consumer-groups">Consumer Groups<a href="#consumer-groups" class="hash-link" aria-label="Direct link to Consumer Groups" title="Direct link to Consumer Groups" translate="no">​</a></h4>
+<ul>
+<li class="">All the consumers in an application read data as a consumer groups</li>
+<li class="">To create distinct consumer groups, use consumer property <code>group.id</code></li>
+<li class="">Each consumer within a group reads from exclusive partitions</li>
+<li class="">If one have more consumers than partitions, some consumers will be inactive</li>
+<li class=""><strong>Multiple Consumers on one topic</strong>
+<ul>
+<li class="">In Apache Kafka it is acceptable to have multiple consumer groups on the same topic</li>
+<li class="">E.g. 1 consumer service for location, 1 consumer service for notification in track example</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="consumer-offsets">Consumer Offsets<a href="#consumer-offsets" class="hash-link" aria-label="Direct link to Consumer Offsets" title="Direct link to Consumer Offsets" translate="no">​</a></h4>
+<ul>
+<li class="">Kafka stores the offsets at which a consumer group has been reading</li>
+<li class="">The offsets committed are in Kafka topics named <code>__consumer_offsets</code></li>
+<li class="">When a consumer in a group has processed data reveived from Kafka, it should be <strong>periodically</strong> committing the offsets (the Kafka broker will write to <code>__consumer_offsets</code>, not to the group itself)</li>
+</ul>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="delivery-semantics-for-consumers">Delivery semantics for consumers<a href="#delivery-semantics-for-consumers" class="hash-link" aria-label="Direct link to Delivery semantics for consumers" title="Direct link to Delivery semantics for consumers" translate="no">​</a></h4>
+<ul>
+<li class="">By default, Java Consumers will automatically commit offsets (at least once)</li>
+<li class="">There are 3 delivery semantics if you choose to commit manually:<!-- -->
+<ul>
+<li class=""><strong>At least once (usually preferred)</strong>
+<ul>
+<li class="">Offsets are committed after the message is processed</li>
+<li class="">If the processing goes wrong, the message will be read again</li>
+<li class="">If message is read again, it can result in duplicate processing of messages. Make sure your processing is <em>idempotent</em> (i.e. processing again the messages will not impact your systems)</li>
+</ul>
+</li>
+<li class=""><strong>At most once</strong>
+<ul>
+<li class="">Offsets are committed as soon as messages are received</li>
+<li class="">If the processing goes wrong, some messages will be lost (i.e. they will not be read again)</li>
+</ul>
+</li>
+<li class=""><strong>Exactly once</strong>
+<ul>
+<li class="">for Kafka -&gt; Kafka workflows: use the Transactional API (easy with Kafka Streams API)</li>
+<li class="">for Kafka -&gt; External System workflow: use an idempotent consumer</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="kafka-brokers">Kafka Brokers<a href="#kafka-brokers" class="hash-link" aria-label="Direct link to Kafka Brokers" title="Direct link to Kafka Brokers" translate="no">​</a></h3>
+<ul>
+<li class="">A <strong>Kafka Cluster</strong> is composed of multiple brokers (servers)</li>
+<li class="">Each broker is identified with its ID (integer)</li>
+<li class="">Each broker contains certain topic partitions</li>
+<li class="">After connecting to any broker (called a bootstrap broker), you will be connected to the entire cluster (Kafka clients have smart mechanics for that)</li>
+<li class="">A good number to get started is 3 brokers, but some big clusters have over 100 brokers</li>
+</ul>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="kafka-vs-topics">Kafka vs Topics<a href="#kafka-vs-topics" class="hash-link" aria-label="Direct link to Kafka vs Topics" title="Direct link to Kafka vs Topics" translate="no">​</a></h4>
+<ul>
+<li class="">Example of Topic-A with 3 partitions and Topic-B with 2 partitions, where data is distributed<!-- -->
+<ul>
+<li class="">Broker 101<!-- -->
+<ul>
+<li class="">Topic-A Partition 0</li>
+<li class="">Topic-B Partition 1</li>
+</ul>
+</li>
+<li class="">Broker 102<!-- -->
+<ul>
+<li class="">Topic-A Partition 2</li>
+<li class="">Topic-B Partition 0</li>
+</ul>
+</li>
+<li class="">Broker 103<!-- -->
+<ul>
+<li class="">Topic-A Partition 1</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="kafka-broker-discovery">Kafka Broker Discovery<a href="#kafka-broker-discovery" class="hash-link" aria-label="Direct link to Kafka Broker Discovery" title="Direct link to Kafka Broker Discovery" translate="no">​</a></h4>
+<ul>
+<li class="">Every Kafka broker is also called a <em>bootstrap server</em></li>
+<li class="">That means that <em>you only need to connect to one broker</em>, and the Kafka clients will know how to be connected to the entire cluster (smart client)</li>
+<li class="">Each broker knows about all brokers, topics and partitions (metadata)</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="topic-replication">Topic Replication<a href="#topic-replication" class="hash-link" aria-label="Direct link to Topic Replication" title="Direct link to Topic Replication" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="topic-replication-factor">Topic Replication Factor<a href="#topic-replication-factor" class="hash-link" aria-label="Direct link to Topic Replication Factor" title="Direct link to Topic Replication Factor" translate="no">​</a></h4>
+<ul>
+<li class="">Topics should have a replication factor &gt; 1 (usually between 2 and 3)</li>
+<li class="">This way if a broker is down, another broker can serve the data</li>
+<li class=""><strong>Example</strong>: Topic-A with 2 partitions and replication factor of 2 (e.g. if we lose broker 102, brokers 101 and 103 can still server the data)<!-- -->
+<ul>
+<li class="">Broker 101<!-- -->
+<ul>
+<li class="">Topic-A Partition 0</li>
+</ul>
+</li>
+<li class="">Broker 102<!-- -->
+<ul>
+<li class="">Topic-A Partition 1</li>
+<li class="">Topic-A Partition 0 (Replication)</li>
+</ul>
+</li>
+<li class="">Broker 103<!-- -->
+<ul>
+<li class="">Topic-A Partition 1 (Replication)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="concept-of-leader-for-a-partition">Concept of Leader for a Partition<a href="#concept-of-leader-for-a-partition" class="hash-link" aria-label="Direct link to Concept of Leader for a Partition" title="Direct link to Concept of Leader for a Partition" translate="no">​</a></h4>
+<ul>
+<li class="">At any time only ONE broker can be a leader for a given partition</li>
+<li class="">Producers can only send data to the broker that is leader of a partition</li>
+<li class="">The other brokers will replicate the data and therefore, each partition has one leader and multiple <strong>ISR</strong> (<em>in-sync replica</em>)</li>
+<li class=""><strong>Example</strong> above with Leader for Partitions<!-- -->
+<ul>
+<li class="">Broker 101<!-- -->
+<ul>
+<li class="">Topic-A Partition 0 (Leader)</li>
+</ul>
+</li>
+<li class="">Broker 102<!-- -->
+<ul>
+<li class="">Topic-A Partition 1 (Leader)</li>
+<li class="">Topic-A Partition 0 (Replication)(ISR)</li>
+</ul>
+</li>
+<li class="">Broker 103<!-- -->
+<ul>
+<li class="">Topic-A Partition 1 (Replication)(ISR)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="default-producer--consumer-behaviour-with-leaders">Default Producer &amp; Consumer behaviour with leaders<a href="#default-producer--consumer-behaviour-with-leaders" class="hash-link" aria-label="Direct link to Default Producer &amp; Consumer behaviour with leaders" title="Direct link to Default Producer &amp; Consumer behaviour with leaders" translate="no">​</a></h4>
+<ul>
+<li class="">Kafka Producers can only write to the leader broker for a partition</li>
+<li class="">Kafka Consumers by default will read from the leader broker for a partition</li>
+</ul>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="kafka-consumers-replica-fetching-kafka-v24">Kafka Consumers Replica Fetching (<em>Kafka v2.4+</em>)<a href="#kafka-consumers-replica-fetching-kafka-v24" class="hash-link" aria-label="Direct link to kafka-consumers-replica-fetching-kafka-v24" title="Direct link to kafka-consumers-replica-fetching-kafka-v24" translate="no">​</a></h4>
+<ul>
+<li class="">Since Kafka 2.4, it is possible to configure consumers to read from the closest replica</li>
+<li class="">This may help to improve latency, and also decrease network costs if using the cloud</li>
+</ul>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="kafka-topic-durability">Kafka Topic Durability<a href="#kafka-topic-durability" class="hash-link" aria-label="Direct link to Kafka Topic Durability" title="Direct link to Kafka Topic Durability" translate="no">​</a></h4>
+<ul>
+<li class="">For a topic replication factor of 3, topic data durability can withstand 2 broker loss</li>
+<li class="">As a rule, for a replication factor of <code>N</code>, you can permanently lose up to <code>N-1</code> broker and still recover your data</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="producer-acknowledgements-acks">Producer Acknowledgements (acks)<a href="#producer-acknowledgements-acks" class="hash-link" aria-label="Direct link to Producer Acknowledgements (acks)" title="Direct link to Producer Acknowledgements (acks)" translate="no">​</a></h3>
+<ul>
+<li class="">Producers can choose to receive acknowledgment of data writes:<!-- -->
+<ul>
+<li class=""><code>acks = 0</code>: Producer won&#x27;t wait for acknowledgment (possible data loss)</li>
+<li class=""><code>acks = 1</code>: Producer will wait for leader acknowledgment (limited data loss)</li>
+<li class=""><code>acks = all</code>: Leader + replicas acknowledgment (no data loss)</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="zookeeper">Zookeeper<a href="#zookeeper" class="hash-link" aria-label="Direct link to Zookeeper" title="Direct link to Zookeeper" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Zookeeper</strong> manages brokers (keeps a list of them)</li>
+<li class="">Zookeeper helps in performing leader election for partition if broker goes down</li>
+<li class="">Zookeeper sends notifications to Kafka brokers in case of changes (e.g. new topic, broker dies, broker comes up, delete topic, etc.)</li>
+<li class=""><strong>Kafka up to version v2.x can&#x27;t work without Zookeeper</strong></li>
+<li class=""><strong>Kafka 3.x can work without Zookeeper (KIP-500) - using Kafka Raft (KRaft) instead</strong></li>
+<li class=""><strong>Kafka 4.x will not have Zookeeper anymore</strong></li>
+<li class="">Zookeeper by design operates with an odd number of servers (1, 3, 5, 7)</li>
+<li class="">Zookeeper has a leader(writes) the rest of the servers are followers (reads)</li>
+<li class="">(Zookeeper does NOT store consumer offsets with Kafka &gt; v0.10)</li>
+<li class="">Example:<!-- -->
+<ul>
+<li class="">Zookeeper Server 1 (Follower)<!-- -->
+<ul>
+<li class="">Kafka Broker 1</li>
+<li class="">Kafka Broker 2</li>
+</ul>
+</li>
+<li class="">Zookeeper Server 2 (Leader)<!-- -->
+<ul>
+<li class="">Kafka Broker 3</li>
+<li class="">Kafka Broker 4</li>
+</ul>
+</li>
+<li class="">Zookeeper Server 3 (Follower)<!-- -->
+<ul>
+<li class="">Kafka Broker 5</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="should-you-use-zookeeper">Should you use Zookeeper?<a href="#should-you-use-zookeeper" class="hash-link" aria-label="Direct link to Should you use Zookeeper?" title="Direct link to Should you use Zookeeper?" translate="no">​</a></h4>
+<ul>
+<li class="">With Kafka Brokers?<!-- -->
+<ul>
+<li class="">Yes, until Kafka 4.0 is out while waiting for Kafka without Zookeeper to be production-ready</li>
+</ul>
+</li>
+<li class="">With Kafka Clients?<!-- -->
+<ul>
+<li class="">Over time, the Kafka Clients and CLI have been migrated to leverage the brokers as a connection endpoint instead of Zookeeper</li>
+<li class="">Since Kafka v0.10, consumers store offset in Kafka Broker and Zookeeper and they must not connect to Zookeeper as it is deprecated</li>
+<li class="">Since Kafka v2.2, <code>kafka-topics.sh</code> CLI command references Kafka Brokers and not Zookeeper for topic management (creation, deletion, etc.) and the Zookeeper CLI argument is deprecated</li>
+<li class="">All the APIs and commands that were previously leveraging Zookeeper are migrated to use Kafka instead, so that when clusters are migrated to be without Zookeeper, the change is invisible to clients</li>
+<li class="">Zookeeper is also less secure than Kafka, and therefore Zookeeper ports should only be opened to allow traffic from Kafka Brokers, and not Kafka Clients</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>[!NOTE]
+Never use Zookeeper as a configuration in your Kafka Client, and other program that connect to Kafka.</p>
+</blockquote>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="kafka-kraft">Kafka KRaft<a href="#kafka-kraft" class="hash-link" aria-label="Direct link to Kafka KRaft" title="Direct link to Kafka KRaft" translate="no">​</a></h3>
+<ul>
+<li class="">
+<p>In 2020, the Apache Kafka project started to work <em>to remove the Zookeeper dependency from it (KIP-500)</em></p>
+</li>
+<li class="">
+<p>Zookeeper shows scaling issues when Kafka cluster have &gt; 100,000 partitions</p>
+</li>
+<li class="">
+<p>By removing Zookeeper, Apache Kafka can</p>
+<ul>
+<li class="">Scale to millions of partitions, and becomes easier to maintain and set-up</li>
+<li class="">Improve stability, makes it easier to monitor, support and administer</li>
+<li class="">Single security model for the whole system (not Kafka or Zookeeper separately)</li>
+<li class="">Single process to start with Kafka</li>
+<li class="">Faster controller shutdown and recovery time</li>
+</ul>
+</li>
+<li class="">
+<p>Kafka 3.x now implements the Raft protocol (KRaft) in order to replace Zookeeper</p>
+<ul>
+<li class="">Production ready since Kafka 3.3.1 (KIP-833)</li>
+<li class="">Kafka 4.0 will be released only with KRaft (no Zookeeper)</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="kafka-kraft-architecture">Kafka KRaft Architecture<a href="#kafka-kraft-architecture" class="hash-link" aria-label="Direct link to Kafka KRaft Architecture" title="Direct link to Kafka KRaft Architecture" translate="no">​</a></h4>
+<ul>
+<li class="">With Zookeeper</li>
+</ul>
+<div class="language-txt codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-txt codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Zookeeper Server 1               +------  Kafka Broker 1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Zookeeper Server 2 (Leader) -----+------  Kafka Broker 2</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Zookeeper Server 3               +------  Kafka Broker 3</span><br></span></code></pre></div></div>
+<ul>
+<li class="">With Quorum Controller</li>
+</ul>
+<div class="language-txt codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-txt codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Kafka Broker 1 &lt;---&gt; Kafka Broker 2 (L) &lt;---&gt; Kafka Broker 3</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">L - Quorum Leader</span><br></span></code></pre></div></div>
+<blockquote>
+<p>[!NOTE]
+KRaft Performance Improvements with controller shutdown time and recovery time after uncontrolled shutdown. (see <a href="https://www.confluent.io/blog/kafka-without-zookeeper-a-sneak-peek/" target="_blank" rel="noopener noreferrer" class="">here</a> )</p>
+</blockquote>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="starting-kafka">Starting Kafka<a href="#starting-kafka" class="hash-link" aria-label="Direct link to Starting Kafka" title="Direct link to Starting Kafka" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="start-kafka-using-docker">Start Kafka using Docker<a href="#start-kafka-using-docker" class="hash-link" aria-label="Direct link to Start Kafka using Docker" title="Direct link to Start Kafka using Docker" translate="no">​</a></h3>
+<p>See <a href="https://www.conduktor.io/kafka/how-to-start-kafka-using-docker/" target="_blank" rel="noopener noreferrer" class="">How to Start Kafka using Docker?</a></p>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="cli">CLI<a href="#cli" class="hash-link" aria-label="Direct link to CLI" title="Direct link to CLI" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="kafka-cli">Kafka CLI<a href="#kafka-cli" class="hash-link" aria-label="Direct link to Kafka CLI" title="Direct link to Kafka CLI" translate="no">​</a></h3>
+<ul>
+<li class="">Kafka CLI comes with Kafka binaries</li>
+<li class="">Use <code>--bootstrap-server</code> option for e.g. <code>kafka-topics</code> but NOT <code>--zookeeper</code> (deprecated)<!-- -->
+<ul>
+<li class="">e.g. <code>kafka-topics --bootstrap-server localhost:9092</code></li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="kafka-topics-cli">Kafka Topics CLI<a href="#kafka-topics-cli" class="hash-link" aria-label="Direct link to Kafka Topics CLI" title="Direct link to Kafka Topics CLI" translate="no">​</a></h3>
+<ul>
+<li class="">Kafka Topic Management<!-- -->
+<ul>
+<li class="">Create Kafka Topics</li>
+<li class="">List Kafka Topics</li>
+<li class="">Describe Kafka Topics</li>
+<li class="">Increase Partitions in a Kafka Topics</li>
+<li class="">Delete a Kafka Topic</li>
+</ul>
+</li>
+</ul>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Examples</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">kafka-topics.sh --bootstrap-server localhost:9092 </span><span class="token parameter variable" style="color:#36acaa">--list</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">kafka-topics.sh --bootstrap-server localhost:9092 </span><span class="token parameter variable" style="color:#36acaa">--topic</span><span class="token plain"> first_topic </span><span class="token parameter variable" style="color:#36acaa">--create</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">kafka-topics.sh --bootstrap-server localhost:9092 </span><span class="token parameter variable" style="color:#36acaa">--topic</span><span class="token plain"> second_topic </span><span class="token parameter variable" style="color:#36acaa">--create</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--partitions</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">3</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">kafka-topics.sh --bootstrap-server localhost:9092 </span><span class="token parameter variable" style="color:#36acaa">--topic</span><span class="token plain"> third_topic </span><span class="token parameter variable" style="color:#36acaa">--create</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--partitions</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">3</span><span class="token plain"> --replication-factor </span><span class="token number" style="color:#36acaa">2</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Create a topic (working)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">kafka-topics.sh --bootstrap-server localhost:9092 </span><span class="token parameter variable" style="color:#36acaa">--topic</span><span class="token plain"> third_topic </span><span class="token parameter variable" style="color:#36acaa">--create</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--partitions</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">3</span><span class="token plain"> --replication-factor </span><span class="token number" style="color:#36acaa">1</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># List topics</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">kafka-topics.sh --bootstrap-server localhost:9092 </span><span class="token parameter variable" style="color:#36acaa">--list</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Describe a topic</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">kafka-topics.sh --bootstrap-server localhost:9092 </span><span class="token parameter variable" style="color:#36acaa">--topic</span><span class="token plain"> first_topic </span><span class="token parameter variable" style="color:#36acaa">--describe</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Delete a topic</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">kafka-topics.sh --bootstrap-server localhost:9092 </span><span class="token parameter variable" style="color:#36acaa">--topic</span><span class="token plain"> first_topic </span><span class="token parameter variable" style="color:#36acaa">--delete</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># (only works if delete.topic.enable=true)</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="kafka-console-producer-cli">Kafka Console Producer CLI<a href="#kafka-console-producer-cli" class="hash-link" aria-label="Direct link to Kafka Console Producer CLI" title="Direct link to Kafka Console Producer CLI" translate="no">​</a></h3>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">kafka-topics.sh --bootstrap-server localhost:9092 </span><span class="token parameter variable" style="color:#36acaa">--topic</span><span class="token plain"> first_topic </span><span class="token parameter variable" style="color:#36acaa">--create</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--partitions</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># producing</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">kafka-console-producer.sh --bootstrap-server localhost:9092 </span><span class="token parameter variable" style="color:#36acaa">--topic</span><span class="token plain"> first_topic </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"> Hello World</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain">My name is Conduktor</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain">I love Kafka</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain">^C  </span><span class="token punctuation" style="color:#393A34">(</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">- Ctrl + C is used to </span><span class="token builtin class-name">exit</span><span class="token plain"> the producer</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># producing with properties</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">kafka-console-producer.sh --bootstrap-server localhost:9092 </span><span class="token parameter variable" style="color:#36acaa">--topic</span><span class="token plain"> first_topic --producer-property </span><span class="token assign-left variable" style="color:#36acaa">acks</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">all</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"> some message that is acked</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"> just </span><span class="token keyword" style="color:#00009f">for</span><span class="token plain"> fun</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"> fun learning</span><span class="token operator" style="color:#393A34">!</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># producing to a non existing topic</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">kafka-console-producer.sh --bootstrap-server localhost:9092 </span><span class="token parameter variable" style="color:#36acaa">--topic</span><span class="token plain"> new_topic</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"> hello world</span><span class="token operator" style="color:#393A34">!</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># our new topic only has 1 partition</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">kafka-topics.sh --bootstrap-server localhost:9092 </span><span class="token parameter variable" style="color:#36acaa">--list</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">kafka-topics.sh --bootstrap-server localhost:9092 </span><span class="token parameter variable" style="color:#36acaa">--topic</span><span class="token plain"> new_topic </span><span class="token parameter variable" style="color:#36acaa">--describe</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># edit config/server.properties or config/kraft/server.properties</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># num.partitions=3</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># produce against a non existing topic again</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">kafka-console-producer.sh --bootstrap-server localhost:9092 </span><span class="token parameter variable" style="color:#36acaa">--topic</span><span class="token plain"> new_topic_2</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">hello again</span><span class="token operator" style="color:#393A34">!</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># this time our topic has 3 partitions</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">kafka-topics.sh --bootstrap-server localhost:9092 </span><span class="token parameter variable" style="color:#36acaa">--list</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">kafka-topics.sh --bootstrap-server localhost:9092 </span><span class="token parameter variable" style="color:#36acaa">--topic</span><span class="token plain"> new_topic_2 </span><span class="token parameter variable" style="color:#36acaa">--describe</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># overall, please create topics with the appropriate number of partitions before producing to them!</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># produce with keys</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">kafka-console-producer.sh --bootstrap-server localhost:9092 </span><span class="token parameter variable" style="color:#36acaa">--topic</span><span class="token plain"> first_topic </span><span class="token parameter variable" style="color:#36acaa">--property</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">parse.key</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">true </span><span class="token parameter variable" style="color:#36acaa">--property</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">key.separator</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain">example key:example value</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain">name:Stephane</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="what-is-next">What is Next?<a href="#what-is-next" class="hash-link" aria-label="Direct link to What is Next?" title="Direct link to What is Next?" translate="no">​</a></h2>
+<ol>
+<li class=""><strong>Kafka for Beginners:</strong> Kafka basics operations, producers and consumers</li>
+<li class=""><strong>Kafka Connect API:</strong> Import/Export data to/from Kafka</li>
+<li class=""><strong>Kafka Streams API:</strong> Process and Transform data within Kafka</li>
+<li class=""><strong>ksqlDB:</strong> Write Kafka Streams applications using SQL</li>
+<li class=""><strong>Confluent Components:</strong> REST Proxy and Schema Registry</li>
+<li class=""><strong>Kafka Security:</strong> Setup Kafka security in a Cluster and Integrate your applications with Kafka Security</li>
+<li class=""><strong>Kafka Monitoring and Operations:</strong> use Prometheus and Grafana to monitor Kafka, learn operations</li>
+<li class=""><strong>Kafka Cluster Setup and Administration:</strong> Get a deep understanding of how Kafka and Zookeeper works, how to setup Kafka and various administration tasks</li>
+<li class=""><strong>Confluent Certifications</strong></li>
+</ol>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="references">References<a href="#references" class="hash-link" aria-label="Direct link to References" title="Direct link to References" translate="no">​</a></h2>
+<ul>
+<li class=""><a href="https://www.udemy.com/course/apache-kafka" target="_blank" rel="noopener noreferrer" class="">Apache Kafka for Beginners v3</a></li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/m19v/m19v.github.io/blob/main/docs/notes/software-engineering/kafka.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2025-11-24T09:43:10.000Z" itemprop="dateModified">24 Ноя 2025</time></b> by <b>m19v</b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/tg/docs/notes/software-engineering/java"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Java</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/tg/docs/notes/software-engineering/kubernetes"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Kubernetes</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#introduction" class="table-of-contents__link toc-highlight">Introduction</a><ul><li><a href="#why-apache-kafka" class="table-of-contents__link toc-highlight">Why Apache Kafka</a></li><li><a href="#apache-kafka-use-cases" class="table-of-contents__link toc-highlight">Apache Kafka Use Cases</a></li><li><a href="#course-material-download" class="table-of-contents__link toc-highlight">Course Material Download</a></li></ul></li><li><a href="#kafka-theory" class="table-of-contents__link toc-highlight">Kafka Theory</a><ul><li><a href="#topics" class="table-of-contents__link toc-highlight">Topics</a></li><li><a href="#partitions-and-offsets" class="table-of-contents__link toc-highlight">Partitions and Offsets</a></li><li><a href="#producers" class="table-of-contents__link toc-highlight">Producers</a></li><li><a href="#consumers" class="table-of-contents__link toc-highlight">Consumers</a></li><li><a href="#kafka-brokers" class="table-of-contents__link toc-highlight">Kafka Brokers</a></li><li><a href="#topic-replication" class="table-of-contents__link toc-highlight">Topic Replication</a></li><li><a href="#producer-acknowledgements-acks" class="table-of-contents__link toc-highlight">Producer Acknowledgements (acks)</a></li><li><a href="#zookeeper" class="table-of-contents__link toc-highlight">Zookeeper</a></li><li><a href="#kafka-kraft" class="table-of-contents__link toc-highlight">Kafka KRaft</a></li></ul></li><li><a href="#starting-kafka" class="table-of-contents__link toc-highlight">Starting Kafka</a><ul><li><a href="#start-kafka-using-docker" class="table-of-contents__link toc-highlight">Start Kafka using Docker</a></li></ul></li><li><a href="#cli" class="table-of-contents__link toc-highlight">CLI</a><ul><li><a href="#kafka-cli" class="table-of-contents__link toc-highlight">Kafka CLI</a></li><li><a href="#kafka-topics-cli" class="table-of-contents__link toc-highlight">Kafka Topics CLI</a></li><li><a href="#kafka-console-producer-cli" class="table-of-contents__link toc-highlight">Kafka Console Producer CLI</a></li></ul></li><li><a href="#what-is-next" class="table-of-contents__link toc-highlight">What is Next?</a></li><li><a href="#references" class="table-of-contents__link toc-highlight">References</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">© 2025 - {m19v}</div></div></div></footer></div>
+</body>
+</html>
