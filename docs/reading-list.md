@@ -10,7 +10,8 @@ This is a collection of articles, books, conferences and podcasts related to Dev
 - [Docker Run, Attach, and Exec: How They Work Under the Hood (and Why It Matters)](https://labs.iximiuz.com/tutorials/docker-run-vs-attach-vs-exec)
   
 ### Books
-- [Хуросон аст ин ҷо. Муҳаммадҷон Шакурии Бухороӣ / Khurāsān ast īn jā, Shakūrī, Muḥammad](https://kitobkhon.net/book/khuroson-ast-in-jo/)  
+- [Хуросон аст ин ҷо. Муҳаммадҷон Шакурии Бухороӣ / Khurāsān ast īn jā, Shakūrī, Muḥammad](https://kitobkhon.net/book/khuroson-ast-in-jo/)
+- [Astrophysics for People in a Hurry: Essays on the Universe and Our Place Within It by Neil de Grasse Tyson](https://en.wikipedia.org/wiki/Astrophysics_for_People_in_a_Hurry)  
    
 ### Conferences
     
