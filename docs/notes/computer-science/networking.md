@@ -294,8 +294,27 @@ CIDR - Classless Inter-Domain Routing
   - Specific number of host required
   - Specific number of subnets 
 
-Hosts = 2^n - 2  (-2 is -Subnet and -Broadcast addresses)
+Hosts = 2^n - 2  (n- number of bits in host portion, -2 is -Subnet and -Broadcast addresses)
 Subnets: 2^n 
+
+```sh
+E.g.: 192.168.1.0/24 -> Devide into 4 subnets
+11111111.11111111.11111111.00000000 = 24 Network, 8 Hosts
+
+Subnet = 2^n = 2^2 = 4 (subnets)
+Network     Subnet   Host
+192.168.1   00       000000   (192.168.1.0/26)
+192.168.1   01       000000   (192.168.1.64/26)
+192.168.1   10       000000   (192.168.1.128/26)
+192.168.1   11       000000   (192.168.1.192/26)
+
+
+1st Network: 
+192.168.1   00       000000   (192.168.1.0/26)   Network
+192.168.1   00       000001   (192.168.1.1/26)   1st host 
+192.168.1   00       111110   (192.168.1.62/26)  Last host
+192.168.1   00       111111   (192.168.1.63/26)  Broadcast
+```
 
 
 
