@@ -24,6 +24,39 @@ apt upgrade -y
 apt install ansible -y
 ```
 
+## Ansible project hierarchy
+
+```sh
+ansible-project/
+├── ansible.cfg                # Project-specific config (overrides /etc/ansible/ansible.cfg)
+├── inventory.ini              # List of managed nodes, groups, and variables
+├── site.yml                   # Master playbook; imports other playbooks (entry point)
+├── webservers.yml             # Tier-specific playbook (e.g., handles web stack)
+├── group_vars/                # Variables applied to specific inventory groups
+│   ├── all.yml                # Variables for every host in the inventory
+│   └── webservers.yml         # Variables only for hosts in [webservers] group
+├── host_vars/                 # Variables for unique individual hosts
+│   └── db-server-01.yml       # Custom settings for one specific database node
+├── library/                   # Optional: Custom Ansible modules written in Python
+├── filter_plugins/            # Optional: Custom Jinja2 filters for data manipulation
+└── roles/                     # Modular, reusable units of automation
+    └── common/                # A role for base configuration (NTP, Users, etc.)
+        ├── tasks/             # Execution logic
+        │   └── main.yml       # e.g., - name: install git | apt: name=git state=present
+        ├── handlers/          # Service triggers
+        │   └── main.yml       # e.g., - name: restart ntp | service: name=ntp state=restarted
+        ├── templates/         # Jinja2 configuration files
+        │   └── ntp.conf.j2    # e.g., server {{ ntp_server }} iburst
+        ├── files/             # Static files to be copied to nodes
+        │   └── motd           # e.g., "Welcome to this Managed Server"
+        ├── vars/              # High-priority role-specific variables
+        │   └── main.yml       # e.g., pkg_name: apache2
+        ├── defaults/          # Low-priority default variables (easily overridden)
+        │   └── main.yml       # e.g., port: 80
+        └── meta/              # Role dependencies and author info
+            └── main.yml       # e.g., dependencies: [ { role: firewall } ]
+```
+
 ## Ansible configuration
 
 ### ansible.cfg
